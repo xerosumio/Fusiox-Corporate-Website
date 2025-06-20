@@ -10,8 +10,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        
+        /* Smooth transitions */
+        .card, .btn, .navbar a, .form-control {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .form-control:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        /* Contact info animations */
+        .contact-info {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info:hover {
+            transform: translateX(10px);
+        }
+        
+        /* Form animations */
+        .form-group {
+            transition: all 0.3s ease;
+        }
+        
+        .form-group:hover {
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -59,8 +97,8 @@
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
-                <h1 class="text-5xl font-bold">Contact Us</h1>
-                <p class="py-6">Ready to start your business? Get in touch with our incorporation experts today.</p>
+                <h1 class="text-5xl font-bold" data-aos="fade-up">Contact Us</h1>
+                <p class="py-6" data-aos="fade-up" data-aos-delay="200">Ready to start your business? Get in touch with our incorporation experts today.</p>
             </div>
         </div>
     </div>
@@ -70,7 +108,7 @@
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Contact Form -->
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl" data-aos="zoom-in-right">
                     <div class="card-body">
                         <h2 class="card-title text-2xl mb-6">Get Free Consultation</h2>
                         <!-- Replace YOUR_FORMSPREE_ID with your actual Formspree form ID -->
@@ -189,9 +227,9 @@
                 </div>
 
                 <!-- Contact Information -->
-                <div class="space-y-6">
+                <div class="space-y-6" data-aos="zoom-in-left">
                     <!-- Office Information -->
-                    <div class="card bg-base-100 shadow-xl">
+                    <div class="card bg-base-100 shadow-xl contact-info" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="card-body">
                             <h3 class="card-title">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,7 +247,7 @@
                     </div>
 
                     <!-- Contact Methods -->
-                    <div class="card bg-base-100 shadow-xl">
+                    <div class="card bg-base-100 shadow-xl contact-info" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="card-body">
                             <h3 class="card-title">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -220,7 +258,7 @@
                             <div class="space-y-4">
                                 <div class="flex items-center space-x-3">
                                     <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v10a2 2 0 002 2z"></path>
                                     </svg>
                                     <a href="mailto:info@fusiox.com" class="link link-hover">info@fusiox.com</a>
                                 </div>
@@ -367,6 +405,15 @@
                 }
             }
         }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 50,
+            easing: 'ease-out-back'
+        });
     </script>
 </body>
 </html> 

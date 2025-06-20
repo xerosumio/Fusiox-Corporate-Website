@@ -10,8 +10,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        
+        /* Smooth transitions */
+        .card, .btn, .navbar a, .step {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Step animations */
+        .step:hover {
+            transform: scale(1.02);
+        }
+        
+        .step-icon {
+            transition: all 0.4s ease;
+        }
+        
+        .step:hover .step-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        /* Feature card animations */
+        .feature-card {
+            transition: all 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Timeline animations */
+        .timeline-item {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(15px);
+        }
     </style>
 </head>
 <body>
@@ -59,8 +106,8 @@
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
-                <h1 class="text-5xl font-bold">How It Works</h1>
-                <p class="py-6">Simple, straightforward process to get your business incorporated quickly and efficiently.</p>
+                <h1 class="text-5xl font-bold" data-aos="fade-up">How It Works</h1>
+                <p class="py-6" data-aos="fade-up" data-aos-delay="200">Simple, straightforward process to get your business incorporated quickly and efficiently.</p>
             </div>
         </div>
     </div>
@@ -68,10 +115,10 @@
     <!-- Process Steps -->
     <div class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Our Simple 4-Step Process</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Our Simple 4-Step Process</h2>
             
             <!-- Stepper -->
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-4xl mx-auto" data-aos="zoom-in" data-aos-delay="200">
                 <ul class="steps steps-vertical lg:steps-horizontal w-full">
                     <li class="step step-primary">Data Collection</li>
                     <li class="step step-primary">Auto-Fill & Preparation</li>
@@ -83,9 +130,9 @@
             <!-- Step Details -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
                 <!-- Step 1 -->
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl step" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="card-body">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 step-icon">
                             <span class="text-2xl font-bold text-primary-content">1</span>
                         </div>
                         <h3 class="card-title justify-center">Data Collection</h3>
@@ -106,9 +153,9 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl step" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="card-body">
-                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 step-icon">
                             <span class="text-2xl font-bold text-secondary-content">2</span>
                         </div>
                         <h3 class="card-title justify-center">Auto-Fill & Preparation</h3>
@@ -129,9 +176,9 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl step" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="card-body">
-                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 step-icon">
                             <span class="text-2xl font-bold text-accent-content">3</span>
                         </div>
                         <h3 class="card-title justify-center">Review & Approval</h3>
@@ -152,9 +199,9 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl step" data-aos="zoom-in-up" data-aos-delay="400">
                     <div class="card-body">
-                        <div class="w-16 h-16 bg-info rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-info rounded-full flex items-center justify-center mx-auto mb-4 step-icon">
                             <span class="text-2xl font-bold text-info-content">4</span>
                         </div>
                         <h3 class="card-title justify-center">Submission & Completion</h3>
@@ -180,10 +227,10 @@
     <!-- Timeline -->
     <div class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Typical Timeline</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Typical Timeline</h2>
             <div class="max-w-3xl mx-auto">
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="text-center">
+                    <div class="text-center timeline-item" data-aos="zoom-in" data-aos-delay="100">
                         <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-10 h-10 text-primary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -192,7 +239,7 @@
                         <h3 class="text-xl font-bold mb-2">Day 1</h3>
                         <p>Complete questionnaire and document preparation</p>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center timeline-item" data-aos="zoom-in" data-aos-delay="200">
                         <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-10 h-10 text-secondary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -201,7 +248,7 @@
                         <h3 class="text-xl font-bold mb-2">Day 2-3</h3>
                         <p>Review, approve, and file documents with the state</p>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center timeline-item" data-aos="zoom-in" data-aos-delay="300">
                         <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-10 h-10 text-accent-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
@@ -218,9 +265,9 @@
     <!-- What Makes Us Different -->
     <div class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">What Makes Us Different</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">What Makes Us Different</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl feature-card" data-aos="flip-up" data-aos-delay="100">
                     <div class="card-body">
                         <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
                             <svg class="w-6 h-6 text-primary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -231,7 +278,7 @@
                         <p>Most incorporations completed within 5-7 business days, with expedited options available.</p>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl feature-card" data-aos="flip-up" data-aos-delay="200">
                     <div class="card-body">
                         <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mb-4">
                             <svg class="w-6 h-6 text-secondary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -352,5 +399,14 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 50,
+            easing: 'ease-out-back'
+        });
+    </script>
 </body>
 </html> 

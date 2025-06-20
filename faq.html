@@ -10,8 +10,74 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        
+        /* Energetic transitions */
+        @keyframes tabBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.15) rotate(2deg); }
+            50% { transform: scale(1.2) rotate(-1deg); }
+            75% { transform: scale(1.1) rotate(1deg); }
+        }
+        
+        @keyframes faqPop {
+            0% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.08) translateY(-10px); }
+            100% { transform: scale(1.05) translateY(-5px); }
+        }
+        
+        .card, .btn, .navbar a, .tab, .collapse {
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .card:hover {
+            transform: translateY(-20px) scale(1.1) rotate(3deg);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.15) saturate(1.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+        }
+        
+        .tab:hover {
+            animation: tabBounce 0.8s ease-in-out;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+        }
+        
+        /* FAQ item animations */
+        .collapse:hover {
+            animation: faqPop 0.6s ease-in-out forwards;
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+        }
+        
+        /* Tab animations */
+        .tab-content {
+            animation: energyFadeIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes energyFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        /* Happy glow effects */
+        .tab-active {
+            background: linear-gradient(45deg, #667eea, #764ba2) !important;
+            color: white !important;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -59,8 +125,8 @@
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
-                <h1 class="text-5xl font-bold">FAQ</h1>
-                <p class="py-6">Find answers to the most common questions about business incorporation and our services.</p>
+                <h1 class="text-5xl font-bold" data-aos="fade-up">FAQ</h1>
+                <p class="py-6" data-aos="fade-up" data-aos-delay="200">Find answers to the most common questions about business incorporation and our services.</p>
             </div>
         </div>
     </div>
@@ -70,7 +136,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
                 <!-- Category Tabs -->
-                <div class="tabs tabs-boxed justify-center mb-12" x-data="faqTabs()">
+                <div class="tabs tabs-boxed justify-center mb-12" x-data="faqTabs()" data-aos="zoom-in-up">
                     <button 
                         @click="activeCategory = 'general'"
                         :class="activeCategory === 'general' ? 'tab-active' : ''"
@@ -98,10 +164,10 @@
                 </div>
 
                 <!-- General Questions -->
-                <div x-show="activeCategory === 'general'" x-transition>
-                    <h2 class="text-2xl font-bold mb-6">General Questions</h2>
+                <div x-show="activeCategory === 'general'" x-transition class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6" data-aos="fade-right">General Questions</h2>
                     <div class="space-y-4">
-                        <div class="collapse collapse-plus bg-base-200">
+                        <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="100">
                             <input type="radio" name="general-accordion" checked="checked" />
                             <div class="collapse-title text-xl font-medium">
                                 What is business incorporation?
@@ -111,7 +177,7 @@
                             </div>
                         </div>
 
-                        <div class="collapse collapse-plus bg-base-200">
+                        <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="200">
                             <input type="radio" name="general-accordion" />
                             <div class="collapse-title text-xl font-medium">
                                 How long does the incorporation process take?
@@ -121,7 +187,7 @@
                             </div>
                         </div>
 
-                        <div class="collapse collapse-plus bg-base-200">
+                        <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="300">
                             <input type="radio" name="general-accordion" />
                             <div class="collapse-title text-xl font-medium">
                                 Do I need a registered agent?
@@ -131,7 +197,7 @@
                             </div>
                         </div>
 
-                        <div class="collapse collapse-plus bg-base-200">
+                        <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="400">
                             <input type="radio" name="general-accordion" />
                             <div class="collapse-title text-xl font-medium">
                                 What states can you help me incorporate in?
@@ -355,6 +421,15 @@
                 activeCategory: 'general'
             }
         }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 50,
+            easing: 'ease-out-back'
+        });
     </script>
 </body>
 </html> 

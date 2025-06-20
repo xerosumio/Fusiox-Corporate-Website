@@ -10,8 +10,154 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        
+        /* Energetic animations */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes zoomPulse {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
+            75% { transform: scale(1.15); }
+        }
+        
+        @keyframes happyFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            25% { transform: translateY(-15px) scale(1.05); }
+            50% { transform: translateY(-5px) scale(1.1); }
+            75% { transform: translateY(-20px) scale(1.02); }
+        }
+        
+        @keyframes energyPulse {
+            0% { transform: scale(1) rotate(0deg); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            50% { transform: scale(1.2) rotate(180deg); box-shadow: 0 0 0 20px rgba(59, 130, 246, 0); }
+            100% { transform: scale(1) rotate(360deg); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+        
+        @keyframes happyBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
+            40% { transform: translateY(-15px) scale(1.1); }
+            60% { transform: translateY(-10px) scale(1.05); }
+        }
+        
+        /* Happy animation classes */
+        .animate-bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        .animate-zoom-pulse {
+            animation: zoomPulse 2s ease-in-out infinite;
+        }
+        
+        .animate-happy-float {
+            animation: happyFloat 4s ease-in-out infinite;
+        }
+        
+        .animate-energy-pulse {
+            animation: energyPulse 3s ease-in-out infinite;
+        }
+        
+        .animate-happy-bounce {
+            animation: happyBounce 2s ease-in-out infinite;
+        }
+        
+        /* Energetic transitions */
+        .card, .btn, .navbar a {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .card:hover {
+            transform: translateY(-15px) scale(1.08) rotate(2deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            filter: brightness(1.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Hero animations */
+        .hero-title {
+            animation: bounceIn 1.2s ease-out 0.3s both;
+        }
+        
+        .hero-subtitle {
+            animation: bounceIn 1.2s ease-out 0.6s both;
+        }
+        
+        .hero-buttons {
+            animation: bounceIn 1.2s ease-out 0.9s both;
+        }
+        
+        /* Image zoom effects */
+        .card img {
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .card:hover img {
+            transform: scale(1.2) rotate(3deg);
+        }
+        
+        /* Icon animations */
+        .icon-container {
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .icon-container:hover {
+            transform: scale(1.3) rotate(15deg);
+            filter: brightness(1.2) saturate(1.3);
+        }
+        
+        /* Navbar energy */
+        .navbar a:hover {
+            transform: scale(1.1) translateY(-2px);
+            color: #ff6b6b;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        /* Button energy effects */
+        .btn-primary {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Happy colors */
+        .happy-glow {
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+        
+        .energy-border {
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) border-box;
+            background-clip: padding-box, border-box;
+        }
     </style>
 </head>
 <body>
@@ -57,10 +203,10 @@
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
-                <h1 class="text-5xl font-bold">Welcome to Fusiox</h1>
-                <p class="py-6">Professional incorporation services that make starting your business simple, fast, and affordable. Get your company registered with expert guidance every step of the way.</p>
-                <div class="space-x-4">
-                    <a href="contact.html" class="btn btn-accent btn-lg">Start Your Incorporation</a>
+                <h1 class="text-5xl font-bold hero-title">Welcome to Fusiox</h1>
+                <p class="py-6 hero-subtitle">Professional incorporation services that make starting your business simple, fast, and affordable. Get your company registered with expert guidance every step of the way.</p>
+                <div class="space-x-4 hero-buttons">
+                    <a href="contact.html" class="btn btn-accent btn-lg animate-zoom-pulse happy-glow">Start Your Incorporation</a>
                     <a href="how-it-works.html" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-black">Learn How</a>
                 </div>
             </div>
@@ -70,9 +216,9 @@
     <!-- Services Summary -->
     <div class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Our Core Services</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Our Core Services</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl energy-border" data-aos="zoom-in-up" data-aos-delay="100">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=250&fit=crop&crop=center" alt="Company Incorporation" class="h-48 w-full object-cover" />
                     </figure>
@@ -80,11 +226,11 @@
                         <h2 class="card-title">Company Incorporation</h2>
                         <p>Fast-track your business registration with our streamlined incorporation process.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary">Learn More</a>
+                            <a href="services.html" class="btn btn-primary animate-happy-bounce">Learn More</a>
                         </div>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl energy-border" data-aos="zoom-in-up" data-aos-delay="200">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=250&fit=crop&crop=center" alt="Legal Compliance" class="h-48 w-full object-cover" />
                     </figure>
@@ -92,11 +238,11 @@
                         <h2 class="card-title">Legal Compliance</h2>
                         <p>Stay compliant with all regulations and legal requirements for your business type.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary">Learn More</a>
+                            <a href="services.html" class="btn btn-primary animate-happy-bounce">Learn More</a>
                         </div>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl energy-border" data-aos="zoom-in-up" data-aos-delay="300">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop&crop=center" alt="Ongoing Support" class="h-48 w-full object-cover" />
                     </figure>
@@ -104,7 +250,7 @@
                         <h2 class="card-title">Ongoing Support</h2>
                         <p>Continuous support and guidance to help your business grow and succeed.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary">Learn More</a>
+                            <a href="services.html" class="btn btn-primary animate-happy-bounce">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -115,10 +261,10 @@
     <!-- Why Fusiox -->
     <div class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Fusiox?</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Why Choose Fusiox?</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="text-center" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 icon-container animate-energy-pulse">
                         <svg class="w-8 h-8 text-primary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
@@ -126,8 +272,8 @@
                     <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
                     <p>Get your company incorporated in record time with our streamlined process.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="text-center" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 icon-container animate-energy-pulse" style="animation-delay: 1s;">
                         <svg class="w-8 h-8 text-secondary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -135,8 +281,8 @@
                     <h3 class="text-xl font-semibold mb-2">Expert Guidance</h3>
                     <p>Our experienced team ensures every detail is handled correctly and professionally.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="text-center" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 icon-container animate-energy-pulse" style="animation-delay: 2s;">
                         <svg class="w-8 h-8 text-accent-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
                         </svg>
@@ -151,7 +297,7 @@
     <!-- Testimonials Carousel -->
     <div class="py-16 bg-base-200" x-data="testimonials()">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">What Our Clients Say</h2>
             <div class="carousel w-full max-w-4xl mx-auto">
                 <template x-for="(testimonial, index) in testimonials" :key="index">
                     <div :id="`slide${index + 1}`" class="carousel-item relative w-full" x-show="currentSlide === index">
@@ -196,9 +342,9 @@
     <div class="py-16 relative" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=600&fit=crop&crop=center'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-primary bg-opacity-85"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl font-bold text-white mb-4">Ready to Start Your Business?</h2>
-            <p class="text-xl text-white mb-8">Join thousands of successful entrepreneurs who chose Fusiox for their incorporation needs.</p>
-            <a href="contact.html" class="btn btn-accent btn-lg">Start Your Incorporation Today</a>
+            <h2 class="text-3xl font-bold text-white mb-4" data-aos="fade-up">Ready to Start Your Business?</h2>
+            <p class="text-xl text-white mb-8" data-aos="fade-up" data-aos-delay="100">Join thousands of successful entrepreneurs who chose Fusiox for their incorporation needs.</p>
+            <a href="contact.html" class="btn btn-accent btn-lg happy-glow" data-aos="zoom-in-up" data-aos-delay="200">Start Your Incorporation Today</a>
         </div>
     </div>
 
@@ -255,7 +401,15 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 50,
+            easing: 'ease-out-back'
+        });
+
         function testimonials() {
             return {
                 currentSlide: 0,
