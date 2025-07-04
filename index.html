@@ -294,49 +294,7 @@
         </div>
     </div>
 
-    <!-- Testimonials Carousel -->
-    <div class="py-16 bg-base-200" x-data="testimonials()">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">What Our Clients Say</h2>
-            <div class="carousel w-full max-w-4xl mx-auto">
-                <template x-for="(testimonial, index) in testimonials" :key="index">
-                    <div :id="`slide${index + 1}`" class="carousel-item relative w-full" x-show="currentSlide === index">
-                        <div class="card bg-base-100 shadow-xl w-full">
-                            <div class="card-body">
-                                <div class="rating rating-sm mb-4">
-                                    <template x-for="i in 5" :key="i">
-                                        <input type="radio" class="mask mask-star-2 bg-orange-400" checked />
-                                    </template>
-                                </div>
-                                <p class="text-lg mb-4" x-text="testimonial.text"></p>
-                                <div class="flex items-center">
-                                    <div class="avatar">
-                                        <div class="w-12 rounded-full">
-                                            <img :src="testimonial.avatar" :alt="testimonial.name" />
-                                        </div>
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="font-bold" x-text="testimonial.name"></div>
-                                        <div class="text-sm opacity-50" x-text="testimonial.company"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-                <div class="flex justify-center w-full py-2 gap-2 mt-8">
-                    <template x-for="(testimonial, index) in testimonials" :key="index">
-                        <button 
-                            @click="currentSlide = index"
-                            :class="currentSlide === index ? 'btn-active' : ''"
-                            class="btn btn-xs"
-                            x-text="index + 1">
-                        </button>
-                    </template>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- CTA Banner -->
     <div class="py-16 relative" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=600&fit=crop&crop=center'); background-size: cover; background-position: center;">
@@ -409,36 +367,7 @@
             easing: 'ease-out-back'
         });
 
-        function testimonials() {
-            return {
-                currentSlide: 0,
-                testimonials: [
-                    {
-                        text: "Fusiox made our company incorporation incredibly smooth. Their team guided us through every step and we were up and running in no time!",
-                        name: "Sarah Johnson",
-                        company: "TechStart Inc.",
-                        avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=96&h=96&fit=crop&crop=face"
-                    },
-                    {
-                        text: "Professional, efficient, and affordable. I recommend Fusiox to any entrepreneur looking to start their business the right way.",
-                        name: "Michael Chen",
-                        company: "InnovateHub LLC",
-                        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face"
-                    },
-                    {
-                        text: "The expertise and support we received from Fusiox was outstanding. They handled all the complexities so we could focus on our business.",
-                        name: "Emily Rodriguez",
-                        company: "GrowthCorp",
-                        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=face"
-                    }
-                ],
-                init() {
-                    setInterval(() => {
-                        this.currentSlide = (this.currentSlide + 1) % this.testimonials.length;
-                    }, 5000);
-                }
-            }
-        }
+
     </script>
 </body>
 </html> 
