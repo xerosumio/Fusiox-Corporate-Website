@@ -158,6 +158,15 @@
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) border-box;
             background-clip: padding-box, border-box;
         }
+        
+        /* New hero background */
+        .hero-cityscape {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
     </style>
 </head>
 <body>
@@ -199,7 +208,7 @@
     </div>
 
     <!-- Hero Section -->
-    <div class="hero min-h-screen" style="background-image: url('assets/images/hk.jpg'); background-size: cover; background-position: center;">
+    <div class="hero min-h-screen hero-cityscape">
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
