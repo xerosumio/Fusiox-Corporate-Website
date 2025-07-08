@@ -134,18 +134,18 @@
         </div>
     </div>
 
-    <!-- Core Services -->
+    <!-- Basic Services -->
     <div class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Core Services</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- LLC Formation -->
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Basic Services</h2>
+            <div class="grid md:grid-cols-2 gap-8 justify-center">
+                <!-- HKLPF Registration -->
                 <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="card-body">
-                        <h2 class="card-title">LLC Formation</h2>
-                        <p>Create a Limited Liability Company to protect your personal assets while maintaining business flexibility.</p>
+                        <h2 class="card-title">HKLPF Registration</h2>
+                        <p>Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.</p>
                         <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">$199</span>
+                            <span class="text-2xl font-bold text-primary">USD 2,500</span>
                             <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
                                 <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
                             </button>
@@ -153,23 +153,24 @@
                         <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
                             <h4 class="font-semibold mb-2">Includes:</h4>
                             <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>State filing fees included</li>
-                                <li>Articles of Organization preparation</li>
-                                <li>Operating Agreement template</li>
-                                <li>EIN application assistance</li>
-                                <li>Registered agent service (1 year)</li>
+                                <li>Complete HKLPF registration process</li>
+                                <li>Legal documentation preparation</li>
+                                <li>Regulatory compliance guidance</li>
+                                <li>Partnership agreement drafting</li>
+                                <li>Filing with Hong Kong authorities</li>
+                                <li>Certificate of registration</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Corporation Formation -->
+                <!-- Company Secretary Service -->
                 <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="card-body">
-                        <h2 class="card-title">Corporation Formation</h2>
-                        <p>Establish a C-Corporation or S-Corporation for traditional business structure and tax benefits.</p>
+                        <h2 class="card-title">Company Secretary Service</h2>
+                        <p>Professional company secretary services to ensure compliance with Hong Kong corporate regulations and statutory requirements.</p>
                         <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">$299</span>
+                            <span class="text-2xl font-bold text-primary">USD 1,180</span>
                             <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
                                 <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
                             </button>
@@ -177,108 +178,12 @@
                         <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
                             <h4 class="font-semibold mb-2">Includes:</h4>
                             <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>State filing fees included</li>
-                                <li>Articles of Incorporation</li>
-                                <li>Corporate bylaws</li>
-                                <li>Stock certificates</li>
-                                <li>Corporate kit and seal</li>
-                                <li>EIN application</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Nonprofit Formation -->
-                <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="300">
-                    <div class="card-body">
-                        <h2 class="card-title">Nonprofit Formation</h2>
-                        <p>Form a 501(c)(3) nonprofit organization to pursue your charitable mission with tax-exempt status.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">$599</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
-                            </button>
-                        </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>State filing and IRS application</li>
-                                <li>Articles of Incorporation</li>
-                                <li>Bylaws preparation</li>
-                                <li>501(c)(3) application (Form 1023)</li>
-                                <li>Board resolution templates</li>
-                                <li>Ongoing compliance guidance</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Partnership Formation -->
-                <div class="card bg-base-100 shadow-xl" x-data="{ expanded: false }">
-                    <div class="card-body">
-                        <h2 class="card-title">Partnership Formation</h2>
-                        <p>Create a Limited Partnership (LP) or Limited Liability Partnership (LLP) for multi-owner businesses.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">$249</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
-                            </button>
-                        </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>State registration filing</li>
-                                <li>Partnership agreement</li>
-                                <li>Certificate of Partnership</li>
-                                <li>EIN application</li>
-                                <li>Registered agent service</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DBA Registration -->
-                <div class="card bg-base-100 shadow-xl" x-data="{ expanded: false }">
-                    <div class="card-body">
-                        <h2 class="card-title">DBA Registration</h2>
-                        <p>Register a "Doing Business As" name to operate your business under a different name.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">$99</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
-                            </button>
-                        </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>Name availability search</li>
-                                <li>DBA filing with county/state</li>
-                                <li>Publication requirements</li>
-                                <li>Certificate delivery</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Business License -->
-                <div class="card bg-base-100 shadow-xl" x-data="{ expanded: false }">
-                    <div class="card-body">
-                        <h2 class="card-title">Business Licenses</h2>
-                        <p>Obtain required federal, state, and local licenses and permits for your specific business type.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">Starting at $149</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
-                            </button>
-                        </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>License requirement research</li>
-                                <li>Application preparation</li>
-                                <li>Filing assistance</li>
-                                <li>Renewal reminders</li>
-                                <li>Compliance monitoring</li>
+                                <li>Dedicated company secretary</li>
+                                <li>Annual return filing</li>
+                                <li>Board meeting coordination</li>
+                                <li>Statutory compliance monitoring</li>
+                                <li>Corporate record maintenance</li>
+                                <li>Regulatory filing support</li>
                             </ul>
                         </div>
                     </div>
@@ -287,39 +192,45 @@
         </div>
     </div>
 
-    <!-- Add-on Services -->
+    <!-- Value-added Services -->
     <div class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Add-on Services</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Value-added Services</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="card-body">
-                        <h3 class="card-title">Registered Agent</h3>
-                        <p class="text-sm">Professional registered agent service for legal document receipt.</p>
-                        <div class="text-lg font-bold text-primary">$99/year</div>
+                        <h3 class="card-title">Registered Address and Mail Receiving</h3>
+                        <p class="text-sm">Professional registered address service with mail handling and forwarding capabilities.</p>
+                        <div class="text-lg font-bold text-primary">USD 500</div>
                     </div>
                 </div>
                 <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="card-body">
-                        <h3 class="card-title">EIN Application</h3>
-                        <p class="text-sm">Federal tax ID number application and processing.</p>
-                        <div class="text-lg font-bold text-primary">$49</div>
+                        <h3 class="card-title">Audit and Tax Filing</h3>
+                        <p class="text-sm">Professional audit services and comprehensive tax filing support tailored to your needs.</p>
+                        <div class="text-lg font-bold text-primary">Case-by-case basis</div>
                     </div>
                 </div>
                 <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="card-body">
-                        <h3 class="card-title">Operating Agreement</h3>
-                        <p class="text-sm">Customized operating agreement for your LLC or corporation.</p>
-                        <div class="text-lg font-bold text-primary">$199</div>
+                        <h3 class="card-title">Bank Account Opening</h3>
+                        <p class="text-sm">Assistance with corporate bank account opening and banking relationship establishment.</p>
+                        <div class="text-lg font-bold text-primary">Starting from USD 800</div>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-lg">
+                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="400">
                     <div class="card-body">
-                        <h3 class="card-title">Annual Reports</h3>
-                        <p class="text-sm">State-required annual report filing and compliance maintenance.</p>
-                        <div class="text-lg font-bold text-primary">$149/year</div>
+                        <h3 class="card-title">CTC Certification</h3>
+                        <p class="text-sm">Certified True Copy certification services for official document authentication.</p>
+                        <div class="text-lg font-bold text-primary">USD 50 per copy</div>
                     </div>
                 </div>
+            </div>
+            <!-- Fund-related Services Note -->
+            <div class="text-center mt-8">
+                <p class="text-base-content/80 italic">
+                    Interested in fund-related incorporation services? <a href="contact.html" class="text-primary hover:text-primary-focus underline">Please contact us directly for details.</a>
+                </p>
             </div>
         </div>
     </div>
@@ -333,47 +244,47 @@
                     <thead>
                         <tr>
                             <th>Feature</th>
-                            <th>LLC</th>
-                            <th>Corporation</th>
-                            <th>Nonprofit</th>
-                            <th>Partnership</th>
+                            <th>HKLPF Registration</th>
+                            <th>Company Secretary</th>
+                            <th>Registered Address</th>
+                            <th>Bank Account Opening</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Personal Asset Protection</td>
+                            <td>Professional Setup</td>
                             <td>✅</td>
                             <td>✅</td>
                             <td>✅</td>
-                            <td>⚠️ Limited</td>
-                        </tr>
-                        <tr>
-                            <td>Tax Flexibility</td>
-                            <td>✅</td>
-                            <td>⚠️ Varies</td>
-                            <td>❌</td>
                             <td>✅</td>
                         </tr>
                         <tr>
-                            <td>Paperwork Requirements</td>
-                            <td>Low</td>
-                            <td>High</td>
-                            <td>High</td>
-                            <td>Medium</td>
+                            <td>Regulatory Compliance</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>⚠️ Banking requirements</td>
                         </tr>
                         <tr>
-                            <td>Investment Friendly</td>
-                            <td>⚠️ Limited</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
+                            <td>Documentation Support</td>
+                            <td>✅ Complete</td>
+                            <td>✅ Ongoing</td>
+                            <td>✅ Address proof</td>
+                            <td>✅ Application support</td>
                         </tr>
                         <tr>
-                            <td>Setup Cost</td>
-                            <td>$199</td>
-                            <td>$299</td>
-                            <td>$599</td>
-                            <td>$249</td>
+                            <td>Ongoing Service</td>
+                            <td>❌ One-time</td>
+                            <td>✅ Annual</td>
+                            <td>✅ Continuous</td>
+                            <td>❌ Setup only</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>USD 2,500</td>
+                            <td>USD 1,180</td>
+                            <td>USD 500</td>
+                            <td>From USD 800</td>
                         </tr>
                     </tbody>
                 </table>
@@ -385,8 +296,8 @@
     <div class="py-16 relative" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&h=600&fit=crop&crop=center'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-primary bg-opacity-80"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl font-bold text-white mb-4">Need Help Choosing?</h2>
-            <p class="text-xl text-white mb-8">Our experts are here to help you select the perfect business structure for your needs.</p>
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <p class="text-xl text-white mb-8">Our Hong Kong corporate services experts are ready to assist with your incorporation and compliance needs.</p>
             <div class="space-x-4">
                 <a href="contact.html" class="btn btn-accent btn-lg">Get Free Consultation</a>
                 <a href="how-it-works.html" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-black">See How It Works</a>
