@@ -48,9 +48,9 @@ Create a professional, fast-loading, and mobile-friendly website to showcase Fus
 - 4-step DaisyUI stepper (data collection → auto-fill → review → submission)
 - Illustrations or process diagrams (optional)
 
-### 5. For Startups / For Funds
+### 5. For Funds
 
-- Two mini-landing pages with tailored messaging
+- Mini-landing page with tailored messaging for fund clients
 - Conditional rendering or tabs (Alpine.js)
 
 ### 6. FAQs Page
@@ -86,7 +86,6 @@ fusiox-site/
 ├── about.html
 ├── services.html
 ├── how-it-works.html
-├── startups.html
 ├── funds.html
 ├── faq.html
 ├── contact.html
