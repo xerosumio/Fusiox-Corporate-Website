@@ -45,12 +45,24 @@
             filter: brightness(1.1);
         }
         
-        /* Happy glow effects */
+        /* Mission and Vision card styling */
         .mission-card {
-            box-shadow: 0 0 30px rgba(255, 107, 107, 0.2);
-            border: 2px solid transparent;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4) border-box;
-            background-clip: padding-box, border-box;
+            background: linear-gradient(135deg, #2F1E4C, #1E2F4C);
+            color: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(47, 30, 76, 0.3);
+            border: none;
+        }
+        
+        .vision-card {
+            background: linear-gradient(135deg, #1E2F4C, #3C6E71);
+            color: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(30, 47, 76, 0.3);
+            border: none;
+        }
+        
+        .mission-card .card-title,
+        .vision-card .card-title {
+            color: #FFFFFF;
         }
     </style>
 </head>
@@ -120,7 +132,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-xl mission-card" data-aos="zoom-in-left">
+                <div class="card bg-base-100 shadow-xl vision-card" data-aos="zoom-in-left">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&h=300&fit=crop&crop=center" alt="Our Vision" class="h-48 w-full object-cover" />
                     </figure>
