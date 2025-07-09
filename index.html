@@ -54,11 +54,7 @@
             100% { transform: scale(1) rotate(360deg); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
         
-        @keyframes happyBounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
-            40% { transform: translateY(-15px) scale(1.1); }
-            60% { transform: translateY(-10px) scale(1.05); }
-        }
+
         
         /* Happy animation classes */
         .animate-bounce-in {
@@ -77,9 +73,7 @@
             animation: energyPulse 3s ease-in-out infinite;
         }
         
-        .animate-happy-bounce {
-            animation: happyBounce 2s ease-in-out infinite;
-        }
+
         
         /* Energetic transitions */
         .card, .btn, .navbar a {
@@ -136,28 +130,47 @@
             text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
         }
         
-        /* Button energy effects */
+        /* Professional button styling */
         .btn-primary {
-            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
-            background-size: 300% 300%;
-            animation: gradientShift 3s ease infinite;
+            background: #4F8EF7;
+            border: none;
+            color: #FFFFFF;
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .btn-primary:hover {
+            background: #3b7ce8;
+            color: #FFFFFF;
         }
         
-        /* Happy colors */
-        .happy-glow {
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        /* Professional card overlay */
+        .professional-overlay {
+            position: relative;
+            overflow: hidden;
         }
         
-        .energy-border {
-            border: 3px solid transparent;
-            background: linear-gradient(135deg, #1e40af, #7c3aed, #db2777, #059669) border-box;
-            background-clip: padding-box, border-box;
+        .professional-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(31, 45, 61, 0.4);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .professional-overlay .card-body {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .professional-overlay .card-title {
+            color: #FFFFFF;
+        }
+        
+        .professional-overlay p {
+            color: #E5E5E5;
         }
     </style>
 </head>
@@ -238,39 +251,39 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.title">Our Core Services</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-white text-black shadow-xl energy-border" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="card bg-white shadow-xl professional-overlay" data-aos="zoom-in-up" data-aos-delay="100">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=250&fit=crop&crop=center" alt="Company Incorporation" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title text-gray-800" data-i18n="services.company-incorporation.title">Company Incorporation</h2>
-                        <p class="text-gray-600" data-i18n="services.company-incorporation.description">Fast-track your business registration with our streamlined incorporation process.</p>
+                        <h2 class="card-title" data-i18n="services.company-incorporation.title">Company Incorporation</h2>
+                        <p data-i18n="services.company-incorporation.description">Fast-track your business registration with our streamlined incorporation process.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary animate-happy-bounce" data-i18n="services.learn-more">Learn More</a>
+                            <a href="services.html" class="btn btn-primary" data-i18n="services.learn-more">Learn More</a>
                         </div>
                     </div>
                 </div>
-                <div class="card bg-white text-black shadow-xl energy-border" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="card bg-white shadow-xl professional-overlay" data-aos="zoom-in-up" data-aos-delay="200">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=250&fit=crop&crop=center" alt="Legal Compliance" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title text-gray-800" data-i18n="services.legal-compliance.title">Legal Compliance</h2>
-                        <p class="text-gray-600" data-i18n="services.legal-compliance.description">Stay compliant with all regulations and legal requirements for your business type.</p>
+                        <h2 class="card-title" data-i18n="services.legal-compliance.title">Legal Compliance</h2>
+                        <p data-i18n="services.legal-compliance.description">Stay compliant with all regulations and legal requirements for your business type.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary animate-happy-bounce" data-i18n="services.learn-more">Learn More</a>
+                            <a href="services.html" class="btn btn-primary" data-i18n="services.learn-more">Learn More</a>
                         </div>
                     </div>
                 </div>
-                <div class="card bg-white text-black shadow-xl energy-border" data-aos="zoom-in-up" data-aos-delay="300">
+                <div class="card bg-white shadow-xl professional-overlay" data-aos="zoom-in-up" data-aos-delay="300">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop&crop=center" alt="Ongoing Support" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title text-gray-800" data-i18n="services.ongoing-support.title">Ongoing Support</h2>
-                        <p class="text-gray-600" data-i18n="services.ongoing-support.description">Continuous support and guidance to help your business grow and succeed.</p>
+                        <h2 class="card-title" data-i18n="services.ongoing-support.title">Ongoing Support</h2>
+                        <p data-i18n="services.ongoing-support.description">Continuous support and guidance to help your business grow and succeed.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary animate-happy-bounce" data-i18n="services.learn-more">Learn More</a>
+                            <a href="services.html" class="btn btn-primary" data-i18n="services.learn-more">Learn More</a>
                         </div>
                     </div>
                 </div>
