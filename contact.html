@@ -193,12 +193,7 @@
                                 ></textarea>
                             </div>
 
-                            <div class="form-control mb-6">
-                                <label class="cursor-pointer label justify-start">
-                                    <input type="checkbox" name="newsletter" x-model="form.newsletter" class="checkbox checkbox-primary mr-3" />
-                                    <span class="label-text">I'd like to receive updates about Fusiox services and business tips</span>
-                                </label>
-                            </div>
+
 
                             <button type="submit" class="btn btn-primary w-full" :disabled="submitting">
                                 <span x-show="!submitting">Send Message</span>
@@ -369,8 +364,7 @@
                     phone: '',
                     businessName: '',
                     service: '',
-                    message: '',
-                    newsletter: false
+                    message: ''
                 },
                 submitting: false,
                 success: false,
@@ -397,8 +391,7 @@
                         phone: '',
                         businessName: '',
                         service: '',
-                        message: '',
-                        newsletter: false
+                        message: ''
                     };
                 }
             }
