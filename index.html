@@ -171,30 +171,49 @@
                     </svg>
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-
-                    <li><a href="funds.html">For Funds</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                    <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
+                    <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
+                    <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
-            <a href="index.html" class="btn btn-ghost text-xl font-bold">Fusiox</a>
+            <a href="index.html" class="btn btn-ghost text-xl font-bold" data-i18n="nav.brand">Fusiox</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
-
-                <li><a href="funds.html">For Funds</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
+                <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
+                <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             </ul>
         </div>
         <div class="navbar-end">
-            <a href="contact.html" class="btn btn-primary">Get Started</a>
+            <!-- Language Selector -->
+            <div class="dropdown dropdown-end mr-4" x-data="languageSelector()">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-sm" @click="toggleDropdown()">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-3a5 5 0 00-5-5 5 5 0 00-5 5v3m9-9v-3a5 5 0 00-5 5 5 5 0 00-5-5v3"></path>
+                    </svg>
+                    <span x-text="currentLanguageObj.nativeName"></span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <ul x-show="isOpen" @click.away="closeDropdown()" x-transition class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
+                    <template x-for="language in languages" :key="language.code">
+                        <li>
+                            <a @click="changeLanguage(language.code)" 
+                               :class="{ 'active': currentLanguage === language.code }"
+                               x-text="language.nativeName"></a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.get-started">Get Started</a>
         </div>
     </div>
 
@@ -203,11 +222,11 @@
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
-                <h1 class="text-5xl font-bold hero-title">Welcome to Fusiox</h1>
-                <p class="py-6 hero-subtitle">Professional incorporation services that make starting your business simple, fast, and affordable. Get your company registered with expert guidance every step of the way.</p>
+                <h1 class="text-5xl font-bold hero-title" data-i18n="hero.title">Welcome to Fusiox</h1>
+                <p class="py-6 hero-subtitle" data-i18n="hero.subtitle">Professional incorporation services that make starting your business simple, fast, and affordable. Get your company registered with expert guidance every step of the way.</p>
                 <div class="space-x-4 hero-buttons">
-                    <a href="contact.html" class="btn btn-accent btn-lg happy-glow">Start Your Incorporation</a>
-                    <a href="how-it-works.html" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-black">Learn How</a>
+                    <a href="contact.html" class="btn btn-accent btn-lg happy-glow" data-i18n="hero.start-incorporation">Start Your Incorporation</a>
+                    <a href="how-it-works.html" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-black" data-i18n="hero.learn-how">Learn How</a>
                 </div>
             </div>
         </div>
@@ -216,17 +235,17 @@
     <!-- Services Summary -->
     <div class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Our Core Services</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.title">Our Core Services</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="card bg-white text-black shadow-xl energy-border" data-aos="zoom-in-up" data-aos-delay="100">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=250&fit=crop&crop=center" alt="Company Incorporation" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title text-gray-800">Company Incorporation</h2>
-                        <p class="text-gray-600">Fast-track your business registration with our streamlined incorporation process.</p>
+                        <h2 class="card-title text-gray-800" data-i18n="services.company-incorporation.title">Company Incorporation</h2>
+                        <p class="text-gray-600" data-i18n="services.company-incorporation.description">Fast-track your business registration with our streamlined incorporation process.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary animate-happy-bounce">Learn More</a>
+                            <a href="services.html" class="btn btn-primary animate-happy-bounce" data-i18n="services.learn-more">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -235,10 +254,10 @@
                         <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=250&fit=crop&crop=center" alt="Legal Compliance" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title text-gray-800">Legal Compliance</h2>
-                        <p class="text-gray-600">Stay compliant with all regulations and legal requirements for your business type.</p>
+                        <h2 class="card-title text-gray-800" data-i18n="services.legal-compliance.title">Legal Compliance</h2>
+                        <p class="text-gray-600" data-i18n="services.legal-compliance.description">Stay compliant with all regulations and legal requirements for your business type.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary animate-happy-bounce">Learn More</a>
+                            <a href="services.html" class="btn btn-primary animate-happy-bounce" data-i18n="services.learn-more">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -247,10 +266,10 @@
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop&crop=center" alt="Ongoing Support" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title text-gray-800">Ongoing Support</h2>
-                        <p class="text-gray-600">Continuous support and guidance to help your business grow and succeed.</p>
+                        <h2 class="card-title text-gray-800" data-i18n="services.ongoing-support.title">Ongoing Support</h2>
+                        <p class="text-gray-600" data-i18n="services.ongoing-support.description">Continuous support and guidance to help your business grow and succeed.</p>
                         <div class="card-actions justify-end">
-                            <a href="services.html" class="btn btn-primary animate-happy-bounce">Learn More</a>
+                            <a href="services.html" class="btn btn-primary animate-happy-bounce" data-i18n="services.learn-more">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -261,7 +280,7 @@
     <!-- Why Fusiox -->
     <div class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Why Choose Fusiox?</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="why-choose.title">Why Choose Fusiox?</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 icon-container animate-energy-pulse">
@@ -269,8 +288,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
-                    <p>Get your company incorporated in record time with our streamlined process.</p>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="why-choose.lightning-fast.title">Lightning Fast</h3>
+                    <p data-i18n="why-choose.lightning-fast.description">Get your company incorporated in record time with our streamlined process.</p>
                 </div>
                 <div class="text-center" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 icon-container animate-energy-pulse" style="animation-delay: 1s;">
@@ -278,8 +297,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Expert Guidance</h3>
-                    <p>Our experienced team ensures every detail is handled correctly and professionally.</p>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="why-choose.expert-guidance.title">Expert Guidance</h3>
+                    <p data-i18n="why-choose.expert-guidance.description">Our experienced team ensures every detail is handled correctly and professionally.</p>
                 </div>
                 <div class="text-center" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 icon-container animate-energy-pulse" style="animation-delay: 2s;">
@@ -287,8 +306,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Affordable Pricing</h3>
-                    <p>Competitive rates with transparent pricing and no hidden fees.</p>
+                    <h3 class="text-xl font-semibold mb-2" data-i18n="why-choose.affordable-pricing.title">Affordable Pricing</h3>
+                    <p data-i18n="why-choose.affordable-pricing.description">Competitive rates with transparent pricing and no hidden fees.</p>
                 </div>
             </div>
         </div>
@@ -300,44 +319,44 @@
     <div class="py-16 relative" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=600&fit=crop&crop=center'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-primary bg-opacity-85"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl font-bold text-white mb-4" data-aos="fade-up">Ready to Start Your Business?</h2>
-            <p class="text-xl text-white mb-8" data-aos="fade-up" data-aos-delay="100">Join thousands of successful entrepreneurs who chose Fusiox for their incorporation needs.</p>
-            <a href="contact.html" class="btn btn-accent btn-lg happy-glow" data-aos="zoom-in-up" data-aos-delay="200">Start Your Incorporation Today</a>
+            <h2 class="text-3xl font-bold text-white mb-4" data-aos="fade-up" data-i18n="cta.title">Ready to Start Your Business?</h2>
+            <p class="text-xl text-white mb-8" data-aos="fade-up" data-aos-delay="100" data-i18n="cta.subtitle">Join thousands of successful entrepreneurs who chose Fusiox for their incorporation needs.</p>
+            <a href="contact.html" class="btn btn-accent btn-lg happy-glow" data-aos="zoom-in-up" data-aos-delay="200" data-i18n="cta.get-started">Start Your Incorporation Today</a>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer p-10 bg-base-200 text-base-content">
         <nav>
-            <h6 class="footer-title">Services</h6>
-            <a href="services.html">HKLPF Registration</a>
-            <a href="services.html">Company Secretary Service</a>
-            <a href="services.html">Registered Address and Mail Receiving</a>
-            <a href="services.html">Audit and Tax Filing</a>
-            <a href="services.html">Bank Account Opening</a>
-            <a href="services.html">CTC Certification</a>
+            <h6 class="footer-title" data-i18n="footer.services">Services</h6>
+            <a href="services.html" data-i18n="footer.hklpf">HKLPF Registration</a>
+            <a href="services.html" data-i18n="footer.company-secretary">Company Secretary Service</a>
+            <a href="services.html" data-i18n="footer.registered-address">Registered Address and Mail Receiving</a>
+            <a href="services.html" data-i18n="footer.audit-tax">Audit and Tax Filing</a>
+            <a href="services.html" data-i18n="footer.bank-account">Bank Account Opening</a>
+            <a href="services.html" data-i18n="footer.ctc">CTC Certification</a>
         </nav>
         <nav>
-            <h6 class="footer-title">Company</h6>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="faq.html">FAQ</a>
+            <h6 class="footer-title" data-i18n="footer.company">Company</h6>
+            <a href="about.html" data-i18n="footer.about-us">About Us</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+            <a href="faq.html" data-i18n="nav.faq">FAQ</a>
         </nav>
         <nav>
-            <h6 class="footer-title">Resources</h6>
-            <a href="how-it-works.html">How It Works</a>
+            <h6 class="footer-title" data-i18n="footer.resources">Resources</h6>
+            <a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a>
 
-            <a href="funds.html">For Funds</a>
+            <a href="funds.html" data-i18n="nav.for-funds">For Funds</a>
         </nav>
         <nav>
-            <h6 class="footer-title">Contact</h6>
+            <h6 class="footer-title" data-i18n="footer.contact">Contact</h6>
             <a href="mailto:info@fusiox.ai">info@fusiox.ai</a>
             <a href="tel:+85259153337">+852 5915 3337</a>
         </nav>
     </footer>
     <footer class="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
         <div class="items-center grid-flow-col">
-            <p>2025 Fusiox Corporate Services Limited. All rights reserved.</p>
+            <p data-i18n="footer.copyright">2025 Fusiox Corporate Services Limited. All rights reserved.</p>
         </div>
         <div class="md:place-self-center md:justify-self-end">
             <div class="grid grid-flow-col gap-4">
@@ -361,6 +380,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/i18n.js"></script>
     <script>
         AOS.init({
             duration: 1000,
