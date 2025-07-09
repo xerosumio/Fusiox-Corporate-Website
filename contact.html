@@ -109,7 +109,7 @@
                 <div class="card bg-base-100 shadow-xl" data-aos="zoom-in-right">
                     <div class="card-body">
                         <h2 class="card-title text-2xl mb-6">Get Free Consultation</h2>
-                        <form action="mailto:info@fusiox.ai" method="POST" x-data="contactForm()" @submit="handleSubmit">
+                        <form action="mailto:info@fusiox.ai" method="POST" x-data="contactForm()" @submit.prevent="handleSubmit">
                             <div class="form-control mb-4">
                                 <label class="label">
                                     <span class="label-text">Full Name *</span>
@@ -142,13 +142,31 @@
                                 <label class="label">
                                     <span class="label-text">Phone Number</span>
                                 </label>
-                                <input 
-                                    type="tel" 
-                                    name="phone" 
-                                    x-model="form.phone"
-                                    placeholder="(123) 456-7890" 
-                                    class="input input-bordered w-full" 
-                                />
+                                <div class="flex space-x-2">
+                                    <select 
+                                        name="country_code" 
+                                        x-model="form.countryCode" 
+                                        class="select select-bordered w-auto min-w-[180px]"
+                                        @change="validatePhone()"
+                                    >
+                                        <option value="+852">+852 (Hong Kong)</option>
+                                        <option value="+86">+86 (China)</option>
+                                        <option value="+1">+1 (USA)</option>
+                                        <option value="+44">+44 (UK)</option>
+                                        <option value="+65">+65 (Singapore)</option>
+                                        <option value="+60">+60 (Malaysia)</option>
+                                    </select>
+                                    <input 
+                                        type="tel" 
+                                        name="phone" 
+                                        x-model="form.phone"
+                                        placeholder="Enter phone number" 
+                                        class="input input-bordered flex-1" 
+                                        @input="validatePhone()"
+                                        @blur="validatePhone()"
+                                    />
+                                </div>
+                                <div x-show="phoneError" class="text-error text-sm mt-1" x-text="phoneError"></div>
                             </div>
 
                             <div class="form-control mb-4">
@@ -364,17 +382,65 @@
                 form: {
                     name: '',
                     email: '',
+                    countryCode: '+852',
                     phone: '',
                     businessName: '',
                     service: '',
                     message: '',
                     newsletter: false
                 },
+                phoneError: '',
                 submitting: false,
                 success: false,
                 error: false,
                 
+                validatePhone() {
+                    this.phoneError = '';
+                    
+                    if (!this.form.phone) {
+                        return true; // Phone is optional
+                    }
+                    
+                    // Remove all non-digit characters for validation
+                    const cleanPhone = this.form.phone.replace(/\D/g, '');
+                    
+                    // Define validation rules for each country
+                    const validationRules = {
+                        '+852': { length: 8, name: 'Hong Kong' },
+                        '+86': { length: 11, name: 'China' },
+                        '+1': { length: 10, name: 'USA' },
+                        '+44': { minLength: 10, maxLength: 11, name: 'UK' },
+                        '+65': { length: 8, name: 'Singapore' },
+                        '+60': { minLength: 9, maxLength: 10, name: 'Malaysia' }
+                    };
+                    
+                    const rule = validationRules[this.form.countryCode];
+                    if (!rule) {
+                        return true; // Unknown country code, allow any format
+                    }
+                    
+                    // Check length constraints
+                    if (rule.length) {
+                        if (cleanPhone.length !== rule.length) {
+                            this.phoneError = `Please enter a valid phone number for ${rule.name} (${rule.length} digits).`;
+                            return false;
+                        }
+                    } else if (rule.minLength && rule.maxLength) {
+                        if (cleanPhone.length < rule.minLength || cleanPhone.length > rule.maxLength) {
+                            this.phoneError = `Please enter a valid phone number for ${rule.name} (${rule.minLength}-${rule.maxLength} digits).`;
+                            return false;
+                        }
+                    }
+                    
+                    return true;
+                },
+                
                 handleSubmit(event) {
+                    // Validate phone number before submission
+                    if (!this.validatePhone()) {
+                        return false;
+                    }
+                    
                     this.submitting = true;
                     this.success = false;
                     this.error = false;
@@ -392,12 +458,14 @@
                     this.form = {
                         name: '',
                         email: '',
+                        countryCode: '+852',
                         phone: '',
                         businessName: '',
                         service: '',
                         message: '',
                         newsletter: false
                     };
+                    this.phoneError = '';
                 }
             }
         }
