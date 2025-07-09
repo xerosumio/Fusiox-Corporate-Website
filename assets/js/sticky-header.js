@@ -29,7 +29,7 @@
         const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
         
         // Remove all scroll-related classes first
-        navbar.classList.remove('scrolled', 'scrolled-top', 'scroll-down', 'scroll-up', 'pulse');
+        navbar.classList.remove('scrolled', 'scrolled-top', 'scroll-down', 'scroll-up', 'pulse', 'subtle-glow');
         
         if (scrollTop <= scrollThreshold) {
             // At the top of the page
@@ -46,12 +46,12 @@
                 // Show on any upward scroll
                 navbar.classList.add('scroll-up');
                 
-                // Add pulse animation occasionally
-                if (Math.random() < 0.3) {
-                    navbar.classList.add('pulse');
+                // Add subtle glow effect occasionally (much less frequent and subtle)
+                if (Math.random() < 0.05) {
+                    navbar.classList.add('subtle-glow');
                     setTimeout(() => {
-                        navbar.classList.remove('pulse');
-                    }, 2000);
+                        navbar.classList.remove('subtle-glow');
+                    }, 3000);
                 }
             }
         }
@@ -107,48 +107,54 @@
     }
     
     /**
-     * Enhanced animations for navbar elements
+     * Refined animations for navbar elements
      */
     function enhanceNavbarElements() {
         const navLinks = navbar.querySelectorAll('a');
         const brandLogo = navbar.querySelector('.btn-ghost');
         const primaryButton = navbar.querySelector('.btn-primary');
         
-        // Add subtle animations to nav links
+        // Add subtle animations to nav links - much more refined
         navLinks.forEach(link => {
             link.addEventListener('mouseenter', function() {
                 if (navbar.classList.contains('scrolled')) {
-                    this.style.transform = 'scale(1.05) translateY(-2px)';
-                    this.style.textShadow = '0 2px 4px rgba(255, 107, 107, 0.3)';
+                    // Very subtle scale effect
+                    this.style.transform = 'translateY(-1px)';
                 }
             });
             
             link.addEventListener('mouseleave', function() {
                 this.style.transform = '';
-                this.style.textShadow = '';
             });
         });
         
-        // Brand logo special animation
+        // Brand logo - remove bounce, add subtle hover
         if (brandLogo) {
+            brandLogo.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-1px)';
+            });
+            
+            brandLogo.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+            
+            // Remove the bounce click animation completely
             brandLogo.addEventListener('click', function(e) {
-                // Add a bounce effect when logo is clicked
-                this.style.animation = 'none';
+                // Just a subtle flash effect
+                this.style.transition = 'opacity 0.2s ease';
+                this.style.opacity = '0.8';
                 setTimeout(() => {
-                    this.style.animation = 'bounce 0.6s ease-in-out';
-                }, 10);
-                
-                setTimeout(() => {
-                    this.style.animation = '';
-                }, 600);
+                    this.style.opacity = '';
+                    this.style.transition = '';
+                }, 200);
             });
         }
         
-        // Primary button glow effect
+        // Primary button subtle glow effect
         if (primaryButton) {
             primaryButton.addEventListener('mouseenter', function() {
                 if (navbar.classList.contains('scrolled')) {
-                    this.style.boxShadow = '0 8px 30px rgba(59, 130, 246, 0.4)';
+                    this.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.4)';
                 }
             });
             
@@ -195,27 +201,6 @@
         addSmoothScrolling();
     }
     
-    // Add bounce keyframes if not already present
-    if (!document.querySelector('#bounce-keyframes')) {
-        const style = document.createElement('style');
-        style.id = 'bounce-keyframes';
-        style.textContent = `
-            @keyframes bounce {
-                0%, 20%, 53%, 80%, 100% {
-                    transform: translate3d(0,0,0);
-                }
-                40%, 43% {
-                    transform: translate3d(0,-15px,0);
-                }
-                70% {
-                    transform: translate3d(0,-7px,0);
-                }
-                90% {
-                    transform: translate3d(0,-2px,0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
+    // Remove the bounce keyframes completely as we're not using them anymore
     
 })();
