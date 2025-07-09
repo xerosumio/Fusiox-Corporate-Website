@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Fusiox</title>
+    <title data-i18n="page.title.services">Services - Fusiox</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -95,8 +95,8 @@
                     </svg>
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="services.html" class="active" data-i18n="nav.services">Services</a></li>
                     <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                     <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
@@ -108,8 +108,8 @@
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" class="active" data-i18n="nav.services">Services</a></li>
                 <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                 <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
@@ -148,8 +148,8 @@
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
-                <h1 class="text-5xl font-bold" data-aos="fade-up">Our Services</h1>
-                <p class="py-6" data-aos="fade-up" data-aos-delay="200">Comprehensive business incorporation and compliance services tailored to your needs.</p>
+                <h1 class="text-5xl font-bold" data-aos="fade-up" data-i18n="services.hero.title">Our Services</h1>
+                <p class="py-6" data-aos="fade-up" data-aos-delay="200" data-i18n="services.hero.subtitle">Comprehensive business incorporation and compliance services tailored to your needs.</p>
             </div>
         </div>
     </div>
@@ -157,17 +157,17 @@
     <!-- Basic Services -->
     <div class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Basic Services</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.basic-services.title">Basic Services</h2>
             <div class="grid md:grid-cols-2 gap-8 justify-center">
                 <!-- HKLPF Registration -->
                 <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="card-body">
-                        <h2 class="card-title">HKLPF Registration</h2>
-                        <p>Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.</p>
+                        <h2 class="card-title" data-i18n="services.hklpf.title">HKLPF Registration</h2>
+                        <p data-i18n="services.hklpf.description">Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.</p>
                         <div class="card-actions justify-between items-center">
                             <span class="text-2xl font-bold text-primary">USD 2,500</span>
                             <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
+                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
                             </button>
                         </div>
                         <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
@@ -187,12 +187,12 @@
                 <!-- Company Secretary Service -->
                 <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="card-body">
-                        <h2 class="card-title">Company Secretary Service</h2>
-                        <p>Professional company secretary services to ensure compliance with Hong Kong corporate regulations and statutory requirements.</p>
+                        <h2 class="card-title" data-i18n="services.company-secretary.title">Company Secretary Service</h2>
+                        <p data-i18n="services.company-secretary.description">Professional company secretary services to ensure compliance with Hong Kong corporate regulations and statutory requirements.</p>
                         <div class="card-actions justify-between items-center">
                             <span class="text-2xl font-bold text-primary">USD 1,180</span>
                             <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? 'Less Info' : 'Learn More'"></span>
+                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
                             </button>
                         </div>
                         <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
@@ -215,7 +215,7 @@
     <!-- Value-added Services -->
     <div class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Value-added Services</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.value-added-services.title">Value-added Services</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="card-body">

@@ -110,6 +110,68 @@ class I18n {
                 'faq.experts-help': 'Our incorporation experts are here to help you every step of the way.',
                 'faq.contact-us': 'Contact Us',
 
+                // Funds Page
+                'funds.hero.title': 'For Investment Funds',
+                'funds.hero.subtitle': 'Specialized incorporation and compliance services for private equity funds, venture capital funds, hedge funds, and other investment vehicles. We understand the complex regulatory requirements and help you establish compliant fund structures.',
+                'funds.schedule-consultation': 'Schedule Consultation',
+                'funds.our-services': 'Our Services',
+                'funds.comprehensive-services.title': 'Comprehensive Fund Services',
+
+                // About Page - Values Section
+                'about.values.title': 'Our Values',
+                'about.values.reliability.title': 'Reliability',
+                'about.values.reliability.description': 'Count on us to handle your business setup with care and precision.',
+                'about.values.efficiency.title': 'Efficiency', 
+                'about.values.efficiency.description': 'We simplify the process to save you time, so you can focus on growing.',
+                'about.values.support.title': 'Support',
+                'about.values.support.description': 'Your partner at every step, with expert advice and ongoing support.',
+                'about.values.value.title': 'Value',
+                'about.values.value.description': 'Transparent, competitive pricing without compromising on service.',
+
+                // Services Page
+                'services.hero.title': 'Our Services',
+                'services.hero.subtitle': 'Comprehensive business incorporation and compliance services tailored to your needs.',
+                'services.basic-services.title': 'Basic Services',
+                'services.value-added-services.title': 'Value-added Services',
+                'services.hklpf.title': 'HKLPF Registration',
+                'services.hklpf.description': 'Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.',
+                'services.company-secretary.title': 'Company Secretary Service',
+                'services.company-secretary.description': 'Professional company secretary services to ensure your business remains compliant with Hong Kong regulations.',
+                'services.expand.more': 'Learn More',
+                'services.expand.less': 'Less Info',
+
+                // How It Works Page
+                'how-it-works.process.title': 'Our Simple 4-Step Process',
+                'how-it-works.step.data-collection': 'Data Collection',
+                'how-it-works.step.auto-fill': 'Auto-Fill & Preparation',
+
+                // Contact Form
+                'contact.form.full-name': 'Full Name *',
+                'contact.form.email': 'Email Address *',
+                'contact.form.phone': 'Phone Number',
+                'contact.form.business-name': 'Business Name',
+                'contact.form.service-interest': 'Service Interest',
+                'contact.form.message': 'Message *',
+                'contact.form.placeholder.full-name': 'Your full name',
+                'contact.form.placeholder.email': 'your.email@example.com',
+                'contact.form.placeholder.phone': 'Enter phone number',
+                'contact.form.placeholder.business-name': 'Your business name (if you have one)',
+                'contact.form.placeholder.message': 'Tell us about your business and how we can help...',
+                'contact.form.title': 'Get Free Consultation',
+
+                // FAQ Page
+                'faq.sections.general': 'General Questions',
+                'faq.sections.pricing': 'Pricing & Services',
+
+                // Page Titles
+                'page.title.about': 'About Us - Fusiox',
+                'page.title.contact': 'Contact Us - Fusiox', 
+                'page.title.faq': 'FAQ - Fusiox',
+                'page.title.funds': 'For Investment Funds - Fusiox',
+                'page.title.how-it-works': 'How It Works - Fusiox',
+                'page.title.services': 'Services - Fusiox',
+                'page.title.index': 'Fusiox - Professional Incorporation Services',
+
                 // Common
                 'common.language': 'Language'
             },
@@ -199,6 +261,68 @@ class I18n {
                 'faq.still-questions': '還有疑問？',
                 'faq.experts-help': '我們的註冊專家將在每一步為您提供幫助。',
                 'faq.contact-us': '聯絡我們',
+
+                // Funds Page
+                'funds.hero.title': '基金服務',
+                'funds.hero.subtitle': '為私募股權基金、創業投資基金、對沖基金和其他投資工具提供專業的註冊和合規服務。我們了解複雜的監管要求，並幫助您建立合規的基金結構。',
+                'funds.schedule-consultation': '預約諮詢',
+                'funds.our-services': '我們的服務',
+                'funds.comprehensive-services.title': '全方位基金服務',
+
+                // About Page - Values Section
+                'about.values.title': '我們的價值觀',
+                'about.values.reliability.title': '可靠性',
+                'about.values.reliability.description': '依靠我們以細心和精確的方式處理您的業務設立。',
+                'about.values.efficiency.title': '效率',
+                'about.values.efficiency.description': '我們簡化流程以節省您的時間，讓您專注於成長。',
+                'about.values.support.title': '支援',
+                'about.values.support.description': '在每一步都是您的夥伴，提供專業建議和持續支援。',
+                'about.values.value.title': '價值',
+                'about.values.value.description': '透明、具競爭力的定價，不會在服務上妥協。',
+
+                // Services Page
+                'services.hero.title': '我們的服務',
+                'services.hero.subtitle': '為您量身定制的全面業務註冊和合規服務。',
+                'services.basic-services.title': '基本服務',
+                'services.value-added-services.title': '增值服務',
+                'services.hklpf.title': 'HKLPF 註冊',
+                'services.hklpf.description': '為投資工具和基金結構提供專業的香港有限合夥基金註冊服務。',
+                'services.company-secretary.title': '公司秘書服務',
+                'services.company-secretary.description': '專業的公司秘書服務，確保您的業務持續符合香港法規。',
+                'services.expand.more': '了解更多',
+                'services.expand.less': '收起',
+
+                // How It Works Page
+                'how-it-works.process.title': '我們簡單的4步流程',
+                'how-it-works.step.data-collection': '數據收集',
+                'how-it-works.step.auto-fill': '自動填寫與準備',
+
+                // Contact Form
+                'contact.form.full-name': '全名 *',
+                'contact.form.email': '電子郵件地址 *',
+                'contact.form.phone': '電話號碼',
+                'contact.form.business-name': '企業名稱',
+                'contact.form.service-interest': '服務興趣',
+                'contact.form.message': '訊息 *',
+                'contact.form.placeholder.full-name': '您的全名',
+                'contact.form.placeholder.email': 'your.email@example.com',
+                'contact.form.placeholder.phone': '輸入電話號碼',
+                'contact.form.placeholder.business-name': '您的企業名稱（如果有的話）',
+                'contact.form.placeholder.message': '告訴我們您的業務以及我們如何協助...',
+                'contact.form.title': '免費諮詢',
+
+                // FAQ Page
+                'faq.sections.general': '一般問題',
+                'faq.sections.pricing': '定價與服務',
+
+                // Page Titles
+                'page.title.about': '關於我們 - Fusiox',
+                'page.title.contact': '聯絡我們 - Fusiox',
+                'page.title.faq': '常見問題 - Fusiox',
+                'page.title.funds': '基金服務 - Fusiox',
+                'page.title.how-it-works': '服務流程 - Fusiox',
+                'page.title.services': '服務 - Fusiox',
+                'page.title.index': 'Fusiox - 專業註冊服務',
 
                 // Common
                 'common.language': '語言'
@@ -290,6 +414,68 @@ class I18n {
                 'faq.experts-help': '我们的注册专家将在每一步为您提供帮助。',
                 'faq.contact-us': '联系我们',
 
+                // Funds Page
+                'funds.hero.title': '基金服务',
+                'funds.hero.subtitle': '为私募股权基金、创业投资基金、对冲基金和其他投资工具提供专业的注册和合规服务。我们了解复杂的监管要求，并帮助您建立合规的基金结构。',
+                'funds.schedule-consultation': '预约咨询',
+                'funds.our-services': '我们的服务',
+                'funds.comprehensive-services.title': '全方位基金服务',
+
+                // About Page - Values Section
+                'about.values.title': '我们的价值观',
+                'about.values.reliability.title': '可靠性',
+                'about.values.reliability.description': '依靠我们以细心和精确的方式处理您的业务设立。',
+                'about.values.efficiency.title': '效率',
+                'about.values.efficiency.description': '我们简化流程以节省您的时间，让您专注于成长。',
+                'about.values.support.title': '支持',
+                'about.values.support.description': '在每一步都是您的伙伴，提供专业建议和持续支持。',
+                'about.values.value.title': '价值',
+                'about.values.value.description': '透明、具竞争力的定价，不会在服务上妥协。',
+
+                // Services Page
+                'services.hero.title': '我们的服务',
+                'services.hero.subtitle': '为您量身定制的全面业务注册和合规服务。',
+                'services.basic-services.title': '基本服务',
+                'services.value-added-services.title': '增值服务',
+                'services.hklpf.title': 'HKLPF 注册',
+                'services.hklpf.description': '为投资工具和基金结构提供专业的香港有限合伙基金注册服务。',
+                'services.company-secretary.title': '公司秘书服务',
+                'services.company-secretary.description': '专业的公司秘书服务，确保您的业务持续符合香港法规。',
+                'services.expand.more': '了解更多',
+                'services.expand.less': '收起',
+
+                // How It Works Page
+                'how-it-works.process.title': '我们简单的4步流程',
+                'how-it-works.step.data-collection': '数据收集',
+                'how-it-works.step.auto-fill': '自动填写与准备',
+
+                // Contact Form
+                'contact.form.full-name': '全名 *',
+                'contact.form.email': '电子邮件地址 *',
+                'contact.form.phone': '电话号码',
+                'contact.form.business-name': '企业名称',
+                'contact.form.service-interest': '服务兴趣',
+                'contact.form.message': '消息 *',
+                'contact.form.placeholder.full-name': '您的全名',
+                'contact.form.placeholder.email': 'your.email@example.com',
+                'contact.form.placeholder.phone': '输入电话号码',
+                'contact.form.placeholder.business-name': '您的企业名称（如果有的话）',
+                'contact.form.placeholder.message': '告诉我们您的业务以及我们如何协助...',
+                'contact.form.title': '免费咨询',
+
+                // FAQ Page
+                'faq.sections.general': '一般问题',
+                'faq.sections.pricing': '定价与服务',
+
+                // Page Titles
+                'page.title.about': '关于我们 - Fusiox',
+                'page.title.contact': '联系我们 - Fusiox',
+                'page.title.faq': '常见问题 - Fusiox',
+                'page.title.funds': '基金服务 - Fusiox',
+                'page.title.how-it-works': '服务流程 - Fusiox',
+                'page.title.services': '服务 - Fusiox',
+                'page.title.index': 'Fusiox - 专业注册服务',
+
                 // Common
                 'common.language': '语言'
             }
@@ -330,6 +516,13 @@ class I18n {
             const key = element.getAttribute('data-i18n-title');
             element.title = this.translate(key);
         });
+
+        // Update document title
+        const titleElement = document.querySelector('title[data-i18n]');
+        if (titleElement) {
+            const key = titleElement.getAttribute('data-i18n');
+            titleElement.textContent = this.translate(key);
+        }
     }
 
     getSupportedLanguages() {

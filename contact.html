@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Fusiox</title>
+    <title data-i18n="page.title.contact">Contact Us - Fusiox</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -64,8 +64,8 @@
                     </svg>
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
                     <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                     <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
@@ -77,8 +77,8 @@
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" data-i18n="nav.services">Services</a></li>
                 <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                 <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
@@ -130,16 +130,17 @@
                 <!-- Contact Form -->
                 <div class="card bg-base-100 shadow-xl" data-aos="zoom-in-right">
                     <div class="card-body">
-                        <h2 class="card-title text-2xl mb-6">Get Free Consultation</h2>
+                        <h2 class="card-title text-2xl mb-6" data-i18n="contact.form.title">Get Free Consultation</h2>
                         <form action="mailto:info@fusiox.ai" method="POST" x-data="contactForm()" @submit.prevent="handleSubmit">
                             <div class="form-control mb-4">
                                 <label class="label">
-                                    <span class="label-text">Full Name *</span>
+                                    <span class="label-text" data-i18n="contact.form.full-name">Full Name *</span>
                                 </label>
                                 <input 
                                     type="text" 
                                     name="name" 
                                     x-model="form.name"
+                                    data-i18n-placeholder="contact.form.placeholder.full-name"
                                     placeholder="Your full name" 
                                     class="input input-bordered w-full" 
                                     required 
@@ -148,12 +149,13 @@
 
                             <div class="form-control mb-4">
                                 <label class="label">
-                                    <span class="label-text">Email Address *</span>
+                                    <span class="label-text" data-i18n="contact.form.email">Email Address *</span>
                                 </label>
                                 <input 
                                     type="email" 
                                     name="email" 
                                     x-model="form.email"
+                                    data-i18n-placeholder="contact.form.placeholder.email"
                                     placeholder="your.email@example.com" 
                                     class="input input-bordered w-full" 
                                     required 
@@ -162,7 +164,7 @@
 
                             <div class="form-control mb-4">
                                 <label class="label">
-                                    <span class="label-text">Phone Number</span>
+                                    <span class="label-text" data-i18n="contact.form.phone">Phone Number</span>
                                 </label>
                                 <div class="flex space-x-2">
                                     <select 
@@ -182,6 +184,7 @@
                                         type="tel" 
                                         name="phone" 
                                         x-model="form.phone"
+                                        data-i18n-placeholder="contact.form.placeholder.phone"
                                         placeholder="Enter phone number" 
                                         class="input input-bordered flex-1" 
                                         @input="validatePhone()"
@@ -193,12 +196,13 @@
 
                             <div class="form-control mb-4">
                                 <label class="label">
-                                    <span class="label-text">Business Name</span>
+                                    <span class="label-text" data-i18n="contact.form.business-name">Business Name</span>
                                 </label>
                                 <input 
                                     type="text" 
                                     name="business_name" 
                                     x-model="form.businessName"
+                                    data-i18n-placeholder="contact.form.placeholder.business-name"
                                     placeholder="Your business name (if you have one)" 
                                     class="input input-bordered w-full" 
                                 />
@@ -206,7 +210,7 @@
 
                             <div class="form-control mb-4">
                                 <label class="label">
-                                    <span class="label-text">Service Interest</span>
+                                    <span class="label-text" data-i18n="contact.form.service-interest">Service Interest</span>
                                 </label>
                                 <select name="service" x-model="form.service" class="select select-bordered w-full">
                                     <option disabled selected>Select a service</option>
@@ -222,11 +226,12 @@
 
                             <div class="form-control mb-6">
                                 <label class="label">
-                                    <span class="label-text">Message *</span>
+                                    <span class="label-text" data-i18n="contact.form.message">Message *</span>
                                 </label>
                                 <textarea 
                                     name="message" 
                                     x-model="form.message"
+                                    data-i18n-placeholder="contact.form.placeholder.message"
                                     placeholder="Tell us about your business and how we can help..." 
                                     class="textarea textarea-bordered h-32 w-full" 
                                     required

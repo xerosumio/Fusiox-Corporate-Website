@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Fusiox</title>
+    <title data-i18n="page.title.faq">FAQ - Fusiox</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -92,8 +92,8 @@
                     </svg>
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
                     <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                     <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
@@ -105,8 +105,8 @@
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" data-i18n="nav.services">Services</a></li>
                 <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                 <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
@@ -185,7 +185,7 @@
 
                 <!-- General Questions -->
                 <div x-show="activeCategory === 'general'" x-transition class="tab-content">
-                    <h2 class="text-2xl font-bold mb-6" data-aos="fade-right">General Questions</h2>
+                    <h2 class="text-2xl font-bold mb-6" data-aos="fade-right" data-i18n="faq.sections.general">General Questions</h2>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="100">
                             <input type="radio" name="general-accordion" checked="checked" />
@@ -323,7 +323,7 @@
 
                 <!-- Pricing Questions -->
                 <div x-show="activeCategory === 'pricing'" x-transition>
-                    <h2 class="text-2xl font-bold mb-6">Pricing & Services</h2>
+                    <h2 class="text-2xl font-bold mb-6" data-i18n="faq.sections.pricing">Pricing & Services</h2>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="pricing-accordion" checked="checked" />
