@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Language Bug Demo</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .problem { background: #ffe6e6; padding: 15px; margin: 10px 0; border-left: 5px solid #ff4444; }
+        .fixed { background: #e6ffe6; padding: 15px; margin: 10px 0; border-left: 5px solid #44ff44; }
+        .test-section { border: 1px solid #ccc; padding: 20px; margin: 20px 0; }
+        button { padding: 10px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Chinese Language Switching Bug Demo</h1>
+    
+    <div class="test-section">
+        <h2>Language Controls</h2>
+        <button onclick="window.i18n.setLanguage('en')">English</button>
+        <button onclick="window.i18n.setLanguage('zh-Hant')">繁體中文</button>
+        <button onclick="window.i18n.setLanguage('zh-Hans')">简体中文</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Problem Example (BEFORE FIX)</h2>
+        <div class="problem">
+            <h3>Fund Formation</h3>
+            <p>These titles remain in English even when switching to Chinese because they lack data-i18n attributes</p>
+            <ul>
+                <li>Delaware Limited Partnership structure</li>
+                <li>General Partner entity formation</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Fixed Example (AFTER FIX)</h2>
+        <div class="fixed">
+            <h3 data-i18n="how-it-works.different.all-in-one.title">All-in-One Platform</h3>
+            <p data-i18n="how-it-works.different.expert-review.description">Every document is reviewed by legal experts to ensure accuracy and compliance.</p>
+            <ul>
+                <li data-i18n="how-it-works.data-collection.business-name">• Business name preferences</li>
+                <li data-i18n="how-it-works.data-collection.business-structure">• Business structure type</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Switch to Chinese using the buttons above</li>
+            <li>Notice that the "Problem Example" section stays in English</li>
+            <li>Notice that the "Fixed Example" section translates to Chinese</li>
+            <li>This demonstrates the bug and how our fix resolves it</li>
+        </ol>
+    </div>
+    
+    <script src="assets/js/i18n.js"></script>
+</body>
+</html>
