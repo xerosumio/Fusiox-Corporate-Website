@@ -8,30 +8,30 @@
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Initial state - modern glass morphism */
+/* Initial state - modern deep navy */
 .navbar.scrolled-top {
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.12) 0%, 
-        rgba(255, 255, 255, 0.08) 100%);
+        rgba(31, 45, 61, 0.95) 0%, 
+        rgba(31, 45, 61, 0.9) 100%);
     box-shadow: 
-        0 8px 32px 0 rgba(31, 38, 135, 0.15),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+        0 8px 32px 0 rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Scrolled state - enhanced glass effect */
+/* Scrolled state - enhanced deep navy */
 .navbar.scrolled {
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.25) 0%, 
-        rgba(255, 255, 255, 0.18) 100%);
+        rgba(31, 45, 61, 0.98) 0%, 
+        rgba(31, 45, 61, 0.95) 100%);
     box-shadow: 
-        0 8px 32px 0 rgba(31, 38, 135, 0.2),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
-        0 2px 8px 0 rgba(0, 0, 0, 0.08);
+        0 8px 32px 0 rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+        0 2px 8px 0 rgba(0, 0, 0, 0.1);
     transform: translateY(0);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Smooth scroll animations */
@@ -55,15 +55,15 @@ body {
 .navbar a {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
-    color: rgba(51, 65, 85, 0.9);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .navbar.scrolled a {
-    color: rgba(15, 23, 42, 0.95);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .navbar a:hover {
-    color: rgb(59, 130, 246);
+    color: rgb(79, 142, 247);
     transform: translateY(-1px);
 }
 
@@ -75,7 +75,7 @@ body {
     height: 2px;
     bottom: -4px;
     left: 50%;
-    background: linear-gradient(90deg, rgb(59, 130, 246), rgb(99, 102, 241));
+    background: linear-gradient(90deg, rgb(79, 142, 247), rgb(99, 102, 241));
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform: translateX(-50%);
 }
@@ -87,19 +87,19 @@ body {
 /* Professional logo styling */
 .navbar .btn-ghost {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    color: rgba(15, 23, 42, 0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
 }
 
 .navbar.scrolled .btn-ghost {
-    color: rgba(15, 23, 42, 1);
+    color: rgba(255, 255, 255, 1);
     font-weight: 700;
 }
 
 .navbar .btn-ghost:hover {
-    color: rgb(59, 130, 246);
+    color: rgb(79, 142, 247);
     transform: translateY(-1px);
-    background-color: rgba(59, 130, 246, 0.05);
+    background-color: rgba(79, 142, 247, 0.1);
 }
 
 /* Mobile menu button - refined */
@@ -108,7 +108,7 @@ body {
 }
 
 .navbar .btn-ghost.lg\:hidden:hover {
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(79, 142, 247, 0.1);
     transform: scale(1.05);
 }
 
@@ -119,32 +119,32 @@ body {
 /* Dropdown menu adjustments for fixed navbar */
 .dropdown-content {
     margin-top: 0.5rem !important;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(31, 45, 61, 0.95);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* Language selector - professional styling */
 .navbar .dropdown .btn-ghost.btn-sm {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    color: rgba(51, 65, 85, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .navbar .dropdown .btn-ghost.btn-sm:hover {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: rgb(59, 130, 246);
+    background-color: rgba(79, 142, 247, 0.1);
+    color: rgb(79, 142, 247);
     transform: translateY(-1px);
 }
 
 .navbar.scrolled .dropdown .btn-ghost.btn-sm {
-    color: rgba(15, 23, 42, 0.9);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Modern CTA button styling */
 .navbar .btn-primary {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background: linear-gradient(135deg, rgb(59, 130, 246), rgb(99, 102, 241));
+    background: linear-gradient(135deg, rgb(79, 142, 247), rgb(99, 102, 241));
     border: none;
     color: white;
     font-weight: 500;
@@ -169,11 +169,11 @@ body {
 
 .navbar .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 8px 25px rgba(79, 142, 247, 0.4);
 }
 
 .navbar.scrolled .btn-primary {
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+    box-shadow: 0 4px 15px rgba(79, 142, 247, 0.25);
 }
 
 /* Smooth scroll behavior for the entire page */
