@@ -27,28 +27,49 @@
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                     <li><a href="funds.html" class="active">For Funds</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
-            <a href="index.html" class="btn btn-ghost text-xl font-bold">Fusiox</a>
+            <a href="index.html" class="btn btn-ghost text-xl font-bold" data-i18n="nav.brand">Fusiox</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
 
                 <li><a href="funds.html" class="active">For Funds</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             </ul>
         </div>
         <div class="navbar-end">
-            <a href="contact.html" class="btn btn-primary">Get Started</a>
+            <!-- Language Selector -->
+            <div class="dropdown dropdown-end mr-4" x-data="languageSelector()">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-sm" @click="toggleDropdown()">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-3a5 5 0 00-5-5 5 5 0 00-5 5v3m9-9v-3a5 5 0 00-5 5 5 5 0 00-5-5v3"></path>
+                    </svg>
+                    <span x-text="currentLanguageObj.nativeName"></span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <ul x-show="isOpen" @click.away="closeDropdown()" x-transition class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
+                    <template x-for="language in languages" :key="language.code">
+                        <li>
+                            <a @click="changeLanguage(language.code)" 
+                               :class="{ 'active': currentLanguage === language.code }"
+                               x-text="language.nativeName"></a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.get-started">Get Started</a>
         </div>
     </div>
 
@@ -394,35 +415,35 @@
     <!-- Footer -->
     <footer class="footer p-10 bg-base-200 text-base-content">
         <nav>
-            <h6 class="footer-title">Services</h6>
-            <a href="services.html">HKLPF Registration</a>
-            <a href="services.html">Company Secretary Service</a>
-            <a href="services.html">Registered Address and Mail Receiving</a>
-            <a href="services.html">Audit and Tax Filing</a>
-            <a href="services.html">Bank Account Opening</a>
-            <a href="services.html">CTC Certification</a>
+            <h6 class="footer-title" data-i18n="footer.services">Services</h6>
+            <a href="services.html" data-i18n="footer.hklpf">HKLPF Registration</a>
+            <a href="services.html" data-i18n="footer.company-secretary">Company Secretary Service</a>
+            <a href="services.html" data-i18n="footer.registered-address">Registered Address and Mail Receiving</a>
+            <a href="services.html" data-i18n="footer.audit-tax">Audit and Tax Filing</a>
+            <a href="services.html" data-i18n="footer.bank-account">Bank Account Opening</a>
+            <a href="services.html" data-i18n="footer.ctc">CTC Certification</a>
         </nav>
         <nav>
-            <h6 class="footer-title">Company</h6>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="faq.html">FAQ</a>
+            <h6 class="footer-title" data-i18n="footer.company">Company</h6>
+            <a href="about.html" data-i18n="footer.about-us">About Us</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+            <a href="faq.html" data-i18n="nav.faq">FAQ</a>
         </nav>
         <nav>
-            <h6 class="footer-title">Resources</h6>
-            <a href="how-it-works.html">How It Works</a>
+            <h6 class="footer-title" data-i18n="footer.resources">Resources</h6>
+            <a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a>
 
-            <a href="funds.html">For Funds</a>
+            <a href="funds.html" data-i18n="nav.for-funds">For Funds</a>
         </nav>
         <nav>
-            <h6 class="footer-title">Contact</h6>
+            <h6 class="footer-title" data-i18n="footer.contact">Contact</h6>
             <a href="mailto:info@fusiox.ai">info@fusiox.ai</a>
             <a href="tel:+85259153337">+852 5915 3337</a>
         </nav>
     </footer>
     <footer class="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
         <div class="items-center grid-flow-col">
-            <p>2025 Fusiox Corporate Services Limited. All rights reserved.</p>
+            <p data-i18n="footer.copyright">2025 Fusiox Corporate Services Limited. All rights reserved.</p>
         </div>
         <div class="md:place-self-center md:justify-self-end">
             <div class="grid grid-flow-col gap-4">
