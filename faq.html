@@ -146,7 +146,7 @@
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
                 <h1 class="text-5xl font-bold" data-aos="fade-up" data-i18n="faq.hero.title">FAQ</h1>
-                <p class="py-6" data-aos="fade-up" data-aos-delay="200">Find answers to the most common questions about business incorporation and our services.</p>
+                <p class="py-6" data-aos="fade-up" data-aos-delay="200">Find answers to the most common questions about Hong Kong company incorporation and our corporate services.</p>
             </div>
         </div>
     </div>
@@ -164,22 +164,34 @@
                         General
                     </button>
                     <button 
-                        @click="activeCategory = 'llc'"
-                        :class="activeCategory === 'llc' ? 'tab-active' : ''"
+                        @click="activeCategory = 'incorporation'"
+                        :class="activeCategory === 'incorporation' ? 'tab-active' : ''"
                         class="tab tab-lg">
-                        LLC Formation
+                        Incorporation Process
                     </button>
                     <button 
-                        @click="activeCategory = 'corporation'"
-                        :class="activeCategory === 'corporation' ? 'tab-active' : ''"
+                        @click="activeCategory = 'compliance'"
+                        :class="activeCategory === 'compliance' ? 'tab-active' : ''"
                         class="tab tab-lg">
-                        Corporation
+                        Compliance Requirements
                     </button>
                     <button 
-                        @click="activeCategory = 'pricing'"
-                        :class="activeCategory === 'pricing' ? 'tab-active' : ''"
+                        @click="activeCategory = 'fees'"
+                        :class="activeCategory === 'fees' ? 'tab-active' : ''"
                         class="tab tab-lg">
-                        Pricing
+                        Fees & Timelines
+                    </button>
+                    <button 
+                        @click="activeCategory = 'post-incorporation'"
+                        :class="activeCategory === 'post-incorporation' ? 'tab-active' : ''"
+                        class="tab tab-lg">
+                        Post-Incorporation
+                    </button>
+                    <button 
+                        @click="activeCategory = 'other'"
+                        :class="activeCategory === 'other' ? 'tab-active' : ''"
+                        class="tab tab-lg">
+                        Other Questions
                     </button>
                 </div>
 
@@ -190,179 +202,288 @@
                         <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="100">
                             <input type="radio" name="general-accordion" checked="checked" />
                             <div class="collapse-title text-xl font-medium">
-                                What is business incorporation?
+                                What is a Hong Kong company incorporation?
                             </div>
                             <div class="collapse-content">
-                                <p>Business incorporation is the legal process of creating a corporation or limited liability company (LLC) as a separate legal entity from its owners. This process provides liability protection, tax benefits, and establishes your business as a legitimate entity that can enter contracts, own property, and conduct business operations.</p>
+                                <p>Hong Kong company incorporation is the legal process of establishing a private limited company in Hong Kong. It creates a separate legal entity that can enter contracts, own property, and conduct business. Hong Kong companies enjoy limited liability protection, making it an attractive jurisdiction for international business due to its simple tax system, strategic location, and business-friendly environment.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="200">
                             <input type="radio" name="general-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                How long does the incorporation process take?
+                                Who can incorporate a company in Hong Kong?
                             </div>
                             <div class="collapse-content">
-                                <p>Most incorporations are completed within 5-7 business days. However, the timeline can vary depending on the state, business structure, and any additional services required. We also offer expedited processing for urgent cases, which can reduce the timeline to 1-3 business days for an additional fee.</p>
+                                <p>Any person aged 18 or above can incorporate a Hong Kong company, regardless of nationality or residency. There are no restrictions on foreign ownership. However, every Hong Kong company must have at least one director who is a natural person (not a corporate entity), and at least 50% of the directors must be ordinarily resident in Hong Kong, or the company must have a Hong Kong resident representative.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="300">
                             <input type="radio" name="general-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                Do I need a registered agent?
+                                What are the advantages of incorporating in Hong Kong?
                             </div>
                             <div class="collapse-content">
-                                <p>Yes, most states require businesses to have a registered agent - a person or company designated to receive legal documents and official correspondence on behalf of your business. We provide registered agent services as part of our incorporation packages, ensuring you remain compliant with state requirements.</p>
+                                <p>Hong Kong offers numerous advantages: simple and low tax system (16.5% corporate tax rate), strategic gateway to China and Asia, excellent international banking facilities, strong legal system based on English common law, minimal government interference, free flow of capital, established financial infrastructure, and international recognition. Hong Kong also has extensive double taxation agreements with many countries.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="400">
                             <input type="radio" name="general-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                What states can you help me incorporate in?
+                                What is the minimum share capital required?
                             </div>
                             <div class="collapse-content">
-                                <p>We can help you incorporate in all 50 states and the District of Columbia. Our team is familiar with the specific requirements and regulations for each state, ensuring your incorporation is handled correctly regardless of where you choose to establish your business.</p>
+                                <p>There is no minimum paid-up share capital requirement for Hong Kong companies. The standard authorized share capital is HK$10,000 divided into 10,000 shares of HK$1 each, but companies typically issue only one share to each shareholder initially. You can issue additional shares as needed for business operations or investment purposes.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- LLC Questions -->
-                <div x-show="activeCategory === 'llc'" x-transition>
-                    <h2 class="text-2xl font-bold mb-6">LLC Formation</h2>
+                <!-- Incorporation Process Questions -->
+                <div x-show="activeCategory === 'incorporation'" x-transition>
+                    <h2 class="text-2xl font-bold mb-6">Incorporation Process</h2>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="llc-accordion" checked="checked" />
+                            <input type="radio" name="incorporation-accordion" checked="checked" />
                             <div class="collapse-title text-xl font-medium">
-                                What are the benefits of forming an LLC?
+                                What documents are required for Hong Kong company incorporation?
                             </div>
                             <div class="collapse-content">
-                                <p>LLCs offer several key benefits: limited liability protection for personal assets, tax flexibility (pass-through taxation), simplified management structure, credibility with customers and vendors, and fewer compliance requirements compared to corporations. LLCs are ideal for small businesses and entrepreneurs who want protection with minimal paperwork.</p>
+                                <p>The required documents include: Incorporation Form (Form NNC1), Articles of Association, copy of identity documents for all directors and shareholders, proof of registered address in Hong Kong, and consent to act forms from directors and company secretary. If directors are not Hong Kong residents, additional documentation may be required including address proof and professional references.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="llc-accordion" />
+                            <input type="radio" name="incorporation-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                Do I need an Operating Agreement for my LLC?
+                                How long does it take to incorporate a Hong Kong company?
                             </div>
                             <div class="collapse-content">
-                                <p>While not required in all states, we highly recommend having an Operating Agreement. This document outlines the ownership structure, management responsibilities, profit/loss distribution, and operational procedures. It helps prevent disputes and provides clarity on how the LLC will be run, especially important for multi-member LLCs.</p>
+                                <p>Standard incorporation typically takes 4-6 working days from the date the Companies Registry receives all required documents. Same-day incorporation is available for an additional fee if documents are submitted before 3:00 PM on a working day. Electronic incorporation (e-Registry) can be completed within 1 hour if all requirements are met and processed electronically.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="llc-accordion" />
+                            <input type="radio" name="incorporation-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                Can I be the only member of an LLC?
+                                Can I choose any company name?
                             </div>
                             <div class="collapse-content">
-                                <p>Yes, you can form a single-member LLC in all states. Single-member LLCs still provide liability protection and are treated as "disregarded entities" for tax purposes, meaning income and expenses flow through to your personal tax return. This makes them popular among solo entrepreneurs and freelancers.</p>
+                                <p>Company names must be approved by the Companies Registry and cannot be identical to existing registered companies. Names cannot suggest government connection, be offensive, or mislead the public. We recommend conducting a name search first. Names can be in English, Chinese, or both, but must end with "Limited" or "Ltd" (or Chinese equivalent). Certain words require approval from relevant authorities.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="llc-accordion" />
+                            <input type="radio" name="incorporation-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                What ongoing requirements does an LLC have?
+                                What is a registered address and why do I need one?
                             </div>
                             <div class="collapse-content">
-                                <p>LLCs have minimal ongoing requirements, which vary by state. Common requirements include filing an annual report, paying annual fees, maintaining a registered agent, and keeping basic business records. Some states also require publication of formation notices. We can help you stay compliant with ongoing requirements through our annual compliance services.</p>
+                                <p>Every Hong Kong company must have a registered address in Hong Kong where official correspondence is received. This address appears on public records and is where government notices are served. The registered address can be a business address, professional service provider's address, or virtual office, but cannot be a P.O. Box. We provide registered address services as part of our incorporation packages.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Corporation Questions -->
-                <div x-show="activeCategory === 'corporation'" x-transition>
-                    <h2 class="text-2xl font-bold mb-6">Corporation Formation</h2>
+                <!-- Compliance Requirements Questions -->
+                <div x-show="activeCategory === 'compliance'" x-transition>
+                    <h2 class="text-2xl font-bold mb-6">Compliance Requirements</h2>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="corp-accordion" checked="checked" />
+                            <input type="radio" name="compliance-accordion" checked="checked" />
                             <div class="collapse-title text-xl font-medium">
-                                What's the difference between C-Corp and S-Corp?
+                                What are the ongoing compliance requirements for Hong Kong companies?
                             </div>
                             <div class="collapse-content">
-                                <p>C-Corporations are separate tax entities that pay corporate income tax, while S-Corporations are pass-through entities where income/losses flow to shareholders' personal returns. C-Corps can have unlimited shareholders and multiple stock classes, while S-Corps are limited to 100 shareholders and one stock class. C-Corps are better for raising investment capital, while S-Corps help avoid double taxation.</p>
+                                <p>Hong Kong companies must file Annual Returns (Form NAR1) within 42 days of the anniversary of incorporation, maintain statutory books and records, hold Annual General Meetings (for companies with more than one member), file audited financial statements if turnover exceeds HK$5 million, and maintain a registered address and company secretary in Hong Kong. Companies must also update the Companies Registry of any changes to company information.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="corp-accordion" />
+                            <input type="radio" name="compliance-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                Do I need a board of directors?
+                                Do I need a company secretary in Hong Kong?
                             </div>
                             <div class="collapse-content">
-                                <p>Yes, corporations are required to have a board of directors, even if it's just one person (in most states). The board oversees major business decisions and elects officers to manage day-to-day operations. For small corporations, the same person can serve as director, president, and secretary, simplifying the management structure.</p>
+                                <p>Yes, every Hong Kong company must appoint a company secretary within 6 months of incorporation. The company secretary must be either a Hong Kong resident individual or a Hong Kong company licensed to provide company secretary services. The secretary is responsible for ensuring compliance with statutory requirements, maintaining company records, and filing required documents with the Companies Registry.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="corp-accordion" />
+                            <input type="radio" name="compliance-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                What are corporate bylaws?
+                                What records must a Hong Kong company maintain?
                             </div>
                             <div class="collapse-content">
-                                <p>Corporate bylaws are internal rules that govern how your corporation operates. They cover topics like shareholder meetings, voting procedures, board responsibilities, officer duties, and other operational matters. Bylaws are required for corporations and help ensure proper governance and compliance with state laws.</p>
+                                <p>Companies must maintain registers of members, directors, company secretaries, and charges at the registered address or company secretary's office. These records must be available for inspection by members and, in some cases, the public. Companies must also keep proper accounting records for at least 5 years, including records of receipts and payments, assets and liabilities, and goods bought and sold.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="corp-accordion" />
+                            <input type="radio" name="compliance-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                Can I convert my LLC to a corporation later?
+                                What happens if I don't comply with filing requirements?
                             </div>
                             <div class="collapse-content">
-                                <p>Yes, you can convert an LLC to a corporation, though the process varies by state. Some states allow direct conversion, while others require dissolving the LLC and forming a new corporation. This decision should be made carefully, considering tax implications and business needs. We can help evaluate whether conversion makes sense for your situation.</p>
+                                <p>Non-compliance can result in penalties, prosecution of directors and company secretaries, and potential striking off of the company from the register. Late filing of Annual Returns incurs penalty fees, and failure to file for extended periods can lead to the Registrar initiating deregistration proceedings. It's important to maintain compliance to avoid legal consequences and protect the company's good standing.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pricing Questions -->
-                <div x-show="activeCategory === 'pricing'" x-transition>
-                    <h2 class="text-2xl font-bold mb-6" data-i18n="faq.sections.pricing">Pricing & Services</h2>
+                <!-- Fees & Timelines Questions -->
+                <div x-show="activeCategory === 'fees'" x-transition>
+                    <h2 class="text-2xl font-bold mb-6" data-i18n="faq.sections.pricing">Fees & Timelines</h2>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="pricing-accordion" checked="checked" />
+                            <input type="radio" name="fees-accordion" checked="checked" />
                             <div class="collapse-title text-xl font-medium">
-                                Are state filing fees included in your prices?
+                                What are the government fees for Hong Kong company incorporation?
                             </div>
                             <div class="collapse-content">
-                                <p>Yes, our listed prices include all required state filing fees. You won't face any surprise charges for mandatory government fees. The only additional costs would be for optional add-on services like expedited processing, additional copies of documents, or ongoing services like registered agent or compliance monitoring.</p>
+                                <p>The Hong Kong Companies Registry charges HK$1,720 for standard incorporation and HK$1,720 for incorporation by electronic means. Same-day incorporation costs an additional HK$320. Companies must also pay HK$340 for Business Registration within one month of incorporation. These are mandatory government fees that apply to all companies regardless of the service provider used.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="pricing-accordion" />
+                            <input type="radio" name="fees-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                Do you offer payment plans?
+                                What are the ongoing annual costs for maintaining a Hong Kong company?
                             </div>
                             <div class="collapse-content">
-                                <p>We accept various payment methods including credit cards, bank transfers, and digital payment platforms. For larger packages or ongoing services, we can discuss payment arrangements. Our goal is to make professional incorporation services accessible to businesses of all sizes.</p>
+                                <p>Annual costs include Annual Return filing fee (HK$105 if filed by due date), Business Registration fee (HK$250 annually), company secretary fees (varies by provider), registered address fees (if using professional service), and audit fees if required. Companies with turnover under HK$5 million may be exempt from audit requirements, significantly reducing annual costs.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="pricing-accordion" />
+                            <input type="radio" name="fees-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                What's included in your incorporation packages?
+                                Are there any hidden costs in company incorporation?
                             </div>
                             <div class="collapse-content">
-                                <p>Our packages include document preparation and filing, state filing fees, registered agent service (first year), EIN application assistance, and customer support. Higher-tier packages may include additional services like operating agreements, corporate kits, bank resolutions, and ongoing compliance monitoring. Check our services page for detailed package comparisons.</p>
+                                <p>Our packages include all mandatory government fees upfront with no hidden charges. Additional costs may arise only for optional services like expedited processing, additional certified copies, apostille services, or bank account opening assistance. We provide transparent pricing and clearly outline what's included in each package before you proceed.</p>
                             </div>
                         </div>
 
                         <div class="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="pricing-accordion" />
+                            <input type="radio" name="fees-accordion" />
                             <div class="collapse-title text-xl font-medium">
-                                Do you offer refunds?
+                                Can I get a refund if incorporation is not successful?
                             </div>
                             <div class="collapse-content">
-                                <p>We offer a satisfaction guarantee. If we cannot successfully file your incorporation documents, we'll provide a full refund. However, once documents are filed with the state, refunds are limited as government fees are non-refundable. We're committed to getting your incorporation right the first time through our expert review process.</p>
+                                <p>We guarantee successful incorporation when all required documents are provided correctly. In the rare event that incorporation is rejected due to our error, we provide a full refund. However, government fees are non-refundable once submitted to the Companies Registry. We conduct thorough pre-submission reviews to minimize the risk of rejection and ensure smooth processing.</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-Incorporation Questions -->
+                <div x-show="activeCategory === 'post-incorporation'" x-transition>
+                    <h2 class="text-2xl font-bold mb-6">Post-Incorporation Obligations</h2>
+                    <div class="space-y-4">
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="post-accordion" checked="checked" />
+                            <div class="collapse-title text-xl font-medium">
+                                What should I do immediately after incorporation?
+                            </div>
+                            <div class="collapse-content">
+                                <p>After incorporation, you should: obtain Business Registration Certificate, open a corporate bank account, appoint a company secretary (within 6 months), set up accounting systems, obtain any required business licenses, register for tax with the Inland Revenue Department if applicable, and ensure compliance with ongoing filing requirements. We can assist with these post-incorporation steps.</p>
+                            </div>
+                        </div>
+
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="post-accordion" />
+                            <div class="collapse-title text-xl font-medium">
+                                When do I need to file my first Annual Return?
+                            </div>
+                            <div class="collapse-content">
+                                <p>Your first Annual Return (Form NAR1) must be filed within 42 days of your company's first anniversary of incorporation. For example, if incorporated on January 15, 2024, the first Annual Return must be filed by February 26, 2025. Late filing incurs penalty fees, so it's important to track these deadlines or use professional services to manage compliance.</p>
+                            </div>
+                        </div>
+
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="post-accordion" />
+                            <div class="collapse-title text-xl font-medium">
+                                Do I need to prepare audited financial statements?
+                            </div>
+                            <div class="collapse-content">
+                                <p>Companies with annual turnover of HK$5 million or more must prepare audited financial statements and file them with the Annual Return. Companies below this threshold may qualify for audit exemption but must still maintain proper accounting records. Dormant companies may also qualify for exemption from audit requirements under certain conditions.</p>
+                            </div>
+                        </div>
+
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="post-accordion" />
+                            <div class="collapse-title text-xl font-medium">
+                                How do I update company information with the Registry?
+                            </div>
+                            <div class="collapse-content">
+                                <p>Changes to company information must be reported to the Companies Registry within the prescribed timeframes. This includes changes to directors, company secretary, registered address, or share capital. Different forms are required for different types of changes, and some changes may incur fees. We can assist with filing the necessary forms to keep your company records up to date.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Common Questions -->
+                <div x-show="activeCategory === 'other'" x-transition>
+                    <h2 class="text-2xl font-bold mb-6">Other Common Questions</h2>
+                    <div class="space-y-4">
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="other-accordion" checked="checked" />
+                            <div class="collapse-title text-xl font-medium">
+                                Can I open a bank account for my Hong Kong company?
+                            </div>
+                            <div class="collapse-content">
+                                <p>Yes, Hong Kong companies can open corporate bank accounts with local and international banks. Requirements typically include company incorporation documents, business registration certificate, proof of registered address, directors' identity documents, business plan, and evidence of business activities. We provide bank account opening assistance to facilitate this process.</p>
+                            </div>
+                        </div>
+
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="other-accordion" />
+                            <div class="collapse-title text-xl font-medium">
+                                Do I need to pay Hong Kong tax if I don't operate in Hong Kong?
+                            </div>
+                            <div class="collapse-content">
+                                <p>Hong Kong follows a territorial tax system, meaning only profits sourced in Hong Kong are subject to Hong Kong profits tax. If your company operates entirely outside Hong Kong and derives no Hong Kong-sourced income, you may claim offshore exemption. However, proper documentation and professional advice are essential to support such claims and ensure compliance.</p>
+                            </div>
+                        </div>
+
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="other-accordion" />
+                            <div class="collapse-title text-xl font-medium">
+                                Can I close my Hong Kong company if I no longer need it?
+                            </div>
+                            <div class="collapse-content">
+                                <p>Yes, you can deregister your Hong Kong company through voluntary deregistration if it meets certain conditions: has not commenced business or has ceased operations for at least 3 months, has no outstanding liabilities, and has no legal proceedings pending. The process involves filing Form NDR1 and paying the prescribed fee. Alternatively, companies can be wound up through a more formal liquidation process.</p>
+                            </div>
+                        </div>
+
+                        <div class="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="other-accordion" />
+                            <div class="collapse-title text-xl font-medium">
+                                What support do you provide after incorporation?
+                            </div>
+                            <div class="collapse-content">
+                                <p>We provide comprehensive post-incorporation support including company secretary services, registered address provision, annual return filing, accounting and audit services, tax filing assistance, bank account opening support, and ongoing compliance guidance. Our experienced team ensures your Hong Kong company remains compliant with all statutory requirements while you focus on growing your business.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Disclaimer Notice -->
+                <div class="mt-12 p-6 bg-base-300 rounded-lg border-l-4 border-warning" data-aos="fade-up">
+                    <div class="flex items-start space-x-3">
+                        <svg class="w-6 h-6 text-warning mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-warning mb-2">Important Notice</h4>
+                            <p class="text-sm text-base-content opacity-75">
+                                The information provided here is for reference only and is based on current Hong Kong laws and regulations. 
+                                Business requirements and regulations may change, and individual circumstances may vary. 
+                                Please contact us directly for tailored advice specific to your situation and the most up-to-date requirements.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -374,7 +495,7 @@
     <div class="py-16 bg-base-200">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-4" data-i18n="faq.still-questions">Still Have Questions?</h2>
-            <p class="text-xl mb-8" data-i18n="faq.experts-help">Our incorporation experts are here to help you every step of the way.</p>
+            <p class="text-xl mb-8" data-i18n="faq.experts-help">Our Hong Kong incorporation experts are here to help you every step of the way.</p>
             <div class="space-x-4">
                 <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="faq.contact-us">Contact Us</a>
                 <a href="how-it-works.html" class="btn btn-outline btn-lg" data-i18n="contact.see-how-works">See How It Works</a>
