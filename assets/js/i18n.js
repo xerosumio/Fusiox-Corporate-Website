@@ -80,13 +80,28 @@ class I18n {
 
                 // About Page
                 'about.hero.title': 'About Fusiox',
-                'about.hero.subtitle': 'Your trusted partner for business incorporation and corporate services in Hong Kong.',
+                'about.hero.subtitle': 'Empowering entrepreneurs to launch with confidence, through expert guidance and seamless incorporation services.',
+                'about.mission.title': 'Our Mission',
+                'about.mission.description': 'To simplify the complex process of business incorporation, making it accessible and affordable for entrepreneurs worldwide. We believe every great idea deserves a strong foundation.',
+                'about.vision.title': 'Our Vision',
+                'about.vision.description': 'To be the leading platform for business formation, known for our innovation, reliability, and commitment to client success.',
+                'about.why-choose.title': 'Why Choose Us?',
+                'about.why-choose.experience.title': 'Experience',
+                'about.why-choose.experience.description': 'Years of expertise in business formation and regulatory compliance.',
+                'about.why-choose.speed.title': 'Speed',
+                'about.why-choose.speed.description': 'Fast-track incorporation with our streamlined digital processes.',
+                'about.why-choose.support.title': 'Support',
+                'about.why-choose.support.description': 'Your partner at every step, with expert advice and ongoing support.',
 
                 // Contact Page
                 'contact.hero.title': 'Contact Us',
                 'contact.hero.subtitle': 'Get in touch with our incorporation experts for personalized assistance.',
                 'contact.get-consultation': 'Get Free Consultation',
                 'contact.see-how-works': 'See How It Works',
+
+                // How It Works Page
+                'how-it-works.hero.title': 'How It Works',
+                'how-it-works.hero.subtitle': 'Simple, straightforward process to get your business incorporated quickly and efficiently.',
 
                 // FAQ Page
                 'faq.hero.title': 'FAQ',
@@ -155,13 +170,28 @@ class I18n {
 
                 // About Page
                 'about.hero.title': '關於 Fusiox',
-                'about.hero.subtitle': '您在香港業務註冊和企業服務的可信賴夥伴。',
+                'about.hero.subtitle': '通過專業指導和無縫註冊服務，讓企業家自信地啟動業務。',
+                'about.mission.title': '我們的使命',
+                'about.mission.description': '簡化複雜的業務註冊流程，讓全世界的企業家都能輕鬆負擔。我們相信每個偉大的想法都值得擁有堅實的基礎。',
+                'about.vision.title': '我們的願景',
+                'about.vision.description': '成為業務成立的領先平台，以創新、可靠性和對客戶成功的承諾而聞名。',
+                'about.why-choose.title': '為什麼選擇我們？',
+                'about.why-choose.experience.title': '經驗',
+                'about.why-choose.experience.description': '在業務成立和監管合規方面擁有多年專業知識。',
+                'about.why-choose.speed.title': '速度',
+                'about.why-choose.speed.description': '通過我們簡化的數位流程，快速註冊。',
+                'about.why-choose.support.title': '支援',
+                'about.why-choose.support.description': '在每一步都是您的夥伴，提供專業建議和持續支援。',
 
                 // Contact Page
                 'contact.hero.title': '聯絡我們',
                 'contact.hero.subtitle': '與我們的註冊專家聯繫，獲得個性化協助。',
                 'contact.get-consultation': '免費諮詢',
                 'contact.see-how-works': '查看服務流程',
+
+                // How It Works Page
+                'how-it-works.hero.title': '服務流程',
+                'how-it-works.hero.subtitle': '簡單直接的流程，讓您的業務快速高效地完成註冊。',
 
                 // FAQ Page
                 'faq.hero.title': '常見問題',
@@ -230,13 +260,28 @@ class I18n {
 
                 // About Page
                 'about.hero.title': '关于 Fusiox',
-                'about.hero.subtitle': '您在香港业务注册和企业服务的可信赖伙伴。',
+                'about.hero.subtitle': '通过专业指导和无缝注册服务，让企业家自信地启动业务。',
+                'about.mission.title': '我们的使命',
+                'about.mission.description': '简化复杂的业务注册流程，让全世界的企业家都能轻松负担。我们相信每个伟大的想法都值得拥有坚实的基础。',
+                'about.vision.title': '我们的愿景',
+                'about.vision.description': '成为业务成立的领先平台，以创新、可靠性和对客户成功的承诺而闻名。',
+                'about.why-choose.title': '为什么选择我们？',
+                'about.why-choose.experience.title': '经验',
+                'about.why-choose.experience.description': '在业务成立和监管合规方面拥有多年专业知识。',
+                'about.why-choose.speed.title': '速度',
+                'about.why-choose.speed.description': '通过我们简化的数字流程，快速注册。',
+                'about.why-choose.support.title': '支持',
+                'about.why-choose.support.description': '在每一步都是您的伙伴，提供专业建议和持续支持。',
 
                 // Contact Page
                 'contact.hero.title': '联系我们',
                 'contact.hero.subtitle': '与我们的注册专家联系，获得个性化协助。',
                 'contact.get-consultation': '免费咨询',
                 'contact.see-how-works': '查看服务流程',
+
+                // How It Works Page
+                'how-it-works.hero.title': '服务流程',
+                'how-it-works.hero.subtitle': '简单直接的流程，让您的业务快速高效地完成注册。',
 
                 // FAQ Page
                 'faq.hero.title': '常见问题',
