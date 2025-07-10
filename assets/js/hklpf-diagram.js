@@ -548,13 +548,19 @@ class HKLPFDiagramAnimator {
         this.removeAllHighlights();
         const node = this.diagram.querySelector(`.${nodeClass}`);
         if (node) {
-            node.style.transform = 'scale(1.05)';
-            node.style.filter = 'drop-shadow(0 4px 12px rgba(96, 165, 250, 0.5))';
+            node.classList.add('node-active', 'node-pulse');
+            // Remove pulse after 3 seconds to avoid distraction
+            setTimeout(() => {
+                if (node.classList.contains('node-active')) {
+                    node.classList.remove('node-pulse');
+                }
+            }, 3000);
         }
     }
 
     removeAllHighlights() {
         this.nodes.forEach(node => {
+            node.classList.remove('node-active', 'node-pulse');
             node.style.transform = '';
             node.style.filter = '';
         });
