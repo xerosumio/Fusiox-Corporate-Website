@@ -104,6 +104,42 @@
     filter: drop-shadow(0 2px 6px rgba(96, 165, 250, 0.3));
 }
 
+/* Enhanced active node styling with vibrant gradient glow */
+.node.node-active {
+    transform: scale(1.08);
+}
+
+.node.node-active rect {
+    stroke: #FFA500;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 12px #FFA500) drop-shadow(0 0 24px rgba(255, 94, 0, 0.5));
+    transition: all 0.3s ease;
+}
+
+.node.node-active:hover {
+    transform: scale(1.1);
+}
+
+.node.node-active:hover rect {
+    filter: drop-shadow(0 0 16px #FFA500) drop-shadow(0 0 32px rgba(255, 94, 0, 0.7));
+}
+
+/* Pulsing animation for active nodes */
+.node.node-active.node-pulse rect {
+    animation: vibrantPulse 2s ease-in-out infinite;
+}
+
+@keyframes vibrantPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 12px #FFA500) drop-shadow(0 0 24px rgba(255, 94, 0, 0.5));
+        opacity: 1;
+    }
+    50% {
+        filter: drop-shadow(0 0 18px #FFA500) drop-shadow(0 0 36px rgba(255, 94, 0, 0.8));
+        opacity: 0.9;
+    }
+}
+
 /* Connection line animations */
 .connection-line {
     transition: all 0.3s ease-in-out, stroke-dashoffset 1.2s ease-in-out;
@@ -150,7 +186,7 @@
     border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
 }
 
-/* Detail panel styles */
+/* Enhanced detail panel styles */
 .detail-panel-container {
     margin-top: 20px;
     max-height: 0;
@@ -160,27 +196,69 @@
 
 .detail-panel {
     animation: panelSlideIn 0.4s ease-out;
-    border: 1px solid rgba(96, 165, 250, 0.2);
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(255, 165, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border-image: linear-gradient(135deg, #FFA500, #FF5E00, #60A5FA) 1;
+    position: relative;
+}
+
+.detail-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #FFA500, #FF5E00, #60A5FA);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+}
+
+.detail-panel h3 {
+    background: linear-gradient(135deg, #FFA500, #FF5E00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 165, 0, 0.1);
+}
+
+.detail-panel p {
+    color: #1a202c;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 @keyframes panelSlideIn {
     0% {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-10px) scale(0.98);
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 .detail-panel .close-panel {
     transition: all 0.2s ease;
+    border-radius: 6px;
 }
 
 .detail-panel .close-panel:hover {
-    background: rgba(96, 165, 250, 0.1);
-    color: #60A5FA;
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 94, 0, 0.15));
+    color: #FF5E00;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(255, 165, 0, 0.2);
 }
 
 /* Screen reader only content */
