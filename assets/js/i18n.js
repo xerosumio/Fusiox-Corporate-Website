@@ -105,7 +105,7 @@ class I18n {
 
                 // FAQ Page
                 'faq.hero.title': 'FAQ',
-                'faq.hero.subtitle': 'Find answers to the most common questions about business incorporation and our services.',
+                'faq.hero.subtitle': 'Find answers to the most common questions about Hong Kong company incorporation and our corporate services.',
                 'faq.still-questions': 'Still Have Questions?',
                 'faq.experts-help': 'Our incorporation experts are here to help you every step of the way.',
                 'faq.contact-us': 'Contact Us',
@@ -216,6 +216,75 @@ class I18n {
                 'faq.sections.general': 'General Questions',
                 'faq.sections.pricing': 'Pricing & Services',
 
+                // FAQ Content - General Questions
+                'faq.general.q1.title': 'What is a Hong Kong company incorporation?',
+                'faq.general.q1.answer': 'Hong Kong company incorporation is the legal process of establishing a private limited company in Hong Kong. It creates a separate legal entity that can enter contracts, own property, and conduct business. Hong Kong companies enjoy limited liability protection, making it an attractive jurisdiction for international business due to its simple tax system, strategic location, and business-friendly environment.',
+                'faq.general.q2.title': 'Who can incorporate a company in Hong Kong?',
+                'faq.general.q2.answer': 'Any person aged 18 or above can incorporate a Hong Kong company, regardless of nationality or residency. There are no restrictions on foreign ownership. However, every Hong Kong company must have at least one director who is a natural person (not a corporate entity), and at least 50% of the directors must be ordinarily resident in Hong Kong, or the company must have a Hong Kong resident representative.',
+                'faq.general.q3.title': 'What are the advantages of incorporating in Hong Kong?',
+                'faq.general.q3.answer': 'Hong Kong offers numerous advantages: simple and low tax system (16.5% corporate tax rate), strategic gateway to China and Asia, excellent international banking facilities, strong legal system based on English common law, minimal government interference, free flow of capital, established financial infrastructure, and international recognition. Hong Kong also has extensive double taxation agreements with many countries.',
+                'faq.general.q4.title': 'What is the minimum share capital required?',
+                'faq.general.q4.answer': 'There is no minimum paid-up share capital requirement for Hong Kong companies. The standard authorized share capital is HK$10,000 divided into 10,000 shares of HK$1 each, but companies typically issue only one share to each shareholder initially. You can issue additional shares as needed for business operations or investment purposes.',
+
+                // FAQ Content - Incorporation Process
+                'faq.incorporation.title': 'Incorporation Process',
+                'faq.incorporation.q1.title': 'What documents are required for Hong Kong company incorporation?',
+                'faq.incorporation.q1.answer': 'The required documents include: Incorporation Form (Form NNC1), Articles of Association, copy of identity documents for all directors and shareholders, proof of registered address in Hong Kong, and consent to act forms from directors and company secretary. If directors are not Hong Kong residents, additional documentation may be required including address proof and professional references.',
+                'faq.incorporation.q2.title': 'How long does it take to incorporate a Hong Kong company?',
+                'faq.incorporation.q2.answer': 'Standard incorporation typically takes 4-6 working days from the date the Companies Registry receives all required documents. Same-day incorporation is available for an additional fee if documents are submitted before 3:00 PM on a working day. Electronic incorporation (e-Registry) can be completed within 1 hour if all requirements are met and processed electronically.',
+                'faq.incorporation.q3.title': 'Can I choose any company name?',
+                'faq.incorporation.q3.answer': 'Company names must be approved by the Companies Registry and cannot be identical to existing registered companies. Names cannot suggest government connection, be offensive, or mislead the public. We recommend conducting a name search first. Names can be in English, Chinese, or both, but must end with "Limited" or "Ltd" (or Chinese equivalent). Certain words require approval from relevant authorities.',
+                'faq.incorporation.q4.title': 'What is a registered address and why do I need one?',
+                'faq.incorporation.q4.answer': 'Every Hong Kong company must have a registered address in Hong Kong where official correspondence is received. This address appears on public records and is where government notices are served. The registered address can be a business address, professional service provider\'s address, or virtual office, but cannot be a P.O. Box. We provide registered address services as part of our incorporation packages.',
+
+                // FAQ Content - Compliance Requirements
+                'faq.compliance.title': 'Compliance Requirements',
+                'faq.compliance.q1.title': 'What are the ongoing compliance requirements for Hong Kong companies?',
+                'faq.compliance.q1.answer': 'Hong Kong companies must file Annual Returns (Form NAR1) within 42 days of the anniversary of incorporation, maintain statutory books and records, hold Annual General Meetings (for companies with more than one member), file audited financial statements if turnover exceeds HK$5 million, and maintain a registered address and company secretary in Hong Kong. Companies must also update the Companies Registry of any changes to company information.',
+                'faq.compliance.q2.title': 'Do I need a company secretary in Hong Kong?',
+                'faq.compliance.q2.answer': 'Yes, every Hong Kong company must appoint a company secretary within 6 months of incorporation. The company secretary must be either a Hong Kong resident individual or a Hong Kong company licensed to provide company secretary services. The secretary is responsible for ensuring compliance with statutory requirements, maintaining company records, and filing required documents with the Companies Registry.',
+                'faq.compliance.q3.title': 'What records must a Hong Kong company maintain?',
+                'faq.compliance.q3.answer': 'Companies must maintain registers of members, directors, company secretaries, and charges at the registered address or company secretary\'s office. These records must be available for inspection by members and, in some cases, the public. Companies must also keep proper accounting records for at least 5 years, including records of receipts and payments, assets and liabilities, and goods bought and sold.',
+                'faq.compliance.q4.title': 'What happens if I don\'t comply with filing requirements?',
+                'faq.compliance.q4.answer': 'Non-compliance can result in penalties, prosecution of directors and company secretaries, and potential striking off of the company from the register. Late filing of Annual Returns incurs penalty fees, and failure to file for extended periods can lead to the Registrar initiating deregistration proceedings. It\'s important to maintain compliance to avoid legal consequences and protect the company\'s good standing.',
+
+                // FAQ Content - Fees & Timelines
+                'faq.fees.title': 'Fees & Timelines',
+                'faq.fees.q1.title': 'What are the government fees for Hong Kong company incorporation?',
+                'faq.fees.q1.answer': 'The Hong Kong Companies Registry charges HK$1,720 for standard incorporation and HK$1,720 for incorporation by electronic means. Same-day incorporation costs an additional HK$320. Companies must also pay HK$340 for Business Registration within one month of incorporation. These are mandatory government fees that apply to all companies regardless of the service provider used. Note: Government fees are subject to change; please verify current rates with the Companies Registry at time of incorporation.',
+                'faq.fees.q2.title': 'What are the ongoing annual costs for maintaining a Hong Kong company?',
+                'faq.fees.q2.answer': 'Annual costs include Annual Return filing fee (HK$105 if filed by due date), Business Registration fee (HK$250 annually), company secretary fees (varies by provider), registered address fees (if using professional service), and audit fees if required. Companies with turnover under HK$5 million may be exempt from audit requirements, significantly reducing annual costs.',
+                'faq.fees.q3.title': 'Are there any hidden costs in company incorporation?',
+                'faq.fees.q3.answer': 'Our packages include all mandatory government fees upfront with no hidden charges. Additional costs may arise only for optional services like expedited processing, additional certified copies, apostille services, or bank account opening assistance. We provide transparent pricing and clearly outline what\'s included in each package before you proceed.',
+                'faq.fees.q4.title': 'Can I get a refund if incorporation is not successful?',
+                'faq.fees.q4.answer': 'We guarantee successful incorporation when all required documents are provided correctly. In the rare event that incorporation is rejected due to our error, we provide a full refund. However, government fees are non-refundable once submitted to the Companies Registry. We conduct thorough pre-submission reviews to minimize the risk of rejection and ensure smooth processing.',
+
+                // FAQ Content - Post-Incorporation
+                'faq.post.title': 'Post-Incorporation Obligations',
+                'faq.post.q1.title': 'What should I do immediately after incorporation?',
+                'faq.post.q1.answer': 'After incorporation, you should: obtain Business Registration Certificate, open a corporate bank account, appoint a company secretary (within 6 months), set up accounting systems, obtain any required business licenses, register for tax with the Inland Revenue Department if applicable, and ensure compliance with ongoing filing requirements. We can assist with these post-incorporation steps.',
+                'faq.post.q2.title': 'When do I need to file my first Annual Return?',
+                'faq.post.q2.answer': 'Your first Annual Return (Form NAR1) must be filed within 42 days of your company\'s first anniversary of incorporation. For example, if incorporated on January 15, 2024, the first Annual Return must be filed by February 26, 2025. Late filing incurs penalty fees, so it\'s important to track these deadlines or use professional services to manage compliance.',
+                'faq.post.q3.title': 'Do I need to prepare audited financial statements?',
+                'faq.post.q3.answer': 'Companies with annual turnover of HK$5 million or more must prepare audited financial statements and file them with the Annual Return. Companies below this threshold may qualify for audit exemption but must still maintain proper accounting records. Dormant companies may also qualify for exemption from audit requirements under certain conditions.',
+                'faq.post.q4.title': 'How do I update company information with the Registry?',
+                'faq.post.q4.answer': 'Changes to company information must be reported to the Companies Registry within the prescribed timeframes. This includes changes to directors, company secretary, registered address, or share capital. Different forms are required for different types of changes, and some changes may incur fees. We can assist with filing the necessary forms to keep your company records up to date.',
+
+                // FAQ Content - Other Questions
+                'faq.other.title': 'Other Common Questions',
+                'faq.other.q1.title': 'Can I open a bank account for my Hong Kong company?',
+                'faq.other.q1.answer': 'Yes, Hong Kong companies can open corporate bank accounts with local and international banks. Requirements typically include company incorporation documents, business registration certificate, proof of registered address, directors\' identity documents, business plan, and evidence of business activities. We provide bank account opening assistance to facilitate this process.',
+                'faq.other.q2.title': 'Do I need to pay Hong Kong tax if I don\'t operate in Hong Kong?',
+                'faq.other.q2.answer': 'Hong Kong follows a territorial tax system, meaning only profits sourced in Hong Kong are subject to Hong Kong profits tax. If your company operates entirely outside Hong Kong and derives no Hong Kong-sourced income, you may claim offshore exemption. However, proper documentation and professional advice are essential to support such claims and ensure compliance.',
+                'faq.other.q3.title': 'Can I close my Hong Kong company if I no longer need it?',
+                'faq.other.q3.answer': 'Yes, you can deregister your Hong Kong company through voluntary deregistration if it meets certain conditions: has not commenced business or has ceased operations for at least 3 months, has no outstanding liabilities, and has no legal proceedings pending. The process involves filing Form NDR1 and paying the prescribed fee. Alternatively, companies can be wound up through a more formal liquidation process.',
+                'faq.other.q4.title': 'What support do you provide after incorporation?',
+                'faq.other.q4.answer': 'We provide comprehensive post-incorporation support including company secretary services, registered address provision, annual return filing, accounting and audit services, tax filing assistance, bank account opening support, and ongoing compliance guidance. Our experienced team ensures your Hong Kong company remains compliant with all statutory requirements while you focus on growing your business.',
+
+                // FAQ Disclaimer
+                'faq.disclaimer.title': 'Important Notice',
+                'faq.disclaimer.content': 'The information provided here is for reference only and is based on current Hong Kong laws and regulations. Business requirements and regulations may change, and individual circumstances may vary. Please contact us directly for tailored advice specific to your situation and the most up-to-date requirements.',
+
                 // Page Titles
                 'page.title.about': 'About Us - Fusiox',
                 'page.title.contact': 'Contact Us - Fusiox', 
@@ -310,7 +379,7 @@ class I18n {
 
                 // FAQ Page
                 'faq.hero.title': '常見問題',
-                'faq.hero.subtitle': '查找關於業務註冊和我們服務的最常見問題答案。',
+                'faq.hero.subtitle': '查找關於香港公司註冊和我們企業服務的最常見問題答案。',
                 'faq.still-questions': '還有疑問？',
                 'faq.experts-help': '我們的註冊專家將在每一步為您提供幫助。',
                 'faq.contact-us': '聯絡我們',
@@ -421,6 +490,75 @@ class I18n {
                 'faq.sections.general': '一般問題',
                 'faq.sections.pricing': '定價與服務',
 
+                // FAQ Content - General Questions
+                'faq.general.q1.title': '什麼是香港公司註冊？',
+                'faq.general.q1.answer': '香港公司註冊是在香港設立私人有限公司的法律程序。它創建一個獨立的法律實體，可以簽訂合約、擁有財產和經營業務。香港公司享有有限責任保護，由於其簡單的稅制、戰略位置和友好的商業環境，使其成為國際業務的理想司法管轄區。',
+                'faq.general.q2.title': '誰可以在香港註冊公司？',
+                'faq.general.q2.answer': '任何年滿18歲的人都可以註冊香港公司，不論國籍或居住地。對外國所有權沒有限制。但是，每間香港公司必須至少有一名自然人董事（非法人實體），且至少50%的董事必須通常居住在香港，或公司必須有香港居民代表。',
+                'faq.general.q3.title': '在香港註冊的優勢是什麼？',
+                'faq.general.q3.answer': '香港提供眾多優勢：簡單和低稅制（16.5%企業稅率）、通往中國和亞洲的戰略門戶、優秀的國際銀行設施、基於英國普通法的強大法律制度、最少政府干預、資本自由流動、完善的金融基礎設施和國際認可。香港還與許多國家簽署了廣泛的雙重稅收協定。',
+                'faq.general.q4.title': '最低股本要求是多少？',
+                'faq.general.q4.answer': '香港公司沒有最低實繳股本要求。標準授權股本為港幣10,000元，分為10,000股每股港幣1元，但公司通常最初只向每個股東發行一股。您可以根據業務營運或投資目的需要發行額外股份。',
+
+                // FAQ Content - Incorporation Process
+                'faq.incorporation.title': '註冊流程',
+                'faq.incorporation.q1.title': '香港公司註冊需要什麼文件？',
+                'faq.incorporation.q1.answer': '所需文件包括：註冊表格（表格NNC1）、公司章程、所有董事和股東的身份證明文件副本、香港註冊地址證明，以及董事和公司秘書的同意書。如果董事不是香港居民，可能需要額外文件，包括地址證明和專業推薦信。',
+                'faq.incorporation.q2.title': '註冊香港公司需要多長時間？',
+                'faq.incorporation.q2.answer': '標準註冊通常從公司註冊處收到所有必需文件之日起需要4-6個工作日。如果在工作日下午3:00前提交文件，可以支付額外費用進行當日註冊。如果滿足所有要求並以電子方式處理，電子註冊（e-Registry）可在1小時內完成。',
+                'faq.incorporation.q3.title': '我可以選擇任何公司名稱嗎？',
+                'faq.incorporation.q3.answer': '公司名稱必須獲得公司註冊處批准，不能與現有註冊公司相同。名稱不能暗示政府關聯、具有冒犯性或誤導公眾。我們建議先進行名稱查冊。名稱可以是英文、中文或兩者兼有，但必須以「有限公司」或「Ltd」（或中文等同詞）結尾。某些詞語需要相關當局的批准。',
+                'faq.incorporation.q4.title': '什麼是註冊地址，為什麼需要？',
+                'faq.incorporation.q4.answer': '每間香港公司必須在香港有一個註冊地址，用於接收官方通信。此地址會出現在公共記錄上，是政府通知的送達地址。註冊地址可以是商業地址、專業服務提供者的地址或虛擬辦公室，但不能是郵政信箱。我們在註冊套餐中提供註冊地址服務。',
+
+                // FAQ Content - Compliance Requirements
+                'faq.compliance.title': '合規要求',
+                'faq.compliance.q1.title': '香港公司的持續合規要求是什麼？',
+                'faq.compliance.q1.answer': '香港公司必須在註冊週年日後42天內提交周年申報表（表格NAR1）、維護法定帳簿和記錄、舉行股東大會（對於有多個成員的公司）、如營業額超過港幣500萬元則提交經審計的財務報表，並在香港維護註冊地址和公司秘書。公司還必須向公司註冊處更新任何公司信息變更。',
+                'faq.compliance.q2.title': '我需要在香港有公司秘書嗎？',
+                'faq.compliance.q2.answer': '是的，每間香港公司必須在註冊後6個月內委任公司秘書。公司秘書必須是香港居民個人或獲得許可提供公司秘書服務的香港公司。秘書負責確保遵守法定要求、維護公司記錄，以及向公司註冊處提交所需文件。',
+                'faq.compliance.q3.title': '香港公司必須維護什麼記錄？',
+                'faq.compliance.q3.answer': '公司必須在註冊地址或公司秘書辦公室維護成員、董事、公司秘書和押記的登記冊。這些記錄必須供成員查閱，在某些情況下供公眾查閱。公司還必須保存適當的會計記錄至少5年，包括收支記錄、資產和負債記錄，以及貨物買賣記錄。',
+                'faq.compliance.q4.title': '如果不遵守申報要求會怎樣？',
+                'faq.compliance.q4.answer': '不合規可能導致罰款、起訴董事和公司秘書，以及可能將公司從登記冊中除名。遲交周年申報表會產生罰款，長期不申報可能導致註冊官啟動註銷程序。保持合規很重要，以避免法律後果並保護公司的良好聲譽。',
+
+                // FAQ Content - Fees & Timelines
+                'faq.fees.title': '費用與時間',
+                'faq.fees.q1.title': '香港公司註冊的政府費用是多少？',
+                'faq.fees.q1.answer': '香港公司註冊處收取標準註冊費港幣1,720元，電子註冊費港幣1,720元。當日註冊需額外支付港幣320元。公司還必須在註冊後一個月內支付港幣340元的商業登記費。這些是強制性政府費用，適用於所有公司，無論使用何種服務提供者。注意：政府費用可能會變更；請在註冊時向公司註冊處核實當前費率。',
+                'faq.fees.q2.title': '維護香港公司的年度成本是多少？',
+                'faq.fees.q2.answer': '年度成本包括周年申報表申報費（如按時申報為港幣105元）、商業登記費（每年港幣250元）、公司秘書費（因提供者而異）、註冊地址費（如使用專業服務）和審計費（如需要）。營業額低於港幣500萬元的公司可能豁免審計要求，大大降低年度成本。',
+                'faq.fees.q3.title': '公司註冊有任何隱藏費用嗎？',
+                'faq.fees.q3.answer': '我們的套餐預先包含所有強制性政府費用，沒有隱藏收費。只有可選服務（如加急處理、額外認證副本、海牙認證服務或銀行開戶協助）才可能產生額外費用。我們提供透明定價，在您進行之前清楚說明每個套餐包含的內容。',
+                'faq.fees.q4.title': '如果註冊不成功，我可以退款嗎？',
+                'faq.fees.q4.answer': '當提供所有必需文件正確時，我們保證成功註冊。在因我們的錯誤導致註冊被拒絕的罕見情況下，我們提供全額退款。但是，政府費用一旦提交給公司註冊處就不可退還。我們進行徹底的提交前審查，以最大限度地降低被拒絕的風險並確保順利處理。',
+
+                // FAQ Content - Post-Incorporation
+                'faq.post.title': '註冊後義務',
+                'faq.post.q1.title': '註冊後我應該立即做什麼？',
+                'faq.post.q1.answer': '註冊後，您應該：獲得商業登記證、開設企業銀行帳戶、委任公司秘書（6個月內）、建立會計系統、獲得任何所需的營業牌照、如適用則向稅務局登記稅務，並確保遵守持續申報要求。我們可以協助這些註冊後步驟。',
+                'faq.post.q2.title': '我需要何時提交第一份周年申報表？',
+                'faq.post.q2.answer': '您的第一份周年申報表（表格NAR1）必須在公司註冊第一個週年日後42天內提交。例如，如果在2024年1月15日註冊，第一份周年申報表必須在2025年2月26日前提交。遲交會產生罰款，因此跟蹤這些截止日期或使用專業服務管理合規很重要。',
+                'faq.post.q3.title': '我需要準備經審計的財務報表嗎？',
+                'faq.post.q3.answer': '年營業額達港幣500萬元或以上的公司必須準備經審計的財務報表並與周年申報表一起提交。低於此門檻的公司可能符合審計豁免條件，但仍必須維護適當的會計記錄。在某些條件下，休眠公司也可能符合審計要求豁免條件。',
+                'faq.post.q4.title': '如何向註冊處更新公司信息？',
+                'faq.post.q4.answer': '公司信息的變更必須在規定時間內向公司註冊處報告。這包括董事、公司秘書、註冊地址或股本的變更。不同類型的變更需要不同的表格，某些變更可能產生費用。我們可以協助提交必要的表格，以保持您的公司記錄最新。',
+
+                // FAQ Content - Other Questions
+                'faq.other.title': '其他常見問題',
+                'faq.other.q1.title': '我可以為香港公司開設銀行帳戶嗎？',
+                'faq.other.q1.answer': '是的，香港公司可以在本地和國際銀行開設企業銀行帳戶。要求通常包括公司註冊文件、商業登記證、註冊地址證明、董事身份證明文件、商業計劃和業務活動證明。我們提供銀行開戶協助以促進此過程。',
+                'faq.other.q2.title': '如果我不在香港營運，我需要支付香港稅嗎？',
+                'faq.other.q2.answer': '香港實行地域稅制，意味著只有在香港產生的利潤才需要繳納香港利得稅。如果您的公司完全在香港境外營運且沒有香港來源收入，您可以申請離岸免稅。然而，適當的文件和專業建議對於支持此類申請和確保合規是必要的。',
+                'faq.other.q3.title': '如果我不再需要，我可以關閉香港公司嗎？',
+                'faq.other.q3.answer': '是的，如果滿足某些條件，您可以通過自願註銷來註銷香港公司：尚未開始業務或已停止營運至少3個月、沒有未償債務、沒有待決法律程序。該過程涉及提交表格NDR1並支付規定費用。或者，公司可以通過更正式的清算程序進行清盤。',
+                'faq.other.q4.title': '註冊後您提供什麼支援？',
+                'faq.other.q4.answer': '我們提供全面的註冊後支援，包括公司秘書服務、註冊地址提供、周年申報表申報、會計和審計服務、稅務申報協助、銀行開戶支援和持續合規指導。我們經驗豐富的團隊確保您的香港公司持續符合所有法定要求，讓您專注於發展業務。',
+
+                // FAQ Disclaimer
+                'faq.disclaimer.title': '重要通知',
+                'faq.disclaimer.content': '此處提供的信息僅供參考，基於當前的香港法律法規。業務要求和法規可能會變更，個別情況可能有所不同。請直接聯繫我們，獲得針對您具體情況和最新要求的量身定制建議。',
+
                 // Page Titles
                 'page.title.about': '關於我們 - Fusiox',
                 'page.title.contact': '聯絡我們 - Fusiox',
@@ -515,7 +653,7 @@ class I18n {
 
                 // FAQ Page
                 'faq.hero.title': '常见问题',
-                'faq.hero.subtitle': '查找关于业务注册和我们服务的最常见问题答案。',
+                'faq.hero.subtitle': '查找关于香港公司注册和我们企业服务的最常见问题答案。',
                 'faq.still-questions': '还有疑问？',
                 'faq.experts-help': '我们的注册专家将在每一步为您提供帮助。',
                 'faq.contact-us': '联系我们',
@@ -625,6 +763,75 @@ class I18n {
                 // FAQ Page
                 'faq.sections.general': '一般问题',
                 'faq.sections.pricing': '定价与服务',
+
+                // FAQ Content - General Questions
+                'faq.general.q1.title': '什么是香港公司注册？',
+                'faq.general.q1.answer': '香港公司注册是在香港设立私人有限公司的法律程序。它创建一个独立的法律实体，可以签订合约、拥有财产和经营业务。香港公司享有有限责任保护，由于其简单的税制、战略位置和友好的商业环境，使其成为国际业务的理想司法管辖区。',
+                'faq.general.q2.title': '谁可以在香港注册公司？',
+                'faq.general.q2.answer': '任何年满18岁的人都可以注册香港公司，不论国籍或居住地。对外国所有权没有限制。但是，每间香港公司必须至少有一名自然人董事（非法人实体），且至少50%的董事必须通常居住在香港，或公司必须有香港居民代表。',
+                'faq.general.q3.title': '在香港注册的优势是什么？',
+                'faq.general.q3.answer': '香港提供众多优势：简单和低税制（16.5%企业税率）、通往中国和亚洲的战略门户、优秀的国际银行设施、基于英国普通法的强大法律制度、最少政府干预、资本自由流动、完善的金融基础设施和国际认可。香港还与许多国家签署了广泛的双重税收协定。',
+                'faq.general.q4.title': '最低股本要求是多少？',
+                'faq.general.q4.answer': '香港公司没有最低实缴股本要求。标准授权股本为港币10,000元，分为10,000股每股港币1元，但公司通常最初只向每个股东发行一股。您可以根据业务运营或投资目的需要发行额外股份。',
+
+                // FAQ Content - Incorporation Process
+                'faq.incorporation.title': '注册流程',
+                'faq.incorporation.q1.title': '香港公司注册需要什么文件？',
+                'faq.incorporation.q1.answer': '所需文件包括：注册表格（表格NNC1）、公司章程、所有董事和股东的身份证明文件副本、香港注册地址证明，以及董事和公司秘书的同意书。如果董事不是香港居民，可能需要额外文件，包括地址证明和专业推荐信。',
+                'faq.incorporation.q2.title': '注册香港公司需要多长时间？',
+                'faq.incorporation.q2.answer': '标准注册通常从公司注册处收到所有必需文件之日起需要4-6个工作日。如果在工作日下午3:00前提交文件，可以支付额外费用进行当日注册。如果满足所有要求并以电子方式处理，电子注册（e-Registry）可在1小时内完成。',
+                'faq.incorporation.q3.title': '我可以选择任何公司名称吗？',
+                'faq.incorporation.q3.answer': '公司名称必须获得公司注册处批准，不能与现有注册公司相同。名称不能暗示政府关联、具有冒犯性或误导公众。我们建议先进行名称查册。名称可以是英文、中文或两者兼有，但必须以「有限公司」或「Ltd」（或中文等同词）结尾。某些词语需要相关当局的批准。',
+                'faq.incorporation.q4.title': '什么是注册地址，为什么需要？',
+                'faq.incorporation.q4.answer': '每间香港公司必须在香港有一个注册地址，用于接收官方通信。此地址会出现在公共记录上，是政府通知的送达地址。注册地址可以是商业地址、专业服务提供者的地址或虚拟办公室，但不能是邮政信箱。我们在注册套餐中提供注册地址服务。',
+
+                // FAQ Content - Compliance Requirements
+                'faq.compliance.title': '合规要求',
+                'faq.compliance.q1.title': '香港公司的持续合规要求是什么？',
+                'faq.compliance.q1.answer': '香港公司必须在注册周年日后42天内提交周年申报表（表格NAR1）、维护法定账簿和记录、举行股东大会（对于有多个成员的公司）、如营业额超过港币500万元则提交经审计的财务报表，并在香港维护注册地址和公司秘书。公司还必须向公司注册处更新任何公司信息变更。',
+                'faq.compliance.q2.title': '我需要在香港有公司秘书吗？',
+                'faq.compliance.q2.answer': '是的，每间香港公司必须在注册后6个月内委任公司秘书。公司秘书必须是香港居民个人或获得许可提供公司秘书服务的香港公司。秘书负责确保遵守法定要求、维护公司记录，以及向公司注册处提交所需文件。',
+                'faq.compliance.q3.title': '香港公司必须维护什么记录？',
+                'faq.compliance.q3.answer': '公司必须在注册地址或公司秘书办公室维护成员、董事、公司秘书和押记的登记册。这些记录必须供成员查阅，在某些情况下供公众查阅。公司还必须保存适当的会计记录至少5年，包括收支记录、资产和负债记录，以及货物买卖记录。',
+                'faq.compliance.q4.title': '如果不遵守申报要求会怎样？',
+                'faq.compliance.q4.answer': '不合规可能导致罚款、起诉董事和公司秘书，以及可能将公司从登记册中除名。迟交周年申报表会产生罚款，长期不申报可能导致注册官启动注销程序。保持合规很重要，以避免法律后果并保护公司的良好声誉。',
+
+                // FAQ Content - Fees & Timelines
+                'faq.fees.title': '费用与时间',
+                'faq.fees.q1.title': '香港公司注册的政府费用是多少？',
+                'faq.fees.q1.answer': '香港公司注册处收取标准注册费港币1,720元，电子注册费港币1,720元。当日注册需额外支付港币320元。公司还必须在注册后一个月内支付港币340元的商业登记费。这些是强制性政府费用，适用于所有公司，无论使用何种服务提供者。注意：政府费用可能会变更；请在注册时向公司注册处核实当前费率。',
+                'faq.fees.q2.title': '维护香港公司的年度成本是多少？',
+                'faq.fees.q2.answer': '年度成本包括周年申报表申报费（如按时申报为港币105元）、商业登记费（每年港币250元）、公司秘书费（因提供者而异）、注册地址费（如使用专业服务）和审计费（如需要）。营业额低于港币500万元的公司可能豁免审计要求，大大降低年度成本。',
+                'faq.fees.q3.title': '公司注册有任何隐藏费用吗？',
+                'faq.fees.q3.answer': '我们的套餐预先包含所有强制性政府费用，没有隐藏收费。只有可选服务（如加急处理、额外认证副本、海牙认证服务或银行开户协助）才可能产生额外费用。我们提供透明定价，在您进行之前清楚说明每个套餐包含的内容。',
+                'faq.fees.q4.title': '如果注册不成功，我可以退款吗？',
+                'faq.fees.q4.answer': '当提供所有必需文件正确时，我们保证成功注册。在因我们的错误导致注册被拒绝的罕见情况下，我们提供全额退款。但是，政府费用一旦提交给公司注册处就不可退还。我们进行彻底的提交前审查，以最大限度地降低被拒绝的风险并确保顺利处理。',
+
+                // FAQ Content - Post-Incorporation
+                'faq.post.title': '注册后义务',
+                'faq.post.q1.title': '注册后我应该立即做什么？',
+                'faq.post.q1.answer': '注册后，您应该：获得商业登记证、开设企业银行账户、委任公司秘书（6个月内）、建立会计系统、获得任何所需的营业牌照、如适用则向税务局登记税务，并确保遵守持续申报要求。我们可以协助这些注册后步骤。',
+                'faq.post.q2.title': '我需要何时提交第一份周年申报表？',
+                'faq.post.q2.answer': '您的第一份周年申报表（表格NAR1）必须在公司注册第一个周年日后42天内提交。例如，如果在2024年1月15日注册，第一份周年申报表必须在2025年2月26日前提交。迟交会产生罚款，因此跟踪这些截止日期或使用专业服务管理合规很重要。',
+                'faq.post.q3.title': '我需要准备经审计的财务报表吗？',
+                'faq.post.q3.answer': '年营业额达港币500万元或以上的公司必须准备经审计的财务报表并与周年申报表一起提交。低于此门槛的公司可能符合审计豁免条件，但仍必须维护适当的会计记录。在某些条件下，休眠公司也可能符合审计要求豁免条件。',
+                'faq.post.q4.title': '如何向注册处更新公司信息？',
+                'faq.post.q4.answer': '公司信息的变更必须在规定时间内向公司注册处报告。这包括董事、公司秘书、注册地址或股本的变更。不同类型的变更需要不同的表格，某些变更可能产生费用。我们可以协助提交必要的表格，以保持您的公司记录最新。',
+
+                // FAQ Content - Other Questions
+                'faq.other.title': '其他常见问题',
+                'faq.other.q1.title': '我可以为香港公司开设银行账户吗？',
+                'faq.other.q1.answer': '是的，香港公司可以在本地和国际银行开设企业银行账户。要求通常包括公司注册文件、商业登记证、注册地址证明、董事身份证明文件、商业计划和业务活动证明。我们提供银行开户协助以促进此过程。',
+                'faq.other.q2.title': '如果我不在香港运营，我需要支付香港税吗？',
+                'faq.other.q2.answer': '香港实行地域税制，意味着只有在香港产生的利润才需要缴纳香港利得税。如果您的公司完全在香港境外运营且没有香港来源收入，您可以申请离岸免税。然而，适当的文件和专业建议对于支持此类申请和确保合规是必要的。',
+                'faq.other.q3.title': '如果我不再需要，我可以关闭香港公司吗？',
+                'faq.other.q3.answer': '是的，如果满足某些条件，您可以通过自愿注销来注销香港公司：尚未开始业务或已停止运营至少3个月、没有未偿债务、没有待决法律程序。该过程涉及提交表格NDR1并支付规定费用。或者，公司可以通过更正式的清算程序进行清盘。',
+                'faq.other.q4.title': '注册后您提供什么支持？',
+                'faq.other.q4.answer': '我们提供全面的注册后支持，包括公司秘书服务、注册地址提供、周年申报表申报、会计和审计服务、税务申报协助、银行开户支持和持续合规指导。我们经验丰富的团队确保您的香港公司持续符合所有法定要求，让您专注于发展业务。',
+
+                // FAQ Disclaimer
+                'faq.disclaimer.title': '重要通知',
+                'faq.disclaimer.content': '此处提供的信息仅供参考，基于当前的香港法律法规。业务要求和法规可能会变更，个别情况可能有所不同。请直接联系我们，获得针对您具体情况和最新要求的量身定制建议。',
 
                 // Page Titles
                 'page.title.about': '关于我们 - Fusiox',
