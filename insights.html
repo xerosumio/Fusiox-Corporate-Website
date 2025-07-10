@@ -115,14 +115,11 @@
                     </svg>
                 </div>
                 <ul x-show="isOpen" @click.away="closeDropdown()" x-transition class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
-                    <template x-for="lang in languages" :key="lang.code">
+                    <template x-for="language in languages" :key="language.code">
                         <li>
-                            <a @click="selectLanguage(lang.code)" 
-                               :class="{ 'active': currentLanguage === lang.code }"
-                               class="flex items-center justify-between">
-                                <span x-text="lang.nativeName"></span>
-                                <span x-text="lang.name" class="text-xs opacity-70"></span>
-                            </a>
+                            <a @click="changeLanguage(language.code)" 
+                               :class="{ 'active': currentLanguage === language.code }"
+                               x-text="language.nativeName"></a>
                         </li>
                     </template>
                 </ul>
@@ -332,15 +329,10 @@
             return {
                 isOpen: false,
                 currentLanguage: window.i18n?.currentLanguage || 'en',
-                languages: [
+                languages: window.i18n?.getSupportedLanguages() || [
                     { code: 'en', name: 'English', nativeName: 'English' },
-                    { code: 'zh', name: 'Chinese', nativeName: '中文' },
-                    { code: 'ja', name: 'Japanese', nativeName: '日本語' },
-                    { code: 'ko', name: 'Korean', nativeName: '한국어' },
-                    { code: 'th', name: 'Thai', nativeName: 'ไทย' },
-                    { code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt' },
-                    { code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia' },
-                    { code: 'ms', name: 'Malay', nativeName: 'Bahasa Melayu' }
+                    { code: 'zh-Hant', name: 'Traditional Chinese', nativeName: '繁體中文' },
+                    { code: 'zh-Hans', name: 'Simplified Chinese', nativeName: '简体中文' }
                 ],
                 
                 get currentLanguageObj() {
@@ -355,7 +347,7 @@
                     this.isOpen = false;
                 },
                 
-                selectLanguage(langCode) {
+                changeLanguage(langCode) {
                     this.currentLanguage = langCode;
                     this.isOpen = false;
                     if (window.i18n) {
