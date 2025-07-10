@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="assets/css/sticky-header.css" rel="stylesheet">
+    <link href="assets/css/hklpf-diagram.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
     </style>
@@ -490,6 +491,108 @@
         </div>
     </div>
 
+    <!-- Hong Kong Limited Partnership Fund Structure Diagram -->
+    <div class="py-16 bg-base-300" id="hklpf-structure">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">香港有限合伙基金架构示意</h2>
+                <p class="text-lg text-base-content/80 max-w-4xl mx-auto">Fusiox 协助客户完成香港有限合伙基金注册时的典型架构关系示意图。</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-base-100 rounded-lg shadow-xl p-8">
+                    <svg id="hklpf-diagram" viewBox="0 0 800 600" class="w-full h-auto max-h-96" style="background: transparent;">
+                        <!-- Definitions for gradients and markers -->
+                        <defs>
+                            <!-- Arrow marker -->
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#60A5FA" opacity="0.8"/>
+                            </marker>
+                            
+                            <!-- GP node gradient -->
+                            <linearGradient id="gpGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.2" />
+                                <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.3" />
+                            </linearGradient>
+                            
+                            <!-- Regular node gradient -->
+                            <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#25374E;stop-opacity:0.9" />
+                                <stop offset="100%" style="stop-color:#1E2A3A;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Connection lines (will be animated) -->
+                        <g id="connections" opacity="0">
+                            <!-- GP to IM -->
+                            <line x1="150" y1="150" x2="350" y2="150" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrowhead)" class="connection-line" stroke-dasharray="300" stroke-dashoffset="300"/>
+                            
+                            <!-- IM to HKLPF -->
+                            <line x1="350" y1="180" x2="350" y2="280" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrowhead)" class="connection-line" stroke-dasharray="100" stroke-dashoffset="100"/>
+                            
+                            <!-- GP to HKLPF -->
+                            <line x1="150" y1="180" x2="300" y2="300" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrowhead)" class="connection-line" stroke-dasharray="200" stroke-dashoffset="200"/>
+                            
+                            <!-- LP to HKLPF -->
+                            <line x1="550" y1="180" x2="400" y2="300" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrowhead)" class="connection-line" stroke-dasharray="200" stroke-dashoffset="200"/>
+                            
+                            <!-- HKLPF to Investment Targets -->
+                            <line x1="350" y1="350" x2="250" y2="450" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrowhead)" class="connection-line" stroke-dasharray="150" stroke-dashoffset="150"/>
+                            <line x1="350" y1="350" x2="450" y2="450" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrowhead)" class="connection-line" stroke-dasharray="150" stroke-dashoffset="150"/>
+                        </g>
+                        
+                        <!-- Nodes (will be animated) -->
+                        <g id="nodes">
+                            <!-- GP Node (highlighted) -->
+                            <g class="node gp-node" opacity="0" transform="scale(0.8)">
+                                <rect x="50" y="120" width="200" height="60" rx="8" fill="url(#nodeGradient)" stroke="#F59E0B" stroke-width="2"/>
+                                <rect x="50" y="120" width="200" height="60" rx="8" fill="url(#gpGradient)"/>
+                                <text x="150" y="145" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="600">客户作为普通合伙人</text>
+                                <text x="150" y="165" text-anchor="middle" fill="#FFFFFF" font-size="12">(GP)</text>
+                            </g>
+                            
+                            <!-- IM Node -->
+                            <g class="node im-node" opacity="0" transform="scale(0.8)">
+                                <rect x="250" y="120" width="200" height="60" rx="8" fill="url(#nodeGradient)" stroke="#374151" stroke-width="1"/>
+                                <text x="350" y="145" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="500">Hong Kong Type 4/9</text>
+                                <text x="350" y="165" text-anchor="middle" fill="#FFFFFF" font-size="12">IM</text>
+                            </g>
+                            
+                            <!-- LP Node -->
+                            <g class="node lp-node" opacity="0" transform="scale(0.8)">
+                                <rect x="450" y="120" width="200" height="60" rx="8" fill="url(#nodeGradient)" stroke="#374151" stroke-width="1"/>
+                                <text x="550" y="145" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="500">投资人</text>
+                                <text x="550" y="165" text-anchor="middle" fill="#FFFFFF" font-size="12">(LP)</text>
+                            </g>
+                            
+                            <!-- HKLPF Node (central) -->
+                            <g class="node hklpf-node" opacity="0" transform="scale(0.8)">
+                                <rect x="250" y="270" width="200" height="80" rx="10" fill="url(#nodeGradient)" stroke="#60A5FA" stroke-width="2"/>
+                                <text x="350" y="300" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="700">HKLPF</text>
+                                <text x="350" y="320" text-anchor="middle" fill="#E0E0E0" font-size="12">香港有限合伙基金</text>
+                                <text x="350" y="335" text-anchor="middle" fill="#E0E0E0" font-size="10">Limited Partnership Fund</text>
+                            </g>
+                            
+                            <!-- Investment Target 1 -->
+                            <g class="node target1-node" opacity="0" transform="scale(0.8)">
+                                <rect x="150" y="420" width="160" height="60" rx="8" fill="url(#nodeGradient)" stroke="#374151" stroke-width="1"/>
+                                <text x="230" y="445" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="500">投资标的 1</text>
+                                <text x="230" y="465" text-anchor="middle" fill="#E0E0E0" font-size="11">Investment Target</text>
+                            </g>
+                            
+                            <!-- Investment Target 2 -->
+                            <g class="node target2-node" opacity="0" transform="scale(0.8)">
+                                <rect x="390" y="420" width="160" height="60" rx="8" fill="url(#nodeGradient)" stroke="#374151" stroke-width="1"/>
+                                <text x="470" y="445" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="500">投资标的 2</text>
+                                <text x="470" y="465" text-anchor="middle" fill="#E0E0E0" font-size="11">Investment Target</text>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- CTA Section -->
     <div class="py-16 relative" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=600&fit=crop&crop=center'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-primary bg-opacity-85"></div>
@@ -555,5 +658,6 @@
     </footer>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/sticky-header.js"></script>
+    <script src="assets/js/hklpf-diagram.js"></script>
 </body>
 </html> 
