@@ -7,7 +7,7 @@
     'use strict';
     
     let lastScrollTop = 0;
-    let scrollThreshold = 50;
+    let scrollThreshold = 30;
     let ticking = false;
     
     // Get the navbar element
@@ -39,7 +39,7 @@
             navbar.classList.add('scrolled');
             
             // Add scroll direction classes for animations
-            if (scrollDirection === 'down' && scrollTop > lastScrollTop + 10) {
+            if (scrollDirection === 'down' && scrollTop > lastScrollTop + 5) {
                 // Only hide if scrolling down significantly
                 navbar.classList.add('scroll-down');
             } else if (scrollDirection === 'up') {
@@ -47,11 +47,11 @@
                 navbar.classList.add('scroll-up');
                 
                 // Add subtle glow effect occasionally (much less frequent and subtle)
-                if (Math.random() < 0.05) {
+                if (Math.random() < 0.02) {
                     navbar.classList.add('subtle-glow');
                     setTimeout(() => {
                         navbar.classList.remove('subtle-glow');
-                    }, 3000);
+                    }, 2000);
                 }
             }
         }
