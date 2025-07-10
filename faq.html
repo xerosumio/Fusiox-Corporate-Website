@@ -62,6 +62,16 @@
             animation: energyFadeIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
+        /* Hide tab content by default until Alpine.js loads */
+        .tab-content {
+            display: none;
+        }
+        
+        /* Show active tab content */
+        .tab-content.active {
+            display: block;
+        }
+        
         @keyframes energyFadeIn {
             from { 
                 opacity: 0; 
@@ -343,7 +353,7 @@
                                 What are the government fees for Hong Kong company incorporation?
                             </div>
                             <div class="collapse-content">
-                                <p>The Hong Kong Companies Registry charges HK$1,720 for standard incorporation and HK$1,720 for incorporation by electronic means. Same-day incorporation costs an additional HK$320. Companies must also pay HK$340 for Business Registration within one month of incorporation. These are mandatory government fees that apply to all companies regardless of the service provider used.</p>
+                                <p>The Hong Kong Companies Registry charges HK$1,720 for standard incorporation and HK$1,720 for incorporation by electronic means. Same-day incorporation costs an additional HK$320. Companies must also pay HK$340 for Business Registration within one month of incorporation. These are mandatory government fees that apply to all companies regardless of the service provider used. Note: Government fees are subject to change; please verify current rates with the Companies Registry at time of incorporation.</p>
                             </div>
                         </div>
 
@@ -560,9 +570,108 @@
     <script>
         function faqTabs() {
             return {
-                activeCategory: 'general'
+                activeCategory: 'general',
+                init() {
+                    this.showActiveTab();
+                },
+                showActiveTab() {
+                    // Hide all tab contents
+                    document.querySelectorAll('.tab-content').forEach(tab => {
+                        tab.style.display = 'none';
+                        tab.classList.remove('active');
+                    });
+                    
+                    // Show active tab
+                    const activeTab = document.querySelector(`[x-show="activeCategory === '${this.activeCategory}'"]`);
+                    if (activeTab) {
+                        activeTab.style.display = 'block';
+                        activeTab.classList.add('active');
+                    }
+                },
+                setActiveCategory(category) {
+                    this.activeCategory = category;
+                    this.showActiveTab();
+                }
             }
         }
+
+        // Fallback JavaScript for tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('FAQ tabs initializing...');
+            
+            // Get all tab sections
+            const generalSection = document.querySelector('[x-show="activeCategory === \'general\'"]');
+            const incorporationSection = document.querySelector('[x-show="activeCategory === \'incorporation\'"]');
+            const complianceSection = document.querySelector('[x-show="activeCategory === \'compliance\'"]');
+            const feesSection = document.querySelector('[x-show="activeCategory === \'fees\'"]');
+            const postSection = document.querySelector('[x-show="activeCategory === \'post-incorporation\'"]');
+            const otherSection = document.querySelector('[x-show="activeCategory === \'other\'"]');
+            
+            const allSections = [generalSection, incorporationSection, complianceSection, feesSection, postSection, otherSection];
+            
+            // Function to show only one section
+            function showSection(targetCategory) {
+                console.log('Showing section:', targetCategory);
+                allSections.forEach(section => {
+                    if (section) {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                let targetSection;
+                switch(targetCategory) {
+                    case 'general':
+                        targetSection = generalSection;
+                        break;
+                    case 'incorporation':
+                        targetSection = incorporationSection;
+                        break;
+                    case 'compliance':
+                        targetSection = complianceSection;
+                        break;
+                    case 'fees':
+                        targetSection = feesSection;
+                        break;
+                    case 'post-incorporation':
+                        targetSection = postSection;
+                        break;
+                    case 'other':
+                        targetSection = otherSection;
+                        break;
+                }
+                
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            }
+            
+            // Initial setup - show only the general tab
+            showSection('general');
+            
+            // Add click handlers to tab buttons
+            const tabButtons = document.querySelectorAll('.tabs button');
+            tabButtons.forEach((button, index) => {
+                const categories = ['general', 'incorporation', 'compliance', 'fees', 'post-incorporation', 'other'];
+                const category = categories[index];
+                
+                button.addEventListener('click', function() {
+                    console.log('Tab clicked:', category);
+                    
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+                    // Add active class to clicked button
+                    this.classList.add('tab-active');
+                    
+                    // Show the selected section
+                    showSection(category);
+                });
+            });
+            
+            // Set initial active button
+            if (tabButtons.length > 0) {
+                tabButtons[0].classList.add('tab-active');
+            }
+        });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/i18n.js"></script>
