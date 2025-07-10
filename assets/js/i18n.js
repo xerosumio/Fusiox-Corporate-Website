@@ -29,6 +29,7 @@ class I18n {
                 'nav.services': 'Services',
                 'nav.how-it-works': 'How It Works',
                 'nav.for-funds': 'For Funds',
+                'nav.insights': 'Insights',
                 'nav.faq': 'FAQ',
                 'nav.contact': 'Contact',
                 'nav.get-started': 'Get Started',
@@ -285,12 +286,20 @@ class I18n {
                 'faq.disclaimer.title': 'Important Notice',
                 'faq.disclaimer.content': 'The information provided here is for reference only and is based on current Hong Kong laws and regulations. Business requirements and regulations may change, and individual circumstances may vary. Please contact us directly for tailored advice specific to your situation and the most up-to-date requirements.',
 
+                // Insights Section
+                'insights.hero.title': 'Insights',
+                'insights.hero.subtitle': 'Explore our latest insights and updates on corporate services and fund operations.',
+                'insights.filter.all': 'All Posts',
+                'insights.filter.company-secretary': 'Company Secretary',
+                'insights.filter.fund': 'Fund',
+
                 // Page Titles
                 'page.title.about': 'About Us - Fusiox',
                 'page.title.contact': 'Contact Us - Fusiox', 
                 'page.title.faq': 'FAQ - Fusiox',
                 'page.title.funds': 'For Investment Funds - Fusiox',
                 'page.title.how-it-works': 'How It Works - Fusiox',
+                'page.title.insights': 'Insights - Fusiox',
                 'page.title.services': 'Services - Fusiox',
                 'page.title.index': 'Fusiox - Professional Incorporation Services',
 

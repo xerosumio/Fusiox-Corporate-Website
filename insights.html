@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="coffee">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.title.insights">Insights - Fusiox</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="assets/css/sticky-header.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Insights card animations */
+        @keyframes insightHover {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            25% { transform: translateY(-15px) scale(1.05) rotate(1deg); }
+            50% { transform: translateY(-10px) scale(1.08) rotate(-0.5deg); }
+            75% { transform: translateY(-20px) scale(1.03) rotate(0.5deg); }
+        }
+        
+        @keyframes categoryGlow {
+            0% { box-shadow: 0 0 5px rgba(79, 142, 247, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(79, 142, 247, 0.6), 0 0 30px rgba(79, 142, 247, 0.4); }
+            100% { box-shadow: 0 0 5px rgba(79, 142, 247, 0.3); }
+        }
+        
+        .insights-card {
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+        }
+        
+        .insights-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.3);
+            animation: insightHover 1s ease-in-out;
+        }
+        
+        .category-filter {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .category-filter.active {
+            animation: categoryGlow 2s ease-in-out infinite;
+        }
+        
+        .category-filter:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+        
+        /* Professional styling for insights */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .post-excerpt {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navbar bg-base-100 shadow-lg">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                    <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
+                    <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
+                    <li><a href="insights.html" class="active" data-i18n="nav.insights">Insights</a></li>
+                    <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+            <a href="index.html" class="btn btn-ghost text-xl font-bold" data-i18n="nav.brand">Fusiox</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
+                <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
+                <li><a href="insights.html" class="active" data-i18n="nav.insights">Insights</a></li>
+                <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <!-- Language Selector -->
+            <div class="dropdown dropdown-end mr-4" x-data="languageSelector()">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-sm" @click="toggleDropdown()">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-3a5 5 0 00-5-5 5 5 0 00-5 5v3m9-9v-3a5 5 0 00-5 5 5 5 0 00-5-5v3"></path>
+                    </svg>
+                    <span x-text="currentLanguageObj.nativeName"></span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <ul x-show="isOpen" @click.away="closeDropdown()" x-transition class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
+                    <template x-for="lang in languages" :key="lang.code">
+                        <li>
+                            <a @click="selectLanguage(lang.code)" 
+                               :class="{ 'active': currentLanguage === lang.code }"
+                               class="flex items-center justify-between">
+                                <span x-text="lang.nativeName"></span>
+                                <span x-text="lang.name" class="text-xs opacity-70"></span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.get-started">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero min-h-[40vh] bg-gradient-to-br from-primary to-secondary">
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="text-5xl font-bold text-white mb-4" data-aos="fade-up" data-i18n="insights.hero.title">Insights</h1>
+                <p class="text-lg text-white/90" data-aos="fade-up" data-aos-delay="200" data-i18n="insights.hero.subtitle">Explore our latest insights and updates on corporate services and fund operations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insights Content -->
+    <div class="container mx-auto px-4 py-16" x-data="insightsFilter()">
+        <!-- Category Filters -->
+        <div class="flex justify-center mb-12">
+            <div class="flex flex-wrap gap-4 bg-base-200 p-2 rounded-lg">
+                <button 
+                    @click="setFilter('all')" 
+                    :class="{ 'active btn-primary': currentFilter === 'all', 'btn-ghost': currentFilter !== 'all' }"
+                    class="btn category-filter"
+                    data-i18n="insights.filter.all">All Posts</button>
+                <button 
+                    @click="setFilter('company-secretary')" 
+                    :class="{ 'active btn-primary': currentFilter === 'company-secretary', 'btn-ghost': currentFilter !== 'company-secretary' }"
+                    class="btn category-filter"
+                    data-i18n="insights.filter.company-secretary">Company Secretary</button>
+                <button 
+                    @click="setFilter('fund')" 
+                    :class="{ 'active btn-primary': currentFilter === 'fund', 'btn-ghost': currentFilter !== 'fund' }"
+                    class="btn category-filter"
+                    data-i18n="insights.filter.fund">Fund</button>
+            </div>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="insights-grid" id="posts-container">
+            <!-- Company Secretary Posts -->
+            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('company-secretary')" x-transition data-category="company-secretary" onclick="window.location.href='insights/company-secretary-best-practices.html'">
+                <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                </figure>
+                <div class="card-body">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-primary badge-sm">Company Secretary</span>
+                        <span class="text-sm opacity-70">Dec 15, 2024</span>
+                    </div>
+                    <h2 class="card-title text-lg">Best Practices for Corporate Compliance</h2>
+                    <p class="post-excerpt opacity-80">Discover essential compliance strategies that every company secretary should implement to ensure seamless corporate governance and regulatory adherence.</p>
+                    <div class="card-actions justify-end mt-4">
+                        <span class="text-sm text-primary hover:underline">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('company-secretary')" x-transition data-category="company-secretary" onclick="window.location.href='insights/annual-filing-requirements.html'">
+                <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                </figure>
+                <div class="card-body">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-primary badge-sm">Company Secretary</span>
+                        <span class="text-sm opacity-70">Dec 10, 2024</span>
+                    </div>
+                    <h2 class="card-title text-lg">Annual Filing Requirements Guide</h2>
+                    <p class="post-excerpt opacity-80">Stay ahead of deadlines with our comprehensive guide to annual filing requirements for different types of corporate entities.</p>
+                    <div class="card-actions justify-end mt-4">
+                        <span class="text-sm text-primary hover:underline">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fund Posts -->
+            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('fund')" x-transition data-category="fund" onclick="window.location.href='insights/fund-governance-trends.html'">
+                <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                </figure>
+                <div class="card-body">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-secondary badge-sm">Fund</span>
+                        <span class="text-sm opacity-70">Dec 12, 2024</span>
+                    </div>
+                    <h2 class="card-title text-lg">2024 Fund Governance Trends</h2>
+                    <p class="post-excerpt opacity-80">Explore the latest trends in fund governance and how they're shaping the industry landscape for investment managers and fund operators.</p>
+                    <div class="card-actions justify-end mt-4">
+                        <span class="text-sm text-primary hover:underline">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('fund')" x-transition data-category="fund" onclick="window.location.href='insights/esg-fund-strategies.html'">
+                <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path>
+                        </svg>
+                    </div>
+                </figure>
+                <div class="card-body">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-secondary badge-sm">Fund</span>
+                        <span class="text-sm opacity-70">Dec 8, 2024</span>
+                    </div>
+                    <h2 class="card-title text-lg">ESG Integration in Fund Strategies</h2>
+                    <p class="post-excerpt opacity-80">Learn how Environmental, Social, and Governance factors are being integrated into modern fund strategies and investment decisions.</p>
+                    <div class="card-actions justify-end mt-4">
+                        <span class="text-sm text-primary hover:underline">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('company-secretary')" x-transition data-category="company-secretary" onclick="window.location.href='insights/digital-transformation-corporate.html'">
+                <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-teal-500 to-teal-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                </figure>
+                <div class="card-body">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-primary badge-sm">Company Secretary</span>
+                        <span class="text-sm opacity-70">Dec 5, 2024</span>
+                    </div>
+                    <h2 class="card-title text-lg">Digital Transformation in Corporate Services</h2>
+                    <p class="post-excerpt opacity-80">How digital tools and automation are revolutionizing traditional corporate secretarial services and improving efficiency.</p>
+                    <div class="card-actions justify-end mt-4">
+                        <span class="text-sm text-primary hover:underline">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('fund')" x-transition data-category="fund" onclick="window.location.href='insights/regulatory-updates-funds.html'">
+                <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                    </div>
+                </figure>
+                <div class="card-body">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-secondary badge-sm">Fund</span>
+                        <span class="text-sm opacity-70">Dec 3, 2024</span>
+                    </div>
+                    <h2 class="card-title text-lg">Latest Regulatory Updates for Funds</h2>
+                    <p class="post-excerpt opacity-80">Stay informed about the latest regulatory changes affecting fund operations and what they mean for your business.</p>
+                    <div class="card-actions justify-end mt-4">
+                        <span class="text-sm text-primary hover:underline">Read More →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/sticky-header.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+
+        // Insights filtering functionality
+        function insightsFilter() {
+            return {
+                currentFilter: 'all',
+                
+                setFilter(category) {
+                    this.currentFilter = category;
+                },
+                
+                shouldShowPost(category) {
+                    return this.currentFilter === 'all' || this.currentFilter === category;
+                }
+            }
+        }
+
+        // Language selector functionality (matches existing implementation)
+        function languageSelector() {
+            return {
+                isOpen: false,
+                currentLanguage: window.i18n?.currentLanguage || 'en',
+                languages: [
+                    { code: 'en', name: 'English', nativeName: 'English' },
+                    { code: 'zh', name: 'Chinese', nativeName: '中文' },
+                    { code: 'ja', name: 'Japanese', nativeName: '日本語' },
+                    { code: 'ko', name: 'Korean', nativeName: '한국어' },
+                    { code: 'th', name: 'Thai', nativeName: 'ไทย' },
+                    { code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt' },
+                    { code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia' },
+                    { code: 'ms', name: 'Malay', nativeName: 'Bahasa Melayu' }
+                ],
+                
+                get currentLanguageObj() {
+                    return this.languages.find(lang => lang.code === this.currentLanguage) || this.languages[0];
+                },
+                
+                toggleDropdown() {
+                    this.isOpen = !this.isOpen;
+                },
+                
+                closeDropdown() {
+                    this.isOpen = false;
+                },
+                
+                selectLanguage(langCode) {
+                    this.currentLanguage = langCode;
+                    this.isOpen = false;
+                    if (window.i18n) {
+                        window.i18n.setLanguage(langCode);
+                    }
+                }
+            }
+        }
+
+        // Initialize i18n when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof I18n !== 'undefined') {
+                window.i18n = new I18n();
+            }
+        });
+    </script>
+</body>
+</html>
