@@ -312,6 +312,7 @@ class I18n {
                 'nav.services': '服務',
                 'nav.how-it-works': '服務流程',
                 'nav.for-funds': '基金服務',
+                'nav.insights': '洞察分析',
                 'nav.faq': '常見問題',
                 'nav.contact': '聯絡我們',
                 'nav.get-started': '開始',
@@ -568,12 +569,20 @@ class I18n {
                 'faq.disclaimer.title': '重要通知',
                 'faq.disclaimer.content': '此處提供的信息僅供參考，基於當前的香港法律法規。業務要求和法規可能會變更，個別情況可能有所不同。請直接聯繫我們，獲得針對您具體情況和最新要求的量身定制建議。',
 
+                // Insights Section
+                'insights.hero.title': '洞察分析',
+                'insights.hero.subtitle': '探索我們關於企業服務和基金營運的最新見解和更新。',
+                'insights.filter.all': '所有文章',
+                'insights.filter.company-secretary': '公司秘書',
+                'insights.filter.fund': '基金',
+
                 // Page Titles
                 'page.title.about': '關於我們 - Fusiox',
                 'page.title.contact': '聯絡我們 - Fusiox',
                 'page.title.faq': '常見問題 - Fusiox',
                 'page.title.funds': '基金服務 - Fusiox',
                 'page.title.how-it-works': '服務流程 - Fusiox',
+                'page.title.insights': '洞察分析 - Fusiox',
                 'page.title.services': '服務 - Fusiox',
                 'page.title.index': 'Fusiox - 專業註冊服務',
 
@@ -586,6 +595,7 @@ class I18n {
                 'nav.services': '服务',
                 'nav.how-it-works': '服务流程',
                 'nav.for-funds': '基金服务',
+                'nav.insights': '洞察分析',
                 'nav.faq': '常见问题',
                 'nav.contact': '联系我们',
                 'nav.get-started': '开始',
@@ -842,12 +852,20 @@ class I18n {
                 'faq.disclaimer.title': '重要通知',
                 'faq.disclaimer.content': '此处提供的信息仅供参考，基于当前的香港法律法规。业务要求和法规可能会变更，个别情况可能有所不同。请直接联系我们，获得针对您具体情况和最新要求的量身定制建议。',
 
+                // Insights Section
+                'insights.hero.title': '洞察分析',
+                'insights.hero.subtitle': '探索我们关于企业服务和基金运营的最新见解和更新。',
+                'insights.filter.all': '所有文章',
+                'insights.filter.company-secretary': '公司秘书',
+                'insights.filter.fund': '基金',
+
                 // Page Titles
                 'page.title.about': '关于我们 - Fusiox',
                 'page.title.contact': '联系我们 - Fusiox',
                 'page.title.faq': '常见问题 - Fusiox',
                 'page.title.funds': '基金服务 - Fusiox',
                 'page.title.how-it-works': '服务流程 - Fusiox',
+                'page.title.insights': '洞察分析 - Fusiox',
                 'page.title.services': '服务 - Fusiox',
                 'page.title.index': 'Fusiox - 专业注册服务',
 
