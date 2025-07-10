@@ -1,7 +1,43 @@
 /* Hong Kong Limited Partnership Fund Structure Diagram Styles */
 
 #hklpf-structure {
-    background: #1F1F1F;
+    background: linear-gradient(135deg, #1F1F1F 0%, #2D2D2D 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background animation */
+#hklpf-structure::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(96, 165, 250, 0.03) 25%, 
+        transparent 50%, 
+        rgba(245, 158, 11, 0.03) 75%, 
+        transparent 100%);
+    background-size: 400% 400%;
+    animation: subtleBackground 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes subtleBackground {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+#hklpf-structure > * {
+    position: relative;
+    z-index: 1;
 }
 
 #hklpf-diagram {
@@ -12,6 +48,7 @@
 .node {
     transform-origin: center;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .node.animate-in {
@@ -29,69 +66,134 @@
     }
 }
 
+/* Enhanced hover effects for nodes */
+.node:hover {
+    transform: scale(1.05);
+}
+
+.node:focus {
+    outline: 2px solid #60A5FA;
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.gp-node:hover rect,
+.gp-node:focus rect {
+    stroke: #F59E0B;
+    stroke-width: 3;
+    filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.4));
+}
+
+.hklpf-node:hover rect,
+.hklpf-node:focus rect {
+    stroke: #60A5FA;
+    stroke-width: 3;
+    filter: drop-shadow(0 4px 8px rgba(96, 165, 250, 0.4));
+}
+
+.im-node:hover rect, 
+.lp-node:hover rect,
+.target1-node:hover rect,
+.target2-node:hover rect,
+.im-node:focus rect, 
+.lp-node:focus rect,
+.target1-node:focus rect,
+.target2-node:focus rect {
+    stroke: #60A5FA;
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 6px rgba(96, 165, 250, 0.3));
+}
+
 /* Connection line animations */
 .connection-line {
-    transition: stroke-dashoffset 1.2s ease-in-out;
+    transition: all 0.3s ease-in-out, stroke-dashoffset 1.2s ease-in-out;
+    cursor: pointer;
 }
 
 .connection-line.animate-draw {
     stroke-dashoffset: 0;
 }
 
-/* Hover effects for nodes */
-.node:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+.connection-line:hover {
+    stroke-width: 3 !important;
+    stroke: #60A5FA !important;
+    opacity: 1 !important;
+    filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.5));
 }
 
-.gp-node:hover rect {
-    stroke: #F59E0B;
-    stroke-width: 3;
-    filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
+/* Tooltip styles */
+.hklpf-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 280px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    backdrop-filter: blur(10px);
 }
 
-.hklpf-node:hover rect {
-    stroke: #60A5FA;
-    stroke-width: 3;
-    filter: drop-shadow(0 4px 8px rgba(96, 165, 250, 0.3));
+.hklpf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
 }
 
-.im-node:hover rect, 
-.lp-node:hover rect,
-.target1-node:hover rect,
-.target2-node:hover rect {
-    stroke: #60A5FA;
-    stroke-width: 2;
-    filter: drop-shadow(0 2px 4px rgba(96, 165, 250, 0.2));
+/* Detail panel styles */
+.detail-panel-container {
+    margin-top: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    #hklpf-diagram {
-        max-height: 300px;
+.detail-panel {
+    animation: panelSlideIn 0.4s ease-out;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+@keyframes panelSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-    
-    .node text {
-        font-size: 12px;
-    }
-    
-    .node text:nth-child(3) {
-        font-size: 10px;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@media (max-width: 480px) {
-    #hklpf-diagram {
-        max-height: 250px;
-    }
-    
-    .node text {
-        font-size: 10px;
-    }
-    
-    .node text:nth-child(3) {
-        font-size: 8px;
-    }
+.detail-panel .close-panel {
+    transition: all 0.2s ease;
+}
+
+.detail-panel .close-panel:hover {
+    background: rgba(96, 165, 250, 0.1);
+    color: #60A5FA;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* Animation delays for staggered effect */
@@ -110,7 +212,104 @@
 .connection-line:nth-child(5) { transition-delay: 1.1s; }
 .connection-line:nth-child(6) { transition-delay: 1.2s; }
 
-/* Smooth background transition */
-#hklpf-structure {
-    background: linear-gradient(135deg, #1F1F1F 0%, #2D2D2D 100%);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #hklpf-diagram {
+        max-height: 300px;
+    }
+    
+    .node text {
+        font-size: 12px;
+    }
+    
+    .node text:nth-child(3) {
+        font-size: 10px;
+    }
+
+    .hklpf-tooltip {
+        font-size: 12px;
+        padding: 8px 10px;
+        max-width: 200px;
+    }
+
+    .detail-panel {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #hklpf-diagram {
+        max-height: 250px;
+    }
+    
+    .node text {
+        font-size: 10px;
+    }
+    
+    .node text:nth-child(3) {
+        font-size: 8px;
+    }
+
+    .hklpf-tooltip {
+        font-size: 11px;
+        padding: 6px 8px;
+        max-width: 180px;
+    }
+
+    .detail-panel {
+        padding: 0.75rem;
+    }
+    
+    .detail-panel h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .node rect {
+        stroke-width: 2px;
+    }
+    
+    .hklpf-tooltip {
+        background: #000;
+        border: 2px solid #fff;
+    }
+    
+    .connection-line {
+        stroke-width: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .node,
+    .connection-line,
+    .hklpf-tooltip,
+    .detail-panel-container {
+        transition: none;
+        animation: none;
+    }
+    
+    #hklpf-structure::before {
+        animation: none;
+    }
+    
+    .node.animate-in {
+        animation: none;
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Focus management for better accessibility */
+.node[tabindex="0"]:focus-visible {
+    outline: 3px solid #60A5FA;
+    outline-offset: 2px;
+}
+
+/* Loading state */
+.diagram-loading {
+    opacity: 0.5;
+    pointer-events: none;
 }
