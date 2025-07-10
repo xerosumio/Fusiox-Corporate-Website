@@ -46,8 +46,8 @@
         
         .tab:hover {
             animation: tabBounce 0.8s ease-in-out;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            color: white;
+            background: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
         }
         
         /* FAQ item animations */
@@ -83,11 +83,43 @@
             }
         }
         
-        /* Happy glow effects */
+        /* Professional active tab styling */
         .tab-active {
-            background: linear-gradient(45deg, #667eea, #764ba2) !important;
-            color: white !important;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            background: #4F8EF7 !important;
+            color: #FFFFFF !important;
+            font-weight: bold !important;
+            border-radius: 6px !important;
+            box-shadow: none !important;
+        }
+        
+        /* Inactive tab styling */
+        .tab:not(.tab-active) {
+            background: transparent !important;
+            color: #D4AF37;
+            font-weight: normal;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hover effects for inactive tabs */
+        .tab:not(.tab-active):hover {
+            background: rgba(212, 175, 55, 0.1) !important;
+            color: #D4AF37;
+            animation: none;
+            text-decoration: underline;
+        }
+        
+        /* Focus states for accessibility */
+        .tab:focus {
+            outline: 2px solid #4F8EF7;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.2);
+        }
+        
+        /* Active tab hover state */
+        .tab-active:hover {
+            background: #3F7BE7 !important;
+            animation: none;
         }
         
         /* FAQ Tabs Responsive Layout */
@@ -157,21 +189,26 @@
                 text-align: center;
                 font-size: 0.9rem;
                 padding: 0.75rem 1rem;
-                border-radius: 0.5rem;
+                border-radius: 6px;
                 background: rgba(255, 255, 255, 0.1);
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 transition: all 0.3s ease;
+                color: #D4AF37;
             }
             
             .tab-responsive:hover {
-                background: rgba(255, 255, 255, 0.2);
+                background: rgba(212, 175, 55, 0.1);
                 transform: translateY(-2px);
+                color: #D4AF37;
+                text-decoration: underline;
             }
             
             .tab-responsive.tab-active {
-                background: linear-gradient(45deg, #667eea, #764ba2) !important;
-                border-color: #667eea;
+                background: #4F8EF7 !important;
+                border-color: #4F8EF7;
                 transform: none;
+                color: #FFFFFF !important;
+                font-weight: bold;
             }
         }
     </style>
