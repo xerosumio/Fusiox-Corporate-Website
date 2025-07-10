@@ -159,6 +159,10 @@ class I18n {
                 'funds.tax.crossborder.description': 'Provide tax optimization advice for cross-border investments, including tax compliance and structural design for international fund investments, helping clients achieve optimal global tax planning solutions.',
                 'funds.tax.conclusion': 'Our tax experts work with leading global tax advisors to ensure our clients\' fund structures comply with international standards while achieving tax optimization within a legal framework.',
 
+                // HKLPF Structure Section
+                'funds.structure.title': 'Hong Kong Limited Partnership Fund Structure Diagram',
+                'funds.structure.description': 'Typical structure relationship diagram when Fusiox assists clients in completing Hong Kong Limited Partnership Fund registration.',
+
                 // About Page - Values Section
                 'about.values.title': 'Our Values',
                 'about.values.reliability.title': 'Reliability',
@@ -806,6 +810,14 @@ class I18n {
                 'funds.tax.crossborder.title': '跨境税务筹划：',
                 'funds.tax.crossborder.description': '为跨境投资提供税务优化建议，包括跨国基金投资的税务合规及结构设计，帮助客户实现全球税务规划最优解。',
                 'funds.tax.conclusion': '我们的税务专家与全球领先的税务顾问合作，确保客户的基金结构既符合国际标准，又能在合法的框架下实现税务最优化。',
+
+                // HKLPF Structure Section
+                'funds.structure.title': '香港有限合伙基金架构示意',
+                'funds.structure.description': 'Fusiox 协助客户完成香港有限合伙基金注册时的典型架构关系示意图。',
+
+                // HKLPF Structure Section
+                'funds.structure.title': '香港有限合夥基金架構示意',
+                'funds.structure.description': 'Fusiox 協助客戶完成香港有限合夥基金註冊時的典型架構關係示意圖。',
 
                 // About Page - Values Section
                 'about.values.title': '我们的价值观',
