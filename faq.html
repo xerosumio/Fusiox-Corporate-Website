@@ -89,6 +89,91 @@
             color: white !important;
             box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
         }
+        
+        /* FAQ Tabs Responsive Layout */
+        .faq-tabs-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .faq-tabs-container .tabs {
+            max-width: 100%;
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        .faq-tabs-container .tabs::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .tab-responsive {
+            flex-shrink: 0;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+        
+        /* Desktop styles */
+        @media (min-width: 1024px) {
+            .tab-responsive {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+            }
+            
+            .faq-tabs-container .tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+                overflow-x: visible;
+            }
+        }
+        
+        /* Tablet styles */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .tab-responsive {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .faq-tabs-container {
+                padding: 0 1rem;
+            }
+            
+            .faq-tabs-container .tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: stretch;
+                background: transparent;
+                padding: 0;
+            }
+            
+            .tab-responsive {
+                width: 100%;
+                text-align: center;
+                font-size: 0.9rem;
+                padding: 0.75rem 1rem;
+                border-radius: 0.5rem;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .tab-responsive:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+            
+            .tab-responsive.tab-active {
+                background: linear-gradient(45deg, #667eea, #764ba2) !important;
+                border-color: #667eea;
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -166,43 +251,45 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
                 <!-- Category Tabs -->
-                <div class="tabs tabs-boxed justify-center mb-12" x-data="faqTabs()" data-aos="zoom-in-up">
-                    <button 
-                        @click="activeCategory = 'general'"
-                        :class="activeCategory === 'general' ? 'tab-active' : ''"
-                        class="tab tab-lg">
-                        General
-                    </button>
-                    <button 
-                        @click="activeCategory = 'incorporation'"
-                        :class="activeCategory === 'incorporation' ? 'tab-active' : ''"
-                        class="tab tab-lg">
-                        Incorporation Process
-                    </button>
-                    <button 
-                        @click="activeCategory = 'compliance'"
-                        :class="activeCategory === 'compliance' ? 'tab-active' : ''"
-                        class="tab tab-lg">
-                        Compliance Requirements
-                    </button>
-                    <button 
-                        @click="activeCategory = 'fees'"
-                        :class="activeCategory === 'fees' ? 'tab-active' : ''"
-                        class="tab tab-lg">
-                        Fees & Timelines
-                    </button>
-                    <button 
-                        @click="activeCategory = 'post-incorporation'"
-                        :class="activeCategory === 'post-incorporation' ? 'tab-active' : ''"
-                        class="tab tab-lg">
-                        Post-Incorporation
-                    </button>
-                    <button 
-                        @click="activeCategory = 'other'"
-                        :class="activeCategory === 'other' ? 'tab-active' : ''"
-                        class="tab tab-lg">
-                        Other Questions
-                    </button>
+                <div class="faq-tabs-container mb-12" x-data="faqTabs()" data-aos="zoom-in-up">
+                    <div class="tabs tabs-boxed justify-center w-full">
+                        <button 
+                            @click="activeCategory = 'general'"
+                            :class="activeCategory === 'general' ? 'tab-active' : ''"
+                            class="tab tab-responsive">
+                            General
+                        </button>
+                        <button 
+                            @click="activeCategory = 'incorporation'"
+                            :class="activeCategory === 'incorporation' ? 'tab-active' : ''"
+                            class="tab tab-responsive">
+                            Incorporation Process
+                        </button>
+                        <button 
+                            @click="activeCategory = 'compliance'"
+                            :class="activeCategory === 'compliance' ? 'tab-active' : ''"
+                            class="tab tab-responsive">
+                            Compliance Requirements
+                        </button>
+                        <button 
+                            @click="activeCategory = 'fees'"
+                            :class="activeCategory === 'fees' ? 'tab-active' : ''"
+                            class="tab tab-responsive">
+                            Fees & Timelines
+                        </button>
+                        <button 
+                            @click="activeCategory = 'post-incorporation'"
+                            :class="activeCategory === 'post-incorporation' ? 'tab-active' : ''"
+                            class="tab tab-responsive">
+                            Post-Incorporation
+                        </button>
+                        <button 
+                            @click="activeCategory = 'other'"
+                            :class="activeCategory === 'other' ? 'tab-active' : ''"
+                            class="tab tab-responsive">
+                            Other Questions
+                        </button>
+                    </div>
                 </div>
 
                 <!-- General Questions -->
