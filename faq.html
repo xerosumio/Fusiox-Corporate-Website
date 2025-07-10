@@ -89,6 +89,71 @@
             color: white !important;
             box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
         }
+        
+        /* Custom tab implementation to fix display issues */
+        .custom-tabs-container {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.5rem !important;
+            background: #f1f5f9 !important;
+            border-radius: 0.75rem !important;
+            padding: 0.5rem !important;
+            margin-bottom: 3rem !important;
+        }
+        
+        .custom-tab {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            white-space: nowrap !important;
+            padding: 1rem 1.5rem !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            line-height: 1.25 !important;
+            color: #475569 !important;
+            text-decoration: none !important;
+            background: #ffffff !important;
+            cursor: pointer !important;
+            border-radius: 0.5rem !important;
+            border: 1px solid #e2e8f0 !important;
+            min-height: 3rem !important;
+            transition: all 0.3s ease !important;
+            font-family: 'Inter', sans-serif !important;
+            box-sizing: border-box !important;
+            outline: none !important;
+        }
+        
+        .custom-tab:hover {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4) !important;
+            color: white !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-color: transparent !important;
+            animation: tabBounce 0.8s ease-in-out;
+        }
+        
+        .custom-tab.custom-tab-active {
+            background: linear-gradient(45deg, #667eea, #764ba2) !important;
+            color: white !important;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5) !important;
+            border-color: transparent !important;
+            transform: scale(1.05) !important;
+        }
+        
+        /* Responsive design for tabs */
+        @media (max-width: 768px) {
+            .custom-tabs-container {
+                flex-direction: column !important;
+                gap: 0.25rem !important;
+            }
+            
+            .custom-tab {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -165,42 +230,42 @@
     <div class="py-16">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
-                <!-- Category Tabs -->
-                <div class="tabs tabs-boxed justify-center mb-12" x-data="faqTabs()" data-aos="zoom-in-up">
+                <!-- Category Tabs - Custom Implementation -->
+                <div class="custom-tabs-container" x-data="faqTabs()" data-aos="zoom-in-up">
                     <button 
                         @click="activeCategory = 'general'"
-                        :class="activeCategory === 'general' ? 'tab-active' : ''"
-                        class="tab tab-lg">
+                        :class="activeCategory === 'general' ? 'custom-tab-active' : ''"
+                        class="custom-tab">
                         General
                     </button>
                     <button 
                         @click="activeCategory = 'incorporation'"
-                        :class="activeCategory === 'incorporation' ? 'tab-active' : ''"
-                        class="tab tab-lg">
+                        :class="activeCategory === 'incorporation' ? 'custom-tab-active' : ''"
+                        class="custom-tab">
                         Incorporation Process
                     </button>
                     <button 
                         @click="activeCategory = 'compliance'"
-                        :class="activeCategory === 'compliance' ? 'tab-active' : ''"
-                        class="tab tab-lg">
+                        :class="activeCategory === 'compliance' ? 'custom-tab-active' : ''"
+                        class="custom-tab">
                         Compliance Requirements
                     </button>
                     <button 
                         @click="activeCategory = 'fees'"
-                        :class="activeCategory === 'fees' ? 'tab-active' : ''"
-                        class="tab tab-lg">
+                        :class="activeCategory === 'fees' ? 'custom-tab-active' : ''"
+                        class="custom-tab">
                         Fees & Timelines
                     </button>
                     <button 
                         @click="activeCategory = 'post-incorporation'"
-                        :class="activeCategory === 'post-incorporation' ? 'tab-active' : ''"
-                        class="tab tab-lg">
+                        :class="activeCategory === 'post-incorporation' ? 'custom-tab-active' : ''"
+                        class="custom-tab">
                         Post-Incorporation
                     </button>
                     <button 
                         @click="activeCategory = 'other'"
-                        :class="activeCategory === 'other' ? 'tab-active' : ''"
-                        class="tab tab-lg">
+                        :class="activeCategory === 'other' ? 'custom-tab-active' : ''"
+                        class="custom-tab">
                         Other Questions
                     </button>
                 </div>
