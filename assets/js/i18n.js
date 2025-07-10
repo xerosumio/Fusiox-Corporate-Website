@@ -117,6 +117,47 @@ class I18n {
                 'funds.schedule-consultation': 'Schedule Consultation',
                 'funds.our-services': 'Our Services',
                 'funds.comprehensive-services.title': 'Comprehensive Fund Services',
+                
+                // Fund Services Section
+                'funds.services.title': 'Our Fund Services',
+                'funds.services.description': 'We provide global, customized fund registration, structure design, and tax planning services for investors, helping clients stand out in the complex global investment environment.',
+                
+                // Hong Kong Limited Partnership Fund
+                'funds.hklpf.title': 'Hong Kong Limited Partnership Fund Agency Registration Service',
+                'funds.hklpf.description': 'Hong Kong Limited Partnership Fund (LPF) has become a popular choice for global investors to establish funds in Hong Kong in recent years. We provide comprehensive agency registration services, including:',
+                'funds.hklpf.registration.title': 'Fund Registration & Establishment:',
+                'funds.hklpf.registration.description': 'Assist clients in completing the registration procedures for limited partnership funds in Hong Kong, ensuring compliance with Hong Kong Monetary Authority regulations.',
+                'funds.hklpf.legal.title': 'Legal & Tax Consultation:',
+                'funds.hklpf.legal.description': 'Provide professional advice on the legal framework, tax policies, and compliance requirements for Hong Kong limited partnership funds.',
+                'funds.hklpf.operational.title': 'Operational Support:',
+                'funds.hklpf.operational.description': 'Provide ongoing support services required for fund operations, such as fund management, partner relationship management, accounting and audit services.',
+                'funds.hklpf.conclusion': 'We understand that each investor\'s needs are different, so we can tailor registration and operational solutions that suit you, ensuring your fund operates smoothly and complies with Hong Kong and global relevant laws and regulations.',
+                
+                // Global Fund Consulting
+                'funds.global.title': 'Global Fund Consulting Services',
+                'funds.global.description': 'In the global market, choosing the right fund structure and investment strategy is crucial for investor success. We provide high-end fund structure consulting services for global clients, mainly including:',
+                'funds.global.structure.title': 'Fund Structure Design:',
+                'funds.global.structure.description': 'Based on your and your investors\' needs, we provide customized fund structure design, covering:',
+                'funds.global.hklpf': 'Hong Kong Limited Partnership Fund (HKLPF)',
+                'funds.global.hkofc': 'Hong Kong Open-ended Fund Company (HKOFC)',
+                'funds.global.spc': 'Cayman Special Purpose Company Fund (SPC Fund)',
+                'funds.global.bvi': 'British Virgin Islands Fund (BVI Fund)',
+                'funds.global.compliance.title': 'Compliance & Regulatory Consultation:',
+                'funds.global.compliance.description': 'Our expert team can provide consultation on regulatory frameworks in different markets, helping you conduct business under multi-country compliance frameworks.',
+                'funds.global.conclusion': 'Our goal is to help clients gain advantages in the global investment environment through comprehensive consulting services and utilizing fund structures with different characteristics.',
+                
+                // Tax Planning Services
+                'funds.tax.title': 'Tax Planning Services',
+                'funds.tax.description': 'We understand the importance of tax planning for fund investors and their investment returns. Our tax planning services focus on developing optimized tax structures for clients, ensuring compliance while maximizing tax benefits. Specific service content includes:',
+                'funds.tax.global.title': 'Global Tax Structure Design:',
+                'funds.tax.global.description': 'Customize global tax structures for clients, ensuring minimized tax burden in different countries and regions while complying with local tax regulations.',
+                'funds.tax.compliance.title': 'Tax Compliance & Risk Management:',
+                'funds.tax.compliance.description': 'We help clients identify and manage potential tax risks, ensuring investment structures are legal and compliant within the legal framework.',
+                'funds.tax.offshore.title': 'Cayman, BVI and Other Offshore Fund Tax Optimization:',
+                'funds.tax.offshore.description': 'Focus on providing tax planning for clients\' offshore funds in Cayman Islands, British Virgin Islands, etc., helping clients achieve reasonable tax avoidance globally while avoiding potential tax risks.',
+                'funds.tax.crossborder.title': 'Cross-border Tax Planning:',
+                'funds.tax.crossborder.description': 'Provide tax optimization advice for cross-border investments, including tax compliance and structural design for international fund investments, helping clients achieve optimal global tax planning solutions.',
+                'funds.tax.conclusion': 'Our tax experts work with leading global tax advisors to ensure our clients\' fund structures comply with international standards while achieving tax optimization within a legal framework.',
 
                 // About Page - Values Section
                 'about.values.title': 'Our Values',
@@ -400,6 +441,47 @@ class I18n {
                 'funds.schedule-consultation': '預約諮詢',
                 'funds.our-services': '我們的服務',
                 'funds.comprehensive-services.title': '全方位基金服務',
+                
+                // Fund Services Section
+                'funds.services.title': '我們的基金服務',
+                'funds.services.description': '為投資者提供全球化、定制化的基金註冊、架構設計和稅務籌劃服務，助力客戶在複雜的全球投資環境中脫穎而出。',
+                
+                // Hong Kong Limited Partnership Fund
+                'funds.hklpf.title': '香港有限合夥基金代理註冊服務',
+                'funds.hklpf.description': '香港有限合夥基金（Limited Partnership Fund, LPF）是近年來全球投資者在香港設立基金的熱門選擇。我們提供全方位的代理註冊服務，包括：',
+                'funds.hklpf.registration.title': '基金註冊與設立：',
+                'funds.hklpf.registration.description': '協助客戶在香港完成有限合夥基金的註冊手續，確保符合香港金融管理局的法規要求。',
+                'funds.hklpf.legal.title': '法律與稅務諮詢：',
+                'funds.hklpf.legal.description': '提供有關香港有限合夥基金的法律框架、稅務政策以及合規要求的專業建議。',
+                'funds.hklpf.operational.title': '運營支援：',
+                'funds.hklpf.operational.description': '提供基金運營所需的持續支援服務，如資金管理、合夥人關係管理、會計及審計服務等。',
+                'funds.hklpf.conclusion': '我們深知每個投資者的需求不同，因此能夠為您量身定制適合的註冊及運營方案，確保您的基金能夠順利運行，符合香港及全球相關的法律法規。',
+                
+                // Global Fund Consulting
+                'funds.global.title': '全球基金諮詢服務',
+                'funds.global.description': '在全球市場中，選擇適合的基金結構和投資策略對於投資者的成功至關重要。我們為全球客戶提供高端的基金架構諮詢服務，主要包括：',
+                'funds.global.structure.title': '基金架構設計：',
+                'funds.global.structure.description': '根據您和投資者的需求，我們提供量身定制的基金架構設計，涵蓋：',
+                'funds.global.hklpf': '香港有限合夥基金 (HKLPF)',
+                'funds.global.hkofc': '香港開放式基金 (HKOFC)',
+                'funds.global.spc': '開曼特別目的公司基金 (SPC Fund)',
+                'funds.global.bvi': '英屬維爾京群島基金 (BVI Fund)',
+                'funds.global.compliance.title': '合規與監管諮詢：',
+                'funds.global.compliance.description': '我們的專家團隊能夠為您提供關於不同市場監管法規的諮詢，幫助您在多國合規框架下開展業務。',
+                'funds.global.conclusion': '我們的目標是通過全面的諮詢服務，利用不同特點的基金架構，幫助客戶在全球投資環境中占據優勢。',
+                
+                // Tax Planning Services
+                'funds.tax.title': '稅務籌劃服務',
+                'funds.tax.description': '我們了解稅務規劃對基金投資者及其投資回報的重要性。我們的稅務籌劃服務專注於為客戶制定優化稅務結構，確保合規同時最大化稅務效益。具體服務內容包括：',
+                'funds.tax.global.title': '全球稅務結構設計：',
+                'funds.tax.global.description': '為客戶量身定制全球稅務結構，確保在不同國家和地區的稅務負擔最小化，並符合當地的稅法規定。',
+                'funds.tax.compliance.title': '稅務合規與風險管理：',
+                'funds.tax.compliance.description': '我們幫助客戶識別和管理可能的稅務風險，確保投資結構在法律框架下合法合規。',
+                'funds.tax.offshore.title': '開曼、BVI 等離岸基金稅務優化：',
+                'funds.tax.offshore.description': '專注於為客戶提供開曼群島、英屬維爾京群島等離岸基金的稅務籌劃，幫助客戶在全球範圍內合理避稅，同時避免潛在的稅務風險。',
+                'funds.tax.crossborder.title': '跨境稅務籌劃：',
+                'funds.tax.crossborder.description': '為跨境投資提供稅務優化建議，包括跨國基金投資的稅務合規及結構設計，幫助客戶實現全球稅務規劃最優解。',
+                'funds.tax.conclusion': '我們的稅務專家與全球領先的稅務顧問合作，確保客戶的基金結構既符合國際標準，又能在合法的框架下實現稅務最優化。',
 
                 // About Page - Values Section
                 'about.values.title': '我們的價值觀',
@@ -683,6 +765,47 @@ class I18n {
                 'funds.schedule-consultation': '预约咨询',
                 'funds.our-services': '我们的服务',
                 'funds.comprehensive-services.title': '全方位基金服务',
+                
+                // Fund Services Section
+                'funds.services.title': '我们的基金服务',
+                'funds.services.description': '为投资者提供全球化、定制化的基金注册、架构设计和税务筹划服务，助力客户在复杂的全球投资环境中脱颖而出。',
+                
+                // Hong Kong Limited Partnership Fund
+                'funds.hklpf.title': '香港有限合伙基金代理注册服务',
+                'funds.hklpf.description': '香港有限合伙基金（Limited Partnership Fund, LPF）是近年来全球投资者在香港设立基金的热门选择。我们提供全方位的代理注册服务，包括：',
+                'funds.hklpf.registration.title': '基金注册与设立：',
+                'funds.hklpf.registration.description': '协助客户在香港完成有限合伙基金的注册手续，确保符合香港金融管理局的法规要求。',
+                'funds.hklpf.legal.title': '法律与税务咨询：',
+                'funds.hklpf.legal.description': '提供有关香港有限合伙基金的法律框架、税务政策以及合规要求的专业建议。',
+                'funds.hklpf.operational.title': '运营支持：',
+                'funds.hklpf.operational.description': '提供基金运营所需的持续支持服务，如资金管理、合伙人关系管理、会计及审计服务等。',
+                'funds.hklpf.conclusion': '我们深知每个投资者的需求不同，因此能够为您量身定制适合的注册及运营方案，确保您的基金能够顺利运行，符合香港及全球相关的法律法规。',
+                
+                // Global Fund Consulting
+                'funds.global.title': '全球基金咨询服务',
+                'funds.global.description': '在全球市场中，选择适合的基金结构和投资策略对于投资者的成功至关重要。我们为全球客户提供高端的基金架构咨询服务，主要包括：',
+                'funds.global.structure.title': '基金架构设计：',
+                'funds.global.structure.description': '根据您和投资者的需求，我们提供量身定制的基金架构设计，涵盖：',
+                'funds.global.hklpf': '香港有限合伙基金 (HKLPF)',
+                'funds.global.hkofc': '香港开放式基金 (HKOFC)',
+                'funds.global.spc': '开曼特别目的公司基金 (SPC Fund)',
+                'funds.global.bvi': '英属维尔京群岛基金 (BVI Fund)',
+                'funds.global.compliance.title': '合规与监管咨询：',
+                'funds.global.compliance.description': '我们的专家团队能够为您提供关于不同市场监管法规的咨询，帮助您在多国合规框架下开展业务。',
+                'funds.global.conclusion': '我们的目标是通过全面的咨询服务，利用不同特点的基金架构，帮助客户在全球投资环境中占据优势。',
+                
+                // Tax Planning Services
+                'funds.tax.title': '税务筹划服务',
+                'funds.tax.description': '我们了解税务规划对基金投资者及其投资回报的重要性。我们的税务筹划服务专注于为客户制定优化税务结构，确保合规同时最大化税务效益。具体服务内容包括：',
+                'funds.tax.global.title': '全球税务结构设计：',
+                'funds.tax.global.description': '为客户量身定制全球税务结构，确保在不同国家和地区的税务负担最小化，并符合当地的税法规定。',
+                'funds.tax.compliance.title': '税务合规与风险管理：',
+                'funds.tax.compliance.description': '我们帮助客户识别和管理可能的税务风险，确保投资结构在法律框架下合法合规。',
+                'funds.tax.offshore.title': '开曼、BVI 等离岸基金税务优化：',
+                'funds.tax.offshore.description': '专注于为客户提供开曼群岛、英属维尔京群岛等离岸基金的税务筹划，帮助客户在全球范围内合理避税，同时避免潜在的税务风险。',
+                'funds.tax.crossborder.title': '跨境税务筹划：',
+                'funds.tax.crossborder.description': '为跨境投资提供税务优化建议，包括跨国基金投资的税务合规及结构设计，帮助客户实现全球税务规划最优解。',
+                'funds.tax.conclusion': '我们的税务专家与全球领先的税务顾问合作，确保客户的基金结构既符合国际标准，又能在合法的框架下实现税务最优化。',
 
                 // About Page - Values Section
                 'about.values.title': '我们的价值观',
