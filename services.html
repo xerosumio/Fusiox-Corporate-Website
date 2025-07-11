@@ -168,9 +168,12 @@
                         <p data-i18n="services.hklpf.description">Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.</p>
                         <div class="card-actions justify-between items-center">
                             <span class="text-2xl font-bold text-primary">USD 2,500</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
-                            </button>
+                            <div class="flex space-x-2">
+                                <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
+                                    <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
+                                </button>
+                                <button class="btn btn-outline btn-sm service-compare-btn" data-service="hklpf">Compare</button>
+                            </div>
                         </div>
                         <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
                             <h4 class="font-semibold mb-2">Includes:</h4>
@@ -193,9 +196,12 @@
                         <p data-i18n="services.company-secretary.description">Professional company secretary services to ensure compliance with Hong Kong corporate regulations and statutory requirements.</p>
                         <div class="card-actions justify-between items-center">
                             <span class="text-2xl font-bold text-primary">USD 1,180</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
-                            </button>
+                            <div class="flex space-x-2">
+                                <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
+                                    <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
+                                </button>
+                                <button class="btn btn-outline btn-sm service-compare-btn" data-service="company-secretary">Compare</button>
+                            </div>
                         </div>
                         <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
                             <h4 class="font-semibold mb-2">Includes:</h4>
@@ -326,6 +332,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/sticky-header.js"></script>
+    <script src="assets/js/service-comparison.js"></script>
+    <script src="assets/js/loading-animations.js"></script>
+    <script src="assets/js/modal-system.js"></script>
+    <script src="assets/js/scroll-progress.js"></script>
+    <script src="assets/js/mobile-touch.js"></script>
     <script>
         AOS.init({
             duration: 1000,

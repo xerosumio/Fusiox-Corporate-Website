@@ -15,6 +15,48 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         
+        /* Enhanced Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%);
+            animation: corporateShimmer 8s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes corporateShimmer {
+            0%, 100% { 
+                transform: translateX(-100%) translateY(-100%) rotate(45deg); 
+                opacity: 0;
+            }
+            50% { 
+                transform: translateX(100%) translateY(100%) rotate(45deg); 
+                opacity: 0.3;
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
         /* Smooth transitions */
         .card, .btn, .navbar a, .step {
             transition: all 0.3s ease;
@@ -124,18 +166,30 @@
     </div>
 
     <!-- Hero Section -->
-    <div class="hero min-h-[50vh]" style="background-image: url('assets/images/hk.jpg'); background-size: cover; background-position: center;">
-        <div class="hero-overlay bg-opacity-70"></div>
+    <div class="hero min-h-[60vh]" style="background-image: url('assets/images/bruce-lee-statue.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="hero-overlay" style="background: linear-gradient(90deg, rgba(30,41,59,0.25) 0%, rgba(59,130,246,0.12) 100%);"></div>
         <div class="hero-content text-center text-neutral-content">
-            <div class="max-w-md">
-                <h1 class="text-5xl font-bold" data-aos="fade-up" data-i18n="how-it-works.hero.title">How It Works</h1>
-                <p class="py-6" data-aos="fade-up" data-aos-delay="200" data-i18n="how-it-works.hero.subtitle">Simple, straightforward process to get your business incorporated quickly and efficiently.</p>
+            <div class="max-w-2xl">
+                <h1 class="text-5xl font-bold hero-title mb-6 leading-tight text-white drop-shadow-lg" data-aos="fade-up" style="letter-spacing: 1px;">
+                    How It <span class="text-blue-400">Works</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-8 hero-subtitle text-white/90 drop-shadow" data-aos="fade-up" data-aos-delay="200" style="font-weight: 400;">
+                    Simple, straightforward process to get your business incorporated quickly and efficiently in Hong Kong's dynamic corporate landscape.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="400">
+                    <a href="contact.html" class="btn btn-primary btn-lg px-8 py-3 text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-xl">
+                        Get Started Today
+                    </a>
+                    <a href="#process" class="btn btn-outline btn-lg px-8 py-3 text-lg font-semibold text-white border-white hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-300">
+                        View Process
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Process Steps -->
-    <div class="py-16">
+    <div id="process" class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="how-it-works.process.title">Our Simple 4-Step Process</h2>
             

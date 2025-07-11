@@ -4,6 +4,8 @@ class I18n {
         this.currentLanguage = this.getStoredLanguage() || 'en';
         this.translations = {};
         this.loadTranslations();
+        this.updatePageContent();
+        this.updateHTMLLang();
     }
 
     getStoredLanguage() {
@@ -15,6 +17,11 @@ class I18n {
         localStorage.setItem('fusiox-language', language);
         this.updatePageContent();
         this.updateHTMLLang();
+        
+        // Dispatch custom event for Alpine.js components
+        window.dispatchEvent(new CustomEvent('fusiox-language-changed', {
+            detail: { language: language }
+        }));
     }
 
     updateHTMLLang() {
@@ -349,7 +356,58 @@ class I18n {
                 'page.title.index': 'Fusiox - Professional Incorporation Services',
 
                 // Common
-                'common.language': 'Language'
+                'common.language': 'Language',
+
+                // Diagram tooltips
+                'diagram.gp.title': 'GP (General Partner)',
+                'diagram.gp.desc': 'The general partner is responsible for fund management and operations.',
+                'diagram.im.title': 'Hong Kong Type 4/9 IM',
+                'diagram.im.desc': 'Licensed investment manager providing investment advice and management services.',
+                'diagram.lp.title': 'LP (Limited Partner)',
+                'diagram.lp.desc': 'Limited partners provide capital but do not participate in management.',
+                'diagram.hklpf.title': 'HKLPF',
+                'diagram.hklpf.desc': 'The limited partnership fund entity registered in Hong Kong.',
+                'diagram.target1.title': 'Investment Target 1',
+                'diagram.target1.desc': 'Specific asset or project invested by the fund.',
+                'diagram.target2.title': 'Investment Target 2',
+                'diagram.target2.desc': 'Specific asset or project invested by the fund.',
+                // Diagram detail panels
+                'diagram.gp.detail.title': 'General Partner (GP)',
+                'diagram.gp.detail.1': '• Responsible for daily management and operational decisions of the fund',
+                'diagram.gp.detail.2': '• Bears unlimited liability for fund debts',
+                'diagram.gp.detail.3': '• Formulates investment strategies and decisions',
+                'diagram.gp.detail.4': '• Manages the fund portfolio and risk control',
+                'diagram.gp.detail.5': '• Reports fund performance and operations to limited partners',
+                'diagram.im.detail.title': 'Investment Manager (IM)',
+                'diagram.im.detail.1': '• Holds Hong Kong SFC Type 4 and/or 9 licenses',
+                'diagram.im.detail.2': '• Provides professional investment advice and asset management services',
+                'diagram.im.detail.3': '• Executes investment strategies and trading instructions',
+                'diagram.im.detail.4': '• Conducts investment research and market analysis',
+                'diagram.im.detail.5': '• Ensures compliance with regulatory requirements',
+                'diagram.lp.detail.title': 'Limited Partners (LP)',
+                'diagram.lp.detail.1': '• Provide capital but do not participate in fund management',
+                'diagram.lp.detail.2': '• Enjoy limited liability protection',
+                'diagram.lp.detail.3': '• Receive returns based on investment shares',
+                'diagram.lp.detail.4': '• Entitled to fund operation and performance reports',
+                'diagram.lp.detail.5': '• May participate in voting on major matters',
+                'diagram.hklpf.detail.title': 'Hong Kong Limited Partnership Fund (HKLPF)',
+                'diagram.hklpf.detail.1': '• Limited partnership fund entity registered in Hong Kong',
+                'diagram.hklpf.detail.2': '• Enjoys Hong Kong\'s favorable tax environment',
+                'diagram.hklpf.detail.3': '• Protected by Hong Kong legal and regulatory framework',
+                'diagram.hklpf.detail.4': '• Facilitates cross-border investment and capital flow',
+                'diagram.hklpf.detail.5': '• Provides a professional fund management structure',
+                'diagram.target1.detail.title': 'Investment Target',
+                'diagram.target1.detail.1': '• Specific asset or project invested by the fund',
+                'diagram.target1.detail.2': '• May include equity, debt, real estate, etc.',
+                'diagram.target1.detail.3': '• Diversified allocation according to fund strategy',
+                'diagram.target1.detail.4': '• Regularly evaluates investment value and risk',
+                'diagram.target1.detail.5': '• Aims for capital appreciation and returns',
+                'diagram.target2.detail.title': 'Investment Target',
+                'diagram.target2.detail.1': '• Specific asset or project invested by the fund',
+                'diagram.target2.detail.2': '• May include equity, debt, real estate, etc.',
+                'diagram.target2.detail.3': '• Diversified allocation according to fund strategy',
+                'diagram.target2.detail.4': '• Regularly evaluates investment value and risk',
+                'diagram.target2.detail.5': '• Aims for capital appreciation and returns',
             },
             'zh-Hant': {
                 // Navigation
@@ -673,7 +731,58 @@ class I18n {
                 'page.title.index': 'Fusiox - 專業註冊服務',
 
                 // Common
-                'common.language': '語言'
+                'common.language': '語言',
+
+                // Diagram tooltips
+                'diagram.gp.title': '普通合夥人 (GP)',
+                'diagram.gp.desc': '普通合夥人負責基金管理和運營。',
+                'diagram.im.title': '香港4/9號牌投資經理',
+                'diagram.im.desc': '持牌投資經理提供投資建議和管理服務。',
+                'diagram.lp.title': '有限合夥人 (LP)',
+                'diagram.lp.desc': '有限合夥人提供資本但不參與管理。',
+                'diagram.hklpf.title': '有限合夥基金 (HKLPF)',
+                'diagram.hklpf.desc': '在香港註冊的有限合夥基金主體。',
+                'diagram.target1.title': '投資標的 1',
+                'diagram.target1.desc': '基金投資的具體資產或項目。',
+                'diagram.target2.title': '投資標的 2',
+                'diagram.target2.desc': '基金投資的具體資產或項目。',
+                // Diagram detail panels
+                'diagram.gp.detail.title': '普通合夥人 (GP)',
+                'diagram.gp.detail.1': '• 負責基金的日常管理和運營決策',
+                'diagram.gp.detail.2': '• 承擔無限責任，對基金債務負責',
+                'diagram.gp.detail.3': '• 制定投資策略和投資決策',
+                'diagram.gp.detail.4': '• 管理基金的投資組合和風險控制',
+                'diagram.gp.detail.5': '• 向有限合夥人報告基金業績和運營情況',
+                'diagram.im.detail.title': '投資經理 (IM)',
+                'diagram.im.detail.1': '• 持有香港證監會4號和/或9號牌照',
+                'diagram.im.detail.2': '• 提供專業的投資建議和資產管理服務',
+                'diagram.im.detail.3': '• 執行投資策略和交易指令',
+                'diagram.im.detail.4': '• 進行投資研究和市場分析',
+                'diagram.im.detail.5': '• 確保符合監管要求和合規標準',
+                'diagram.lp.detail.title': '有限合夥人 (LP)',
+                'diagram.lp.detail.1': '• 提供資本但不參與基金管理',
+                'diagram.lp.detail.2': '• 享有有限責任保護',
+                'diagram.lp.detail.3': '• 根據投資份額獲得收益分配',
+                'diagram.lp.detail.4': '• 有權獲得基金運營和業績報告',
+                'diagram.lp.detail.5': '• 可參與重大事項的投票決策',
+                'diagram.hklpf.detail.title': '香港有限合夥基金 (HKLPF)',
+                'diagram.hklpf.detail.1': '• 在香港註冊的有限合夥基金實體',
+                'diagram.hklpf.detail.2': '• 享受香港優惠的稅務環境',
+                'diagram.hklpf.detail.3': '• 受香港法律和監管框架保護',
+                'diagram.hklpf.detail.4': '• 便於進行跨境投資和資金流動',
+                'diagram.hklpf.detail.5': '• 提供專業的基金管理架構',
+                'diagram.target1.detail.title': '投資標的',
+                'diagram.target1.detail.1': '• 基金投資的具體資產或項目',
+                'diagram.target1.detail.2': '• 可包括股權、債權、房地產等',
+                'diagram.target1.detail.3': '• 根據基金策略進行多元化配置',
+                'diagram.target1.detail.4': '• 定期評估投資價值和風險',
+                'diagram.target1.detail.5': '• 目標實現資本增值和收益分配',
+                'diagram.target2.detail.title': '投資標的',
+                'diagram.target2.detail.1': '• 基金投資的具體資產或項目',
+                'diagram.target2.detail.2': '• 可包括股權、債權、房地產等',
+                'diagram.target2.detail.3': '• 根據基金策略進行多元化配置',
+                'diagram.target2.detail.4': '• 定期評估投資價值和風險',
+                'diagram.target2.detail.5': '• 目標實現資本增值和收益分配',
             },
             'zh-Hans': {
                 // Navigation
@@ -1005,7 +1114,58 @@ class I18n {
                 'page.title.index': 'Fusiox - 专业注册服务',
 
                 // Common
-                'common.language': '语言'
+                'common.language': '语言',
+
+                // Diagram tooltips
+                'diagram.gp.title': '普通合伙人 (GP)',
+                'diagram.gp.desc': '普通合伙人负责基金管理和运营。',
+                'diagram.im.title': '香港4/9号牌投资经理',
+                'diagram.im.desc': '持牌投资经理提供投资建议和管理服务。',
+                'diagram.lp.title': '有限合伙人 (LP)',
+                'diagram.lp.desc': '有限合伙人提供资本但不参与管理。',
+                'diagram.hklpf.title': '有限合伙基金 (HKLPF)',
+                'diagram.hklpf.desc': '在香港注册的有限合伙基金主體。',
+                'diagram.target1.title': '投資標的 1',
+                'diagram.target1.desc': '基金投資的具體資產或項目。',
+                'diagram.target2.title': '投資標的 2',
+                'diagram.target2.desc': '基金投資的具體資產或項目。',
+                // Diagram detail panels
+                'diagram.gp.detail.title': '普通合夥人 (GP)',
+                'diagram.gp.detail.1': '• 負責基金的日常管理和運營決策',
+                'diagram.gp.detail.2': '• 承擔無限責任，對基金債務負責',
+                'diagram.gp.detail.3': '• 制定投資策略和投資決策',
+                'diagram.gp.detail.4': '• 管理基金的投資組合和風險控制',
+                'diagram.gp.detail.5': '• 向有限合夥人報告基金業績和運營情況',
+                'diagram.im.detail.title': '投資經理 (IM)',
+                'diagram.im.detail.1': '• 持有香港證監會4號和/或9號牌照',
+                'diagram.im.detail.2': '• 提供專業的投資建議和資產管理服務',
+                'diagram.im.detail.3': '• 執行投資策略和交易指令',
+                'diagram.im.detail.4': '• 進行投資研究和市場分析',
+                'diagram.im.detail.5': '• 確保符合監管要求和合規標準',
+                'diagram.lp.detail.title': '有限合夥人 (LP)',
+                'diagram.lp.detail.1': '• 提供資本但不參與基金管理',
+                'diagram.lp.detail.2': '• 享有有限責任保護',
+                'diagram.lp.detail.3': '• 根據投資份額獲得收益分配',
+                'diagram.lp.detail.4': '• 有權獲得基金運營和業績報告',
+                'diagram.lp.detail.5': '• 可參與重大事項的投票決策',
+                'diagram.hklpf.detail.title': '香港有限合夥基金 (HKLPF)',
+                'diagram.hklpf.detail.1': '• 在香港註冊的有限合夥基金實體',
+                'diagram.hklpf.detail.2': '• 享受香港優惠的稅務環境',
+                'diagram.hklpf.detail.3': '• 受香港法律和監管框架保護',
+                'diagram.hklpf.detail.4': '• 便於進行跨境投資和資金流動',
+                'diagram.hklpf.detail.5': '• 提供專業的基金管理架構',
+                'diagram.target1.detail.title': '投資標的',
+                'diagram.target1.detail.1': '• 基金投資的具體資產或項目',
+                'diagram.target1.detail.2': '• 可包括股權、債權、房地產等',
+                'diagram.target1.detail.3': '• 根據基金策略進行多元化配置',
+                'diagram.target1.detail.4': '• 定期評估投資價值和風險',
+                'diagram.target1.detail.5': '• 目標實現資本增值和收益分配',
+                'diagram.target2.detail.title': '投資標的',
+                'diagram.target2.detail.1': '• 基金投資的具體資產或項目',
+                'diagram.target2.detail.2': '• 可包括股權、債權、房地產等',
+                'diagram.target2.detail.3': '• 根據基金策略進行多元化配置',
+                'diagram.target2.detail.4': '• 定期評估投資價值和風險',
+                'diagram.target2.detail.5': '• 目標實現資本增值和收益分配',
             }
         };
     }
@@ -1068,9 +1228,20 @@ window.i18n = new I18n();
 // Alpine.js data for language switching
 document.addEventListener('alpine:init', () => {
     Alpine.data('languageSelector', () => ({
-        currentLanguage: window.i18n.currentLanguage,
+        currentLanguage: window.i18n?.currentLanguage || 'en',
         isOpen: false,
-        languages: window.i18n.getSupportedLanguages(),
+        languages: window.i18n?.getSupportedLanguages() || [
+            { code: 'en', name: 'English', nativeName: 'English' },
+            { code: 'zh-Hant', name: 'Traditional Chinese', nativeName: '繁體中文' },
+            { code: 'zh-Hans', name: 'Simplified Chinese', nativeName: '简体中文' }
+        ],
+
+        init() {
+            // Listen for language changes from other sources
+            window.addEventListener('fusiox-language-changed', (event) => {
+                this.currentLanguage = event.detail.language;
+            });
+        },
 
         get currentLanguageObj() {
             return this.languages.find(lang => lang.code === this.currentLanguage) || this.languages[0];
@@ -1078,7 +1249,9 @@ document.addEventListener('alpine:init', () => {
 
         changeLanguage(languageCode) {
             this.currentLanguage = languageCode;
-            window.i18n.setLanguage(languageCode);
+            if (window.i18n) {
+                window.i18n.setLanguage(languageCode);
+            }
             this.isOpen = false;
         },
 

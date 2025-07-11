@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="assets/css/sticky-header.css" rel="stylesheet">
+    <link href="assets/css/enhanced-contact-form.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         
@@ -129,11 +130,13 @@
     <div class="py-16">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Contact Form -->
-                <div class="card bg-base-100 shadow-xl" data-aos="zoom-in-right">
+                <!-- Enhanced Contact Form -->
+                <div class="card enhanced-form-card shadow-xl" data-aos="zoom-in-right">
                     <div class="card-body">
                         <h2 class="card-title text-2xl mb-6" data-i18n="contact.form.title">Get Free Consultation</h2>
-                        <form action="mailto:info@fusiox.ai" method="POST" x-data="contactForm()" @submit.prevent="handleSubmit">
+                        <form id="enhanced-contact-form" action="mailto:info@fusiox.ai" method="POST">
+                            <!-- Progress indicator and form fields will be injected here by JavaScript -->
+                            
                             <div class="form-control mb-4">
                                 <label class="label">
                                     <span class="label-text" data-i18n="contact.form.full-name">Full Name *</span>
@@ -141,7 +144,6 @@
                                 <input 
                                     type="text" 
                                     name="name" 
-                                    x-model="form.name"
                                     data-i18n-placeholder="contact.form.placeholder.full-name"
                                     placeholder="Your full name" 
                                     class="input input-bordered w-full" 
@@ -156,7 +158,6 @@
                                 <input 
                                     type="email" 
                                     name="email" 
-                                    x-model="form.email"
                                     data-i18n-placeholder="contact.form.placeholder.email"
                                     placeholder="your.email@example.com" 
                                     class="input input-bordered w-full" 
@@ -170,10 +171,8 @@
                                 </label>
                                 <div class="flex space-x-2">
                                     <select 
-                                        name="country_code" 
-                                        x-model="form.countryCode" 
+                                        name="countryCode" 
                                         class="select select-bordered w-auto min-w-[180px]"
-                                        @change="validatePhone()"
                                     >
                                         <option value="+852">+852 (Hong Kong)</option>
                                         <option value="+86">+86 (China)</option>
@@ -185,15 +184,11 @@
                                     <input 
                                         type="tel" 
                                         name="phone" 
-                                        x-model="form.phone"
                                         data-i18n-placeholder="contact.form.placeholder.phone"
                                         placeholder="Enter phone number" 
                                         class="input input-bordered flex-1" 
-                                        @input="validatePhone()"
-                                        @blur="validatePhone()"
                                     />
                                 </div>
-                                <div class="text-error text-sm mt-1" x-show="phoneError" x-text="phoneError" x-transition></div>
                             </div>
 
                             <div class="form-control mb-4">
@@ -202,8 +197,7 @@
                                 </label>
                                 <input 
                                     type="text" 
-                                    name="business_name" 
-                                    x-model="form.businessName"
+                                    name="businessName" 
                                     data-i18n-placeholder="contact.form.placeholder.business-name"
                                     placeholder="Your business name (if you have one)" 
                                     class="input input-bordered w-full" 
@@ -214,7 +208,7 @@
                                 <label class="label">
                                     <span class="label-text" data-i18n="contact.form.service-interest">Service Interest</span>
                                 </label>
-                                <select name="service" x-model="form.service" class="select select-bordered w-full">
+                                <select name="service" class="select select-bordered w-full">
                                     <option disabled selected>Select a service</option>
                                     <option value="HKLPF Registration">HKLPF Registration</option>
                                     <option value="Company Secretary Service">Company Secretary Service</option>
@@ -226,13 +220,29 @@
                                 </select>
                             </div>
 
+                            <div class="form-control mb-4">
+                                <label class="label">
+                                    <span class="label-text">Priority Level</span>
+                                </label>
+                                <div class="urgency-toggle">
+                                    <label class="cursor-pointer label">
+                                        <span class="label-text mr-3">Standard</span>
+                                        <input type="radio" name="urgency" value="normal" class="radio radio-primary" checked />
+                                    </label>
+                                    <label class="cursor-pointer label ml-6">
+                                        <span class="label-text mr-3">Urgent</span>
+                                        <input type="radio" name="urgency" value="urgent" class="radio radio-error" />
+                                    </label>
+                                </div>
+                                <div class="urgency-indicator text-sm text-gray-500 mt-2">Standard response time applies</div>
+                            </div>
+
                             <div class="form-control mb-6">
                                 <label class="label">
                                     <span class="label-text" data-i18n="contact.form.message">Message *</span>
                                 </label>
                                 <textarea 
                                     name="message" 
-                                    x-model="form.message"
                                     data-i18n-placeholder="contact.form.placeholder.message"
                                     placeholder="Tell us about your business and how we can help..." 
                                     class="textarea textarea-bordered h-32 w-full" 
@@ -240,27 +250,9 @@
                                 ></textarea>
                             </div>
 
-
-
-                            <button type="submit" class="btn btn-primary w-full" :disabled="submitting">
-                                <span x-show="!submitting">Send Message</span>
-                                <span x-show="submitting" class="loading loading-spinner loading-sm"></span>
-                                <span x-show="submitting">Sending...</span>
+                            <button type="submit" class="enhanced-submit-btn w-full">
+                                Send Message
                             </button>
-
-                            <div x-show="success" class="alert alert-success mt-4" x-transition>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span>Thank you! We'll get back to you within 24 hours.</span>
-                            </div>
-
-                            <div x-show="error" class="alert alert-error mt-4" x-transition>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span>There was an error sending your message. Please try again.</span>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -402,101 +394,10 @@
         </div>
     </footer>
 
-    <script>
-        function contactForm() {
-            return {
-                form: {
-                    name: '',
-                    email: '',
-                    countryCode: '+852',
-                    phone: '',
-                    businessName: '',
-                    service: '',
-                    message: ''
-                },
-                phoneError: '',
-                submitting: false,
-                success: false,
-                error: false,
-                
-                validatePhone() {
-                    this.phoneError = '';
-                    
-                    if (!this.form.phone) {
-                        return true; // Phone is optional
-                    }
-                    
-                    // Remove all non-digit characters for validation
-                    const cleanPhone = this.form.phone.replace(/\D/g, '');
-                    
-                    // Define validation rules for each country
-                    const validationRules = {
-                        '+852': { length: 8, name: 'Hong Kong' },
-                        '+86': { length: 11, name: 'China' },
-                        '+1': { length: 10, name: 'USA' },
-                        '+44': { minLength: 10, maxLength: 11, name: 'UK' },
-                        '+65': { length: 8, name: 'Singapore' },
-                        '+60': { minLength: 9, maxLength: 10, name: 'Malaysia' }
-                    };
-                    
-                    const rule = validationRules[this.form.countryCode];
-                    if (!rule) {
-                        return true; // Unknown country code, allow any format
-                    }
-                    
-                    // Check length constraints
-                    if (rule.length) {
-                        if (cleanPhone.length !== rule.length) {
-                            this.phoneError = `Please enter a valid phone number for ${rule.name} (${rule.length} digits).`;
-                            return false;
-                        }
-                    } else if (rule.minLength && rule.maxLength) {
-                        if (cleanPhone.length < rule.minLength || cleanPhone.length > rule.maxLength) {
-                            this.phoneError = `Please enter a valid phone number for ${rule.name} (${rule.minLength}-${rule.maxLength} digits).`;
-                            return false;
-                        }
-                    }
-                    
-                    return true;
-                },
-                
-                handleSubmit(event) {
-                    // Validate phone number before submission
-                    if (!this.validatePhone()) {
-                        return false;
-                    }
-                    
-                    this.submitting = true;
-                    this.success = false;
-                    this.error = false;
-                    
-                    // Let the form submit naturally to Formspree
-                    // The success/error handling would depend on Formspree configuration
-                    setTimeout(() => {
-                        this.submitting = false;
-                        this.success = true;
-                        this.resetForm();
-                    }, 2000);
-                },
-                
-                resetForm() {
-                    this.form = {
-                        name: '',
-                        email: '',
-                        countryCode: '+852',
-                        phone: '',
-                        businessName: '',
-                        service: '',
-                        message: ''
-                    };
-                    this.phoneError = '';
-                }
-            }
-        }
-    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/sticky-header.js"></script>
+    <script src="assets/js/enhanced-contact-form.js"></script>
     <script>
         AOS.init({
             duration: 1000,
