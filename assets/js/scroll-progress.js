@@ -22,112 +22,210 @@ class ScrollProgress {
     injectProgressStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            /* Refined Scroll Progress Styles */
+            /* Enhanced Scroll Progress Styles */
             #reading-progress {
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
                 border-radius: 50%;
-                box-shadow: 0 2px 16px rgba(80, 80, 160, 0.13), 0 1.5px 8px rgba(80, 80, 160, 0.08);
+                box-shadow: 
+                    0 8px 32px rgba(79, 142, 247, 0.25),
+                    0 4px 16px rgba(79, 142, 247, 0.15),
+                    0 2px 8px rgba(0, 0, 0, 0.1);
                 background: none;
+                animation: breathe 4s ease-in-out infinite;
             }
+            
+            @keyframes breathe {
+                0%, 100% { 
+                    transform: scale(1);
+                    box-shadow: 
+                        0 8px 32px rgba(79, 142, 247, 0.25),
+                        0 4px 16px rgba(79, 142, 247, 0.15),
+                        0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                50% { 
+                    transform: scale(1.02);
+                    box-shadow: 
+                        0 12px 48px rgba(79, 142, 247, 0.35),
+                        0 6px 24px rgba(79, 142, 247, 0.25),
+                        0 3px 12px rgba(0, 0, 0, 0.15);
+                }
+            }
+            
             .reading-progress-container {
-                width: 68px;
-                height: 68px;
+                width: 72px;
+                height: 72px;
                 position: relative;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
+            
             .progress-background {
-                background: rgba(255,255,255,0.55);
-                box-shadow: 0 2px 8px rgba(80, 80, 160, 0.08) inset, 0 0.5px 2px rgba(80, 80, 160, 0.06);
+                background: linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.95) 0%, 
+                    rgba(249, 250, 251, 0.9) 50%,
+                    rgba(243, 244, 246, 0.85) 100%);
+                box-shadow: 
+                    0 4px 16px rgba(79, 142, 247, 0.1) inset,
+                    0 2px 8px rgba(0, 0, 0, 0.05) inset,
+                    0 1px 3px rgba(255, 255, 255, 0.8) inset;
                 border-radius: 50%;
-                border: 1.5px solid rgba(120,120,180,0.08);
+                border: 2px solid rgba(79, 142, 247, 0.15);
+                transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             }
+            
             .progress-svg {
-                filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.13));
-                transition: filter 0.3s;
+                filter: drop-shadow(0 4px 12px rgba(79, 142, 247, 0.2));
+                transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 display: block;
                 margin: 0 auto;
             }
+            
             .reading-progress-circle {
-                stroke-width: 6.5;
-                transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                stroke-width: 3;
+                transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 stroke-linecap: round;
                 stroke: url(#progressGradient);
-            }
-            .progress-bg-circle {
-                stroke-width: 3.5;
-            }
-            .reading-progress-text {
-                font-size: 1.25rem;
-                font-weight: 800;
-                fill: #232946;
-                text-anchor: middle;
-                dominant-baseline: middle;
-                filter: drop-shadow(0 1px 2px rgba(0,0,0,0.13));
-                paint-order: stroke fill;
-                stroke: #fff;
-                stroke-width: 0.7px;
-                letter-spacing: 0.5px;
-                alignment-baseline: middle;
-            }
-            #reading-progress:hover {
-                transform: scale(1.06);
-                box-shadow: 0 8px 32px rgba(102, 126, 234, 0.13), 0 2px 8px rgba(0,0,0,0.08);
-            }
-            #reading-progress:active {
-                transform: scale(0.97);
-            }
-            @media (max-width: 768px) {
-                .reading-progress-container { width: 52px; height: 52px; }
-                .reading-progress-text { font-size: 0.95rem; }
+                animation: rotate 20s linear infinite;
             }
             
-            /* Milestone pulse animation */
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            
+            .progress-bg-circle {
+                stroke-width: 2;
+                stroke: rgba(79, 142, 247, 0.1);
+                transition: all 0.3s ease;
+            }
+            
+            .reading-progress-text {
+                font-size: 1.1rem;
+                font-weight: 700;
+                fill: #1f2937;
+                text-anchor: middle;
+                dominant-baseline: middle;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+                paint-order: stroke fill;
+                stroke: rgba(255, 255, 255, 0.8);
+                stroke-width: 0.5px;
+                letter-spacing: 0.3px;
+                alignment-baseline: middle;
+                transition: all 0.3s ease;
+            }
+            
+            #reading-progress:hover {
+                transform: scale(1.1);
+                box-shadow: 
+                    0 16px 64px rgba(79, 142, 247, 0.4),
+                    0 8px 32px rgba(79, 142, 247, 0.25),
+                    0 4px 16px rgba(0, 0, 0, 0.15);
+                animation: none;
+            }
+            
+            #reading-progress:active {
+                transform: scale(0.95);
+                transition: transform 0.1s ease-out;
+            }
+            
+            @media (max-width: 768px) {
+                .reading-progress-container { width: 60px; height: 60px; }
+                .reading-progress-text { font-size: 0.9rem; }
+            }
+            
+            /* Enhanced Milestone pulse animation */
             .milestone-pulse {
-                animation: milestonePulse 0.6s ease-out;
+                animation: milestonePulse 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             }
             
             @keyframes milestonePulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.15); }
-                100% { transform: scale(1); }
+                0% { 
+                    transform: scale(1);
+                    box-shadow: 
+                        0 8px 32px rgba(79, 142, 247, 0.25),
+                        0 4px 16px rgba(79, 142, 247, 0.15);
+                }
+                30% { 
+                    transform: scale(1.2);
+                    box-shadow: 
+                        0 16px 64px rgba(79, 142, 247, 0.4),
+                        0 8px 32px rgba(79, 142, 247, 0.25),
+                        0 0 0 8px rgba(79, 142, 247, 0.1);
+                }
+                60% { 
+                    transform: scale(1.1);
+                    box-shadow: 
+                        0 12px 48px rgba(79, 142, 247, 0.35),
+                        0 6px 24px rgba(79, 142, 247, 0.2),
+                        0 0 0 4px rgba(79, 142, 247, 0.05);
+                }
+                100% { 
+                    transform: scale(1);
+                    box-shadow: 
+                        0 8px 32px rgba(79, 142, 247, 0.25),
+                        0 4px 16px rgba(79, 142, 247, 0.15);
+                }
             }
             
-            /* Hover effects */
+            /* Enhanced Hover effects */
             #reading-progress:hover .progress-background {
                 background: linear-gradient(135deg, 
-                    rgba(255, 255, 255, 0.98) 0%, 
-                    rgba(239, 246, 255, 0.95) 100%);
+                    rgba(255, 255, 255, 1) 0%, 
+                    rgba(248, 250, 252, 0.98) 50%,
+                    rgba(241, 245, 249, 0.95) 100%);
                 box-shadow: 
-                    0 12px 40px rgba(102, 126, 234, 0.2),
+                    0 20px 60px rgba(79, 142, 247, 0.3),
+                    0 8px 32px rgba(79, 142, 247, 0.2),
                     0 4px 16px rgba(0, 0, 0, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                    inset 0 2px 4px rgba(255, 255, 255, 0.9),
+                    inset 0 -1px 2px rgba(79, 142, 247, 0.1);
+                border-color: rgba(79, 142, 247, 0.3);
             }
             
             #reading-progress:hover .progress-svg {
-                filter: drop-shadow(0 4px 16px rgba(102, 126, 234, 0.4));
+                filter: drop-shadow(0 8px 24px rgba(79, 142, 247, 0.4));
+                transform: scale(1.05);
             }
             
             #reading-progress:hover .reading-progress-circle {
-                stroke-width: 3;
-                animation: progressGlow 2s ease-in-out infinite;
+                stroke-width: 3.5;
+                animation: progressGlow 1.5s ease-in-out infinite;
+            }
+            
+            #reading-progress:hover .progress-bg-circle {
+                stroke: rgba(79, 142, 247, 0.2);
+                stroke-width: 2.5;
+            }
+            
+            #reading-progress:hover .reading-progress-text {
+                fill: #4F8EF7;
+                font-size: 1.15rem;
+                filter: drop-shadow(0 3px 6px rgba(79, 142, 247, 0.3));
             }
             
             @keyframes progressGlow {
                 0%, 100% { 
-                    filter: url(#progressGlow) drop-shadow(0 0 4px rgba(102, 126, 234, 0.5)); 
+                    filter: drop-shadow(0 0 8px rgba(79, 142, 247, 0.6)); 
+                    stroke-width: 3.5;
                 }
                 50% { 
-                    filter: url(#progressGlow) drop-shadow(0 0 8px rgba(102, 126, 234, 0.8)); 
+                    filter: drop-shadow(0 0 16px rgba(79, 142, 247, 0.8)); 
+                    stroke-width: 4;
                 }
             }
             
-            /* Active/click animation */
+            /* Enhanced Active/click animation */
             #reading-progress:active {
-                transform: scale(0.95);
-                transition: transform 0.1s ease-out;
+                transform: scale(0.93);
+                transition: transform 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+            
+            #reading-progress:active .progress-background {
+                background: linear-gradient(135deg, 
+                    rgba(79, 142, 247, 0.1) 0%, 
+                    rgba(59, 124, 232, 0.05) 100%);
             }
             
             /* Responsive adjustments */
@@ -148,36 +246,58 @@ class ScrollProgress {
             
             /* Enhanced back to top button */
             #back-to-top {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #4F8EF7 0%, #3b7ce8 50%, #2563eb 100%);
                 box-shadow: 
-                    0 4px 16px rgba(102, 126, 234, 0.3),
-                    0 2px 8px rgba(0, 0, 0, 0.1);
+                    0 8px 32px rgba(79, 142, 247, 0.4),
+                    0 4px 16px rgba(0, 0, 0, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            #back-to-top::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: left 0.5s;
             }
             
             #back-to-top:hover {
-                background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+                background: linear-gradient(135deg, #3b7ce8 0%, #2563eb 50%, #1d4ed8 100%);
                 box-shadow: 
-                    0 8px 32px rgba(102, 126, 234, 0.4),
-                    0 4px 16px rgba(0, 0, 0, 0.15);
-                transform: translateY(-2px);
+                    0 16px 64px rgba(79, 142, 247, 0.5),
+                    0 8px 32px rgba(79, 142, 247, 0.3),
+                    0 4px 16px rgba(0, 0, 0, 0.2);
+                transform: translateY(-4px) scale(1.05);
+            }
+            
+            #back-to-top:hover::before {
+                left: 100%;
             }
             
             #back-to-top:active {
                 transform: translateY(0) scale(0.95);
+                transition: transform 0.1s ease-out;
             }
         `;
         document.head.appendChild(style);
     }
 
     createProgressBar() {
-        // Create scroll progress bar
+        // Create scroll progress bar with enhanced styling
         const progressBar = document.createElement('div');
         progressBar.id = 'scroll-progress';
-        progressBar.className = 'fixed top-0 left-0 w-full h-1 z-40 bg-gradient-to-r from-blue-500 to-purple-600 transform scale-x-0 origin-left transition-transform duration-150';
+        progressBar.className = 'fixed top-0 left-0 w-full h-1 z-40 transform scale-x-0 origin-left transition-transform duration-150';
+        progressBar.style.background = 'linear-gradient(90deg, #4F8EF7 0%, #3b7ce8 50%, #2563eb 100%)';
+        progressBar.style.boxShadow = '0 2px 8px rgba(79, 142, 247, 0.3)';
         document.body.appendChild(progressBar);
 
         // Create reading progress indicator
@@ -220,9 +340,17 @@ class ScrollProgress {
                         <!-- Gradient Definition -->
                         <defs>
                             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#4F8EF7;stop-opacity:1" />
+                                <stop offset="25%" style="stop-color:#3b7ce8;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#2563eb;stop-opacity:1" />
+                                <stop offset="75%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#4F8EF7;stop-opacity:1" />
+                            </linearGradient>
+                            
+                            <linearGradient id="progressGradientActive" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#4F8EF7;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
                             </linearGradient>
                             
                             <filter id="progressGlow">
@@ -231,6 +359,10 @@ class ScrollProgress {
                                     <feMergeNode in="coloredBlur"/>
                                     <feMergeNode in="SourceGraphic"/>
                                 </feMerge>
+                            </filter>
+                            
+                            <filter id="progressShadow">
+                                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(79, 142, 247, 0.3)"/>
                             </filter>
                         </defs>
                     </svg>
@@ -400,6 +532,50 @@ class ScrollProgress {
         });
     }
 
+    celebrateCompletion() {
+        const readingProgress = document.getElementById('reading-progress');
+        if (!readingProgress) return;
+        
+        // Create celebration animation
+        readingProgress.style.animation = 'celebrateComplete 1.5s ease-in-out';
+        
+        // Add celebration styles if not already present
+        if (!document.querySelector('#celebration-styles')) {
+            const celebrationStyles = document.createElement('style');
+            celebrationStyles.id = 'celebration-styles';
+            celebrationStyles.textContent = `
+                @keyframes celebrateComplete {
+                    0% { 
+                        transform: scale(1); 
+                        filter: hue-rotate(0deg);
+                    }
+                    25% { 
+                        transform: scale(1.3) rotate(10deg); 
+                        filter: hue-rotate(90deg);
+                    }
+                    50% { 
+                        transform: scale(1.2) rotate(-5deg); 
+                        filter: hue-rotate(180deg);
+                    }
+                    75% { 
+                        transform: scale(1.25) rotate(5deg); 
+                        filter: hue-rotate(270deg);
+                    }
+                    100% { 
+                        transform: scale(1); 
+                        filter: hue-rotate(360deg);
+                    }
+                }
+            `;
+            document.head.appendChild(celebrationStyles);
+        }
+        
+        // Reset animation after completion
+        setTimeout(() => {
+            readingProgress.style.animation = '';
+        }, 1500);
+    }
+
     updateProgress() {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -440,38 +616,88 @@ class ScrollProgress {
                 animateNum();
             }
             
-            // Add pulse effect
+            // Add pulse effect with dynamic intensity
+            const pulseDuration = Math.max(800, 1200 - (scrolled * 4)); // Faster pulse as progress increases
             progressCircle.classList.add('progress-pulse');
-            setTimeout(() => progressCircle.classList.remove('progress-pulse'), 1200);
+            setTimeout(() => progressCircle.classList.remove('progress-pulse'), pulseDuration);
             
-            // Add glow effect based on progress
+            // Add dynamic glow effect based on progress
             const progressSvg = document.querySelector('.progress-svg');
             if (progressSvg) {
                 const glowIntensity = Math.min(scrolled / 100, 1);
-                progressSvg.style.filter = `drop-shadow(0 0 ${glowIntensity * 8}px rgba(102, 126, 234, ${glowIntensity * 0.5}))`;
+                const glowColor = scrolled > 75 ? 'rgba(255, 107, 107, 0.6)' : 'rgba(79, 142, 247, 0.4)';
+                progressSvg.style.filter = `drop-shadow(0 0 ${glowIntensity * 12}px ${glowColor})`;
             }
             
-            // Add pulse animation at milestones
-            if (scrolled > 0 && scrolled % 25 === 0) {
+            // Dynamic gradient based on progress
+            if (scrolled > 75) {
+                progressCircle.style.stroke = 'url(#progressGradientActive)';
+            } else {
+                progressCircle.style.stroke = 'url(#progressGradient)';
+            }
+            
+            // Enhanced milestone animation at key points
+            const milestones = [25, 50, 75, 100];
+            if (milestones.includes(Math.round(scrolled))) {
                 readingProgress.classList.add('milestone-pulse');
                 setTimeout(() => {
                     readingProgress.classList.remove('milestone-pulse');
-                }, 600);
+                }, 800);
+                
+                // Add celebration effect at 100%
+                if (scrolled >= 100) {
+                    this.celebrateCompletion();
+                }
             }
             
-            // Show/hide reading progress with scale animation
+            // Enhanced show/hide reading progress with smooth entrance animation
             if (scrolled > 5) {
                 readingProgress.classList.remove('hidden');
                 readingProgress.style.opacity = '1';
                 readingProgress.style.transform = 'translateY(0) scale(1)';
+                readingProgress.style.animation = 'slideInFromBottom 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                
+                // Add entrance animation styles if not present
+                if (!document.querySelector('#entrance-styles')) {
+                    const entranceStyles = document.createElement('style');
+                    entranceStyles.id = 'entrance-styles';
+                    entranceStyles.textContent = `
+                        @keyframes slideInFromBottom {
+                            0% {
+                                opacity: 0;
+                                transform: translateY(30px) scale(0.8) rotate(-10deg);
+                            }
+                            60% {
+                                opacity: 1;
+                                transform: translateY(-5px) scale(1.05) rotate(2deg);
+                            }
+                            100% {
+                                opacity: 1;
+                                transform: translateY(0) scale(1) rotate(0deg);
+                            }
+                        }
+                        
+                        @keyframes slideOutToBottom {
+                            0% {
+                                opacity: 1;
+                                transform: translateY(0) scale(1) rotate(0deg);
+                            }
+                            100% {
+                                opacity: 0;
+                                transform: translateY(30px) scale(0.8) rotate(10deg);
+                            }
+                        }
+                    `;
+                    document.head.appendChild(entranceStyles);
+                }
             } else {
                 readingProgress.style.opacity = '0';
-                readingProgress.style.transform = 'translateY(20px) scale(0.8)';
+                readingProgress.style.animation = 'slideOutToBottom 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
                 setTimeout(() => {
                     if (scrolled <= 5) {
                         readingProgress.classList.add('hidden');
                     }
-                }, 300);
+                }, 400);
             }
         }
 
