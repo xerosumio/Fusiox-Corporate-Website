@@ -3,146 +3,32 @@
  * Advanced styling for interactive contact form components
  */
 
-/* Form Progress Indicator */
+/* Simplified Form Progress Indicator */
 .form-progress {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    border: 1px solid #e2e8f0;
+    display: none; /* Hide the complex progress indicator */
 }
 
-.progress-steps {
-    position: relative;
-}
-
-.step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.step-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #e5e7eb;
-    color: #6b7280;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 18px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 3px solid transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-.step-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 50%;
-}
-
-.step-label {
-    margin-top: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #6b7280;
-    transition: color 0.3s ease;
-    white-space: nowrap;
-}
-
-.step.active .step-icon {
-    background: #3b82f6;
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
-}
-
-.step.active .step-label {
-    color: #3b82f6;
-    font-weight: 600;
-}
-
-.step.completed .step-icon {
-    background: #10b981;
-    color: white;
-    animation: stepComplete 0.6s ease-in-out;
-}
-
-.step.completed .step-icon::before {
-    opacity: 1;
-}
-
-.step.completed .step-label {
-    color: #10b981;
-}
-
-@keyframes stepComplete {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1.1); }
-}
-
-.step-line {
-    height: 4px;
-    background: #e5e7eb;
-    border-radius: 2px;
-    position: relative;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #3b82f6, #10b981);
-    border-radius: 2px;
-    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-.progress-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: progressShine 2s infinite;
-}
-
-@keyframes progressShine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* Form Field Enhancements */
+/* Simplified Form Field Styling */
 .form-control {
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .form-control input,
 .form-control textarea,
 .form-control select {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 12px 16px;
+    background: white;
+    font-size: 14px;
+    width: 100%;
 }
 
 .form-control input:focus,
@@ -150,84 +36,57 @@
 .form-control select:focus {
     outline: none;
     border-color: #3b82f6;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-    background: rgba(255, 255, 255, 0.95);
-    transform: translateY(-2px);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .field-focused {
-    transform: translateY(-4px);
-    transition: transform 0.3s ease;
+    /* Remove transform animations */
 }
 
 .field-focused input,
 .field-focused textarea,
 .field-focused select {
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+    /* Remove excessive shadows */
 }
 
-/* Validation States */
+/* Simplified Validation States */
 .input-error {
     border-color: #ef4444 !important;
-    background: rgba(239, 68, 68, 0.05) !important;
-    animation: fieldShake 0.5s ease-in-out;
+    background-color: #fef2f2 !important;
 }
 
 .input-success {
     border-color: #10b981 !important;
-    background: rgba(16, 185, 129, 0.05) !important;
-}
-
-@keyframes fieldShake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+    background-color: #f0fdf4 !important;
 }
 
 .field-error {
-    animation: errorSlideIn 0.3s ease-out;
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 4px;
 }
 
 .field-success {
-    animation: successSlideIn 0.3s ease-out;
-}
-
-@keyframes errorSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes successSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* Character Counter */
-.character-counter {
-    font-family: 'Monaco', 'Menlo', monospace;
+    color: #10b981;
     font-size: 12px;
-    transition: color 0.3s ease;
+    margin-top: 4px;
+}
+
+/* Simplified Character Counter */
+.character-counter {
+    font-size: 11px;
+    color: #6b7280;
+    text-align: right;
+    margin-top: 4px;
+    display: none; /* Hide character counters for cleaner look */
 }
 
 .character-counter.text-warning {
-    color: #f59e0b !important;
+    color: #f59e0b;
 }
 
 .character-counter.text-error {
-    color: #ef4444 !important;
-    font-weight: 600;
+    color: #ef4444;
 }
 
 /* Service Suggestions */
@@ -285,87 +144,57 @@
     }
 }
 
-/* Enhanced Form Cards */
+/* Simplified Form Card */
 .enhanced-form-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease;
 }
 
 .enhanced-form-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Submit Button Enhancement */
+/* Simplified Submit Button */
 .enhanced-submit-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #3b82f6;
     border: none;
-    border-radius: 12px;
-    padding: 16px 32px;
+    border-radius: 6px;
+    padding: 12px 24px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.enhanced-submit-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
 }
 
 .enhanced-submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-}
-
-.enhanced-submit-btn:hover::before {
-    left: 100%;
+    background: #2563eb;
 }
 
 .enhanced-submit-btn:disabled {
-    opacity: 0.7;
-    transform: none;
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
 .enhanced-submit-btn:disabled:hover {
-    box-shadow: none;
+    background: #3b82f6;
 }
 
-/* Urgency Indicator */
+/* Simplified Urgency Toggle */
 .urgency-toggle {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 12px;
-    padding: 12px 16px;
-    border: 2px solid #e5e7eb;
-    transition: all 0.3s ease;
-}
-
-.urgency-toggle:hover {
-    border-color: #3b82f6;
-    background: rgba(255, 255, 255, 0.95);
+    gap: 16px;
+    padding: 8px 0;
 }
 
 .urgency-indicator {
     font-size: 12px;
-    font-weight: 500;
     color: #6b7280;
     margin-top: 4px;
-    transition: color 0.3s ease;
 }
 
 .urgency-toggle.urgent .urgency-indicator {
