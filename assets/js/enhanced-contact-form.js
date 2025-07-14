@@ -88,32 +88,14 @@ class EnhancedContactForm {
     }
 
     injectEnhancedFormStructure() {
+        // Simplified form structure - no complex progress indicator
         const progressHTML = `
-            <div class="form-progress mb-6">
-                <div class="progress-steps flex justify-between items-center">
-                    <div class="step step-1 active" data-step="1">
-                        <div class="step-icon">1</div>
-                        <span class="step-label">Personal Info</span>
-                    </div>
-                    <div class="step-line flex-1 mx-4">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <div class="step step-2" data-step="2">
-                        <div class="step-icon">2</div>
-                        <span class="step-label">Business Info</span>
-                    </div>
-                    <div class="step-line flex-1 mx-4">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <div class="step step-3" data-step="3">
-                        <div class="step-icon">3</div>
-                        <span class="step-label">Message</span>
-                    </div>
-                </div>
+            <div class="form-progress mb-6" style="display: none;">
+                <!-- Progress indicator hidden for cleaner look -->
             </div>
         `;
 
-        // Insert progress indicator at the beginning of the form
+        // Insert simplified progress indicator (hidden)
         this.form.insertAdjacentHTML('afterbegin', progressHTML);
     }
 
@@ -364,17 +346,13 @@ class EnhancedContactForm {
     }
 
     updateProgress() {
+        // Simplified progress update - no complex animations
         const totalFields = Object.keys(this.validationRules).length;
         const completedFields = this.getCompletedFieldsCount();
         const progressPercentage = (completedFields / totalFields) * 100;
 
-        // Update progress bars
-        const progressBars = this.form.querySelectorAll('.progress-bar');
-        progressBars.forEach(bar => {
-            bar.style.width = `${progressPercentage}%`;
-        });
-
-        // Update step indicators
+        // Progress bars are hidden, so no need to update them
+        // Just update basic step indicators if needed
         this.updateStepIndicators(progressPercentage);
     }
 
