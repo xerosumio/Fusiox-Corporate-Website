@@ -123,17 +123,12 @@ class LoadingAnimations {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: 
-                    linear-gradient(135deg, rgba(30,60,114,0.85) 0%, rgba(42,82,152,0.8) 50%, rgba(79,142,247,0.75) 100%),
-                    url('assets/images/hk-flag-building.jpg');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
                 z-index: 9999;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                transition: opacity 0.8s ease-out;
+                transition: opacity 0.6s ease-out;
                 overflow: hidden;
             }
             
@@ -145,70 +140,44 @@ class LoadingAnimations {
                 right: 0;
                 bottom: 0;
                 background: 
-                    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
-                animation: backgroundFloat 10s ease-in-out infinite;
-            }
-            
-            .page-loading::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: 
-                    url('assets/images/hk-cityscape.jpg');
-                background-size: cover;
-                background-position: center;
-                opacity: 0;
-                animation: backgroundTransition 8s ease-in-out infinite;
+                    radial-gradient(circle at 30% 20%, rgba(79,142,247,0.03) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 80%, rgba(79,142,247,0.02) 0%, transparent 50%);
+                animation: backgroundFloat 8s ease-in-out infinite;
             }
             
             @keyframes backgroundFloat {
                 0%, 100% { transform: translateY(0px); }
-                50% { transform: translateY(-20px); }
-            }
-            
-            @keyframes backgroundTransition {
-                0%, 30% { opacity: 0; }
-                50%, 70% { opacity: 0.3; }
-                100% { opacity: 0; }
+                50% { transform: translateY(-10px); }
             }
             
             .page-loading.fade-out {
                 opacity: 0;
                 pointer-events: none;
-                transform: scale(1.05);
             }
             
             .loading-content {
                 text-align: center;
                 position: relative;
                 z-index: 10;
-                max-width: 500px;
-                padding: 2rem;
-                background: rgba(255,255,255,0.1);
-                backdrop-filter: blur(15px);
-                border-radius: 20px;
-                border: 1px solid rgba(255,255,255,0.2);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-                animation: contentSlideIn 1s ease-out;
+                max-width: 320px;
+                padding: 0;
+                background: transparent;
+                animation: contentSlideIn 0.8s ease-out;
             }
             
             @keyframes contentSlideIn {
                 from { 
                     opacity: 0; 
-                    transform: translateY(50px) scale(0.9); 
+                    transform: translateY(20px); 
                 }
                 to { 
                     opacity: 1; 
-                    transform: translateY(0) scale(1); 
+                    transform: translateY(0); 
                 }
             }
             
             .loading-brand {
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
             
             .brand-icon {
@@ -217,25 +186,23 @@ class LoadingAnimations {
             }
             
             .simple-logo {
-                width: 100px;
-                height: 100px;
+                width: 64px;
+                height: 64px;
                 margin: 0 auto;
                 background: linear-gradient(135deg, #4F8EF7 0%, #667eea 100%);
-                border-radius: 50%;
+                border-radius: 12px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                animation: logoFloat 3s ease-in-out infinite;
-                box-shadow: 
-                    0 15px 40px rgba(79, 142, 247, 0.4),
-                    0 0 0 0 rgba(79, 142, 247, 0.3);
+                animation: logoFloat 2s ease-in-out infinite;
+                box-shadow: 0 8px 25px rgba(79, 142, 247, 0.25);
                 position: relative;
                 overflow: hidden;
             }
             
             .simple-logo::before {
                 content: 'F';
-                font-size: 2.5rem;
+                font-size: 1.75rem;
                 font-weight: 700;
                 color: white;
                 font-family: 'Inter', sans-serif;
@@ -250,22 +217,18 @@ class LoadingAnimations {
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
-                animation: logoShine 2s ease-in-out infinite;
+                background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+                animation: logoShine 3s ease-in-out infinite;
             }
             
             @keyframes logoFloat {
                 0%, 100% { 
-                    transform: translateY(0px) scale(1); 
-                    box-shadow: 
-                        0 15px 40px rgba(79, 142, 247, 0.4),
-                        0 0 0 0 rgba(79, 142, 247, 0.3);
+                    transform: translateY(0px); 
+                    box-shadow: 0 8px 25px rgba(79, 142, 247, 0.25);
                 }
                 50% { 
-                    transform: translateY(-15px) scale(1.1); 
-                    box-shadow: 
-                        0 25px 50px rgba(79, 142, 247, 0.5),
-                        0 0 0 20px rgba(79, 142, 247, 0.1);
+                    transform: translateY(-6px); 
+                    box-shadow: 0 12px 35px rgba(79, 142, 247, 0.3);
                 }
             }
             
@@ -275,25 +238,23 @@ class LoadingAnimations {
             }
             
             .loading-logo {
-                font-size: 1.8rem;
-                font-weight: 700;
-                margin-bottom: 0.5rem;
-                color: white;
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 0.25rem;
+                color: #1e293b;
                 font-family: 'Inter', sans-serif;
-                animation: bounceIn 1s ease-out 0.5s both;
-                letter-spacing: 0.5px;
-                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                animation: fadeInUp 0.8s ease-out 0.3s both;
+                letter-spacing: -0.025em;
                 line-height: 1.2;
             }
             
             .loading-tagline {
-                font-size: 0.9rem;
-                color: rgba(255,255,255,0.9);
+                font-size: 0.875rem;
+                color: #64748b;
                 font-weight: 400;
                 font-family: 'Inter', sans-serif;
-                margin-bottom: 2rem;
-                animation: fadeInUp 1s ease-out 0.8s both;
-                text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+                margin-bottom: 1.5rem;
+                animation: fadeInUp 0.8s ease-out 0.5s both;
             }
             
             @keyframes bounceIn {
@@ -317,7 +278,7 @@ class LoadingAnimations {
             @keyframes fadeInUp {
                 from { 
                     opacity: 0; 
-                    transform: translateY(20px); 
+                    transform: translateY(10px); 
                 }
                 to { 
                     opacity: 1; 
@@ -326,14 +287,14 @@ class LoadingAnimations {
             }
             
             .progress-section {
-                margin-top: 1.5rem;
-                animation: slideInFromBottom 1s ease-out 1s both;
+                margin-top: 1rem;
+                animation: fadeInUp 0.8s ease-out 0.7s both;
             }
             
             @keyframes slideInFromBottom {
                 from { 
                     opacity: 0; 
-                    transform: translateY(30px); 
+                    transform: translateY(20px); 
                 }
                 to { 
                     opacity: 1; 
@@ -343,22 +304,20 @@ class LoadingAnimations {
             
             .progress-bar-container {
                 width: 100%;
-                height: 8px;
-                background: rgba(255,255,255,0.2);
-                border-radius: 4px;
+                height: 3px;
+                background: #e2e8f0;
+                border-radius: 2px;
                 overflow: hidden;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
                 position: relative;
-                box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
             }
             
             .progress-bar-fill {
                 height: 100%;
-                background: linear-gradient(90deg, #4F8EF7 0%, #667eea 50%, #80d4ff 100%);
-                border-radius: 4px;
-                transition: width 0.3s ease;
+                background: linear-gradient(90deg, #4F8EF7 0%, #667eea 100%);
+                border-radius: 2px;
+                transition: width 0.4s ease;
                 position: relative;
-                box-shadow: 0 0 10px rgba(79, 142, 247, 0.5);
             }
             
             .progress-bar-fill::after {
@@ -368,7 +327,7 @@ class LoadingAnimations {
                 left: -100%;
                 width: 100%;
                 height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
                 animation: progressShine 2s ease-in-out infinite;
             }
             
@@ -378,35 +337,33 @@ class LoadingAnimations {
             }
             
             .progress-text {
-                font-size: 1.1rem;
-                color: white;
-                font-weight: 600;
+                font-size: 0.875rem;
+                color: #1e293b;
+                font-weight: 500;
                 font-family: 'Inter', sans-serif;
-                margin-bottom: 0.5rem;
-                text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+                margin-bottom: 0.25rem;
             }
             
             .progress-status {
-                font-size: 0.9rem;
-                color: rgba(255,255,255,0.8);
+                font-size: 0.75rem;
+                color: #64748b;
                 font-family: 'Inter', sans-serif;
                 animation: fadeIn 0.3s ease-in-out;
-                text-shadow: 0 1px 3px rgba(0,0,0,0.3);
             }
             
             .loading-steps {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 1.5rem;
-                margin-top: 1.5rem;
-                animation: stepsSlideIn 1s ease-out 1.2s both;
+                gap: 0.75rem;
+                margin-top: 1rem;
+                animation: fadeInUp 0.8s ease-out 0.9s both;
             }
             
             @keyframes stepsSlideIn {
                 from { 
                     opacity: 0; 
-                    transform: translateY(20px); 
+                    transform: translateY(10px); 
                 }
                 to { 
                     opacity: 1; 
@@ -415,19 +372,15 @@ class LoadingAnimations {
             }
             
             .step-icon {
-                width: 50px;
-                height: 50px;
+                width: 8px;
+                height: 8px;
                 border-radius: 50%;
-                background: rgba(255,255,255,0.1);
-                backdrop-filter: blur(10px);
-                border: 2px solid rgba(255,255,255,0.2);
+                background: #cbd5e1;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: rgba(255,255,255,0.6);
-                font-size: 0.8rem;
-                font-weight: 600;
-                transition: all 0.4s ease;
+                font-size: 0;
+                transition: all 0.3s ease;
                 position: relative;
                 overflow: hidden;
             }
@@ -441,17 +394,13 @@ class LoadingAnimations {
                 height: 0;
                 background: rgba(79, 142, 247, 0.3);
                 border-radius: 50%;
-                transition: all 0.4s ease;
+                transition: all 0.3s ease;
                 transform: translate(-50%, -50%);
             }
             
             .step-icon.active {
-                background: rgba(79, 142, 247, 0.9);
-                border-color: rgba(79, 142, 247, 0.8);
-                color: white;
-                transform: scale(1.2);
-                animation: stepPulse 2s ease-in-out infinite;
-                box-shadow: 0 0 20px rgba(79, 142, 247, 0.6);
+                background: #4F8EF7;
+                transform: scale(1.25);
             }
             
             .step-icon.active::before {
@@ -466,25 +415,25 @@ class LoadingAnimations {
             }
             
             .step-icon.completed {
-                background: rgba(16, 185, 129, 0.9);
-                border-color: rgba(16, 185, 129, 0.8);
-                color: white;
+                background: #10b981;
                 transform: scale(1.1);
-                animation: completedBounce 0.6s ease-out;
-                box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
             }
             
             .step-icon.completed::after {
-                content: '✓';
+                content: '';
                 position: absolute;
-                font-size: 1.2rem;
-                font-weight: bold;
-                animation: checkmarkPop 0.5s ease-out;
+                width: 4px;
+                height: 2px;
+                border-left: 1px solid white;
+                border-bottom: 1px solid white;
+                transform: rotate(-45deg);
+                top: 2px;
+                left: 2px;
             }
             
             @keyframes completedBounce {
                 0% { transform: scale(1); }
-                50% { transform: scale(1.3); }
+                50% { transform: scale(1.2); }
                 100% { transform: scale(1.1); }
             }
             
@@ -494,16 +443,12 @@ class LoadingAnimations {
             }
             
             @keyframes stepPulse {
-                0%, 100% { box-shadow: 0 0 20px rgba(79, 142, 247, 0.6); }
-                50% { box-shadow: 0 0 30px rgba(79, 142, 247, 0.8); }
+                0%, 100% { box-shadow: 0 0 0 0 rgba(79, 142, 247, 0.7); }
+                50% { box-shadow: 0 0 0 4px rgba(79, 142, 247, 0.2); }
             }
             
             .loading-dots {
-                display: flex;
-                justify-content: center;
-                gap: 0.5rem;
-                margin-top: 1.5rem;
-                animation: dotsSlideIn 1s ease-out 1.4s both;
+                display: none;
             }
             
             @keyframes dotsSlideIn {
@@ -518,12 +463,11 @@ class LoadingAnimations {
             }
             
             .loading-dot {
-                width: 10px;
-                height: 10px;
+                width: 6px;
+                height: 6px;
                 border-radius: 50%;
-                background: rgba(255,255,255,0.8);
+                background: #cbd5e1;
                 animation: dotBounce 1.6s ease-in-out infinite;
-                box-shadow: 0 0 10px rgba(255,255,255,0.3);
             }
             
             .loading-dot:nth-child(1) { animation-delay: 0s; }
@@ -533,13 +477,12 @@ class LoadingAnimations {
             
             @keyframes dotBounce {
                 0%, 80%, 100% { 
-                    transform: scale(0.8); 
-                    opacity: 0.5; 
+                    transform: scale(1); 
+                    opacity: 0.6; 
                 }
                 40% { 
-                    transform: scale(1.3); 
+                    transform: scale(1.2); 
                     opacity: 1; 
-                    box-shadow: 0 0 15px rgba(255,255,255,0.5);
                 }
             }
             
@@ -720,47 +663,28 @@ class LoadingAnimations {
         const pageLoader = document.createElement('div');
         pageLoader.className = 'page-loading';
         pageLoader.innerHTML = `
-            <div class="cityscape-bg"></div>
             <div class="loading-content">
                 <div class="loading-brand">
                     <div class="brand-icon">
                         <div class="simple-logo"></div>
                     </div>
-                    <div class="loading-logo">Fusiox Corporate Services Limited</div>
-                    <div class="loading-tagline">Professional Corporate Services in Hong Kong</div>
+                    <div class="loading-logo">Fusiox</div>
+                    <div class="loading-tagline">Professional Corporate Services</div>
                 </div>
                 
                 <div class="progress-section">
                     <div class="progress-bar-container">
                         <div class="progress-bar-fill"></div>
                     </div>
-                    <div class="progress-text">0%</div>
-                    <div class="progress-status">Complete</div>
+                    <div class="progress-text">Loading</div>
+                    <div class="progress-status">Please wait...</div>
                 </div>
                 
                 <div class="loading-steps">
-                    <div class="step-icon active" data-step="1">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="step-icon" data-step="2">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="step-icon" data-step="3">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="loading-dots">
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
+                    <div class="step-icon active" data-step="1"></div>
+                    <div class="step-icon" data-step="2"></div>
+                    <div class="step-icon" data-step="3"></div>
+                    <div class="step-icon" data-step="4"></div>
                 </div>
             </div>
         `;
@@ -769,14 +693,10 @@ class LoadingAnimations {
         // Simulate loading progress with steps
         this.simulateLoadingProgress(pageLoader);
 
-        // Multi-stage splash: flag, then cityscape, then fade out
-        const cityscapeDiv = pageLoader.querySelector('.cityscape-bg');
+        // Complete loading after animation
         setTimeout(() => {
-            cityscapeDiv.classList.add('show');
-            setTimeout(() => {
-                this.completeLoading(pageLoader);
-            }, 1500);
-        }, 1500);
+            this.completeLoading(pageLoader);
+        }, 2500);
     }
 
     simulateLoadingProgress(pageLoader) {
@@ -789,27 +709,25 @@ class LoadingAnimations {
         let currentStep = 0;
         
         const statuses = [
-            "Connecting to Hong Kong services...",
-            "Loading corporate solutions...",
-            "Preparing professional interface...",
-            "Setting up client portal...",
-            "Finalizing your experience..."
+            "Initializing...",
+            "Loading resources...",
+            "Preparing interface...",
+            "Almost ready...",
+            "Complete!"
         ];
         
         const progressInterval = setInterval(() => {
-            progress += Math.random() * 15 + 5; // Random increment between 5-20%
+            progress += Math.random() * 20 + 10; // Random increment between 10-30%
             
             if (progress > 100) progress = 100;
             
             // Update progress bar
             progressFill.style.width = `${progress}%`;
-            progressText.textContent = `${Math.round(progress)}%`;
-            progressStatus.textContent = `${Math.round(progress)}% Complete`;
             
             // Update status text
             const statusIndex = Math.floor((progress / 100) * statuses.length);
             if (statusIndex < statuses.length) {
-                // No direct status text update in HTML, rely on progress status
+                progressStatus.textContent = statuses[statusIndex];
             }
             
             // Update steps
@@ -827,13 +745,14 @@ class LoadingAnimations {
             
             if (progress >= 100) {
                 clearInterval(progressInterval);
-                progressStatus.textContent = "Welcome to Hong Kong's Premier Corporate Services!";
+                progressStatus.textContent = "Ready!";
+                progressText.textContent = "Welcome";
                 steps.forEach(step => {
                     step.classList.remove('active');
                     step.classList.add('completed');
                 });
             }
-        }, 150);
+        }, 200);
     }
 
     completeLoading(pageLoader) {
@@ -845,8 +764,8 @@ class LoadingAnimations {
                     pageLoader.parentNode.removeChild(pageLoader);
                 }
                 this.animatePageContent();
-            }, 800);
-        }, 1200); // Show completed state briefly
+            }, 600);
+        }, 600); // Show completed state briefly
     }
 
     animatePageContent() {
