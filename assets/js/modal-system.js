@@ -550,17 +550,8 @@ class ModalSystem {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
 
-        // Show loading
-        if (window.LoadingAnimations) {
-            window.LoadingAnimations.showLoading('Sending message...', 'Please wait while we process your request');
-        }
-
         // Simulate form submission
         setTimeout(() => {
-            if (window.LoadingAnimations) {
-                window.LoadingAnimations.hideLoading();
-            }
-            
             this.closeModal();
             this.showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
             

@@ -172,6 +172,17 @@
         .professional-overlay p {
             color: #E5E5E5;
         }
+        
+        /* Ensure images are not clickable */
+        .card figure img {
+            cursor: default;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .card figure {
+            cursor: default;
+        }
     </style>
 </head>
 <body>
@@ -258,37 +269,37 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="card bg-white shadow-xl professional-overlay" data-aos="zoom-in-up" data-aos-delay="100" data-scroll-animation="scaleIn">
                     <figure>
-                        <img src="https://github.com/user-attachments/assets/6c775dba-c10c-4be0-aa13-52c145fedcf8" alt="Company Incorporation" class="h-48 w-full object-cover" data-lightbox="services" data-caption="Professional company incorporation services" />
+                        <img src="assets/images/company-incorporation.jpg" alt="Company Incorporation" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title" data-i18n="services.company-incorporation.title">Company Incorporation</h2>
                         <p data-i18n="services.company-incorporation.description">Fast-track your business registration with our streamlined incorporation process.</p>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary" data-modal="service-details" data-modal-data='{"title": "Company Incorporation", "body": "<h3>Complete Company Incorporation Service</h3><p>Our comprehensive incorporation service includes:</p><ul class=\"list-disc ml-6 mt-2\"><li>Company name reservation</li><li>Document preparation and filing</li><li>Government registration</li><li>Certificate of incorporation</li><li>Company kit with corporate seal</li></ul><p class=\"mt-4\">Starting from <strong>$500</strong> with completion in 1-3 business days.</p>"}' data-i18n="services.learn-more">Learn More</button>
+                            <button class="btn btn-primary" onclick="window.location.href='services.html'" data-i18n="services.learn-more">Learn More</button>
                         </div>
                     </div>
                 </div>
                 <div class="card bg-white shadow-xl professional-overlay" data-aos="zoom-in-up" data-aos-delay="200" data-scroll-animation="fadeInLeft">
                     <figure>
-                        <img src="https://github.com/user-attachments/assets/3c6dc792-ea5d-4eb4-b438-8e9c2e65e4e3" alt="Legal Compliance" class="h-48 w-full object-cover" data-lightbox="services" data-caption="Comprehensive legal compliance services" />
+                        <img src="assets/images/legal-compliance.jpg" alt="Legal Compliance" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title" data-i18n="services.legal-compliance.title">Legal Compliance</h2>
                         <p data-i18n="services.legal-compliance.description">Stay compliant with all regulations and legal requirements for your business type.</p>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary" data-modal="service-details" data-modal-data='{"title": "Legal Compliance", "body": "<h3>Complete Legal Compliance Package</h3><p>Our compliance services ensure your business meets all requirements:</p><ul class=\"list-disc ml-6 mt-2\"><li>Annual return filing</li><li>Statutory compliance monitoring</li><li>Regulatory updates</li><li>Company secretary services</li><li>Board meeting coordination</li></ul><p class=\"mt-4\">Starting from <strong>$300/year</strong> with ongoing monitoring.</p>"}' data-i18n="services.learn-more">Learn More</button>
+                            <button class="btn btn-primary" onclick="window.location.href='services.html'" data-i18n="services.learn-more">Learn More</button>
                         </div>
                     </div>
                 </div>
                 <div class="card bg-white shadow-xl professional-overlay" data-aos="zoom-in-up" data-aos-delay="300" data-scroll-animation="fadeInRight">
                     <figure>
-                        <img src="https://github.com/user-attachments/assets/aa411a33-5e05-491e-9a66-d3068fb07bc9" alt="Ongoing Support" class="h-48 w-full object-cover" data-lightbox="services" data-caption="24/7 ongoing business support" />
+                        <img src="assets/images/ongoing-support.jpg" alt="Ongoing Support" class="h-48 w-full object-cover" />
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title" data-i18n="services.ongoing-support.title">Ongoing Support</h2>
                         <p data-i18n="services.ongoing-support.description">Continuous support and guidance to help your business grow and succeed.</p>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary" data-modal="service-details" data-modal-data='{"title": "Ongoing Support", "body": "<h3>Comprehensive Business Support</h3><p>Get the support you need to grow your business:</p><ul class=\"list-disc ml-6 mt-2\"><li>24/7 customer support</li><li>Business advisory services</li><li>Document management</li><li>Regular check-ins</li><li>Growth planning assistance</li></ul><p class=\"mt-4\">Starting from <strong>$200/month</strong> with unlimited consultations.</p>"}' data-i18n="services.learn-more">Learn More</button>
+                            <button class="btn btn-primary" onclick="window.location.href='services.html'" data-i18n="services.learn-more">Learn More</button>
                         </div>
                     </div>
                 </div>
@@ -340,25 +351,24 @@
         <div class="container mx-auto px-4 text-center relative z-10">
             <h2 class="text-3xl font-bold text-white mb-4" data-aos="fade-up" data-i18n="cta.title">Ready to Start Your Business?</h2>
             <p class="text-xl text-white mb-8" data-aos="fade-up" data-aos-delay="100" data-i18n="cta.subtitle">Join thousands of successful entrepreneurs who chose Fusiox for their incorporation needs.</p>
-            <button class="btn btn-accent btn-lg happy-glow" data-modal="contact-quick" data-aos="zoom-in-up" data-aos-delay="200" data-i18n="cta.get-started">Start Your Incorporation Today</button>
+            <button class="btn btn-accent btn-lg happy-glow" onclick="window.location.href='contact.html'" data-aos="zoom-in-up" data-aos-delay="200" data-i18n="cta.get-started">Start Your Incorporation Today</button>
         </div>
     </div>
 
 
 
     <!-- Enhanced Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6">
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Fusiox</h3>
+                    <h3 class="font-semibold mb-4">Fusiox Corporate Services Limited</h3>
                     <p class="text-gray-400">Professional corporate services for modern businesses.</p>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Services</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Company Formation</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Fund Administration</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Fund Consultation</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Corporate Governance</a></li>
                     </ul>
                 </div>
@@ -373,14 +383,14 @@
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li>Hong Kong</li>
-                        <li><a href="mailto:info@fusiox.com" class="hover:text-white transition-colors">info@fusiox.com</a></li>
-                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Form</a></li>
+                        <li><a href="#" onclick="openGoogleMaps()" class="hover:text-white transition-colors cursor-pointer">Room 3903 The Center 99 Queen's Road Central Hong Kong</a></li>
+                        <li><a href="mailto:info@fusiox.ai" class="hover:text-white transition-colors">info@fusiox.ai</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Fusiox. All rights reserved.</p>
+                <p>&copy; 2025 Fusiox Corporate Services Limited. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -388,9 +398,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/sticky-header.js"></script>
-    <script src="assets/js/loading-animations.js"></script>
-    <script src="assets/js/modal-system.js"></script>
-    <script src="assets/js/scroll-progress.js"></script>
     <script src="assets/js/mobile-touch.js"></script>
     <script>
         AOS.init({
@@ -400,7 +407,37 @@
             easing: 'ease-out-back'
         });
 
-
+        // Function to open Google Maps
+        function openGoogleMaps() {
+            const address = "The Center, 99 Queen's Road Central Hong Kong";
+            const encodedAddress = encodeURIComponent(address);
+            
+            // Check if device is mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // For mobile devices, try to open native maps app first, fallback to Google Maps web
+                const mapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+                const intent = `geo:0,0?q=${encodedAddress}`;
+                
+                // Try to open native maps app
+                const link = document.createElement('a');
+                link.href = intent;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Fallback to Google Maps web after a short delay
+                setTimeout(() => {
+                    window.open(mapsUrl, '_blank');
+                }, 500);
+            } else {
+                // For desktop, open Google Maps in new tab
+                const mapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+                window.open(mapsUrl, '_blank');
+            }
+        }
     </script>
 </body>
 </html> 
