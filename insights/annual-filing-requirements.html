@@ -208,6 +208,44 @@
         </div>
     </div>
 
+    <!-- Enhanced Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-semibold mb-4">Fusiox Corporate Services Limited</h3>
+                    <p class="text-gray-400">Professional corporate services for modern businesses.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Fund Consultation</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Corporate Governance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="../insights.html" class="hover:text-white transition-colors">Insights</a></li>
+                        <li><a href="../faq.html" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="../how-it-works.html" class="hover:text-white transition-colors">How It Works</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="openGoogleMaps()" class="hover:text-white transition-colors cursor-pointer">Room 3903 The Center 99 Queen's Road Central Hong Kong</a></li>
+                        <li><a href="mailto:info@fusiox.ai" class="hover:text-white transition-colors">info@fusiox.ai</a></li>
+                        <li><a href="../contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Fusiox Corporate Services Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="../assets/js/i18n.js"></script>
     <script src="../assets/js/sticky-header.js"></script>
@@ -263,6 +301,38 @@
                 window.i18n = new I18n();
             }
         });
+
+        // Function to open Google Maps
+        function openGoogleMaps() {
+            const address = "The Center, 99 Queen's Road Central Hong Kong";
+            const encodedAddress = encodeURIComponent(address);
+            
+            // Check if device is mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // For mobile devices, try to open native maps app first, fallback to Google Maps web
+                const mapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+                const intent = `geo:0,0?q=${encodedAddress}`;
+                
+                // Try to open native maps app
+                const link = document.createElement('a');
+                link.href = intent;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Fallback to Google Maps web after a short delay
+                setTimeout(() => {
+                    window.open(mapsUrl, '_blank');
+                }, 500);
+            } else {
+                // For desktop, open Google Maps in new tab
+                const mapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+                window.open(mapsUrl, '_blank');
+            }
+        }
     </script>
 </body>
 </html>

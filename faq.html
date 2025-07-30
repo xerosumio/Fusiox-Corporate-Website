@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page.title.faq">FAQ - Fusiox</title>
-    <link href="ht    <!-- Hero Section -->
-    <div class="hero min-h-[50vh]" style="background-image: url('assets/images/faq-hero.jpg'); background-size: cover; background-position: center;">
-        <div class="hero-overlay bg-opacity-70"></div>://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,19 +57,39 @@
             background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
         }
         
+        /* Make collapse items more obvious */
+        .collapse {
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .collapse-title {
+            position: relative;
+            padding-right: 3rem;
+        }
+        
+        .collapse-title::after {
+            content: "Click to expand";
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .collapse:hover .collapse-title::after {
+            opacity: 0.8;
+        }
+        
+        .collapse[open] .collapse-title::after {
+            content: "Click to collapse";
+        }
+        
         /* Tab animations */
         .tab-content {
             animation: energyFadeIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
-        /* Hide tab content by default until Alpine.js loads */
-        .tab-content {
-            display: none;
-        }
-        
-        /* Show active tab content */
-        .tab-content.active {
-            display: block;
         }
         
         @keyframes energyFadeIn {
@@ -254,6 +272,13 @@
     <div class="py-16">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
+                <!-- Introduction -->
+                <div class="text-center mb-8" data-aos="fade-up">
+                    <p class="text-lg text-base-content/80">
+                        Browse through our comprehensive FAQ sections below. Click on any question to reveal the detailed answer.
+                    </p>
+                </div>
+                
                 <!-- Category Tabs -->
                 <div class="faq-tabs-container mb-12" x-data="faqTabs()" data-aos="zoom-in-up">
                     <div class="tabs tabs-boxed justify-center w-full">
@@ -299,6 +324,9 @@
                 <!-- General Questions -->
                 <div x-show="activeCategory === 'general'" x-transition class="tab-content">
                     <h2 class="text-2xl font-bold mb-6" data-aos="fade-right" data-i18n="faq.sections.general">General Questions</h2>
+                    <div class="mb-4 text-sm text-base-content/70">
+                        <span class="font-medium">Click on any question below to view the answer</span>
+                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="100">
                             <input type="radio" name="general-accordion" checked="checked" />
@@ -343,8 +371,11 @@
                 </div>
 
                 <!-- Incorporation Process Questions -->
-                <div x-show="activeCategory === 'incorporation'" x-transition>
+                <div x-show="activeCategory === 'incorporation'" x-transition class="tab-content">
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.incorporation.title">Incorporation Process</h2>
+                    <div class="mb-4 text-sm text-base-content/70">
+                        <span class="font-medium">Click on any question below to view the answer</span>
+                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="incorporation-accordion" checked="checked" />
@@ -389,8 +420,11 @@
                 </div>
 
                 <!-- Compliance Requirements Questions -->
-                <div x-show="activeCategory === 'compliance'" x-transition>
+                <div x-show="activeCategory === 'compliance'" x-transition class="tab-content">
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.compliance.title">Compliance Requirements</h2>
+                    <div class="mb-4 text-sm text-base-content/70">
+                        <span class="font-medium">Click on any question below to view the answer</span>
+                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="compliance-accordion" checked="checked" />
@@ -435,8 +469,11 @@
                 </div>
 
                 <!-- Fees & Timelines Questions -->
-                <div x-show="activeCategory === 'fees'" x-transition>
+                <div x-show="activeCategory === 'fees'" x-transition class="tab-content">
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.fees.title">Fees & Timelines</h2>
+                    <div class="mb-4 text-sm text-base-content/70">
+                        <span class="font-medium">Click on any question below to view the answer</span>
+                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="fees-accordion" checked="checked" />
@@ -481,8 +518,11 @@
                 </div>
 
                 <!-- Post-Incorporation Questions -->
-                <div x-show="activeCategory === 'post-incorporation'" x-transition>
+                <div x-show="activeCategory === 'post-incorporation'" x-transition class="tab-content">
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.post.title">Post-Incorporation Obligations</h2>
+                    <div class="mb-4 text-sm text-base-content/70">
+                        <span class="font-medium">Click on any question below to view the answer</span>
+                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="post-accordion" checked="checked" />
@@ -527,8 +567,11 @@
                 </div>
 
                 <!-- Other Common Questions -->
-                <div x-show="activeCategory === 'other'" x-transition>
+                <div x-show="activeCategory === 'other'" x-transition class="tab-content">
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.other.title">Other Common Questions</h2>
+                    <div class="mb-4 text-sm text-base-content/70">
+                        <span class="font-medium">Click on any question below to view the answer</span>
+                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="other-accordion" checked="checked" />
@@ -647,111 +690,20 @@
             return {
                 activeCategory: 'general',
                 init() {
-                    this.showActiveTab();
-                },
-                showActiveTab() {
-                    // Hide all tab contents
-                    document.querySelectorAll('.tab-content').forEach(tab => {
-                        tab.style.display = 'none';
-                        tab.classList.remove('active');
-                    });
-                    
-                    // Show active tab
-                    const activeTab = document.querySelector(`[x-show="activeCategory === '${this.activeCategory}'"]`);
-                    if (activeTab) {
-                        activeTab.style.display = 'block';
-                        activeTab.classList.add('active');
-                    }
-                },
-                setActiveCategory(category) {
-                    this.activeCategory = category;
-                    this.showActiveTab();
+                    console.log('FAQ Tabs initialized with category:', this.activeCategory);
                 }
             }
         }
-
-        // Fallback JavaScript for tab functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('FAQ tabs initializing...');
-            
-            // Get all tab sections
-            const generalSection = document.querySelector('[x-show="activeCategory === \'general\'"]');
-            const incorporationSection = document.querySelector('[x-show="activeCategory === \'incorporation\'"]');
-            const complianceSection = document.querySelector('[x-show="activeCategory === \'compliance\'"]');
-            const feesSection = document.querySelector('[x-show="activeCategory === \'fees\'"]');
-            const postSection = document.querySelector('[x-show="activeCategory === \'post-incorporation\'"]');
-            const otherSection = document.querySelector('[x-show="activeCategory === \'other\'"]');
-            
-            const allSections = [generalSection, incorporationSection, complianceSection, feesSection, postSection, otherSection];
-            
-            // Function to show only one section
-            function showSection(targetCategory) {
-                console.log('Showing section:', targetCategory);
-                allSections.forEach(section => {
-                    if (section) {
-                        section.style.display = 'none';
-                    }
-                });
-                
-                let targetSection;
-                switch(targetCategory) {
-                    case 'general':
-                        targetSection = generalSection;
-                        break;
-                    case 'incorporation':
-                        targetSection = incorporationSection;
-                        break;
-                    case 'compliance':
-                        targetSection = complianceSection;
-                        break;
-                    case 'fees':
-                        targetSection = feesSection;
-                        break;
-                    case 'post-incorporation':
-                        targetSection = postSection;
-                        break;
-                    case 'other':
-                        targetSection = otherSection;
-                        break;
-                }
-                
-                if (targetSection) {
-                    targetSection.style.display = 'block';
-                }
-            }
-            
-            // Initial setup - show only the general tab
-            showSection('general');
-            
-            // Add click handlers to tab buttons
-            const tabButtons = document.querySelectorAll('.tabs button');
-            tabButtons.forEach((button, index) => {
-                const categories = ['general', 'incorporation', 'compliance', 'fees', 'post-incorporation', 'other'];
-                const category = categories[index];
-                
-                button.addEventListener('click', function() {
-                    console.log('Tab clicked:', category);
-                    
-                    // Remove active class from all buttons
-                    tabButtons.forEach(btn => btn.classList.remove('tab-active'));
-                    // Add active class to clicked button
-                    this.classList.add('tab-active');
-                    
-                    // Show the selected section
-                    showSection(category);
-                });
-            });
-            
-            // Set initial active button
-            if (tabButtons.length > 0) {
-                tabButtons[0].classList.add('tab-active');
-            }
+        
+        // Debug Alpine.js loading
+        document.addEventListener('alpine:init', () => {
+            console.log('Alpine.js initialized successfully');
         });
     </script>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/sticky-header.js"></script>
-    <script src="assets/js/enhanced-faq.js"></script>
     <script>
         AOS.init({
             duration: 1000,
