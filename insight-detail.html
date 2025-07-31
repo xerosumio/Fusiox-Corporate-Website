@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page.title.insight-detail">Best Practices for Corporate Compliance - Fusiox</title>
+    <title>Insight Detail - Fusiox</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -156,60 +156,66 @@
                 <ul>
                     <li><a href="index.html" class="hover:text-accent transition-colors" data-i18n="breadcrumb.home">Home</a></li> 
                     <li><a href="insights.html" class="hover:text-accent transition-colors" data-i18n="breadcrumb.insights">Insights</a></li> 
-                    <li data-i18n="insight-detail.breadcrumb.title">Best Practices for Corporate Compliance</li>
+                    <li x-show="post" x-text="getPostTitle()"></li>
                 </ul>
             </div>
 
             <!-- Title & Meta -->
-            <div data-aos="fade-up" data-aos-delay="100">
-                <span class="badge badge-outline text-xs text-secondary" data-i18n="insights.category.company-secretary">Company Secretary</span>
-                <h1 class="text-4xl font-bold text-primary mt-4" data-i18n="insight-detail.title">Best Practices for Corporate Compliance</h1>
-                <p class="text-sm text-base-content/70 mt-2" data-i18n="insight-detail.meta">Published on December 15, 2024</p>
+            <div data-aos="fade-up" data-aos-delay="100" x-show="post">
+                <h1 class="text-4xl font-bold text-primary mt-4" x-text="getPostTitle()"></h1>
+                <p class="text-sm text-base-content/70 mt-2">
+                    <span>Published on </span>
+                    <span x-text="formatDate(post?.createdDate || post?.date)"></span>
+                    <span x-show="post?.lastEdited" class="ml-2">
+                        • Updated on <span x-text="formatDate(post.lastEdited)"></span>
+                    </span>
+                </p>
             </div>
 
-            <!-- Cover Image or Solid Block -->
-            <div class="rounded-xl overflow-hidden shadow-lg cover-block" data-aos="zoom-in" data-aos-delay="200">
-                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-64 flex items-center justify-center">
-                    <svg class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
+            <!-- Cover Image -->
+            <div class="rounded-xl overflow-hidden shadow-lg cover-block" data-aos="zoom-in" data-aos-delay="200" x-show="post">
+                <div class="h-64">
+                    <img x-show="post?.image" 
+                         :src="post?.image" 
+                         :alt="getPostTitle()"
+                         class="w-full h-full object-cover"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-full flex items-center justify-center"
+                         style="display: none;">
+                        <svg class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
             <!-- Content Body -->
-            <article class="prose prose-lg max-w-none text-base-content" data-aos="fade-up" data-aos-delay="300">
-                <p data-i18n="insight-detail.content.intro">
-                    As regulatory environments become more complex, company secretaries play a critical role in ensuring corporate governance and compliance. The modern business landscape demands a proactive approach to regulatory adherence, making the role of company secretaries more vital than ever before.
-                </p>
-                
-                <h2 data-i18n="insight-detail.content.h2-1">Understanding Your Obligations</h2>
-                <p data-i18n="insight-detail.content.p1">
-                    Directors and officers must be aware of their statutory duties and reporting requirements under jurisdictional laws. These obligations extend beyond simple record-keeping to encompass strategic oversight, risk management, and stakeholder communication. Understanding these responsibilities is the foundation of effective corporate governance.
-                </p>
-                
-                <blockquote data-i18n="insight-detail.content.quote">
-                    "Compliance is not just about following rules, it's about building trust and transparency that forms the backbone of sustainable business operations."
-                </blockquote>
-                
-                <h3 data-i18n="insight-detail.content.h3-1">Top Strategies for Compliance</h3>
-                <ul>
-                    <li data-i18n="insight-detail.content.li1">Conduct regular audits and assessments to identify potential compliance gaps</li>
-                    <li data-i18n="insight-detail.content.li2">Ensure timely filings with regulatory authorities and maintain accurate records</li>
-                    <li data-i18n="insight-detail.content.li3">Implement strong internal control systems and monitoring procedures</li>
-                    <li data-i18n="insight-detail.content.li4">Establish clear communication channels between board members and management</li>
-                    <li data-i18n="insight-detail.content.li5">Provide ongoing training and education for directors and officers</li>
-                </ul>
-                
-                <h3 data-i18n="insight-detail.content.h3-2">The Role of Technology</h3>
-                <p data-i18n="insight-detail.content.p2">
-                    Modern compliance management increasingly relies on technology solutions to streamline processes, enhance accuracy, and provide real-time monitoring capabilities. Digital platforms can automate routine tasks, track deadlines, and generate comprehensive reports that support decision-making and regulatory submissions.
-                </p>
-                
-                <h3 data-i18n="insight-detail.content.h3-3">Building a Compliance Culture</h3>
-                <p data-i18n="insight-detail.content.p3">
-                    Success in corporate compliance extends beyond policies and procedures to encompass organizational culture. Companies that prioritize compliance at every level, from the boardroom to front-line operations, are better positioned to navigate regulatory challenges and maintain stakeholder confidence.
-                </p>
+            <article class="prose prose-lg max-w-none text-base-content" data-aos="fade-up" data-aos-delay="300" x-show="post">
+                <div x-html="getPostBody()"></div>
             </article>
+
+            <!-- Loading State -->
+            <div x-show="isLoading" class="flex justify-center py-16">
+                <div class="loading loading-spinner loading-lg"></div>
+            </div>
+
+            <!-- Post Not Found or No ID -->
+            <div x-show="!isLoading && !post" class="text-center py-16">
+                <div class="max-w-md mx-auto">
+                    <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2" data-i18n="insight-detail.not-found-title">
+                        <span x-show="!postId">No Insight Selected</span>
+                        <span x-show="postId">Post Not Found</span>
+                    </h3>
+                    <p class="text-gray-500 mb-6" data-i18n="insight-detail.not-found-desc">
+                        <span x-show="!postId">Please select an insight from the insights page to view its content.</span>
+                        <span x-show="postId">The insight you're looking for doesn't exist or has been moved.</span>
+                    </p>
+                    <a href="insights.html" class="btn btn-primary" data-i18n="insight-detail.view-all-btn">View All Insights</a>
+                </div>
+            </div>
 
             <!-- CTA or Related Links -->
             <div class="pt-8 border-t border-base-300" data-aos="fade-up" data-aos-delay="400">
@@ -222,35 +228,7 @@
                 </div>
             </div>
             
-            <!-- Related Articles Section -->
-            <div class="pt-12 border-t border-base-300 mt-12" data-aos="fade-up" data-aos-delay="500">
-                <h3 class="text-2xl font-bold text-primary mb-6" data-i18n="insight-detail.related-title">Related Articles</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Related Article 1 -->
-                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                        <div class="card-body">
-                            <span class="badge badge-outline text-xs mb-2" data-i18n="insights.category.company-secretary">Company Secretary</span>
-                            <h4 class="card-title text-lg" data-i18n="insight-detail.related1.title">Annual Filing Requirements Update</h4>
-                            <p class="text-sm opacity-80" data-i18n="insight-detail.related1.desc">Stay updated with the latest changes in annual filing requirements.</p>
-                            <div class="card-actions mt-4">
-                                <a href="insights/annual-filing-requirements.html" class="text-accent text-sm font-medium hover:underline" data-i18n="insights.read-more">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Related Article 2 -->
-                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                        <div class="card-body">
-                            <span class="badge badge-outline text-xs mb-2" data-i18n="insights.category.company-secretary">Company Secretary</span>
-                            <h4 class="card-title text-lg" data-i18n="insight-detail.related2.title">Digital Transformation in Corporate Services</h4>
-                            <p class="text-sm opacity-80" data-i18n="insight-detail.related2.desc">How technology is revolutionizing corporate services and operations.</p>
-                            <div class="card-actions mt-4">
-                                <a href="insights/digital-transformation-corporate.html" class="text-accent text-sm font-medium hover:underline" data-i18n="insights.read-more">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </section>
 
@@ -300,8 +278,10 @@
         // Alpine.js component for dynamic content loading
         document.addEventListener('alpine:init', () => {
             Alpine.data('insightDetail', () => ({
-                post: null,
                 isLoading: true,
+                post: null,
+                allPosts: [],
+                relatedPosts: [],
                 language: 'en',
                 postId: null,
 
@@ -313,9 +293,16 @@
                     // Initialize language
                     this.language = localStorage.getItem('language') || 'en';
                     
-                    if (this.postId) {
-                        await this.loadPost();
+                    // If no post ID provided, don't load anything
+                    if (!this.postId) {
+                        console.log('No post ID provided');
+                        this.isLoading = false;
+                        return;
                     }
+                    
+                    // Load the specific post
+                    await this.loadPost();
+                    this.loadRelatedPosts();
                     
                     // Initialize internationalization
                     if (typeof window.i18n !== 'undefined') {
@@ -327,9 +314,22 @@
 
                 async loadPost() {
                     try {
-                        const response = await fetch('./data/insights.json');
-                        if (!response.ok) throw new Error('Failed to load posts');
-                        const posts = await response.json();
+                        // First check if we have CMS data in localStorage
+                        const cmsData = localStorage.getItem('insights_posts');
+                        let posts;
+                        
+                        if (cmsData) {
+                            console.log('Loading post from CMS localStorage...');
+                            posts = JSON.parse(cmsData);
+                        } else {
+                            console.log('Loading post from JSON file...');
+                            const response = await fetch('./data/insights.json');
+                            if (!response.ok) throw new Error('Failed to load posts');
+                            const data = await response.json();
+                            posts = data.posts || data;
+                        }
+                        
+                        this.allPosts = posts;
                         this.post = posts.find(post => post.id === this.postId);
                         
                         if (this.post) {
@@ -342,16 +342,45 @@
                     }
                 },
 
+                loadRelatedPosts() {
+                    if (!this.post || !this.allPosts.length) return;
+                    
+                    // Find related posts by category, excluding current post
+                    this.relatedPosts = this.allPosts
+                        .filter(post => post.id !== this.postId && post.category === this.post.category)
+                        .slice(0, 2);
+                    
+                    // If we don't have enough related posts from same category, add others
+                    if (this.relatedPosts.length < 2) {
+                        const otherPosts = this.allPosts
+                            .filter(post => post.id !== this.postId && post.category !== this.post.category)
+                            .slice(0, 2 - this.relatedPosts.length);
+                        this.relatedPosts = [...this.relatedPosts, ...otherPosts];
+                    }
+                },
+
                 getPostTitle() {
-                    return this.post?.title?.[this.language] || this.post?.title?.en || 'Insight';
+                    return this.post?.translations?.[this.language]?.title || this.post?.translations?.en?.title || 'Insight';
                 },
 
-                getPostDescription() {
-                    return this.post?.description?.[this.language] || this.post?.description?.en || '';
+                getPostBody() {
+                    return this.post?.translations?.[this.language]?.body || this.post?.translations?.en?.body || '';
                 },
 
-                getPostContent() {
-                    return this.post?.content?.[this.language] || this.post?.content?.en || {};
+                formatDate(dateString) {
+                    if (!dateString) return '';
+                    const date = new Date(dateString);
+                    const options = { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    };
+                    
+                    // Format date based on language
+                    if (this.language === 'zh-TW' || this.language === 'zh-CN') {
+                        return date.toLocaleDateString('zh', options);
+                    }
+                    return date.toLocaleDateString('en', options);
                 },
 
                 getCategoryLabel() {

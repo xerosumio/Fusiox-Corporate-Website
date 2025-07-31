@@ -184,42 +184,14 @@
         </div>
     </div>
 
-    <!-- Category Navigation Bar -->
+    <!-- Insights Section -->
     <div class="py-16 bg-base-100">
         <div class="container mx-auto px-4" x-data="insightsPage()">
-            <div class="overflow-x-auto">
-                <div class="tabs tabs-boxed justify-center mt-12 mb-8 gap-2 min-w-fit mx-auto">
-                    <a class="tab tab-lg cursor-pointer flex items-center gap-2 font-medium" 
-                       :class="{ 'tab-active bg-accent text-white font-semibold shadow-lg': currentTab === 'all' }"
-                       @click="currentTab = 'all'" 
-                       data-category="all" 
-                       data-i18n="insights.filter.all">
-                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 7a2 2 0 012-2h10a2 2 0 012 2v2M7 7h10"/>
-                       </svg>
-                       All Posts
-                    </a>
-                    <a class="tab tab-lg cursor-pointer flex items-center gap-2 font-medium" 
-                       :class="{ 'tab-active bg-accent text-white font-semibold shadow-lg': currentTab === 'company-secretary' }"
-                       @click="currentTab = 'company-secretary'" 
-                       data-category="company-secretary" 
-                       data-i18n="insights.filter.company-secretary">
-                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                       </svg>
-                       Company Secretary
-                    </a>
-                    <a class="tab tab-lg cursor-pointer flex items-center gap-2 font-medium" 
-                       :class="{ 'tab-active bg-accent text-white font-semibold shadow-lg': currentTab === 'fund' }"
-                       @click="currentTab = 'fund'" 
-                       data-category="fund" 
-                       data-i18n="insights.filter.fund">
-                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                       </svg>
-                       Fund
-                    </a>
-                </div>
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4" data-i18n="insights.section.title">Latest Insights</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-i18n="insights.section.subtitle">
+                    Stay informed with our latest insights and expert analysis on corporate governance and business operations.
+                </p>
             </div>
 
             <!-- Insights Grid -->
@@ -240,25 +212,25 @@
                 <!-- Dynamic posts will be loaded here -->
                 <template x-for="post in filteredPosts" :key="post.id">
                     <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 insights-card" 
-                         :data-category="post.category"
-                         x-show="!isLoading && shouldShowPost(post.category)"
+                         x-show="!isLoading"
                          x-transition>
-                        <figure class="h-40 flex items-center justify-center"
-                                :class="`bg-gradient-to-r ${post.gradient}`">
-                            <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="post.icon"/>
-                            </svg>
+                        <figure class="h-48">
+                            <img :src="post.image" 
+                                 :alt="getPostTitle(post)"
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjMuNGY1Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OWFhYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
                         </figure>
                         <div class="card-body text-left">
                             <div class="text-sm text-secondary uppercase tracking-wide mb-1">
-                                <span class="badge badge-outline text-xs" 
-                                      x-text="getCategoryLabel(post.category)"></span> · 
-                                <span x-text="formatDate(post.date)"></span>
+                                <span x-text="formatDate(post.createdDate || post.date)"></span>
+                                <span x-show="post.lastEdited" class="ml-2 text-xs opacity-60">
+                                    (Updated: <span x-text="formatDate(post.lastEdited)"></span>)
+                                </span>
                             </div>
                             <h2 class="card-title text-lg font-semibold" 
                                 x-text="getPostTitle(post)"></h2>
-                            <p class="text-sm opacity-80" 
-                               x-text="getPostDescription(post)"></p>
+                            <div class="text-sm opacity-80 line-clamp-3" 
+                                 x-html="getPostExcerpt(post)"></div>
                             <div class="mt-4">
                                 <a :href="`insight-detail.html?id=${post.id}`" 
                                    class="text-accent text-sm font-medium hover:underline"
@@ -383,13 +355,24 @@
 
                 async loadPosts() {
                     try {
-                        console.log('Loading posts from JSON...');
-                        const response = await fetch('./data/insights.json');
-                        if (!response.ok) throw new Error('Failed to load posts');
-                        const data = await response.json();
-                        console.log('Raw data:', data);
-                        this.posts = data.posts || data; // Handle both structures
-                        console.log('Posts loaded:', this.posts);
+                        console.log('Loading posts...');
+                        
+                        // First check if we have CMS data in localStorage
+                        const cmsData = localStorage.getItem('insights_posts');
+                        if (cmsData) {
+                            console.log('Loading posts from CMS localStorage...');
+                            this.posts = JSON.parse(cmsData);
+                            console.log('CMS Posts loaded:', this.posts);
+                        } else {
+                            console.log('Loading posts from JSON file...');
+                            const response = await fetch('./data/insights.json');
+                            if (!response.ok) throw new Error('Failed to load posts');
+                            const data = await response.json();
+                            console.log('Raw data:', data);
+                            this.posts = data.posts || data; // Handle both structures
+                            console.log('JSON Posts loaded:', this.posts);
+                        }
+                        
                         console.log('Number of posts:', this.posts.length);
                     } catch (error) {
                         console.error('Error loading posts:', error);
@@ -402,10 +385,13 @@
                 },
 
                 get filteredPosts() {
-                    if (this.currentTab === 'all') {
-                        return this.posts;
-                    }
-                    return this.posts.filter(post => post.category === this.currentTab);
+                    // Since we simplified the structure, just return all posts
+                    // Sort by created date (newest first)
+                    return this.posts.sort((a, b) => {
+                        const dateA = new Date(a.createdDate || a.date);
+                        const dateB = new Date(b.createdDate || b.date);
+                        return dateB - dateA;
+                    });
                 },
 
                 shouldShowPost(category) {
@@ -432,8 +418,15 @@
                     return post.translations?.[this.language]?.title || post.translations?.en?.title || 'Untitled';
                 },
 
-                getPostDescription(post) {
-                    return post.translations?.[this.language]?.description || post.translations?.en?.description || '';
+                getPostExcerpt(post) {
+                    const body = post.translations?.[this.language]?.body || post.translations?.en?.body || '';
+                    // Strip HTML tags and create excerpt
+                    const plainText = body.replace(/<[^>]*>/g, '');
+                    const words = plainText.split(' ');
+                    if (words.length > 30) {
+                        return words.slice(0, 30).join(' ') + '...';
+                    }
+                    return plainText;
                 },
 
                 getReadMoreText() {

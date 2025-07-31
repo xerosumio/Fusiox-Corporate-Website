@@ -1,439 +1,65 @@
-{
-  "posts": [
-    {
-      "id": "compliance-best-practices",
-      "category": "company-secretary",
-      "date": "2024-12-15",
-      "gradient": "from-blue-500 to-indigo-600",
-      "icon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-      "translations": {
-        "en": {
-          "title": "Best Practices for Corporate Compliance",
-          "description": "Discover essential compliance strategies that every company secretary should implement to ensure seamless corporate governance and regulatory adherence.",
-          "content": {
-            "intro": "As regulatory environments become more complex, company secretaries play a critical role in ensuring corporate governance and compliance. The modern business landscape demands a proactive approach to regulatory adherence, making the role of company secretaries more vital than ever before.",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "Understanding Your Obligations"
-              },
-              {
-                "type": "paragraph",
-                "text": "Directors and officers must be aware of their statutory duties and reporting requirements under jurisdictional laws. These obligations extend beyond simple record-keeping to encompass strategic oversight, risk management, and stakeholder communication."
-              },
-              {
-                "type": "quote",
-                "text": "Compliance is not just about following rules, it's about building trust and transparency that forms the backbone of sustainable business operations."
-              },
-              {
-                "type": "heading",
-                "level": 3,
-                "text": "Top Strategies for Compliance"
-              },
-              {
-                "type": "list",
-                "items": [
-                  "Conduct regular audits and assessments to identify potential compliance gaps",
-                  "Ensure timely filings with regulatory authorities and maintain accurate records",
-                  "Implement strong internal control systems and monitoring procedures",
-                  "Establish clear communication channels between board members and management",
-                  "Provide ongoing training and education for directors and officers"
-                ]
-              }
-            ]
-          }
-        },
-        "zh-Hant": {
-          "title": "企業合規最佳實務",
-          "description": "發現每位公司秘書應實施的關鍵合規策略，確保無縫的企業治理和法規遵循。",
-          "content": {
-            "intro": "隨著法規環境日趨複雜，公司秘書在確保企業治理和合規方面發揮著關鍵作用。現代商業環境要求對法規遵循採取積極主動的方法，使公司秘書的角色比以往任何時候都更加重要。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "了解您的義務"
-              },
-              {
-                "type": "paragraph",
-                "text": "董事和高級職員必須了解其在管轄法律下的法定職責和申報要求。這些義務不僅限於簡單的記錄保存，還包括戰略監督、風險管理和利益相關者溝通。"
-              },
-              {
-                "type": "quote",
-                "text": "合規不僅僅是遵守規則，更是建立信任和透明度，這是可持續業務運營的支柱。"
-              },
-              {
-                "type": "heading",
-                "level": 3,
-                "text": "合規的頂級策略"
-              },
-              {
-                "type": "list",
-                "items": [
-                  "定期進行審計和評估以識別潛在的合規缺口",
-                  "確保及時向監管機構申報並維護準確記錄",
-                  "實施強大的內部控制系統和監控程序",
-                  "在董事會成員和管理層之間建立清晰的溝通渠道",
-                  "為董事和高級職員提供持續的培訓和教育"
-                ]
-              }
-            ]
-          }
-        },
-        "zh-Hans": {
-          "title": "企业合规最佳实务",
-          "description": "发现每位公司秘书应实施的关键合规策略，确保无缝的企业治理和法规遵循。",
-          "content": {
-            "intro": "随着法规环境日趋复杂，公司秘书在确保企业治理和合规方面发挥着关键作用。现代商业环境要求对法规遵循采取积极主动的方法，使公司秘书的角色比以往任何时候都更加重要。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "了解您的义务"
-              },
-              {
-                "type": "paragraph",
-                "text": "董事和高级职员必须了解其在管辖法律下的法定职责和申报要求。这些义务不仅限于简单的记录保存，还包括战略监督、风险管理和利益相关者沟通。"
-              },
-              {
-                "type": "quote",
-                "text": "合规不仅仅是遵守规则，更是建立信任和透明度，这是可持续业务运营的支柱。"
-              },
-              {
-                "type": "heading",
-                "level": 3,
-                "text": "合规的顶级策略"
-              },
-              {
-                "type": "list",
-                "items": [
-                  "定期进行审计和评估以识别潜在的合规缺口",
-                  "确保及时向监管机构申报并维护准确记录",
-                  "实施强大的内部控制系统和监控程序",
-                  "在董事会成员和管理层之间建立清晰的沟通渠道",
-                  "为董事和高级职员提供持续的培训和教育"
-                ]
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "id": "esg-fund-strategies",
-      "category": "fund",
-      "date": "2024-12-10",
-      "gradient": "from-emerald-500 to-teal-600",
-      "icon": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
-      "translations": {
-        "en": {
-          "title": "ESG Fund Investment Strategies",
-          "description": "Learn how sustainable investing principles are reshaping fund management and creating new opportunities for responsible capital allocation.",
-          "content": {
-            "intro": "Environmental, Social, and Governance (ESG) factors are increasingly driving investment decisions across global markets, fundamentally changing how fund managers approach portfolio construction and risk assessment.",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "The ESG Investment Landscape"
-              },
-              {
-                "type": "paragraph",
-                "text": "ESG investing has evolved from a niche strategy to a mainstream approach, with assets under management in ESG funds reaching record levels globally."
-              }
-            ]
-          }
-        },
-        "zh-Hant": {
-          "title": "ESG基金投資策略",
-          "description": "了解可持續投資原則如何重塑基金管理並為負責任的資本配置創造新機會。",
-          "content": {
-            "intro": "環境、社會和治理（ESG）因素日益推動全球市場的投資決策，從根本上改變了基金經理處理投資組合構建和風險評估的方式。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "ESG投資環境"
-              },
-              {
-                "type": "paragraph",
-                "text": "ESG投資已從利基策略發展為主流方法，全球ESG基金管理的資產達到創紀錄水平。"
-              }
-            ]
-          }
-        },
-        "zh-Hans": {
-          "title": "ESG基金投资策略",
-          "description": "了解可持续投资原则如何重塑基金管理并为负责任的资本配置创造新机会。",
-          "content": {
-            "intro": "环境、社会和治理（ESG）因素日益推动全球市场的投资决策，从根本上改变了基金经理处理投资组合构建和风险评估的方式。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "ESG投资环境"
-              },
-              {
-                "type": "paragraph",
-                "text": "ESG投资已从利基策略发展为主流方法，全球ESG基金管理的资产达到创纪录水平。"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "id": "annual-filing-requirements",
-      "category": "company-secretary",
-      "date": "2024-12-05",
-      "gradient": "from-purple-500 to-violet-600",
-      "icon": "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-      "translations": {
-        "en": {
-          "title": "Annual Filing Requirements Update",
-          "description": "Stay updated with the latest changes in annual filing requirements and ensure your company remains compliant with regulatory standards.",
-          "content": {
-            "intro": "Annual filing requirements continue to evolve as regulatory bodies strengthen oversight and transparency measures for corporate entities.",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "Key Filing Deadlines"
-              },
-              {
-                "type": "paragraph",
-                "text": "Understanding critical deadlines and submission requirements is essential for maintaining good standing with regulatory authorities."
-              }
-            ]
-          }
-        },
-        "zh-Hant": {
-          "title": "年度申報要求更新",
-          "description": "隨時了解年度申報要求的最新變化，確保您的公司保持法規合規。",
-          "content": {
-            "intro": "隨著監管機構加強對企業實體的監督和透明度措施，年度申報要求持續演進。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "關鍵申報截止日期"
-              },
-              {
-                "type": "paragraph",
-                "text": "了解關鍵截止日期和提交要求對於維持與監管機構的良好關係至關重要。"
-              }
-            ]
-          }
-        },
-        "zh-Hans": {
-          "title": "年度申报要求更新",
-          "description": "随时了解年度申报要求的最新变化，确保您的公司保持法规合规。",
-          "content": {
-            "intro": "随着监管机构加强对企业实体的监督和透明度措施，年度申报要求持续演进。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "关键申报截止日期"
-              },
-              {
-                "type": "paragraph",
-                "text": "了解关键截止日期和提交要求对于维持与监管机构的良好关系至关重要。"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "id": "fund-governance-trends",
-      "category": "fund",
-      "date": "2024-11-28",
-      "gradient": "from-orange-500 to-red-600",
-      "icon": "M13 10V3L4 14h7v7l9-11h-7z",
-      "translations": {
-        "en": {
-          "title": "Fund Governance Trends 2025",
-          "description": "Explore emerging trends in fund governance and how regulatory changes are shaping the future of investment management.",
-          "content": {
-            "intro": "The fund management industry is experiencing significant changes as new governance frameworks emerge to address evolving investor expectations and regulatory requirements.",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "Emerging Governance Frameworks"
-              },
-              {
-                "type": "paragraph",
-                "text": "New governance models are being developed to enhance transparency, accountability, and stakeholder engagement in fund operations."
-              }
-            ]
-          }
-        },
-        "zh-Hant": {
-          "title": "2025年基金治理趨勢",
-          "description": "探索基金治理的新興趨勢以及法規變化如何塑造投資管理的未來。",
-          "content": {
-            "intro": "隨著新的治理框架出現以應對不斷變化的投資者期望和監管要求，基金管理行業正在經歷重大變化。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "新興治理框架"
-              },
-              {
-                "type": "paragraph",
-                "text": "正在開發新的治理模式，以提高基金運營的透明度、問責制和利益相關者參與度。"
-              }
-            ]
-          }
-        },
-        "zh-Hans": {
-          "title": "2025年基金治理趋势",
-          "description": "探索基金治理的新兴趋势以及法规变化如何塑造投资管理的未来。",
-          "content": {
-            "intro": "随着新的治理框架出现以应对不断变化的投资者期望和监管要求，基金管理行业正在经历重大变化。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "新兴治理框架"
-              },
-              {
-                "type": "paragraph",
-                "text": "正在开发新的治理模式，以提高基金运营的透明度、问责制和利益相关者参与度。"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "id": "digital-transformation-corporate",
-      "category": "company-secretary",
-      "date": "2024-11-20",
-      "gradient": "from-cyan-500 to-blue-600",
-      "icon": "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
-      "translations": {
-        "en": {
-          "title": "Digital Transformation in Corporate Services",
-          "description": "How technology is revolutionizing corporate services and streamlining business operations in the digital age.",
-          "content": {
-            "intro": "Digital transformation is reshaping how corporate services are delivered, creating opportunities for enhanced efficiency, accuracy, and client satisfaction.",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "Technology-Driven Solutions"
-              },
-              {
-                "type": "paragraph",
-                "text": "Modern corporate service providers are leveraging automation, AI, and cloud technologies to deliver more efficient and reliable services."
-              }
-            ]
-          }
-        },
-        "zh-Hant": {
-          "title": "企業服務的數位轉型",
-          "description": "科技如何革命性地改變企業服務並在數位時代簡化業務營運。",
-          "content": {
-            "intro": "數位轉型正在重塑企業服務的提供方式，為提高效率、準確性和客戶滿意度創造機會。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "技術驅動的解決方案"
-              },
-              {
-                "type": "paragraph",
-                "text": "現代企業服務提供商正在利用自動化、人工智能和雲技術來提供更高效、更可靠的服務。"
-              }
-            ]
-          }
-        },
-        "zh-Hans": {
-          "title": "企业服务的数字转型",
-          "description": "科技如何革命性地改变企业服务并在数字时代简化业务运营。",
-          "content": {
-            "intro": "数字转型正在重塑企业服务的提供方式，为提高效率、准确性和客户满意度创造机会。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "技术驱动的解决方案"
-              },
-              {
-                "type": "paragraph",
-                "text": "现代企业服务提供商正在利用自动化、人工智能和云技术来提供更高效、更可靠的服务。"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "id": "regulatory-updates-funds",
-      "category": "fund",
-      "date": "2024-11-15",
-      "gradient": "from-pink-500 to-rose-600",
-      "icon": "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-      "translations": {
-        "en": {
-          "title": "Regulatory Updates for Fund Managers",
-          "description": "Key regulatory changes affecting fund managers and what you need to know to maintain compliance in 2025.",
-          "content": {
-            "intro": "The regulatory landscape for fund management continues to evolve, with new requirements and guidelines being introduced to enhance investor protection and market stability.",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "New Compliance Requirements"
-              },
-              {
-                "type": "paragraph",
-                "text": "Fund managers must stay abreast of changing regulations to ensure ongoing compliance and avoid potential penalties."
-              }
-            ]
-          }
-        },
-        "zh-Hant": {
-          "title": "基金經理法規更新",
-          "description": "影響基金經理的關鍵法規變化以及您需要了解的2025年合規維護要點。",
-          "content": {
-            "intro": "基金管理的監管環境持續演進，新的要求和指導方針正在被引入以加強投資者保護和市場穩定性。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "新的合規要求"
-              },
-              {
-                "type": "paragraph",
-                "text": "基金經理必須及時了解不斷變化的法規，以確保持續合規並避免潛在的處罰。"
-              }
-            ]
-          }
-        },
-        "zh-Hans": {
-          "title": "基金经理法规更新",
-          "description": "影响基金经理的关键法规变化以及您需要了解的2025年合规维护要点。",
-          "content": {
-            "intro": "基金管理的监管环境持续演进，新的要求和指导方针正在被引入以加强投资者保护和市场稳定性。",
-            "sections": [
-              {
-                "type": "heading",
-                "level": 2,
-                "text": "新的合规要求"
-              },
-              {
-                "type": "paragraph",
-                "text": "基金经理必须及时了解不断变化的法规，以确保持续合规并避免潜在的处罚。"
-              }
-            ]
-          }
-        }
+[
+  {
+    "id": "company-secretary-best-practices",
+    "category": "compsec",
+    "createdDate": "2024-12-17",
+    "lastEdited": "2024-12-17T10:30:00.000Z",
+    "image": "assets/images/legal-compliance.jpg",
+    "translations": {
+      "en": {
+        "title": "Company Secretary Best Practices for Hong Kong Corporations",
+        "body": "<p>Understanding the critical role of a company secretary in Hong Kong corporate governance is essential for maintaining compliance and operational excellence.</p><p>The company secretary serves as a vital link between the board of directors and regulatory authorities, ensuring that all statutory requirements are met in a timely manner.</p><h3>Key Responsibilities</h3><ul><li>Maintaining statutory registers and records</li><li>Filing annual returns and other regulatory documents</li><li>Organizing board meetings and maintaining meeting minutes</li><li>Ensuring compliance with the Companies Ordinance</li></ul><p>Professional company secretarial services provide expertise in navigating Hong Kong's complex regulatory environment while allowing businesses to focus on their core operations.</p>"
+      },
+      "zh-Hant": {
+        "title": "香港公司秘書最佳實務",
+        "body": "<p>了解公司秘書在香港企業管治中的關鍵作用，對於維持合規性和營運卓越至關重要。</p><p>公司秘書是董事會與監管機構之間的重要橋樑，確保及時滿足所有法定要求。</p><h3>主要職責</h3><ul><li>維護法定登記冊和記錄</li><li>提交週年申報表和其他監管文件</li><li>組織董事會會議並維護會議記錄</li><li>確保遵守《公司條例》</li></ul><p>專業的公司秘書服務提供在香港複雜監管環境中導航的專業知識，同時讓企業專注於核心業務。</p>"
+      },
+      "zh-Hans": {
+        "title": "香港公司秘书最佳实务",
+        "body": "<p>了解公司秘书在香港企业管治中的关键作用，对于维持合规性和营运卓越至关重要。</p><p>公司秘书是董事会与监管机构之间的重要桥梁，确保及时满足所有法定要求。</p><h3>主要职责</h3><ul><li>维护法定登记册和记录</li><li>提交周年申报表和其他监管文件</li><li>组织董事会会议并维护会议记录</li><li>确保遵守《公司条例》</li></ul><p>专业的公司秘书服务提供在香港复杂监管环境中导航的专业知识，同时让企业专注于核心业务。</p>"
       }
     }
-  ]
-}
+  },
+  {
+    "id": "fund-governance-trends",
+    "category": "fund",
+    "createdDate": "2024-12-16",
+    "lastEdited": "2024-12-16T14:20:00.000Z",
+    "image": "assets/images/FundAvisoryPic.jpg",
+    "translations": {
+      "en": {
+        "title": "Emerging Trends in Fund Governance and Regulatory Compliance",
+        "body": "<p>The fund management landscape in Hong Kong continues to evolve with new regulatory requirements and governance standards that impact investment strategies and operational frameworks.</p><p>Recent developments in fund governance emphasize transparency, risk management, and investor protection while maintaining Hong Kong's position as a leading financial hub.</p><h3>Key Trends</h3><ul><li>Enhanced due diligence requirements for fund managers</li><li>Increased focus on ESG integration and reporting</li><li>Strengthened cybersecurity and data protection measures</li><li>Improved disclosure standards for alternative investments</li></ul><p>Fund managers must adapt their governance frameworks to meet these evolving requirements while delivering value to investors and maintaining competitive advantages.</p>"
+      },
+      "zh-Hant": {
+        "title": "基金管治和監管合規的新趨勢",
+        "body": "<p>香港的基金管理格局持續演變，新的監管要求和管治標準影響投資策略和營運框架。</p><p>基金管治的最新發展強調透明度、風險管理和投資者保護，同時維持香港作為領先金融中心的地位。</p><h3>主要趨勢</h3><ul><li>加強基金經理的盡職調查要求</li><li>增加對ESG整合和報告的關注</li><li>強化網絡安全和數據保護措施</li><li>改善另類投資的披露標準</li></ul><p>基金經理必須調整其管治框架以滿足這些不斷演變的要求，同時為投資者創造價值並保持競爭優勢。</p>"
+      },
+      "zh-Hans": {
+        "title": "基金管治和监管合规的新趋势",
+        "body": "<p>香港的基金管理格局持续演变，新的监管要求和管治标准影响投资策略和营运框架。</p><p>基金管治的最新发展强调透明度、风险管理和投资者保护，同时维持香港作为领先金融中心的地位。</p><h3>主要趋势</h3><ul><li>加强基金经理的尽职调查要求</li><li>增加对ESG整合和报告的关注</li><li>强化网络安全和数据保护措施</li><li>改善另类投资的披露标准</li></ul><p>基金经理必须调整其管治框架以满足这些不断演变的要求，同时为投资者创造价值并保持竞争优势。</p>"
+      }
+    }
+  },
+  {
+    "id": "annual-filing-requirements",
+    "category": "compsec",
+    "createdDate": "2024-12-15",
+    "lastEdited": "2024-12-15T09:45:00.000Z",
+    "image": "assets/images/company-incorporation.jpg",
+    "translations": {
+      "en": {
+        "title": "Annual Filing Requirements and Compliance Deadlines for Hong Kong Companies",
+        "body": "<p>Staying compliant with Hong Kong's annual filing requirements is crucial for maintaining your company's good standing and avoiding penalties.</p><p>The Companies Registry has specific deadlines and procedures that must be followed to ensure continuous compliance with local regulations.</p><h3>Essential Filings</h3><ul><li>Annual Return (Form NAR1) - Due within 42 days of the anniversary of incorporation</li><li>Significant Controllers Register updates</li><li>Change of directors or company secretary notifications</li><li>Registered office address confirmations</li></ul><h3>Penalties for Non-Compliance</h3><p>Late filing can result in default fines starting from HK$870, with additional daily penalties for continued non-compliance. Serious delays may lead to the company being struck off the register.</p><p>Professional assistance ensures timely submission and reduces the risk of costly oversights.</p>"
+      },
+      "zh-Hant": {
+        "title": "香港公司年度申報要求和合規截止日期",
+        "body": "<p>遵守香港的年度申報要求對於維持公司的良好聲譽和避免罰款至關重要。</p><p>公司註冊處有特定的截止日期和程序，必須遵循以確保持續遵守當地法規。</p><h3>基本申報</h3><ul><li>週年申報表（表格NAR1）- 須在成立週年後42天內提交</li><li>重要控制人登記冊更新</li><li>董事或公司秘書變更通知</li><li>註冊辦事處地址確認</li></ul><h3>不合規的罰款</h3><p>逾期申報可能導致從港幣870元開始的違約罰款，持續不合規還會產生額外的每日罰款。嚴重延遲可能導致公司被除名。</p><p>專業協助確保及時提交並降低昂貴疏忽的風險。</p>"
+      },
+      "zh-Hans": {
+        "title": "香港公司年度申报要求和合规截止日期",
+        "body": "<p>遵守香港的年度申报要求对于维持公司的良好声誉和避免罚款至关重要。</p><p>公司注册处有特定的截止日期和程序，必须遵循以确保持续遵守当地法规。</p><h3>基本申报</h3><ul><li>周年申报表（表格NAR1）- 须在成立周年后42天内提交</li><li>重要控制人登记册更新</li><li>董事或公司秘书变更通知</li><li>注册办事处地址确认</li></ul><h3>不合规的罚款</h3><p>逾期申报可能导致从港币870元开始的违约罚款，持续不合规还会产生额外的每日罚款。严重延迟可能导致公司被除名。</p><p>专业协助确保及时提交并降低昂贵疏忽的风险。</p>"
+      }
+    }
+  }
+]
