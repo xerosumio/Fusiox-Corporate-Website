@@ -160,54 +160,82 @@
     <div class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.basic-services.title">Basic Services</h2>
-            <div class="grid md:grid-cols-2 gap-8 justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- HKLPF Registration -->
-                <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="card-body">
-                        <h2 class="card-title" data-i18n="services.hklpf.title">HKLPF Registration</h2>
-                        <p data-i18n="services.hklpf.description">Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">USD 2,500</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
-                            </button>
-                        </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>Complete HKLPF registration process</li>
-                                <li>Legal documentation preparation</li>
-                                <li>Regulatory compliance guidance</li>
-                                <li>Partnership agreement drafting</li>
-                                <li>Filing with Hong Kong authorities</li>
-                                <li>Certificate of registration</li>
-                            </ul>
-                        </div>
+                <div class="service-card group relative flex flex-col rounded-xl bg-gradient-to-br from-[#a991f7] to-[#8be0f7] p-6 shadow-md transition-all duration-300 hover:shadow-lg min-h-[380px]" x-data="{ open: false }" data-aos="zoom-in-up" data-aos-delay="100">
+                    <span class="badge badge-sm badge-outline text-yellow-100 absolute top-2 left-2">Basic</span>
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-semibold text-yellow-100" data-i18n="services.hklpf.title">HKLPF Registration</h3>
+                        <button x-on:click="open = !open" class="text-sm text-white hover:text-yellow-200 transition-colors">
+                            <template x-if="!open">
+                                <span class="flex items-center gap-1">View Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                            <template x-if="open">
+                                <span class="flex items-center gap-1">Hide Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                        </button>
+                    </div>
+
+                    <p class="mt-1 text-sm text-yellow-50" data-i18n="services.hklpf.description">Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.</p>
+                    <p class="mt-3 font-bold text-lg text-yellow-200">USD 2,500</p>
+
+                    <div x-show="open" x-transition class="mt-4 bg-neutral text-sm text-white p-4 rounded-lg space-y-1">
+                        <p class="font-bold mb-1">Includes:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Complete HKLPF registration process</li>
+                            <li>Legal documentation preparation</li>
+                            <li>Regulatory compliance guidance</li>
+                            <li>Partnership agreement drafting</li>
+                            <li>Filing with Hong Kong authorities</li>
+                            <li>Certificate of registration</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Company Secretary Service -->
-                <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="card-body">
-                        <h2 class="card-title" data-i18n="services.company-secretary.title">Company Secretary Service</h2>
-                        <p data-i18n="services.company-secretary.description">Professional company secretary services to ensure compliance with Hong Kong corporate regulations and statutory requirements.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">USD 1,180</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
-                            </button>
-                        </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>Dedicated company secretary</li>
-                                <li>Annual return filing</li>
-                                <li>Board meeting coordination</li>
-                                <li>Statutory compliance monitoring</li>
-                                <li>Corporate record maintenance</li>
-                                <li>Regulatory filing support</li>
-                            </ul>
-                        </div>
+                <div class="service-card group relative flex flex-col rounded-xl bg-gradient-to-br from-[#a991f7] to-[#8be0f7] p-6 shadow-md transition-all duration-300 hover:shadow-lg min-h-[380px]" x-data="{ open: false }" data-aos="zoom-in-up" data-aos-delay="200">
+                    <span class="badge badge-sm badge-outline text-yellow-100 absolute top-2 left-2">Basic</span>
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-semibold text-yellow-100" data-i18n="services.company-secretary.title">Company Secretary Service</h3>
+                        <button x-on:click="open = !open" class="text-sm text-white hover:text-yellow-200 transition-colors">
+                            <template x-if="!open">
+                                <span class="flex items-center gap-1">View Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                            <template x-if="open">
+                                <span class="flex items-center gap-1">Hide Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                        </button>
+                    </div>
+
+                    <p class="mt-1 text-sm text-yellow-50" data-i18n="services.company-secretary.description">Professional company secretary services to ensure compliance with Hong Kong corporate regulations and statutory requirements.</p>
+                    <p class="mt-3 font-bold text-lg text-yellow-200">USD 1,180</p>
+
+                    <div x-show="open" x-transition class="mt-4 bg-neutral text-sm text-white p-4 rounded-lg space-y-1">
+                        <p class="font-bold mb-1">Includes:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Dedicated company secretary</li>
+                            <li>Annual return filing</li>
+                            <li>Board meeting coordination</li>
+                            <li>Statutory compliance monitoring</li>
+                            <li>Corporate record maintenance</li>
+                            <li>Regulatory filing support</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -218,33 +246,152 @@
     <div class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.value-added-services.title">Value-added Services</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="card-body">
-                        <h3 class="card-title">Registered Address and Mail Receiving</h3>
-                        <p class="text-sm">Professional registered address service with mail handling and forwarding capabilities.</p>
-                        <div class="text-lg font-bold text-primary">USD 500</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="service-card group relative flex flex-col rounded-xl bg-gradient-to-br from-[#a991f7] to-[#8be0f7] p-6 shadow-md transition-all duration-300 hover:shadow-lg min-h-[380px]" x-data="{ open: false }" data-aos="zoom-in-up" data-aos-delay="100">
+                    <span class="badge badge-sm badge-outline text-yellow-100 absolute top-2 left-2">Value-added</span>
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-semibold text-yellow-100">Registered Address and Mail Receiving</h3>
+                        <button x-on:click="open = !open" class="text-sm text-white hover:text-yellow-200 transition-colors">
+                            <template x-if="!open">
+                                <span class="flex items-center gap-1">View Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                            <template x-if="open">
+                                <span class="flex items-center gap-1">Hide Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                        </button>
+                    </div>
+
+                    <p class="mt-1 text-sm text-yellow-50">Professional registered address service with mail handling and forwarding capabilities.</p>
+                    <p class="mt-3 font-bold text-lg text-yellow-200">USD 500</p>
+
+                    <div x-show="open" x-transition class="mt-4 bg-neutral text-sm text-white p-4 rounded-lg space-y-1">
+                        <p class="font-bold mb-1">Includes:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Official registered address service</li>
+                            <li>Mail receiving and handling</li>
+                            <li>Document forwarding service</li>
+                            <li>Professional business address</li>
+                            <li>Compliance with local regulations</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="card-body">
-                        <h3 class="card-title">Audit and Tax Filing</h3>
-                        <p class="text-sm">Professional audit services and comprehensive tax filing support tailored to your needs.</p>
-                        <div class="text-lg font-bold text-primary">Case-by-case basis</div>
+
+                <div class="service-card group relative flex flex-col rounded-xl bg-gradient-to-br from-[#a991f7] to-[#8be0f7] p-6 shadow-md transition-all duration-300 hover:shadow-lg min-h-[380px]" x-data="{ open: false }" data-aos="zoom-in-up" data-aos-delay="200">
+                    <span class="badge badge-sm badge-outline text-yellow-100 absolute top-2 left-2">Value-added</span>
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-semibold text-yellow-100">Audit and Tax Filing</h3>
+                        <button x-on:click="open = !open" class="text-sm text-white hover:text-yellow-200 transition-colors">
+                            <template x-if="!open">
+                                <span class="flex items-center gap-1">View Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                            <template x-if="open">
+                                <span class="flex items-center gap-1">Hide Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                        </button>
+                    </div>
+
+                    <p class="mt-1 text-sm text-yellow-50">Professional audit services and comprehensive tax filing support tailored to your needs.</p>
+                    <p class="mt-3 font-bold text-lg text-yellow-200">Case-by-case basis</p>
+
+                    <div x-show="open" x-transition class="mt-4 bg-neutral text-sm text-white p-4 rounded-lg space-y-1">
+                        <p class="font-bold mb-1">Includes:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Annual audit services</li>
+                            <li>Tax return preparation</li>
+                            <li>Financial statement review</li>
+                            <li>Compliance documentation</li>
+                            <li>Professional consultation</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="300">
-                    <div class="card-body">
-                        <h3 class="card-title">Bank Account Opening</h3>
-                        <p class="text-sm">Assistance with corporate bank account opening and banking relationship establishment.</p>
-                        <div class="text-lg font-bold text-primary">Starting from USD 800</div>
+
+                <div class="service-card group relative flex flex-col rounded-xl bg-gradient-to-br from-[#a991f7] to-[#8be0f7] p-6 shadow-md transition-all duration-300 hover:shadow-lg min-h-[380px]" x-data="{ open: false }" data-aos="zoom-in-up" data-aos-delay="300">
+                    <span class="badge badge-sm badge-outline text-yellow-100 absolute top-2 left-2">Value-added</span>
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-semibold text-yellow-100">Bank Account Opening</h3>
+                        <button x-on:click="open = !open" class="text-sm text-white hover:text-yellow-200 transition-colors">
+                            <template x-if="!open">
+                                <span class="flex items-center gap-1">View Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                            <template x-if="open">
+                                <span class="flex items-center gap-1">Hide Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                        </button>
+                    </div>
+
+                    <p class="mt-1 text-sm text-yellow-50">Assistance with corporate bank account opening and banking relationship establishment.</p>
+                    <p class="mt-3 font-bold text-lg text-yellow-200">Starting from USD 800</p>
+
+                    <div x-show="open" x-transition class="mt-4 bg-neutral text-sm text-white p-4 rounded-lg space-y-1">
+                        <p class="font-bold mb-1">Includes:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Bank account application assistance</li>
+                            <li>Documentation preparation</li>
+                            <li>Banking relationship setup</li>
+                            <li>Account activation support</li>
+                            <li>Banking compliance guidance</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="400">
-                    <div class="card-body">
-                        <h3 class="card-title">CTC Certification</h3>
-                        <p class="text-sm">Certified True Copy certification services for official document authentication.</p>
-                        <div class="text-lg font-bold text-primary">USD 50 per copy</div>
+
+                <div class="service-card group relative flex flex-col rounded-xl bg-gradient-to-br from-[#a991f7] to-[#8be0f7] p-6 shadow-md transition-all duration-300 hover:shadow-lg min-h-[380px]" x-data="{ open: false }" data-aos="zoom-in-up" data-aos-delay="400">
+                    <span class="badge badge-sm badge-outline text-yellow-100 absolute top-2 left-2">Value-added</span>
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-semibold text-yellow-100">CTC Certification</h3>
+                        <button x-on:click="open = !open" class="text-sm text-white hover:text-yellow-200 transition-colors">
+                            <template x-if="!open">
+                                <span class="flex items-center gap-1">View Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                            <template x-if="open">
+                                <span class="flex items-center gap-1">Hide Details 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                    </svg>
+                                </span>
+                            </template>
+                        </button>
+                    </div>
+
+                    <p class="mt-1 text-sm text-yellow-50">Certified True Copy certification services for official document authentication.</p>
+                    <p class="mt-3 font-bold text-lg text-yellow-200">USD 50 per copy</p>
+
+                    <div x-show="open" x-transition class="mt-4 bg-neutral text-sm text-white p-4 rounded-lg space-y-1">
+                        <p class="font-bold mb-1">Includes:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Official document certification</li>
+                            <li>Certified True Copy stamping</li>
+                            <li>Legal authentication service</li>
+                            <li>Professional notarization</li>
+                            <li>Express service available</li>
+                        </ul>
                     </div>
                 </div>
             </div>
