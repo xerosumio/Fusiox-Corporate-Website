@@ -103,9 +103,7 @@ class I18n {
 
                 // Contact Page
                 'contact.hero.title': 'Contact Us',
-                'contact.hero.subtitle': 'Get in touch with our incorporation experts for personalized assistance.',
-                'contact.get-consultation': 'Get Free Consultation',
-                'contact.see-how-works': 'See How It Works',
+                'contact.hero.subtitle': 'Ready to start your business? Get in touch with our incorporation experts today.',
 
                 // How It Works Page
                 'how-it-works.hero.title': 'How It Works',
@@ -279,19 +277,40 @@ class I18n {
                 'how-it-works.cta.description': 'Begin your incorporation journey today with our simple 4-step process.',
                 'how-it-works.cta.button': 'Start Your Incorporation',
 
-                // Contact Form
-                'contact.form.full-name': 'Full Name *',
-                'contact.form.email': 'Email Address *',
-                'contact.form.phone': 'Phone Number',
-                'contact.form.business-name': 'Business Name',
-                'contact.form.service-interest': 'Service Interest',
-                'contact.form.message': 'Message *',
-                'contact.form.placeholder.full-name': 'Your full name',
-                'contact.form.placeholder.email': 'your.email@example.com',
-                'contact.form.placeholder.phone': 'Enter phone number',
-                'contact.form.placeholder.business-name': 'Your business name (if you have one)',
-                'contact.form.placeholder.message': 'Tell us about your business and how we can help...',
-                'contact.form.title': 'Get Free Consultation',
+                // Contact Page
+                'contact.office.title': 'Office Address',
+                'contact.office.address.line1': 'Room 3903, The Center',
+                'contact.office.address.line2': '99 Queen\'s Road Central',
+                'contact.office.address.line3': 'Hong Kong',
+                'contact.office.viewMap': 'View on Map',
+
+                'contact.methods.title': 'Get In Touch',
+                'contact.methods.hours.label': 'Business Hours',
+                'contact.methods.hours.time': 'Mon – Fri: 9:00 AM – 6:00 PM HKT',
+
+                'contact.form.title': 'Send Us a Message',
+                'contact.form.subtitle': 'Ready to start your business journey? Fill out the form below and our incorporation experts will get back to you within 24 hours.',
+                'contact.form.name.label': 'Name *',
+                'contact.form.name.placeholder': 'Your full name',
+                'contact.form.email.label': 'Email *',
+                'contact.form.email.placeholder': 'your.email@example.com',
+                'contact.form.company.label': 'Company Name',
+                'contact.form.company.placeholder': 'Your company name (optional)',
+                'contact.form.subject.label': 'Subject *',
+                'contact.form.subject.placeholder': 'Select a subject...',
+                'contact.form.subject.options.general': 'General Inquiry',
+                'contact.form.subject.options.funds': 'Fund Services',
+                'contact.form.subject.options.secretary': 'Company Secretary',
+                'contact.form.subject.options.others': 'Others',
+                'contact.form.message.label': 'Message *',
+                'contact.form.message.placeholder': 'Tell us about your business needs and how we can help you...',
+                'contact.form.submit': 'Send Message',
+                'contact.form.sending': 'Sending...',
+                'contact.form.success': 'Thank you for your message! We\'ll get back to you within 24 hours.',
+                'contact.form.error': 'There was an error sending your message. Please try again or contact us directly.',
+
+                // Page Titles
+                'page.title.contact': 'Contact Us - Fusiox',
 
                 // FAQ Page
                 'faq.sections.general': 'General Questions',
@@ -570,9 +589,7 @@ class I18n {
 
                 // Contact Page
                 'contact.hero.title': '聯絡我們',
-                'contact.hero.subtitle': '與我們的註冊專家聯繫，獲得個性化協助。',
-                'contact.get-consultation': '免費諮詢',
-                'contact.see-how-works': '查看服務流程',
+                'contact.hero.subtitle': '準備開始您的業務？立即與我們的註冊專家聯繫。',
 
                 // How It Works Page
                 'how-it-works.hero.title': '服務流程',
@@ -742,19 +759,40 @@ class I18n {
                 'how-it-works.cta.description': '立即開始您的註冊之旅，通過我們簡單的4步流程。',
                 'how-it-works.cta.button': '開始您的註冊',
 
-                // Contact Form
-                'contact.form.full-name': '全名 *',
-                'contact.form.email': '電子郵件地址 *',
-                'contact.form.phone': '電話號碼',
-                'contact.form.business-name': '企業名稱',
-                'contact.form.service-interest': '服務興趣',
-                'contact.form.message': '訊息 *',
-                'contact.form.placeholder.full-name': '您的全名',
-                'contact.form.placeholder.email': 'your.email@example.com',
-                'contact.form.placeholder.phone': '輸入電話號碼',
-                'contact.form.placeholder.business-name': '您的企業名稱（如果有的話）',
-                'contact.form.placeholder.message': '告訴我們您的業務以及我們如何協助...',
-                'contact.form.title': '免費諮詢',
+                // Contact Page
+                'contact.office.title': '辦公地址',
+                'contact.office.address.line1': '中環皇后大道中99號',
+                'contact.office.address.line2': '中環廣場3903室',
+                'contact.office.address.line3': '香港',
+                'contact.office.viewMap': '查看地圖',
+
+                'contact.methods.title': '聯繫方式',
+                'contact.methods.hours.label': '辦公時間',
+                'contact.methods.hours.time': '週一至週五：上午9:00 - 下午6:00 (香港時間)',
+
+                'contact.form.title': '發送訊息',
+                'contact.form.subtitle': '準備開始您的創業之旅？填寫以下表格，我們的註冊專家將在24小時內回覆您。',
+                'contact.form.name.label': '姓名 *',
+                'contact.form.name.placeholder': '您的全名',
+                'contact.form.email.label': '電子郵件 *',
+                'contact.form.email.placeholder': 'your.email@example.com',
+                'contact.form.company.label': '公司名稱',
+                'contact.form.company.placeholder': '您的公司名稱（可選）',
+                'contact.form.subject.label': '主題 *',
+                'contact.form.subject.placeholder': '選擇主題...',
+                'contact.form.subject.options.general': '一般查詢',
+                'contact.form.subject.options.funds': '基金服務',
+                'contact.form.subject.options.secretary': '公司秘書',
+                'contact.form.subject.options.others': '其他',
+                'contact.form.message.label': '訊息 *',
+                'contact.form.message.placeholder': '告訴我們您的業務需求以及我們如何協助您...',
+                'contact.form.submit': '發送訊息',
+                'contact.form.sending': '發送中...',
+                'contact.form.success': '感謝您的訊息！我們將在24小時內回覆您。',
+                'contact.form.error': '發送訊息時出現錯誤。請重試或直接與我們聯繫。',
+
+                // Page Titles
+                'page.title.contact': '聯絡我們 - Fusiox',
 
                 // FAQ Page
                 'faq.sections.general': '一般問題',
@@ -1033,9 +1071,7 @@ class I18n {
 
                 // Contact Page
                 'contact.hero.title': '联系我们',
-                'contact.hero.subtitle': '与我们的注册专家联系，获得个性化协助。',
-                'contact.get-consultation': '免费咨询',
-                'contact.see-how-works': '查看服务流程',
+                'contact.hero.subtitle': '准备开始您的业务？立即与我们的注册专家联系。',
 
                 // How It Works Page
                 'how-it-works.hero.title': '服务流程',
@@ -1213,19 +1249,40 @@ class I18n {
                 'how-it-works.cta.description': '立即开始您的注册之旅，通过我们简单的4步流程。',
                 'how-it-works.cta.button': '开始您的注册',
 
-                // Contact Form
-                'contact.form.full-name': '全名 *',
-                'contact.form.email': '电子邮件地址 *',
-                'contact.form.phone': '电话号码',
-                'contact.form.business-name': '企业名称',
-                'contact.form.service-interest': '服务兴趣',
-                'contact.form.message': '消息 *',
-                'contact.form.placeholder.full-name': '您的全名',
-                'contact.form.placeholder.email': 'your.email@example.com',
-                'contact.form.placeholder.phone': '输入电话号码',
-                'contact.form.placeholder.business-name': '您的企业名称（如果有的话）',
-                'contact.form.placeholder.message': '告诉我们您的业务以及我们如何协助...',
-                'contact.form.title': '免费咨询',
+                // Contact Page
+                'contact.office.title': '办公地址',
+                'contact.office.address.line1': '中环皇后大道中99号',
+                'contact.office.address.line2': '中环广场3903室',
+                'contact.office.address.line3': '香港',
+                'contact.office.viewMap': '查看地图',
+
+                'contact.methods.title': '联系方式',
+                'contact.methods.hours.label': '办公时间',
+                'contact.methods.hours.time': '周一至周五：上午9:00 - 下午6:00 (香港时间)',
+
+                'contact.form.title': '发送消息',
+                'contact.form.subtitle': '准备开始您的创业之旅？填写以下表格，我们的注册专家将在24小时内回复您。',
+                'contact.form.name.label': '姓名 *',
+                'contact.form.name.placeholder': '您的全名',
+                'contact.form.email.label': '电子邮件 *',
+                'contact.form.email.placeholder': 'your.email@example.com',
+                'contact.form.company.label': '公司名称',
+                'contact.form.company.placeholder': '您的公司名称（可选）',
+                'contact.form.subject.label': '主题 *',
+                'contact.form.subject.placeholder': '选择主题...',
+                'contact.form.subject.options.general': '一般咨询',
+                'contact.form.subject.options.funds': '基金服务',
+                'contact.form.subject.options.secretary': '公司秘书',
+                'contact.form.subject.options.others': '其他',
+                'contact.form.message.label': '消息 *',
+                'contact.form.message.placeholder': '告诉我们您的业务需求以及我们如何协助您...',
+                'contact.form.submit': '发送消息',
+                'contact.form.sending': '发送中...',
+                'contact.form.success': '感谢您的消息！我们将在24小时内回复您。',
+                'contact.form.error': '发送消息时出现错误。请重试或直接与我们联系。',
+
+                // Page Titles
+                'page.title.contact': '联系我们 - Fusiox',
 
                 // FAQ Page
                 'faq.sections.general': '一般问题',
