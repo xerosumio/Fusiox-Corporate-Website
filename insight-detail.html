@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="coffee">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.title.insight-detail">Best Practices for Corporate Compliance - Fusiox</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="assets/css/sticky-header.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Typography for prose content */
+        .prose {
+            max-width: none;
+            line-height: 1.8;
+        }
+        
+        .prose h2 {
+            color: var(--fallback-p, oklch(var(--p)));
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .prose h3 {
+            color: var(--fallback-p, oklch(var(--p)));
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .prose p {
+            margin-bottom: 1.25rem;
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+        
+        .prose blockquote {
+            border-left: 4px solid var(--fallback-a, oklch(var(--a)));
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--fallback-bc, oklch(var(--bc))) / 0.8;
+        }
+        
+        .prose ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .prose ul li {
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+        
+        /* Cover image hover effect */
+        .cover-block {
+            transition: all 0.3s ease;
+        }
+        
+        .cover-block:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Breadcrumb styling */
+        .breadcrumbs > ul > li > a:hover {
+            color: var(--fallback-a, oklch(var(--a)));
+        }
+        
+        /* Back button animation */
+        .btn-back {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body x-data="insightDetail()">
+    <!-- Navigation -->
+    <div class="navbar bg-base-100 shadow-lg">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                    <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
+                    <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
+                    <li><a href="insights.html" data-i18n="nav.insights">Insights</a></li>
+                    <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+            <a href="index.html" class="btn btn-ghost text-xl font-bold" data-i18n="nav.brand">Fusiox</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                <li><a href="how-it-works.html" data-i18n="nav.how-it-works">How It Works</a></li>
+                <li><a href="funds.html" data-i18n="nav.for-funds">For Funds</a></li>
+                <li><a href="insights.html" class="active" data-i18n="nav.insights">Insights</a></li>
+                <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <!-- Language Selector -->
+            <div class="dropdown dropdown-end mr-4" x-data="languageSelector()">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-sm" @click="toggleDropdown()">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-3a5 5 0 00-5-5 5 5 0 00-5 5v3m9-9v-3a5 5 0 00-5 5 5 5 0 00-5-5v3"></path>
+                    </svg>
+                    <span x-text="currentLanguageObj.nativeName"></span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <ul x-show="isOpen" @click.away="closeDropdown()" x-transition class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
+                    <template x-for="language in languages" :key="language.code">
+                        <li>
+                            <a @click="changeLanguage(language.code)" 
+                               :class="{ 'active': currentLanguage === language.code }"
+                               x-text="language.nativeName"></a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.get-started">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Insight Detail Page -->
+    <section class="bg-base-100 py-20 px-6 md:px-24">
+        <div class="max-w-4xl mx-auto space-y-8" data-aos="fade-up">
+            
+            <!-- Breadcrumb -->
+            <div class="text-sm breadcrumbs text-base-content/60">
+                <ul>
+                    <li><a href="index.html" class="hover:text-accent transition-colors" data-i18n="breadcrumb.home">Home</a></li> 
+                    <li><a href="insights.html" class="hover:text-accent transition-colors" data-i18n="breadcrumb.insights">Insights</a></li> 
+                    <li data-i18n="insight-detail.breadcrumb.title">Best Practices for Corporate Compliance</li>
+                </ul>
+            </div>
+
+            <!-- Title & Meta -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <span class="badge badge-outline text-xs text-secondary" data-i18n="insights.category.company-secretary">Company Secretary</span>
+                <h1 class="text-4xl font-bold text-primary mt-4" data-i18n="insight-detail.title">Best Practices for Corporate Compliance</h1>
+                <p class="text-sm text-base-content/70 mt-2" data-i18n="insight-detail.meta">Published on December 15, 2024</p>
+            </div>
+
+            <!-- Cover Image or Solid Block -->
+            <div class="rounded-xl overflow-hidden shadow-lg cover-block" data-aos="zoom-in" data-aos-delay="200">
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-64 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Content Body -->
+            <article class="prose prose-lg max-w-none text-base-content" data-aos="fade-up" data-aos-delay="300">
+                <p data-i18n="insight-detail.content.intro">
+                    As regulatory environments become more complex, company secretaries play a critical role in ensuring corporate governance and compliance. The modern business landscape demands a proactive approach to regulatory adherence, making the role of company secretaries more vital than ever before.
+                </p>
+                
+                <h2 data-i18n="insight-detail.content.h2-1">Understanding Your Obligations</h2>
+                <p data-i18n="insight-detail.content.p1">
+                    Directors and officers must be aware of their statutory duties and reporting requirements under jurisdictional laws. These obligations extend beyond simple record-keeping to encompass strategic oversight, risk management, and stakeholder communication. Understanding these responsibilities is the foundation of effective corporate governance.
+                </p>
+                
+                <blockquote data-i18n="insight-detail.content.quote">
+                    "Compliance is not just about following rules, it's about building trust and transparency that forms the backbone of sustainable business operations."
+                </blockquote>
+                
+                <h3 data-i18n="insight-detail.content.h3-1">Top Strategies for Compliance</h3>
+                <ul>
+                    <li data-i18n="insight-detail.content.li1">Conduct regular audits and assessments to identify potential compliance gaps</li>
+                    <li data-i18n="insight-detail.content.li2">Ensure timely filings with regulatory authorities and maintain accurate records</li>
+                    <li data-i18n="insight-detail.content.li3">Implement strong internal control systems and monitoring procedures</li>
+                    <li data-i18n="insight-detail.content.li4">Establish clear communication channels between board members and management</li>
+                    <li data-i18n="insight-detail.content.li5">Provide ongoing training and education for directors and officers</li>
+                </ul>
+                
+                <h3 data-i18n="insight-detail.content.h3-2">The Role of Technology</h3>
+                <p data-i18n="insight-detail.content.p2">
+                    Modern compliance management increasingly relies on technology solutions to streamline processes, enhance accuracy, and provide real-time monitoring capabilities. Digital platforms can automate routine tasks, track deadlines, and generate comprehensive reports that support decision-making and regulatory submissions.
+                </p>
+                
+                <h3 data-i18n="insight-detail.content.h3-3">Building a Compliance Culture</h3>
+                <p data-i18n="insight-detail.content.p3">
+                    Success in corporate compliance extends beyond policies and procedures to encompass organizational culture. Companies that prioritize compliance at every level, from the boardroom to front-line operations, are better positioned to navigate regulatory challenges and maintain stakeholder confidence.
+                </p>
+            </article>
+
+            <!-- CTA or Related Links -->
+            <div class="pt-8 border-t border-base-300" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                    <a href="insights.html" class="btn btn-accent btn-back" data-i18n="insight-detail.back-btn">← Back to Insights</a>
+                    <div class="flex gap-3">
+                        <a href="contact.html" class="btn btn-primary" data-i18n="insight-detail.contact-btn">Get Expert Advice</a>
+                        <a href="services.html" class="btn btn-outline" data-i18n="insight-detail.services-btn">Our Services</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Articles Section -->
+            <div class="pt-12 border-t border-base-300 mt-12" data-aos="fade-up" data-aos-delay="500">
+                <h3 class="text-2xl font-bold text-primary mb-6" data-i18n="insight-detail.related-title">Related Articles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Related Article 1 -->
+                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                        <div class="card-body">
+                            <span class="badge badge-outline text-xs mb-2" data-i18n="insights.category.company-secretary">Company Secretary</span>
+                            <h4 class="card-title text-lg" data-i18n="insight-detail.related1.title">Annual Filing Requirements Update</h4>
+                            <p class="text-sm opacity-80" data-i18n="insight-detail.related1.desc">Stay updated with the latest changes in annual filing requirements.</p>
+                            <div class="card-actions mt-4">
+                                <a href="insights/annual-filing-requirements.html" class="text-accent text-sm font-medium hover:underline" data-i18n="insights.read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Article 2 -->
+                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                        <div class="card-body">
+                            <span class="badge badge-outline text-xs mb-2" data-i18n="insights.category.company-secretary">Company Secretary</span>
+                            <h4 class="card-title text-lg" data-i18n="insight-detail.related2.title">Digital Transformation in Corporate Services</h4>
+                            <p class="text-sm opacity-80" data-i18n="insight-detail.related2.desc">How technology is revolutionizing corporate services and operations.</p>
+                            <div class="card-actions mt-4">
+                                <a href="insights/digital-transformation-corporate.html" class="text-accent text-sm font-medium hover:underline" data-i18n="insights.read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-semibold mb-4">Fusiox Corporate Services Limited</h3>
+                    <p class="text-gray-400">Professional corporate services for modern businesses.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Fund Consultation</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Corporate Governance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="insights.html" class="hover:text-white transition-colors">Insights</a></li>
+                        <li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="how-it-works.html" class="hover:text-white transition-colors">How It Works</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="openGoogleMaps()" class="hover:text-white transition-colors cursor-pointer">Room 3903 The Center 99 Queen's Road Central Hong Kong</a></li>
+                        <li><a href="mailto:info@fusiox.ai" class="hover:text-white transition-colors">info@fusiox.ai</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Fusiox Corporate Services Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/sticky-header.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Alpine.js component for dynamic content loading
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('insightDetail', () => ({
+                post: null,
+                isLoading: true,
+                language: 'en',
+                postId: null,
+
+                async init() {
+                    // Get post ID from URL parameters
+                    const urlParams = new URLSearchParams(window.location.search);
+                    this.postId = urlParams.get('id');
+                    
+                    // Initialize language
+                    this.language = localStorage.getItem('language') || 'en';
+                    
+                    if (this.postId) {
+                        await this.loadPost();
+                    }
+                    
+                    // Initialize internationalization
+                    if (typeof window.i18n !== 'undefined') {
+                        window.i18n.updateContent();
+                    }
+                    
+                    this.isLoading = false;
+                },
+
+                async loadPost() {
+                    try {
+                        const response = await fetch('./data/insights.json');
+                        if (!response.ok) throw new Error('Failed to load posts');
+                        const posts = await response.json();
+                        this.post = posts.find(post => post.id === this.postId);
+                        
+                        if (this.post) {
+                            // Update page title
+                            document.title = this.getPostTitle() + ' - Fusiox';
+                        }
+                    } catch (error) {
+                        console.error('Error loading post:', error);
+                        this.post = null;
+                    }
+                },
+
+                getPostTitle() {
+                    return this.post?.title?.[this.language] || this.post?.title?.en || 'Insight';
+                },
+
+                getPostDescription() {
+                    return this.post?.description?.[this.language] || this.post?.description?.en || '';
+                },
+
+                getPostContent() {
+                    return this.post?.content?.[this.language] || this.post?.content?.en || {};
+                },
+
+                getCategoryLabel() {
+                    const labels = {
+                        'company-secretary': {
+                            en: 'Company Secretary',
+                            'zh-TW': '公司秘書',
+                            'zh-CN': '公司秘书'
+                        },
+                        'fund': {
+                            en: 'Fund',
+                            'zh-TW': '基金',
+                            'zh-CN': '基金'
+                        }
+                    };
+                    return labels[this.post?.category]?.[this.language] || this.post?.category || '';
+                },
+
+                formatDate(dateString) {
+                    if (!dateString) return '';
+                    const date = new Date(dateString);
+                    const options = { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    };
+                    
+                    if (this.language === 'zh-TW' || this.language === 'zh-CN') {
+                        return date.toLocaleDateString('zh', options);
+                    }
+                    return date.toLocaleDateString('en', options);
+                }
+            }));
+        });
+
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+
+        // Function to open Google Maps
+        function openGoogleMaps() {
+            const address = "The Center, 99 Queen's Road Central Hong Kong";
+            const encodedAddress = encodeURIComponent(address);
+            
+            // Check if device is mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // For mobile devices, try to open native maps app first, fallback to Google Maps web
+                const mapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+                const intent = `geo:0,0?q=${encodedAddress}`;
+                
+                // Try to open native maps app
+                const link = document.createElement('a');
+                link.href = intent;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Fallback to Google Maps web after a short delay
+                setTimeout(() => {
+                    window.open(mapsUrl, '_blank');
+                }, 500);
+            } else {
+                // For desktop, open Google Maps in new tab
+                const mapsUrl = `https://maps.google.com/maps?q=${encodedAddress}`;
+                window.open(mapsUrl, '_blank');
+            }
+        }
+
+        // Language selector functionality (matches existing implementation)
+        function languageSelector() {
+            return {
+                isOpen: false,
+                currentLanguage: window.i18n?.currentLanguage || 'en',
+                languages: window.i18n?.getSupportedLanguages() || [
+                    { code: 'en', name: 'English', nativeName: 'English' },
+                    { code: 'zh-Hant', name: 'Traditional Chinese', nativeName: '繁體中文' },
+                    { code: 'zh-Hans', name: 'Simplified Chinese', nativeName: '简体中文' }
+                ],
+                
+                get currentLanguageObj() {
+                    return this.languages.find(lang => lang.code === this.currentLanguage) || this.languages[0];
+                },
+                
+                toggleDropdown() {
+                    this.isOpen = !this.isOpen;
+                },
+                
+                closeDropdown() {
+                    this.isOpen = false;
+                },
+                
+                changeLanguage(langCode) {
+                    this.currentLanguage = langCode;
+                    this.isOpen = false;
+                    if (window.i18n) {
+                        window.i18n.setLanguage(langCode);
+                    }
+                }
+            }
+        }
+
+        // Initialize i18n when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof I18n !== 'undefined') {
+                window.i18n = new I18n();
+            }
+        });
+    </script>
+</body>
+</html>

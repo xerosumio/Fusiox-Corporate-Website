@@ -358,6 +358,34 @@ class I18n {
                 'insights.filter.all': 'All Posts',
                 'insights.filter.company-secretary': 'Company Secretary',
                 'insights.filter.fund': 'Fund',
+                'insights.category.company-secretary': 'Company Secretary',
+                'insights.category.fund': 'Fund',
+                'insights.read-more': 'Read More →',
+                
+                // Insights Posts
+                'insights.posts.compliance-best-practices.title': 'Best Practices for Corporate Compliance',
+                'insights.posts.compliance-best-practices.description': 'Discover essential compliance strategies that every company secretary should implement to ensure seamless corporate governance and regulatory adherence.',
+                'insights.posts.compliance-best-practices.date': 'Dec 15, 2024',
+                
+                'insights.posts.esg-strategies.title': 'ESG Fund Investment Strategies',
+                'insights.posts.esg-strategies.description': 'Learn how sustainable investing principles are reshaping fund management and creating new opportunities for responsible capital allocation.',
+                'insights.posts.esg-strategies.date': 'Dec 10, 2024',
+                
+                'insights.posts.annual-filing.title': 'Annual Filing Requirements Update',
+                'insights.posts.annual-filing.description': 'Stay updated with the latest changes in annual filing requirements and ensure your company remains compliant with regulatory standards.',
+                'insights.posts.annual-filing.date': 'Dec 5, 2024',
+                
+                'insights.posts.governance-trends.title': 'Fund Governance Trends 2025',
+                'insights.posts.governance-trends.description': 'Explore emerging trends in fund governance and how regulatory changes are shaping the future of investment management.',
+                'insights.posts.governance-trends.date': 'Nov 28, 2024',
+                
+                'insights.posts.digital-transformation.title': 'Digital Transformation in Corporate Services',
+                'insights.posts.digital-transformation.description': 'How technology is revolutionizing corporate services and streamlining business operations in the digital age.',
+                'insights.posts.digital-transformation.date': 'Nov 20, 2024',
+                
+                'insights.posts.regulatory-updates.title': 'Regulatory Updates for Fund Managers',
+                'insights.posts.regulatory-updates.description': 'Key regulatory changes affecting fund managers and what you need to know to maintain compliance in 2025.',
+                'insights.posts.regulatory-updates.date': 'Nov 15, 2024',
 
                 // Page Titles
                 'page.title.about': 'About Us - Fusiox',
@@ -368,6 +396,38 @@ class I18n {
                 'page.title.insights': 'Insights - Fusiox',
                 'page.title.services': 'Services - Fusiox',
                 'page.title.index': 'Fusiox - Professional Incorporation Services',
+                'page.title.insight-detail': 'Best Practices for Corporate Compliance - Fusiox',
+
+                // Breadcrumb
+                'breadcrumb.home': 'Home',
+                'breadcrumb.insights': 'Insights',
+
+                // Insight Detail Page
+                'insight-detail.breadcrumb.title': 'Best Practices for Corporate Compliance',
+                'insight-detail.title': 'Best Practices for Corporate Compliance',
+                'insight-detail.meta': 'Published on December 15, 2024',
+                'insight-detail.content.intro': 'As regulatory environments become more complex, company secretaries play a critical role in ensuring corporate governance and compliance. The modern business landscape demands a proactive approach to regulatory adherence, making the role of company secretaries more vital than ever before.',
+                'insight-detail.content.h2-1': 'Understanding Your Obligations',
+                'insight-detail.content.p1': 'Directors and officers must be aware of their statutory duties and reporting requirements under jurisdictional laws. These obligations extend beyond simple record-keeping to encompass strategic oversight, risk management, and stakeholder communication. Understanding these responsibilities is the foundation of effective corporate governance.',
+                'insight-detail.content.quote': '"Compliance is not just about following rules, it\'s about building trust and transparency that forms the backbone of sustainable business operations."',
+                'insight-detail.content.h3-1': 'Top Strategies for Compliance',
+                'insight-detail.content.li1': 'Conduct regular audits and assessments to identify potential compliance gaps',
+                'insight-detail.content.li2': 'Ensure timely filings with regulatory authorities and maintain accurate records',
+                'insight-detail.content.li3': 'Implement strong internal control systems and monitoring procedures',
+                'insight-detail.content.li4': 'Establish clear communication channels between board members and management',
+                'insight-detail.content.li5': 'Provide ongoing training and education for directors and officers',
+                'insight-detail.content.h3-2': 'The Role of Technology',
+                'insight-detail.content.p2': 'Modern compliance management increasingly relies on technology solutions to streamline processes, enhance accuracy, and provide real-time monitoring capabilities. Digital platforms can automate routine tasks, track deadlines, and generate comprehensive reports that support decision-making and regulatory submissions.',
+                'insight-detail.content.h3-3': 'Building a Compliance Culture',
+                'insight-detail.content.p3': 'Success in corporate compliance extends beyond policies and procedures to encompass organizational culture. Companies that prioritize compliance at every level, from the boardroom to front-line operations, are better positioned to navigate regulatory challenges and maintain stakeholder confidence.',
+                'insight-detail.back-btn': '← Back to Insights',
+                'insight-detail.contact-btn': 'Get Expert Advice',
+                'insight-detail.services-btn': 'Our Services',
+                'insight-detail.related-title': 'Related Articles',
+                'insight-detail.related1.title': 'Annual Filing Requirements Update',
+                'insight-detail.related1.desc': 'Stay updated with the latest changes in annual filing requirements.',
+                'insight-detail.related2.title': 'Digital Transformation in Corporate Services',
+                'insight-detail.related2.desc': 'How technology is revolutionizing corporate services and operations.',
 
                 // Common
                 'common.language': 'Language',
@@ -747,6 +807,34 @@ class I18n {
                 'insights.filter.all': '所有文章',
                 'insights.filter.company-secretary': '公司秘書',
                 'insights.filter.fund': '基金',
+                'insights.category.company-secretary': '公司秘書',
+                'insights.category.fund': '基金',
+                'insights.read-more': '閱讀更多 →',
+                
+                // Insights Posts
+                'insights.posts.compliance-best-practices.title': '企業合規最佳實務',
+                'insights.posts.compliance-best-practices.description': '發現每位公司秘書應實施的關鍵合規策略，確保無縫的企業治理和法規遵循。',
+                'insights.posts.compliance-best-practices.date': '2024年12月15日',
+                
+                'insights.posts.esg-strategies.title': 'ESG基金投資策略',
+                'insights.posts.esg-strategies.description': '了解可持續投資原則如何重塑基金管理並為負責任的資本配置創造新機會。',
+                'insights.posts.esg-strategies.date': '2024年12月10日',
+                
+                'insights.posts.annual-filing.title': '年度申報要求更新',
+                'insights.posts.annual-filing.description': '隨時了解年度申報要求的最新變化，確保您的公司保持法規合規。',
+                'insights.posts.annual-filing.date': '2024年12月5日',
+                
+                'insights.posts.governance-trends.title': '2025年基金治理趨勢',
+                'insights.posts.governance-trends.description': '探索基金治理的新興趨勢以及法規變化如何塑造投資管理的未來。',
+                'insights.posts.governance-trends.date': '2024年11月28日',
+                
+                'insights.posts.digital-transformation.title': '企業服務的數位轉型',
+                'insights.posts.digital-transformation.description': '科技如何革命性地改變企業服務並在數位時代簡化業務營運。',
+                'insights.posts.digital-transformation.date': '2024年11月20日',
+                
+                'insights.posts.regulatory-updates.title': '基金經理法規更新',
+                'insights.posts.regulatory-updates.description': '影響基金經理的關鍵法規變化以及您需要了解的2025年合規維護要點。',
+                'insights.posts.regulatory-updates.date': '2024年11月15日',
 
                 // Page Titles
                 'page.title.about': '關於我們 - Fusiox',
@@ -757,6 +845,38 @@ class I18n {
                 'page.title.insights': '洞察分析 - Fusiox',
                 'page.title.services': '服務 - Fusiox',
                 'page.title.index': 'Fusiox - 專業註冊服務',
+                'page.title.insight-detail': '企業合規最佳實務 - Fusiox',
+
+                // Breadcrumb
+                'breadcrumb.home': '首頁',
+                'breadcrumb.insights': '洞察分析',
+
+                // Insight Detail Page
+                'insight-detail.breadcrumb.title': '企業合規最佳實務',
+                'insight-detail.title': '企業合規最佳實務',
+                'insight-detail.meta': '發布於2024年12月15日',
+                'insight-detail.content.intro': '隨著法規環境日趨複雜，公司秘書在確保企業治理和合規方面發揮著關鍵作用。現代商業環境要求對法規遵循採取積極主動的方法，使公司秘書的角色比以往任何時候都更加重要。',
+                'insight-detail.content.h2-1': '了解您的義務',
+                'insight-detail.content.p1': '董事和高級職員必須了解其在管轄法律下的法定職責和申報要求。這些義務不僅限於簡單的記錄保存，還包括戰略監督、風險管理和利益相關者溝通。理解這些責任是有效企業治理的基礎。',
+                'insight-detail.content.quote': '「合規不僅僅是遵守規則，更是建立信任和透明度，這是可持續業務運營的支柱。」',
+                'insight-detail.content.h3-1': '合規的頂級策略',
+                'insight-detail.content.li1': '定期進行審計和評估以識別潛在的合規缺口',
+                'insight-detail.content.li2': '確保及時向監管機構申報並維護準確記錄',
+                'insight-detail.content.li3': '實施強大的內部控制系統和監控程序',
+                'insight-detail.content.li4': '在董事會成員和管理層之間建立清晰的溝通渠道',
+                'insight-detail.content.li5': '為董事和高級職員提供持續的培訓和教育',
+                'insight-detail.content.h3-2': '科技的作用',
+                'insight-detail.content.p2': '現代合規管理越來越依賴科技解決方案來簡化流程、提高準確性並提供實時監控能力。數位平台可以自動化日常任務、追蹤截止日期並生成支持決策制定和監管提交的綜合報告。',
+                'insight-detail.content.h3-3': '建立合規文化',
+                'insight-detail.content.p3': '企業合規的成功不僅限於政策和程序，還包括組織文化。在各個層面（從董事會到前線營運）都優先考慮合規的公司，更能夠應對監管挑戰並維持利益相關者的信心。',
+                'insight-detail.back-btn': '← 返回洞察分析',
+                'insight-detail.contact-btn': '獲取專家建議',
+                'insight-detail.services-btn': '我們的服務',
+                'insight-detail.related-title': '相關文章',
+                'insight-detail.related1.title': '年度申報要求更新',
+                'insight-detail.related1.desc': '隨時了解年度申報要求的最新變化。',
+                'insight-detail.related2.title': '企業服務的數位轉型',
+                'insight-detail.related2.desc': '科技如何革命性地改變企業服務和營運。',
 
                 // Common
                 'common.language': '語言',
@@ -1144,6 +1264,34 @@ class I18n {
                 'insights.filter.all': '所有文章',
                 'insights.filter.company-secretary': '公司秘书',
                 'insights.filter.fund': '基金',
+                'insights.category.company-secretary': '公司秘书',
+                'insights.category.fund': '基金',
+                'insights.read-more': '阅读更多 →',
+                
+                // Insights Posts
+                'insights.posts.compliance-best-practices.title': '企业合规最佳实务',
+                'insights.posts.compliance-best-practices.description': '发现每位公司秘书应实施的关键合规策略，确保无缝的企业治理和法规遵循。',
+                'insights.posts.compliance-best-practices.date': '2024年12月15日',
+                
+                'insights.posts.esg-strategies.title': 'ESG基金投资策略',
+                'insights.posts.esg-strategies.description': '了解可持续投资原则如何重塑基金管理并为负责任的资本配置创造新机会。',
+                'insights.posts.esg-strategies.date': '2024年12月10日',
+                
+                'insights.posts.annual-filing.title': '年度申报要求更新',
+                'insights.posts.annual-filing.description': '随时了解年度申报要求的最新变化，确保您的公司保持法规合规。',
+                'insights.posts.annual-filing.date': '2024年12月5日',
+                
+                'insights.posts.governance-trends.title': '2025年基金治理趋势',
+                'insights.posts.governance-trends.description': '探索基金治理的新兴趋势以及法规变化如何塑造投资管理的未来。',
+                'insights.posts.governance-trends.date': '2024年11月28日',
+                
+                'insights.posts.digital-transformation.title': '企业服务的数字转型',
+                'insights.posts.digital-transformation.description': '科技如何革命性地改变企业服务并在数字时代简化业务运营。',
+                'insights.posts.digital-transformation.date': '2024年11月20日',
+                
+                'insights.posts.regulatory-updates.title': '基金经理法规更新',
+                'insights.posts.regulatory-updates.description': '影响基金经理的关键法规变化以及您需要了解的2025年合规维护要点。',
+                'insights.posts.regulatory-updates.date': '2024年11月15日',
 
                 // Page Titles
                 'page.title.about': '关于我们 - Fusiox',
@@ -1154,6 +1302,38 @@ class I18n {
                 'page.title.insights': '洞察分析 - Fusiox',
                 'page.title.services': '服务 - Fusiox',
                 'page.title.index': 'Fusiox - 专业注册服务',
+                'page.title.insight-detail': '企业合规最佳实务 - Fusiox',
+
+                // Breadcrumb
+                'breadcrumb.home': '首页',
+                'breadcrumb.insights': '洞察分析',
+
+                // Insight Detail Page
+                'insight-detail.breadcrumb.title': '企业合规最佳实务',
+                'insight-detail.title': '企业合规最佳实务',
+                'insight-detail.meta': '发布于2024年12月15日',
+                'insight-detail.content.intro': '随着法规环境日趋复杂，公司秘书在确保企业治理和合规方面发挥着关键作用。现代商业环境要求对法规遵循采取积极主动的方法，使公司秘书的角色比以往任何时候都更加重要。',
+                'insight-detail.content.h2-1': '了解您的义务',
+                'insight-detail.content.p1': '董事和高级职员必须了解其在管辖法律下的法定职责和申报要求。这些义务不仅限于简单的记录保存，还包括战略监督、风险管理和利益相关者沟通。理解这些责任是有效企业治理的基础。',
+                'insight-detail.content.quote': '「合规不仅仅是遵守规则，更是建立信任和透明度，这是可持续业务运营的支柱。」',
+                'insight-detail.content.h3-1': '合规的顶级策略',
+                'insight-detail.content.li1': '定期进行审计和评估以识别潜在的合规缺口',
+                'insight-detail.content.li2': '确保及时向监管机构申报并维护准确记录',
+                'insight-detail.content.li3': '实施强大的内部控制系统和监控程序',
+                'insight-detail.content.li4': '在董事会成员和管理层之间建立清晰的沟通渠道',
+                'insight-detail.content.li5': '为董事和高级职员提供持续的培训和教育',
+                'insight-detail.content.h3-2': '科技的作用',
+                'insight-detail.content.p2': '现代合规管理越来越依赖科技解决方案来简化流程、提高准确性并提供实时监控能力。数字平台可以自动化日常任务、追踪截止日期并生成支持决策制定和监管提交的综合报告。',
+                'insight-detail.content.h3-3': '建立合规文化',
+                'insight-detail.content.p3': '企业合规的成功不仅限于政策和程序，还包括组织文化。在各个层面（从董事会到前线运营）都优先考虑合规的公司，更能够应对监管挑战并维持利益相关者的信心。',
+                'insight-detail.back-btn': '← 返回洞察分析',
+                'insight-detail.contact-btn': '获取专家建议',
+                'insight-detail.services-btn': '我们的服务',
+                'insight-detail.related-title': '相关文章',
+                'insight-detail.related1.title': '年度申报要求更新',
+                'insight-detail.related1.desc': '随时了解年度申报要求的最新变化。',
+                'insight-detail.related2.title': '企业服务的数字转型',
+                'insight-detail.related2.desc': '科技如何革命性地改变企业服务和运营。',
 
                 // Common
                 'common.language': '语言',

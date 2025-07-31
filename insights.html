@@ -67,6 +67,48 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+        
+        /* Enhanced tab styling */
+        .tab {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 0.5rem;
+        }
+        
+        .tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tab-active {
+            background: var(--fallback-a, oklch(var(--a))) !important;
+            color: white !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 20px rgba(79, 142, 247, 0.3) !important;
+        }
+        
+        .tab svg {
+            transition: transform 0.2s ease;
+        }
+        
+        .tab:hover svg {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive tab container */
+        .tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            min-width: fit-content;
+        }
+        
+        @media (max-width: 640px) {
+            .tab {
+                min-width: fit-content;
+                white-space: nowrap;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -130,170 +172,101 @@
     </div>
 
     <!-- Hero Section -->
-    <div class="hero min-h-[40vh] bg-gradient-to-br from-primary to-secondary">
-        <div class="hero-content text-center">
-            <div class="max-w-md">
-                <h1 class="text-5xl font-bold text-white mb-4" data-aos="fade-up" data-i18n="insights.hero.title">Insights</h1>
-                <p class="text-lg text-white/90" data-aos="fade-up" data-aos-delay="200" data-i18n="insights.hero.subtitle">Explore our latest insights and updates on corporate services and fund operations.</p>
+    <div class="hero min-h-[100vh]" style="background-image: url('assets/images/insights-hero.jpg'); background-size: cover; background-position: center;">
+        <div class="hero-overlay bg-opacity-70"></div>
+        <div class="hero-content text-center text-neutral-content">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl font-bold" data-i18n="insights.hero.title">Insights</h1>
+                <p class="py-6 text-lg" data-i18n="insights.hero.subtitle">
+                    Explore our latest insights and updates on corporate services and fund operations.
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- Insights Content -->
-    <div class="container mx-auto px-4 py-16" x-data="insightsFilter()">
-        <!-- Category Filters -->
-        <div class="flex justify-center mb-12">
-            <div class="flex flex-wrap gap-4 bg-base-200 p-2 rounded-lg">
-                <button 
-                    @click="setFilter('all')" 
-                    :class="{ 'active btn-primary': currentFilter === 'all', 'btn-ghost': currentFilter !== 'all' }"
-                    class="btn category-filter"
-                    data-i18n="insights.filter.all">All Posts</button>
-                <button 
-                    @click="setFilter('company-secretary')" 
-                    :class="{ 'active btn-primary': currentFilter === 'company-secretary', 'btn-ghost': currentFilter !== 'company-secretary' }"
-                    class="btn category-filter"
-                    data-i18n="insights.filter.company-secretary">Company Secretary</button>
-                <button 
-                    @click="setFilter('fund')" 
-                    :class="{ 'active btn-primary': currentFilter === 'fund', 'btn-ghost': currentFilter !== 'fund' }"
-                    class="btn category-filter"
-                    data-i18n="insights.filter.fund">Fund</button>
-            </div>
-        </div>
-
-        <!-- Posts Grid -->
-        <div class="insights-grid" id="posts-container">
-            <!-- Latest First: Dec 15, 2024 -->
-            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('company-secretary')" x-transition data-category="company-secretary" onclick="window.location.href='insights/company-secretary-best-practices.html'">
-                <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                    </div>
-                </figure>
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="badge badge-primary badge-sm">Company Secretary</span>
-                        <span class="text-sm opacity-70">Dec 15, 2024</span>
-                    </div>
-                    <h2 class="card-title text-lg">Best Practices for Corporate Compliance</h2>
-                    <p class="post-excerpt opacity-80">Discover essential compliance strategies that every company secretary should implement to ensure seamless corporate governance and regulatory adherence.</p>
-                    <div class="card-actions justify-end mt-4">
-                        <span class="text-sm text-primary hover:underline">Read More →</span>
-                    </div>
+    <!-- Category Navigation Bar -->
+    <div class="py-16 bg-base-100">
+        <div class="container mx-auto px-4" x-data="insightsPage()">
+            <div class="overflow-x-auto">
+                <div class="tabs tabs-boxed justify-center mt-12 mb-8 gap-2 min-w-fit mx-auto">
+                    <a class="tab tab-lg cursor-pointer flex items-center gap-2 font-medium" 
+                       :class="{ 'tab-active bg-accent text-white font-semibold shadow-lg': currentTab === 'all' }"
+                       @click="currentTab = 'all'" 
+                       data-category="all" 
+                       data-i18n="insights.filter.all">
+                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 7a2 2 0 012-2h10a2 2 0 012 2v2M7 7h10"/>
+                       </svg>
+                       All Posts
+                    </a>
+                    <a class="tab tab-lg cursor-pointer flex items-center gap-2 font-medium" 
+                       :class="{ 'tab-active bg-accent text-white font-semibold shadow-lg': currentTab === 'company-secretary' }"
+                       @click="currentTab = 'company-secretary'" 
+                       data-category="company-secretary" 
+                       data-i18n="insights.filter.company-secretary">
+                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                       </svg>
+                       Company Secretary
+                    </a>
+                    <a class="tab tab-lg cursor-pointer flex items-center gap-2 font-medium" 
+                       :class="{ 'tab-active bg-accent text-white font-semibold shadow-lg': currentTab === 'fund' }"
+                       @click="currentTab = 'fund'" 
+                       data-category="fund" 
+                       data-i18n="insights.filter.fund">
+                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                       </svg>
+                       Fund
+                    </a>
                 </div>
             </div>
 
-            <!-- Dec 12, 2024 -->
-            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('fund')" x-transition data-category="fund" onclick="window.location.href='insights/fund-governance-trends.html'">
-                <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                        </svg>
-                    </div>
-                </figure>
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="badge badge-secondary badge-sm">Fund</span>
-                        <span class="text-sm opacity-70">Dec 12, 2024</span>
-                    </div>
-                    <h2 class="card-title text-lg">2024 Fund Governance Trends</h2>
-                    <p class="post-excerpt opacity-80">Explore the latest trends in fund governance and how they're shaping the industry landscape for investment managers and fund operators.</p>
-                    <div class="card-actions justify-end mt-4">
-                        <span class="text-sm text-primary hover:underline">Read More →</span>
+            <!-- Insights Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 px-4 md:px-16 pb-16" id="insights-grid">
+                <!-- Loading State -->
+                <div x-show="isLoading" class="col-span-full flex justify-center items-center py-16" x-transition>
+                    <div class="loading loading-spinner loading-lg"></div>
+                    <span class="ml-4 text-lg">Loading insights...</span>
+                </div>
+                
+                <!-- No Posts Message -->
+                <div x-show="!isLoading && posts.length === 0" class="col-span-full flex justify-center items-center py-16" x-transition>
+                    <div class="text-center">
+                        <p class="text-lg text-gray-500">No posts available.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Dec 10, 2024 -->
-            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('company-secretary')" x-transition data-category="company-secretary" onclick="window.location.href='insights/annual-filing-requirements.html'">
-                <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                        </svg>
+                
+                <!-- Dynamic posts will be loaded here -->
+                <template x-for="post in filteredPosts" :key="post.id">
+                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 insights-card" 
+                         :data-category="post.category"
+                         x-show="!isLoading && shouldShowPost(post.category)"
+                         x-transition>
+                        <figure class="h-40 flex items-center justify-center"
+                                :class="`bg-gradient-to-r ${post.gradient}`">
+                            <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="post.icon"/>
+                            </svg>
+                        </figure>
+                        <div class="card-body text-left">
+                            <div class="text-sm text-secondary uppercase tracking-wide mb-1">
+                                <span class="badge badge-outline text-xs" 
+                                      x-text="getCategoryLabel(post.category)"></span> · 
+                                <span x-text="formatDate(post.date)"></span>
+                            </div>
+                            <h2 class="card-title text-lg font-semibold" 
+                                x-text="getPostTitle(post)"></h2>
+                            <p class="text-sm opacity-80" 
+                               x-text="getPostDescription(post)"></p>
+                            <div class="mt-4">
+                                <a :href="`insight-detail.html?id=${post.id}`" 
+                                   class="text-accent text-sm font-medium hover:underline"
+                                   x-text="getReadMoreText()">Read More →</a>
+                            </div>
+                        </div>
                     </div>
-                </figure>
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="badge badge-primary badge-sm">Company Secretary</span>
-                        <span class="text-sm opacity-70">Dec 10, 2024</span>
-                    </div>
-                    <h2 class="card-title text-lg">Annual Filing Requirements Guide</h2>
-                    <p class="post-excerpt opacity-80">Stay ahead of deadlines with our comprehensive guide to annual filing requirements for different types of corporate entities.</p>
-                    <div class="card-actions justify-end mt-4">
-                        <span class="text-sm text-primary hover:underline">Read More →</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dec 8, 2024 -->
-            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('fund')" x-transition data-category="fund" onclick="window.location.href='insights/esg-fund-strategies.html'">
-                <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path>
-                        </svg>
-                    </div>
-                </figure>
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="badge badge-secondary badge-sm">Fund</span>
-                        <span class="text-sm opacity-70">Dec 8, 2024</span>
-                    </div>
-                    <h2 class="card-title text-lg">ESG Integration in Fund Strategies</h2>
-                    <p class="post-excerpt opacity-80">Learn how Environmental, Social, and Governance factors are being integrated into modern fund strategies and investment decisions.</p>
-                    <div class="card-actions justify-end mt-4">
-                        <span class="text-sm text-primary hover:underline">Read More →</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dec 5, 2024 -->
-            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('company-secretary')" x-transition data-category="company-secretary" onclick="window.location.href='insights/digital-transformation-corporate.html'">
-                <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-teal-500 to-teal-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                </figure>
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="badge badge-primary badge-sm">Company Secretary</span>
-                        <span class="text-sm opacity-70">Dec 5, 2024</span>
-                    </div>
-                    <h2 class="card-title text-lg">Digital Transformation in Corporate Services</h2>
-                    <p class="post-excerpt opacity-80">How digital tools and automation are revolutionizing traditional corporate secretarial services and improving efficiency.</p>
-                    <div class="card-actions justify-end mt-4">
-                        <span class="text-sm text-primary hover:underline">Read More →</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Oldest Last: Dec 3, 2024 -->
-            <div class="insights-card card bg-base-100 shadow-xl" x-show="shouldShowPost('fund')" x-transition data-category="fund" onclick="window.location.href='insights/regulatory-updates-funds.html'">
-                <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                        </svg>
-                    </div>
-                </figure>
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="badge badge-secondary badge-sm">Fund</span>
-                        <span class="text-sm opacity-70">Dec 3, 2024</span>
-                    </div>
-                    <h2 class="card-title text-lg">Latest Regulatory Updates for Funds</h2>
-                    <p class="post-excerpt opacity-80">Stay informed about the latest regulatory changes affecting fund operations and what they mean for your business.</p>
-                    <div class="card-actions justify-end mt-4">
-                        <span class="text-sm text-primary hover:underline">Read More →</span>
-                    </div>
-                </div>
+                </template>
             </div>
         </div>
     </div>
@@ -378,6 +351,116 @@
                 window.open(mapsUrl, '_blank');
             }
         }
+
+        // Alpine.js components
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('insightsPage', () => ({
+                currentTab: 'all',
+                isLoading: true,
+                posts: [],
+                language: 'en',
+
+                async init() {
+                    // Initialize language
+                    this.language = localStorage.getItem('language') || 'en';
+                    
+                    // Map language codes to match JSON structure
+                    if (this.language === 'zh-Hant') this.language = 'zh-TW';
+                    if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                    
+                    console.log('Initializing with language:', this.language);
+                    
+                    // Load posts from JSON
+                    await this.loadPosts();
+                    
+                    // Initialize internationalization
+                    if (typeof window.i18n !== 'undefined') {
+                        window.i18n.updateContent();
+                    }
+                    
+                    console.log('Initialization complete');
+                },
+
+                async loadPosts() {
+                    try {
+                        console.log('Loading posts from JSON...');
+                        const response = await fetch('./data/insights.json');
+                        if (!response.ok) throw new Error('Failed to load posts');
+                        const data = await response.json();
+                        console.log('Raw data:', data);
+                        this.posts = data.posts || data; // Handle both structures
+                        console.log('Posts loaded:', this.posts);
+                        console.log('Number of posts:', this.posts.length);
+                    } catch (error) {
+                        console.error('Error loading posts:', error);
+                        this.posts = [];
+                    } finally {
+                        // Ensure loading is set to false regardless of success or failure
+                        this.isLoading = false;
+                        console.log('Loading set to false, isLoading:', this.isLoading);
+                    }
+                },
+
+                get filteredPosts() {
+                    if (this.currentTab === 'all') {
+                        return this.posts;
+                    }
+                    return this.posts.filter(post => post.category === this.currentTab);
+                },
+
+                shouldShowPost(category) {
+                    return this.currentTab === 'all' || this.currentTab === category;
+                },
+
+                getCategoryLabel(category) {
+                    const labels = {
+                        'company-secretary': {
+                            en: 'Company Secretary',
+                            'zh-TW': '公司秘書',
+                            'zh-CN': '公司秘书'
+                        },
+                        'fund': {
+                            en: 'Fund',
+                            'zh-TW': '基金',
+                            'zh-CN': '基金'
+                        }
+                    };
+                    return labels[category]?.[this.language] || category;
+                },
+
+                getPostTitle(post) {
+                    return post.translations?.[this.language]?.title || post.translations?.en?.title || 'Untitled';
+                },
+
+                getPostDescription(post) {
+                    return post.translations?.[this.language]?.description || post.translations?.en?.description || '';
+                },
+
+                getReadMoreText() {
+                    const readMoreTexts = {
+                        en: 'Read More →',
+                        'zh-TW': '閱讀更多 →',
+                        'zh-CN': '阅读更多 →'
+                    };
+                    return readMoreTexts[this.language] || 'Read More →';
+                },
+
+                formatDate(dateString) {
+                    const date = new Date(dateString);
+                    const options = { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    };
+                    
+                    // Format date based on language
+                    if (this.language === 'zh-TW' || this.language === 'zh-CN') {
+                        return date.toLocaleDateString('zh', options);
+                    }
+                    return date.toLocaleDateString('en', options);
+                }
+            }));
+        });
 
         // Insights filtering functionality
         function insightsFilter() {
