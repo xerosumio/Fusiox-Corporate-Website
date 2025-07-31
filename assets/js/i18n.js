@@ -123,11 +123,25 @@ class I18n {
                 'funds.hero.subtitle': 'Specialized incorporation and compliance services for private equity funds, venture capital funds, hedge funds, and other investment vehicles. We understand the complex regulatory requirements and help you establish compliant fund structures.',
                 'funds.schedule-consultation': 'Schedule Consultation',
                 'funds.our-services': 'Our Services',
+                'funds.cta.title': 'Ready to Launch Your Fund?',
+                'funds.cta.subtitle': 'Let our fund formation experts help you establish a compliant and efficient investment vehicle.',
                 'funds.comprehensive-services.title': 'Comprehensive Fund Services',
                 
                 // Fund Services Section
                 'funds.services.title': 'Our Fund Services',
                 'funds.services.description': 'We provide global, customized fund registration, structure design, and tax planning services for investors, helping clients stand out in the complex global investment environment.',
+                
+                // LPF Overview Section
+                'funds.lpf.title': 'Hong Kong Limited Partnership Fund (LPF)',
+                'funds.lpf.description': 'The Limited Partnership Fund (LPF) is one of the most flexible and widely adopted fund structures for private equity and alternative investment strategies in Hong Kong. It is particularly favored by global investors looking for a tax-efficient and regulated fund regime.',
+                'funds.lpf.fusiox-services': 'Fusiox offers full-scope registration and setup services for LPFs, handling every step from legal structuring to operational support.',
+                'funds.lpf.key-services': 'Key Services:',
+                'funds.lpf.service-1-title': 'Fund Registration & Setup:',
+                'funds.lpf.service-1-desc': 'End-to-end support for LPF establishment and registration with Hong Kong authorities.',
+                'funds.lpf.service-2-title': 'Legal & Tax Advisory:',
+                'funds.lpf.service-2-desc': 'Professional advice on LPF legal structures, tax policies, and compliance requirements.',
+                'funds.lpf.service-3-title': 'Operational Support:',
+                'funds.lpf.service-3-desc': 'Ongoing services for fund management, accounting, investor relations, and audit.',
                 
                 // Hong Kong Limited Partnership Fund
                 'funds.hklpf.title': 'Hong Kong Limited Partnership Fund Agency Registration Service',
@@ -502,11 +516,25 @@ class I18n {
                 'funds.hero.subtitle': '為私募股權基金、創業投資基金、對沖基金和其他投資工具提供專業的註冊和合規服務。我們了解複雜的監管要求，並幫助您建立合規的基金結構。',
                 'funds.schedule-consultation': '預約諮詢',
                 'funds.our-services': '我們的服務',
+                'funds.cta.title': '準備啟動您的基金？',
+                'funds.cta.subtitle': '讓我們的基金組建專家幫助您建立合規且高效的投資工具。',
                 'funds.comprehensive-services.title': '全方位基金服務',
                 
                 // Fund Services Section
                 'funds.services.title': '我們的基金服務',
                 'funds.services.description': '為投資者提供全球化、定制化的基金註冊、架構設計和稅務籌劃服務，助力客戶在複雜的全球投資環境中脫穎而出。',
+                
+                // LPF Overview Section
+                'funds.lpf.title': '香港有限合夥基金（LPF）',
+                'funds.lpf.description': '有限合夥基金（LPF）是香港私募股權和另類投資策略最靈活且廣泛採用的基金結構之一。特別受到尋求稅務高效和受監管基金制度的全球投資者青睞。',
+                'funds.lpf.fusiox-services': 'Fusiox提供LPF全方位註冊和設立服務，從法律架構到運營支援的每個步驟都為您處理。',
+                'funds.lpf.key-services': '主要服務：',
+                'funds.lpf.service-1-title': '基金註冊與設立：',
+                'funds.lpf.service-1-desc': '為LPF設立和香港當局註冊提供端到端支援。',
+                'funds.lpf.service-2-title': '法律與稅務諮詢：',
+                'funds.lpf.service-2-desc': '提供LPF法律架構、稅務政策和合規要求的專業建議。',
+                'funds.lpf.service-3-title': '營運支援：',
+                'funds.lpf.service-3-desc': '提供基金管理、會計、投資者關係和審計等持續服務。',
                 
                 // Hong Kong Limited Partnership Fund
                 'funds.hklpf.title': '香港有限合夥基金代理註冊服務',
@@ -877,11 +905,25 @@ class I18n {
                 'funds.hero.subtitle': '为私募股权基金、创业投资基金、对冲基金和其他投资工具提供专业的注册和合规服务。我们了解复杂的监管要求，并帮助您建立合规的基金结构。',
                 'funds.schedule-consultation': '预约咨询',
                 'funds.our-services': '我们的服务',
+                'funds.cta.title': '准备启动您的基金？',
+                'funds.cta.subtitle': '让我们的基金组建专家帮助您建立合规且高效的投资工具。',
                 'funds.comprehensive-services.title': '全方位基金服务',
                 
                 // Fund Services Section
                 'funds.services.title': '我们的基金服务',
                 'funds.services.description': '为投资者提供全球化、定制化的基金注册、架构设计和税务筹划服务，助力客户在复杂的全球投资环境中脱颖而出。',
+                
+                // LPF Overview Section
+                'funds.lpf.title': '香港有限合伙基金（LPF）',
+                'funds.lpf.description': '有限合伙基金（LPF）是香港私募股权和另类投资策略最灵活且广泛采用的基金结构之一。特别受到寻求税务高效和受监管基金制度的全球投资者青睐。',
+                'funds.lpf.fusiox-services': 'Fusiox提供LPF全方位注册和设立服务，从法律架构到运营支持的每个步骤都为您处理。',
+                'funds.lpf.key-services': '主要服务：',
+                'funds.lpf.service-1-title': '基金注册与设立：',
+                'funds.lpf.service-1-desc': '为LPF设立和香港当局注册提供端到端支持。',
+                'funds.lpf.service-2-title': '法律与税务咨询：',
+                'funds.lpf.service-2-desc': '提供LPF法律架构、税务政策和合规要求的专业建议。',
+                'funds.lpf.service-3-title': '运营支持：',
+                'funds.lpf.service-3-desc': '提供基金管理、会计、投资者关系和审计等持续服务。',
                 
                 // Hong Kong Limited Partnership Fund
                 'funds.hklpf.title': '香港有限合伙基金代理注册服务',

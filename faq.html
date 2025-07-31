@@ -272,13 +272,6 @@
     <div class="py-16">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
-                <!-- Introduction -->
-                <div class="text-center mb-8" data-aos="fade-up">
-                    <p class="text-lg text-base-content/80">
-                        Browse through our comprehensive FAQ sections below. Click on any question to reveal the detailed answer.
-                    </p>
-                </div>
-                
                 <!-- Category Tabs -->
                 <div class="faq-tabs-container mb-12" x-data="faqTabs()" data-aos="zoom-in-up">
                     <div class="tabs tabs-boxed justify-center w-full">
@@ -324,9 +317,6 @@
                 <!-- General Questions -->
                 <div x-show="activeCategory === 'general'" x-transition class="tab-content">
                     <h2 class="text-2xl font-bold mb-6" data-aos="fade-right" data-i18n="faq.sections.general">General Questions</h2>
-                    <div class="mb-4 text-sm text-base-content/70">
-                        <span class="font-medium">Click on any question below to view the answer</span>
-                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200" data-aos="zoom-in-up" data-aos-delay="100">
                             <input type="radio" name="general-accordion" checked="checked" />
@@ -371,11 +361,8 @@
                 </div>
 
                 <!-- Incorporation Process Questions -->
-                <div x-show="activeCategory === 'incorporation'" x-transition class="tab-content">
+                <div x-show="activeCategory === 'incorporation'" x-transition>
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.incorporation.title">Incorporation Process</h2>
-                    <div class="mb-4 text-sm text-base-content/70">
-                        <span class="font-medium">Click on any question below to view the answer</span>
-                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="incorporation-accordion" checked="checked" />
@@ -420,11 +407,8 @@
                 </div>
 
                 <!-- Compliance Requirements Questions -->
-                <div x-show="activeCategory === 'compliance'" x-transition class="tab-content">
+                <div x-show="activeCategory === 'compliance'" x-transition>
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.compliance.title">Compliance Requirements</h2>
-                    <div class="mb-4 text-sm text-base-content/70">
-                        <span class="font-medium">Click on any question below to view the answer</span>
-                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="compliance-accordion" checked="checked" />
@@ -469,11 +453,8 @@
                 </div>
 
                 <!-- Fees & Timelines Questions -->
-                <div x-show="activeCategory === 'fees'" x-transition class="tab-content">
+                <div x-show="activeCategory === 'fees'" x-transition>
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.fees.title">Fees & Timelines</h2>
-                    <div class="mb-4 text-sm text-base-content/70">
-                        <span class="font-medium">Click on any question below to view the answer</span>
-                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="fees-accordion" checked="checked" />
@@ -518,11 +499,8 @@
                 </div>
 
                 <!-- Post-Incorporation Questions -->
-                <div x-show="activeCategory === 'post-incorporation'" x-transition class="tab-content">
+                <div x-show="activeCategory === 'post-incorporation'" x-transition>
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.post.title">Post-Incorporation Obligations</h2>
-                    <div class="mb-4 text-sm text-base-content/70">
-                        <span class="font-medium">Click on any question below to view the answer</span>
-                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="post-accordion" checked="checked" />
@@ -567,11 +545,8 @@
                 </div>
 
                 <!-- Other Common Questions -->
-                <div x-show="activeCategory === 'other'" x-transition class="tab-content">
+                <div x-show="activeCategory === 'other'" x-transition>
                     <h2 class="text-2xl font-bold mb-6" data-i18n="faq.other.title">Other Common Questions</h2>
-                    <div class="mb-4 text-sm text-base-content/70">
-                        <span class="font-medium">Click on any question below to view the answer</span>
-                    </div>
                     <div class="space-y-4">
                         <div class="collapse collapse-plus bg-base-200">
                             <input type="radio" name="other-accordion" checked="checked" />
