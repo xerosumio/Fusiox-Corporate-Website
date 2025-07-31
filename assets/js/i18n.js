@@ -117,6 +117,20 @@ class I18n {
                 'faq.still-questions': 'Still Have Questions?',
                 'faq.experts-help': 'Our incorporation experts are here to help you every step of the way.',
                 'faq.contact-us': 'Contact Us',
+                
+                // FAQ Section
+                'faq.section.title': 'Frequently Asked Questions – Company Incorporation',
+                'faq.section.subtitle': 'Get answers to the most common questions about incorporating your company in Hong Kong',
+                'faq.categories.all': 'All',
+                'faq.categories.general': 'General',
+                'faq.categories.costs': 'Costs & Fees',
+                'faq.categories.requirements': 'Requirements',
+                'faq.categories.compliance': 'Compliance',
+                'faq.categories.business': 'Business',
+                'faq.no-results': 'No FAQs found for this category.',
+                'faq.cta.title': 'Still have questions?',
+                'faq.cta.description': 'Our experts are here to help. Get in touch for personalized guidance on your Hong Kong company incorporation.',
+                'faq.cta.button': 'Contact Our Experts',
 
                 // Funds Page
                 'funds.hero.title': 'For Investment Funds',
@@ -570,6 +584,20 @@ class I18n {
                 'faq.still-questions': '還有疑問？',
                 'faq.experts-help': '我們的註冊專家將在每一步為您提供幫助。',
                 'faq.contact-us': '聯絡我們',
+                
+                // FAQ Section
+                'faq.section.title': '常見問題 – 公司註冊',
+                'faq.section.subtitle': '獲取有關在香港註冊公司的最常見問題的答案',
+                'faq.categories.all': '全部',
+                'faq.categories.general': '一般問題',
+                'faq.categories.costs': '費用',
+                'faq.categories.requirements': '要求',
+                'faq.categories.compliance': '合規',
+                'faq.categories.business': '業務',
+                'faq.no-results': '此類別沒有找到常見問題。',
+                'faq.cta.title': '還有疑問？',
+                'faq.cta.description': '我們的專家隨時為您提供幫助。聯絡我們獲得有關香港公司註冊的個性化指導。',
+                'faq.cta.button': '聯絡我們的專家',
 
                 // Funds Page
                 'funds.hero.title': '基金服務',
@@ -1019,6 +1047,20 @@ class I18n {
                 'faq.still-questions': '还有疑问？',
                 'faq.experts-help': '我们的注册专家将在每一步为您提供帮助。',
                 'faq.contact-us': '联系我们',
+                
+                // FAQ Section
+                'faq.section.title': '常见问题 – 公司注册',
+                'faq.section.subtitle': '获取有关在香港注册公司的最常见问题的答案',
+                'faq.categories.all': '全部',
+                'faq.categories.general': '一般问题',
+                'faq.categories.costs': '费用',
+                'faq.categories.requirements': '要求',
+                'faq.categories.compliance': '合规',
+                'faq.categories.business': '业务',
+                'faq.no-results': '此类别没有找到常见问题。',
+                'faq.cta.title': '还有疑问？',
+                'faq.cta.description': '我们的专家随时为您提供帮助。联系我们获得有关香港公司注册的个性化指导。',
+                'faq.cta.button': '联系我们的专家',
 
                 // Funds Page
                 'funds.hero.title': '基金服务',
