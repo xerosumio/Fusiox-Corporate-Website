@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test I18n</title>
+</head>
+<body>
+    <h1 data-i18n="insights.section.title">Fallback Title</h1>
+    <p data-i18n="insights.section.subtitle">Fallback Subtitle</p>
+    
+    <button onclick="testI18n()">Test I18n</button>
+    <button onclick="manualUpdate()">Manual Update</button>
+    
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        function testI18n() {
+            console.log('Current language:', window.i18n.currentLanguage);
+            console.log('Translation for insights.section.title:', window.i18n.translate('insights.section.title'));
+            console.log('Translation for insights.section.subtitle:', window.i18n.translate('insights.section.subtitle'));
+        }
+        
+        function manualUpdate() {
+            console.log('Manually updating page content...');
+            window.i18n.updatePageContent();
+        }
+        
+        // Test on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('Page loaded, testing i18n...');
+                testI18n();
+                manualUpdate();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

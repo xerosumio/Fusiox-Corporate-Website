@@ -335,9 +335,9 @@
                     <div class="collapse collapse-arrow bg-base-200 shadow-md hover:shadow-lg transition-all duration-300"
                          x-data="{ isOpen: false }">
                         <input type="checkbox" x-model="isOpen" />
-                        <div class="collapse-title text-lg font-medium pr-16" x-text="item.question"></div>
+                        <div class="collapse-title text-lg font-medium pr-16" x-text="getFaqQuestion(item)"></div>
                         <div class="collapse-content">
-                            <div class="pt-2 text-base leading-relaxed" x-html="item.answer"></div>
+                            <div class="pt-2 text-base leading-relaxed" x-text="getFaqAnswer(item)"></div>
                         </div>
                     </div>
                 </template>
@@ -421,33 +421,107 @@
                 faqs: [],
                 activeCategory: 'all',
                 isLoading: true,
+                language: 'en',
+                currentLanguage: 'en',
+                refreshKey: 0,
 
                 async init() {
                     console.log('FAQ Module initialized');
+                    
+                    // Initialize language
+                    this.language = localStorage.getItem('fusiox-language') || 'en';
+                    this.currentLanguage = this.language;
+                    
+                    // Map language codes to match JSON structure  
+                    if (this.language === 'zh-Hant') this.language = 'zh-TW';
+                    if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                    
+                    // Listen for language changes
+                    window.addEventListener('fusiox-language-changed', (event) => {
+                        const newLang = event.detail.language;
+                        console.log('Language change event received:', newLang);
+                        
+                        this.currentLanguage = newLang;
+                        this.language = newLang;
+                        
+                        if (this.language === 'zh-Hant') this.language = 'zh-TW';
+                        if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                        
+                        this.refreshKey = Date.now();
+                    });
+                    
                     await this.loadFaqs();
                 },
 
                 async loadFaqs() {
                     try {
-                        console.log('Loading FAQs from JSON...');
-                        const response = await fetch('./data/faq-incorporation.json');
-                        if (!response.ok) throw new Error('Failed to load FAQs');
-                        this.faqs = await response.json();
-                        console.log('FAQs loaded:', this.faqs);
+                        console.log('Loading FAQs...');
+                        
+                        // First check if we have CMS data in localStorage
+                        const cmsData = localStorage.getItem('faq_data');
+                        if (cmsData) {
+                            console.log('Loading FAQs from CMS localStorage...');
+                            const parsedData = JSON.parse(cmsData);
+                            this.faqs = Array.isArray(parsedData) ? parsedData : parsedData.faqs || [];
+                            console.log('CMS FAQs loaded:', this.faqs);
+                        } else {
+                            console.log('No CMS data found, initializing empty FAQ array...');
+                            this.faqs = [];
+                        }
+                        
+                        console.log('Number of FAQs:', this.faqs.length);
                     } catch (error) {
                         console.error('Error loading FAQs:', error);
                         this.faqs = [];
                     } finally {
+                        // Ensure loading is set to false regardless of success or failure
                         this.isLoading = false;
-                        console.log('Loading complete, isLoading:', this.isLoading);
+                        console.log('Loading set to false, isLoading:', this.isLoading);
                     }
                 },
 
                 get filteredFaqs() {
-                    if (this.activeCategory === 'all') {
-                        return this.faqs;
+                    let filtered = this.faqs;
+                    
+                    if (this.activeCategory !== 'all') {
+                        filtered = filtered.filter(faq => faq.category === this.activeCategory);
                     }
-                    return this.faqs.filter(faq => faq.category === this.activeCategory);
+                    
+                    // Sort by sequence, then by creation date
+                    return filtered.sort((a, b) => {
+                        if (a.sequence !== b.sequence) {
+                            return (a.sequence || 0) - (b.sequence || 0);
+                        }
+                        return new Date(a.createdDate || 0) - new Date(b.createdDate || 0);
+                    });
+                },
+
+                getFaqQuestion(faq) {
+                    // Access refreshKey to make this method reactive
+                    const refresh = this.refreshKey;
+                    
+                    if (window.i18n && typeof window.i18n.translate === 'function') {
+                        const currentLang = window.i18n.currentLanguage;
+                        return faq.translations?.[currentLang]?.question || 
+                               faq.translations?.en?.question || 
+                               faq.question || 'Untitled FAQ';
+                    }
+                    
+                    return faq.translations?.en?.question || faq.question || 'Untitled FAQ';
+                },
+
+                getFaqAnswer(faq) {
+                    // Access refreshKey to make this method reactive
+                    const refresh = this.refreshKey;
+                    
+                    if (window.i18n && typeof window.i18n.translate === 'function') {
+                        const currentLang = window.i18n.currentLanguage;
+                        return faq.translations?.[currentLang]?.answer || 
+                               faq.translations?.en?.answer || 
+                               faq.answer || 'No answer available';
+                    }
+                    
+                    return faq.translations?.en?.answer || faq.answer || 'No answer available';
                 }
             }));
         });

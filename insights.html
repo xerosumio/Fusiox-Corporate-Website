@@ -188,9 +188,8 @@
     <div class="py-16 bg-base-100">
         <div class="container mx-auto px-4" x-data="insightsPage()">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4" data-i18n="insights.section.title">Latest Insights</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-i18n="insights.section.subtitle">
-                    Stay informed with our latest insights and expert analysis on corporate governance and business operations.
+                <h2 class="text-4xl font-bold mb-4" x-text="getTranslation('insights.section.title', 'Latest Insights')"></h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" x-text="getTranslation('insights.section.subtitle', 'Stay informed with our latest insights and expert analysis on corporate governance and business operations.')">
                 </p>
             </div>
 
@@ -286,10 +285,34 @@
     <script src="assets/js/sticky-header.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS
         AOS.init({
             duration: 800,
             easing: 'ease-out',
             once: true
+        });
+
+        // Ensure i18n is initialized before proceeding
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force i18n update with a delay to ensure everything is loaded
+            setTimeout(() => {
+                if (window.i18n) {
+                    console.log('Updating i18n content...');
+                    window.i18n.updatePageContent();
+                } else {
+                    console.error('i18n not found');
+                }
+            }, 500);
+        });
+
+        // Also run after Alpine.js initializes
+        document.addEventListener('alpine:initialized', function() {
+            setTimeout(() => {
+                if (window.i18n) {
+                    console.log('Updating i18n content after Alpine.js...');
+                    window.i18n.updatePageContent();
+                }
+            }, 100);
         });
 
         // Function to open Google Maps
@@ -331,10 +354,13 @@
                 isLoading: true,
                 posts: [],
                 language: 'en',
+                currentLanguage: 'en', // Add reactive language property
+                refreshKey: 0, // Add refresh trigger
 
                 async init() {
                     // Initialize language
-                    this.language = localStorage.getItem('language') || 'en';
+                    this.language = localStorage.getItem('fusiox-language') || 'en';
+                    this.currentLanguage = this.language;
                     
                     // Map language codes to match JSON structure
                     if (this.language === 'zh-Hant') this.language = 'zh-TW';
@@ -345,10 +371,31 @@
                     // Load posts from JSON
                     await this.loadPosts();
                     
-                    // Initialize internationalization
-                    if (typeof window.i18n !== 'undefined') {
-                        window.i18n.updateContent();
-                    }
+                    // Listen for language changes
+                    window.addEventListener('fusiox-language-changed', (event) => {
+                        const newLang = event.detail.language;
+                        console.log('Language change event received:', newLang);
+                        
+                        // Update both Alpine.js language properties
+                        this.currentLanguage = newLang;
+                        this.language = newLang;
+                        
+                        // Map language codes for posts (if needed)
+                        if (this.language === 'zh-Hant') this.language = 'zh-TW';
+                        if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                        
+                        console.log('Updated Alpine language to:', this.currentLanguage, 'and posts language to:', this.language);
+                        
+                        // Force Alpine.js to re-render by updating a dummy property
+                        this.refreshKey = Date.now();
+                    });
+                    
+                    // Initialize internationalization - ensure it happens after Alpine.js is ready
+                    this.$nextTick(() => {
+                        if (typeof window.i18n !== 'undefined') {
+                            window.i18n.updatePageContent();
+                        }
+                    });
                     
                     console.log('Initialization complete');
                 },
@@ -451,6 +498,47 @@
                         return date.toLocaleDateString('zh', options);
                     }
                     return date.toLocaleDateString('en', options);
+                },
+
+                getTranslation(key, fallback) {
+                    // Access refreshKey to make this method reactive to language changes
+                    const refresh = this.refreshKey;
+                    
+                    if (window.i18n && typeof window.i18n.translate === 'function') {
+                        // Always use i18n's current language directly
+                        const translation = window.i18n.translate(key);
+                        console.log(`Direct translation of "${key}": "${translation}" (i18n lang: ${window.i18n.currentLanguage}, refresh: ${refresh})`);
+                        
+                        // If translation is different from the key, use it, otherwise use fallback
+                        if (translation && translation !== key) {
+                            return translation;
+                        }
+                    }
+                    
+                    console.log(`Using fallback for "${key}": "${fallback}"`);
+                    return fallback;
+                },
+
+                manualLanguageChange(lang) {
+                    console.log('Manual language change to:', lang);
+                    
+                    // First set the i18n language
+                    if (window.i18n) {
+                        window.i18n.setLanguage(lang);
+                    }
+                    
+                    // Then sync Alpine.js properties
+                    this.currentLanguage = lang;
+                    this.language = lang;
+                    
+                    // Map for posts data structure
+                    if (this.language === 'zh-Hant') this.language = 'zh-TW';
+                    if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                    
+                    // Trigger refresh
+                    this.refreshKey = Date.now();
+                    
+                    console.log('Set currentLanguage to:', this.currentLanguage, 'and posts language to:', this.language);
                 }
             }));
         });
@@ -469,46 +557,6 @@
                 }
             }
         }
-
-        // Language selector functionality (matches existing implementation)
-        function languageSelector() {
-            return {
-                isOpen: false,
-                currentLanguage: window.i18n?.currentLanguage || 'en',
-                languages: window.i18n?.getSupportedLanguages() || [
-                    { code: 'en', name: 'English', nativeName: 'English' },
-                    { code: 'zh-Hant', name: 'Traditional Chinese', nativeName: '繁體中文' },
-                    { code: 'zh-Hans', name: 'Simplified Chinese', nativeName: '简体中文' }
-                ],
-                
-                get currentLanguageObj() {
-                    return this.languages.find(lang => lang.code === this.currentLanguage) || this.languages[0];
-                },
-                
-                toggleDropdown() {
-                    this.isOpen = !this.isOpen;
-                },
-                
-                closeDropdown() {
-                    this.isOpen = false;
-                },
-                
-                changeLanguage(langCode) {
-                    this.currentLanguage = langCode;
-                    this.isOpen = false;
-                    if (window.i18n) {
-                        window.i18n.setLanguage(langCode);
-                    }
-                }
-            }
-        }
-
-        // Initialize i18n when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof I18n !== 'undefined') {
-                window.i18n = new I18n();
-            }
-        });
     </script>
 </body>
 </html>

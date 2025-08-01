@@ -17,10 +17,22 @@ function cmsApp() {
 
         // Navigation
         currentFilter: 'all',
+        currentSection: 'posts', // Add section navigation
+
+        // Languages
+        languages: [
+            { code: 'en', name: 'English' },
+            { code: 'zh-Hant', name: 'Traditional Chinese' },
+            { code: 'zh-Hans', name: 'Simplified Chinese' }
+        ],
 
         // Posts data
         posts: [],
         originalPosts: [],
+
+        // FAQ data
+        faqs: [],
+        originalFaqs: [],
 
         // Post modal
         showPostModal: false,
@@ -50,6 +62,31 @@ function cmsApp() {
         // Delete modal
         showDeleteModal: false,
         postToDelete: null,
+
+        // FAQ modal
+        showFaqModal: false,
+        editingFaqId: null,
+        currentFaqLang: 'en',
+        faqForm: {
+            id: '',
+            category: '',
+            sequence: 1,
+            createdDate: '',
+            translations: {
+                en: {
+                    question: '',
+                    answer: ''
+                },
+                'zh-Hant': {
+                    question: '',
+                    answer: ''
+                },
+                'zh-Hans': {
+                    question: '',
+                    answer: ''
+                }
+            }
+        },
         
         // Translation modal
         showTranslateModal: false,
@@ -66,6 +103,7 @@ function cmsApp() {
             this.checkLoginStatus();
             if (this.isLoggedIn) {
                 await this.loadPosts();
+                await this.loadFaqs();
             }
         },
 
@@ -94,6 +132,7 @@ function cmsApp() {
                 this.isLoggedIn = true;
                 localStorage.setItem('cmsLoggedIn', 'true');
                 await this.loadPosts();
+                await this.loadFaqs();
                 // No need to set currentView since we removed dashboard
             } else {
                 this.loginError = true;
@@ -478,6 +517,169 @@ function cmsApp() {
 
         formatDateTime(dateTimeString) {
             return new Date(dateTimeString).toLocaleString();
+        },
+
+        // ================================
+        // FAQ Management Methods
+        // ================================
+
+        async loadFaqs() {
+            try {
+                // First try to load from localStorage (CMS data)
+                const storedData = localStorage.getItem('cmsFaqsBackup');
+                if (storedData) {
+                    const data = JSON.parse(storedData);
+                    this.faqs = data.faqs || [];
+                    this.originalFaqs = JSON.parse(JSON.stringify(this.faqs)); // Deep copy
+                    console.log('FAQs loaded from localStorage:', this.faqs.length);
+                    return;
+                }
+
+                // If no localStorage data, create empty FAQ array
+                this.faqs = [];
+                this.originalFaqs = [];
+                
+                // Save empty array to localStorage
+                localStorage.setItem('cmsFaqsBackup', JSON.stringify({ faqs: this.faqs }));
+                localStorage.setItem('faq_data', JSON.stringify(this.faqs));
+                
+                console.log('FAQs initialized as empty array');
+            } catch (error) {
+                console.error('Error loading FAQs:', error);
+                this.faqs = [];
+            }
+        },
+
+        get sortedFaqs() {
+            return [...this.faqs].sort((a, b) => {
+                // First sort by sequence
+                if (a.sequence !== b.sequence) {
+                    return a.sequence - b.sequence;
+                }
+                // Then by creation date
+                return new Date(a.createdDate) - new Date(b.createdDate);
+            });
+        },
+
+        openAddFaqModal() {
+            this.editingFaqId = null;
+            this.resetFaqForm();
+            this.currentFaqLang = 'en';
+            this.showFaqModal = true;
+        },
+
+        editFaq(faq) {
+            this.editingFaqId = faq.id;
+            this.faqForm = JSON.parse(JSON.stringify(faq)); // Deep copy
+            this.currentFaqLang = 'en';
+            this.showFaqModal = true;
+        },
+
+        resetFaqForm() {
+            this.faqForm = {
+                id: '',
+                category: '',
+                sequence: this.getNextSequence(),
+                createdDate: new Date().toISOString(),
+                translations: {
+                    en: { question: '', answer: '' },
+                    'zh-Hant': { question: '', answer: '' },
+                    'zh-Hans': { question: '', answer: '' }
+                }
+            };
+        },
+
+        getNextSequence() {
+            if (this.faqs.length === 0) return 1;
+            return Math.max(...this.faqs.map(faq => faq.sequence || 0)) + 1;
+        },
+
+        async saveFaq() {
+            try {
+                // Validate required fields
+                if (!this.faqForm.category) {
+                    this.showErrorMessage('Please select a category');
+                    return;
+                }
+
+                if (!this.faqForm.translations.en.question) {
+                    this.showErrorMessage('Please enter a question in English');
+                    return;
+                }
+
+                if (!this.faqForm.translations.en.answer) {
+                    this.showErrorMessage('Please enter an answer in English');
+                    return;
+                }
+
+                // Set timestamps
+                if (!this.editingFaqId) {
+                    this.faqForm.id = 'faq_' + Date.now();
+                    this.faqForm.createdDate = new Date().toISOString();
+                }
+
+                // Ensure sequence is a number
+                this.faqForm.sequence = parseInt(this.faqForm.sequence) || 1;
+
+                if (this.editingFaqId) {
+                    // Update existing FAQ
+                    const index = this.faqs.findIndex(faq => faq.id === this.editingFaqId);
+                    if (index !== -1) {
+                        this.faqs[index] = { ...this.faqForm };
+                    }
+                } else {
+                    // Add new FAQ
+                    this.faqs.push({ ...this.faqForm });
+                }
+
+                // Save to localStorage
+                localStorage.setItem('cmsFaqsBackup', JSON.stringify({ faqs: this.faqs }));
+                localStorage.setItem('faq_data', JSON.stringify(this.faqs));
+
+                this.closeFaqModal();
+                this.showSuccessMessage(this.editingFaqId ? 'FAQ updated successfully!' : 'FAQ created successfully!');
+            } catch (error) {
+                console.error('Error saving FAQ:', error);
+                this.showErrorMessage('Failed to save FAQ. Please try again.');
+            }
+        },
+
+        async deleteFaq(faqId) {
+            if (!confirm('Are you sure you want to delete this FAQ?')) {
+                return;
+            }
+
+            try {
+                this.faqs = this.faqs.filter(faq => faq.id !== faqId);
+                
+                // Save to localStorage
+                localStorage.setItem('cmsFaqsBackup', JSON.stringify({ faqs: this.faqs }));
+                localStorage.setItem('faq_data', JSON.stringify(this.faqs));
+
+                this.showSuccessMessage('FAQ deleted successfully!');
+            } catch (error) {
+                console.error('Error deleting FAQ:', error);
+                this.showErrorMessage('Failed to delete FAQ. Please try again.');
+            }
+        },
+
+        closeFaqModal() {
+            this.showFaqModal = false;
+            this.editingFaqId = null;
+            this.resetFaqForm();
+        },
+
+        getFaqTitle(faq) {
+            return faq.translations?.en?.question || 'Untitled FAQ';
+        },
+
+        getFaqExcerpt(faq) {
+            const answer = faq.translations?.en?.answer || '';
+            return answer.length > 100 ? answer.substring(0, 100) + '...' : answer;
+        },
+
+        getCurrentFaqLanguage() {
+            return this.languages.find(lang => lang.code === this.currentFaqLang) || this.languages[0];
         },
 
         showSuccessMessage(message) {

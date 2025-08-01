@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="coffee">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusiox CMS - Content Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        .cms-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+        
+        .login-card {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+</head>
+<body class="cms-container">
+    <div x-data="cmsApp()" x-init="init()">
+        <!-- Login Screen -->
+        <div x-show="!isLoggedIn" class="min-h-screen flex items-center justify-center p-4">
+            <div class="login-card card w-full max-w-md shadow-2xl">
+                <div class="card-body">
+                    <div class="text-center mb-6">
+                        <h1 class="text-3xl font-bold text-gray-800">Fusiox CMS</h1>
+                        <p class="text-gray-600 mt-2">Content Management System</p>
+                    </div>
+                    
+                    <form @submit.prevent="login()">
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text font-medium">Email</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                x-model="loginForm.email"
+                                placeholder="Enter your email"
+                                class="input input-bordered w-full"
+                                required>
+                        </div>
+                        
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text font-medium">Password</span>
+                            </label>
+                            <input 
+                                type="password" 
+                                x-model="loginForm.password"
+                                placeholder="Enter your password"
+                                class="input input-bordered w-full"
+                                required>
+                        </div>
+                        
+                        <div class="form-control mt-6">
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary w-full"
+                                :disabled="isLoading">
+                                <span x-show="!isLoading">Login</span>
+                                <span x-show="isLoading" class="loading loading-spinner loading-sm"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div x-show="isLoggedIn" class="min-h-screen flex items-center justify-center p-4">
+            <div class="card w-full max-w-md shadow-2xl bg-white">
+                <div class="card-body text-center">
+                    <h1 class="text-2xl font-bold text-green-600">Welcome to CMS!</h1>
+                    <p>You are successfully logged in.</p>
+                    <button @click="logout()" class="btn btn-error mt-4">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cmsApp() {
+            return {
+                // Authentication
+                isLoggedIn: false,
+                loginForm: {
+                    email: '',
+                    password: ''
+                },
+                isLoading: false,
+
+                // Initialization
+                async init() {
+                    console.log('CMS App initialized');
+                    this.checkLoginStatus();
+                },
+
+                // Authentication methods
+                checkLoginStatus() {
+                    const loginStatus = localStorage.getItem('cmsLoggedIn');
+                    this.isLoggedIn = loginStatus === 'true';
+                    console.log('Login status:', this.isLoggedIn);
+                },
+
+                async login() {
+                    console.log('Login attempt:', this.loginForm.email);
+                    this.isLoading = true;
+
+                    // Simulate API delay
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    // Check credentials
+                    if (this.loginForm.email === 'seven@fusiox.ai' && this.loginForm.password === 'Fusiox888!') {
+                        this.isLoggedIn = true;
+                        localStorage.setItem('cmsLoggedIn', 'true');
+                        console.log('Login successful');
+                    } else {
+                        console.log('Login failed');
+                        alert('Invalid credentials');
+                    }
+
+                    this.isLoading = false;
+                },
+
+                logout() {
+                    this.isLoggedIn = false;
+                    localStorage.removeItem('cmsLoggedIn');
+                    this.loginForm = { email: '', password: '' };
+                    console.log('Logged out');
+                }
+            };
+        }
+
+        console.log('CMS JavaScript loaded successfully');
+    </script>
+</body>
+</html>

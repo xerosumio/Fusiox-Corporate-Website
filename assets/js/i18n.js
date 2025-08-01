@@ -388,6 +388,8 @@ class I18n {
                 // Insights Section
                 'insights.hero.title': 'Insights',
                 'insights.hero.subtitle': 'Explore our latest insights and updates on corporate services and fund operations.',
+                'insights.section.title': 'Latest Insights',
+                'insights.section.subtitle': 'Stay informed with our latest insights and expert analysis on corporate governance and business operations.',
                 'insights.filter.all': 'All Posts',
                 'insights.filter.company-secretary': 'Company Secretary',
                 'insights.filter.fund': 'Fund',
@@ -832,6 +834,8 @@ class I18n {
                 // Insights Section
                 'insights.hero.title': '洞察分析',
                 'insights.hero.subtitle': '探索我們關於企業服務和基金營運的最新見解和更新。',
+                'insights.section.title': '最新洞察',
+                'insights.section.subtitle': '透過我們關於企業治理和商業營運的最新見解和專家分析保持資訊更新。',
                 'insights.filter.all': '所有文章',
                 'insights.filter.company-secretary': '公司秘書',
                 'insights.filter.fund': '基金',
@@ -1286,6 +1290,8 @@ class I18n {
                 // Insights Section
                 'insights.hero.title': '洞察分析',
                 'insights.hero.subtitle': '探索我们关于企业服务和基金运营的最新见解和更新。',
+                'insights.section.title': '最新洞察',
+                'insights.section.subtitle': '通过我们关于企业治理和商业运营的最新见解和专家分析保持信息更新。',
                 'insights.filter.all': '所有文章',
                 'insights.filter.company-secretary': '公司秘书',
                 'insights.filter.fund': '基金',
