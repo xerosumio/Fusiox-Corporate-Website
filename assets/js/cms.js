@@ -92,6 +92,7 @@ function cmsApp() {
         showTranslateModal: false,
         isTranslating: false,
         translationProgress: 0,
+        translationContext: 'post', // 'post' or 'faq'
         translateOptions: {
             toEnglish: false,
             toTraditional: false,
@@ -751,6 +752,7 @@ function cmsApp() {
 
         // Translation functions
         openTranslateModal() {
+            this.translationContext = 'post';
             // Reset translation options
             this.translateOptions = {
                 toEnglish: false,
@@ -865,16 +867,131 @@ function cmsApp() {
             };
         },
 
+        // Universal functions that delegate to context-specific implementations
+        getTranslationDirection() {
+            if (this.translationContext === 'faq') {
+                switch (this.currentFaqLang) {
+                    case 'en':
+                        return {
+                            title: 'Translate FAQ from English',
+                            description: 'Your English FAQ content will be translated to Traditional Chinese and Simplified Chinese using AI.'
+                        };
+                    case 'zh-Hant':
+                        return {
+                            title: 'Translate FAQ from Traditional Chinese',
+                            description: 'Your Traditional Chinese FAQ content will be translated to English and Simplified Chinese using AI.'
+                        };
+                    case 'zh-Hans':
+                        return {
+                            title: 'Translate FAQ from Simplified Chinese',
+                            description: 'Your Simplified Chinese FAQ content will be translated to English and Traditional Chinese using AI.'
+                        };
+                    default:
+                        return {
+                            title: 'FAQ Translation',
+                            description: 'AI-powered translation between English and Chinese languages for FAQ content.'
+                        };
+                }
+            }
+            switch (this.currentLang) {
+                case 'en':
+                    return {
+                        title: 'Translate from English',
+                        description: 'Your English content will be translated to Traditional Chinese and Simplified Chinese using AI.'
+                    };
+                case 'zh-Hant':
+                    return {
+                        title: 'Translate from Traditional Chinese',
+                        description: 'Your Traditional Chinese content will be translated to English and Simplified Chinese using AI.'
+                    };
+                case 'zh-Hans':
+                    return {
+                        title: 'Translate from Simplified Chinese',
+                        description: 'Your Simplified Chinese content will be translated to English and Traditional Chinese using AI.'
+                    };
+                default:
+                    return {
+                        title: 'Translation',
+                        description: 'AI-powered translation between English and Chinese languages.'
+                    };
+            }
+        },
+
+        getAvailableTargets() {
+            const currentLangVar = this.translationContext === 'faq' ? this.currentFaqLang : this.currentLang;
+            switch (currentLangVar) {
+                case 'en':
+                    return [
+                        { code: 'zh-Hant', key: 'toTraditional', name: 'Traditional Chinese (繁體中文)' },
+                        { code: 'zh-Hans', key: 'toSimplified', name: 'Simplified Chinese (简体中文)' }
+                    ];
+                case 'zh-Hant':
+                    return [
+                        { code: 'en', key: 'toEnglish', name: 'English' },
+                        { code: 'zh-Hans', key: 'toSimplified', name: 'Simplified Chinese (简体中文)' }
+                    ];
+                case 'zh-Hans':
+                    return [
+                        { code: 'en', key: 'toEnglish', name: 'English' },
+                        { code: 'zh-Hant', key: 'toTraditional', name: 'Traditional Chinese (繁體中文)' }
+                    ];
+                default:
+                    return [];
+            }
+        },
+
+        getSourceLanguageName() {
+            const currentLangVar = this.translationContext === 'faq' ? this.currentFaqLang : this.currentLang;
+            switch (currentLangVar) {
+                case 'en': return 'English';
+                case 'zh-Hant': return 'Traditional Chinese';
+                case 'zh-Hans': return 'Simplified Chinese';
+                default: return 'Current Language';
+            }
+        },
+
+        canStartTranslation() {
+            if (this.translationContext === 'faq') {
+                const currentContent = this.faqForm.translations[this.currentFaqLang];
+                if (!currentContent || !currentContent.question || !currentContent.answer) {
+                    return false;
+                }
+            } else {
+                const currentContent = this.postForm.translations[this.currentLang];
+                if (!currentContent || !currentContent.title || !currentContent.body) {
+                    return false;
+                }
+            }
+            
+            // Check if at least one target language is selected
+            return this.translateOptions.toEnglish || 
+                   this.translateOptions.toTraditional || 
+                   this.translateOptions.toSimplified;
+        },
+
         hasExistingTranslations() {
             const targets = this.getAvailableTargets();
             return targets.some(target => {
                 if (!this.translateOptions[target.key]) return false;
-                const content = this.postForm.translations[target.code];
-                return content && (content.title || content.body);
+                if (this.translationContext === 'faq') {
+                    const content = this.faqForm.translations[target.code];
+                    return content && (content.question || content.answer);
+                } else {
+                    const content = this.postForm.translations[target.code];
+                    return content && (content.title || content.body);
+                }
             });
         },
 
-        async startTranslation() {
+        startTranslation() {
+            if (this.translationContext === 'faq') {
+                return this.startFaqTranslation();
+            }
+            return this.startPostTranslation();
+        },
+
+        // Rename the original startTranslation to startPostTranslation
+        async startPostTranslation() {
             const currentContent = this.postForm.translations[this.currentLang];
             if (!currentContent.title || !currentContent.body) {
                 this.showErrorMessage(`Please fill in both title and body for ${this.getSourceLanguageName()} before translating.`);
@@ -1092,6 +1209,129 @@ ${targetLanguage} translation:`;
                 // Fallback indication
                 const langIndicator = targetLang === 'zh-Hant' ? '[需要翻譯]' : '[需要翻译]';
                 return `${langIndicator} ${cleanText}`;
+            }
+        },
+
+        // FAQ Translation functions
+        openTranslateFaqModal() {
+            this.translationContext = 'faq';
+            // Reset translation options
+            this.translateOptions = {
+                toEnglish: false,
+                toTraditional: false,
+                toSimplified: false
+            };
+            
+            // Pre-select target languages based on current language
+            const targets = this.getAvailableTargets();
+            targets.forEach(target => {
+                this.translateOptions[target.key] = true;
+            });
+            
+            this.showTranslateModal = true;
+        },
+
+        getFaqTranslationHint() {
+            switch (this.currentFaqLang) {
+                case 'en':
+                    return 'Fill English FAQ content, then translate to Traditional & Simplified Chinese';
+                case 'zh-Hant':
+                    return 'Fill Traditional Chinese FAQ content, then translate to English & Simplified Chinese';
+                case 'zh-Hans':
+                    return 'Fill Simplified Chinese FAQ content, then translate to English & Traditional Chinese';
+                default:
+                    return 'Fill FAQ content in current language, then translate to other languages';
+            }
+        },
+
+        // FAQ-specific translation support functions that aren't duplicated
+        canTranslateFaq() {
+            const currentContent = this.faqForm.translations[this.currentFaqLang];
+            return currentContent && currentContent.question && currentContent.answer;
+        },
+
+        async startFaqTranslation() {
+            const currentContent = this.faqForm.translations[this.currentFaqLang];
+            if (!currentContent.question || !currentContent.answer) {
+                this.showErrorMessage(`Please fill in both question and answer for ${this.getSourceLanguageName()} before translating.`);
+                return;
+            }
+
+            if (!this.canStartTranslation()) {
+                this.showErrorMessage('Please select at least one target language.');
+                return;
+            }
+
+            this.isTranslating = true;
+            this.translationProgress = 0;
+
+            try {
+                const sourceQuestion = currentContent.question;
+                const sourceAnswer = currentContent.answer;
+                let completed = 0;
+                
+                // Count total tasks
+                let totalTasks = 0;
+                if (this.translateOptions.toEnglish) totalTasks += 2;
+                if (this.translateOptions.toTraditional) totalTasks += 2;
+                if (this.translateOptions.toSimplified) totalTasks += 2;
+
+                // Translate to English
+                if (this.translateOptions.toEnglish) {
+                    this.showSuccessMessage('Translating FAQ to English...');
+                    
+                    const englishQuestion = await this.translateText(sourceQuestion, 'en', this.currentFaqLang);
+                    this.faqForm.translations['en'].question = englishQuestion;
+                    completed++;
+                    this.translationProgress = (completed / totalTasks) * 100;
+
+                    const englishAnswer = await this.translateText(sourceAnswer, 'en', this.currentFaqLang);
+                    this.faqForm.translations['en'].answer = englishAnswer;
+                    completed++;
+                    this.translationProgress = (completed / totalTasks) * 100;
+                }
+
+                // Translate to Traditional Chinese
+                if (this.translateOptions.toTraditional) {
+                    this.showSuccessMessage('Translating FAQ to Traditional Chinese...');
+                    
+                    const traditionalQuestion = await this.translateText(sourceQuestion, 'zh-Hant', this.currentFaqLang);
+                    this.faqForm.translations['zh-Hant'].question = traditionalQuestion;
+                    completed++;
+                    this.translationProgress = (completed / totalTasks) * 100;
+
+                    const traditionalAnswer = await this.translateText(sourceAnswer, 'zh-Hant', this.currentFaqLang);
+                    this.faqForm.translations['zh-Hant'].answer = traditionalAnswer;
+                    completed++;
+                    this.translationProgress = (completed / totalTasks) * 100;
+                }
+
+                // Translate to Simplified Chinese
+                if (this.translateOptions.toSimplified) {
+                    this.showSuccessMessage('Translating FAQ to Simplified Chinese...');
+                    
+                    const simplifiedQuestion = await this.translateText(sourceQuestion, 'zh-Hans', this.currentFaqLang);
+                    this.faqForm.translations['zh-Hans'].question = simplifiedQuestion;
+                    completed++;
+                    this.translationProgress = (completed / totalTasks) * 100;
+
+                    const simplifiedAnswer = await this.translateText(sourceAnswer, 'zh-Hans', this.currentFaqLang);
+                    this.faqForm.translations['zh-Hans'].answer = simplifiedAnswer;
+                    completed++;
+                    this.translationProgress = (completed / totalTasks) * 100;
+                }
+
+                this.showSuccessMessage('FAQ translation completed successfully!');
+                
+                // Close modal after a short delay
+                setTimeout(() => {
+                    this.closeTranslateModal();
+                }, 1500);
+
+            } catch (error) {
+                console.error('FAQ translation error:', error);
+                this.showErrorMessage('FAQ translation failed: ' + error.message);
+                this.isTranslating = false;
             }
         },
 

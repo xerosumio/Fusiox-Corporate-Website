@@ -68,46 +68,139 @@
             overflow: hidden;
         }
         
-        /* Enhanced tab styling */
-        .tab {
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border-radius: 0.5rem;
-        }
-        
-        .tab:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .tab-active {
-            background: var(--fallback-a, oklch(var(--a))) !important;
-            color: white !important;
-            font-weight: 600 !important;
-            box-shadow: 0 4px 20px rgba(79, 142, 247, 0.3) !important;
-        }
-        
-        .tab svg {
-            transition: transform 0.2s ease;
-        }
-        
-        .tab:hover svg {
-            transform: scale(1.1);
-        }
-        
-        /* Responsive tab container */
-        .tabs {
+        /* Enhanced tab styling - FAQ Style */
+        .faq-tabs-container {
+            width: 100%;
+            overflow: hidden;
             display: flex;
-            flex-wrap: nowrap;
-            min-width: fit-content;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
         
-        @media (max-width: 640px) {
-            .tab {
-                min-width: fit-content;
-                white-space: nowrap;
-                padding-left: 1rem;
-                padding-right: 1rem;
+        .faq-tabs-container .tabs {
+            max-width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        .faq-tabs-container .tabs::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .tab-responsive {
+            flex-shrink: 0;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+            min-width: fit-content;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0.4rem;
+            padding-bottom: 0.6rem;
+            gap: 0.5rem;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        /* Desktop styles */
+        @media (min-width: 1024px) {
+            .tab-responsive {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+                padding-top: 0.65rem;
+                padding-bottom: 0.85rem;
             }
+            
+            .faq-tabs-container .tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+                overflow-x: visible;
+            }
+        }
+        
+        /* Tablet styles */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .tab-responsive {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+                padding-top: 0.5rem;
+                padding-bottom: 0.7rem;
+            }
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .faq-tabs-container {
+                padding: 0 1rem;
+            }
+            
+            .faq-tabs-container .tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: stretch;
+                background: transparent;
+                padding: 0;
+            }
+            
+            .tab-responsive {
+                width: 100%;
+                text-align: center;
+                font-size: 0.9rem;
+                padding: 0.75rem 1rem;
+                padding-top: 0.65rem;
+                padding-bottom: 0.85rem;
+                border-radius: 0.5rem;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .tab-responsive:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+            
+            .tab-responsive.tab-active {
+                background: linear-gradient(45deg, #667eea, #764ba2) !important;
+                border-color: #667eea;
+                transform: none;
+            }
+        }
+        
+        /* Energetic transitions */
+        @keyframes tabBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.15) rotate(2deg); }
+            50% { transform: scale(1.2) rotate(-1deg); }
+            75% { transform: scale(1.1) rotate(1deg); }
+        }
+        
+        .tab-responsive:hover {
+            animation: tabBounce 0.8s ease-in-out;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+        }
+        
+        /* Happy glow effects */
+        .tab-active {
+            background: linear-gradient(45deg, #667eea, #764ba2) !important;
+            color: white !important;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .tab-responsive .badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+        }
+        
+        .tab-active .badge {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--fallback-a, oklch(var(--a)));
+            font-weight: 600;
         }
     </style>
 </head>
@@ -193,18 +286,44 @@
                 </p>
             </div>
 
+            <!-- Category Filter Tabs -->
+            <div class="faq-tabs-container mb-12">
+                <div class="tabs tabs-boxed justify-center">
+                    <a class="tab tab-responsive" 
+                       :class="{ 'tab-active': currentFilter === 'all' }"
+                       @click="setFilter('all')">
+                        <span x-text="getTranslation('insights.filter.all', 'All Insights')"></span>
+                        <span class="badge badge-primary badge-sm ml-1" x-text="posts.length"></span>
+                    </a>
+                    
+                    <a class="tab tab-responsive" 
+                       :class="{ 'tab-active': currentFilter === 'compsec' }"
+                       @click="setFilter('compsec')">
+                        <span x-text="getTranslation('insights.filter.company-secretary', 'Company Secretary')"></span>
+                        <span class="badge badge-secondary badge-sm ml-1" x-text="getPostCountByCategory('compsec')"></span>
+                    </a>
+                    
+                    <a class="tab tab-responsive" 
+                       :class="{ 'tab-active': currentFilter === 'fund' }"
+                       @click="setFilter('fund')">
+                        <span x-text="getTranslation('insights.filter.fund', 'Fund Services')"></span>
+                        <span class="badge badge-accent badge-sm ml-1" x-text="getPostCountByCategory('fund')"></span>
+                    </a>
+                </div>
+            </div>
+
             <!-- Insights Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 px-4 md:px-16 pb-16" id="insights-grid">
                 <!-- Loading State -->
                 <div x-show="isLoading" class="col-span-full flex justify-center items-center py-16" x-transition>
                     <div class="loading loading-spinner loading-lg"></div>
-                    <span class="ml-4 text-lg">Loading insights...</span>
+                    <span class="ml-4 text-lg" x-text="getTranslation('insights.loading', 'Loading insights...')"></span>
                 </div>
                 
                 <!-- No Posts Message -->
                 <div x-show="!isLoading && posts.length === 0" class="col-span-full flex justify-center items-center py-16" x-transition>
                     <div class="text-center">
-                        <p class="text-lg text-gray-500">No posts available.</p>
+                        <p class="text-lg text-gray-500" x-text="getTranslation('insights.no-posts', 'No posts available.')"></p>
                     </div>
                 </div>
                 
@@ -223,7 +342,7 @@
                             <div class="text-sm text-secondary uppercase tracking-wide mb-1">
                                 <span x-text="formatDate(post.createdDate || post.date)"></span>
                                 <span x-show="post.lastEdited" class="ml-2 text-xs opacity-60">
-                                    (Updated: <span x-text="formatDate(post.lastEdited)"></span>)
+                                    (<span x-text="getTranslation('insights.updated', 'Updated')"></span>: <span x-text="formatDate(post.lastEdited)"></span>)
                                 </span>
                             </div>
                             <h2 class="card-title text-lg font-semibold" 
@@ -247,35 +366,35 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="font-semibold mb-4">Fusiox Corporate Services Limited</h3>
-                    <p class="text-gray-400">Professional corporate services for modern businesses.</p>
+                    <h3 class="font-semibold mb-4" data-i18n="footer.company-name">Fusiox Corporate Services Limited</h3>
+                    <p class="text-gray-400" data-i18n="footer.company-description">Professional corporate services for modern businesses.</p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
+                    <h4 class="font-semibold mb-4" data-i18n="footer.services">Services</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Fund Consultation</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Corporate Governance</a></li>
+                        <li><a href="funds.html" class="hover:text-white transition-colors" data-i18n="footer.fund-consultation">Fund Consultation</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors" data-i18n="footer.corporate-governance">Corporate Governance</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <h4 class="font-semibold mb-4" data-i18n="footer.resources">Resources</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="insights.html" class="hover:text-white transition-colors">Insights</a></li>
-                        <li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href="how-it-works.html" class="hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="insights.html" class="hover:text-white transition-colors" data-i18n="footer.insights">Insights</a></li>
+                        <li><a href="faq.html" class="hover:text-white transition-colors" data-i18n="footer.faq">FAQ</a></li>
+                        <li><a href="how-it-works.html" class="hover:text-white transition-colors" data-i18n="footer.how-it-works">How It Works</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <h4 class="font-semibold mb-4" data-i18n="footer.contact">Contact</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" onclick="openGoogleMaps()" class="hover:text-white transition-colors cursor-pointer">Room 3903 The Center 99 Queen's Road Central Hong Kong</a></li>
+                        <li><a href="#" onclick="openGoogleMaps()" class="hover:text-white transition-colors cursor-pointer" data-i18n="footer.address">Room 3903 The Center 99 Queen's Road Central Hong Kong</a></li>
                         <li><a href="mailto:info@fusiox.ai" class="hover:text-white transition-colors">info@fusiox.ai</a></li>
-                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors" data-i18n="footer.contact-us">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Fusiox Corporate Services Limited. All rights reserved.</p>
+                <p>&copy; <span data-i18n="footer.copyright">2025 Fusiox Corporate Services Limited. All rights reserved.</span></p>
             </div>
         </div>
     </footer>
@@ -351,22 +470,40 @@
         document.addEventListener('alpine:init', () => {
             Alpine.data('insightsPage', () => ({
                 currentTab: 'all',
+                currentFilter: 'all', // Add filter state
                 isLoading: true,
                 posts: [],
-                language: 'en',
-                currentLanguage: 'en', // Add reactive language property
+                language: 'en', // This will be for posts data structure
+                currentLanguage: 'en', // This will match i18n language
                 refreshKey: 0, // Add refresh trigger
 
                 async init() {
-                    // Initialize language
-                    this.language = localStorage.getItem('fusiox-language') || 'en';
-                    this.currentLanguage = this.language;
+                    console.log('=== Insights Page Initialization ===');
                     
-                    // Map language codes to match JSON structure
-                    if (this.language === 'zh-Hant') this.language = 'zh-TW';
-                    if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                    // Wait for i18n to be ready
+                    await new Promise(resolve => {
+                        if (window.i18n) {
+                            resolve();
+                        } else {
+                            const checkI18n = setInterval(() => {
+                                if (window.i18n) {
+                                    clearInterval(checkI18n);
+                                    resolve();
+                                }
+                            }, 100);
+                        }
+                    });
                     
-                    console.log('Initializing with language:', this.language);
+                    // Initialize language from i18n system
+                    this.currentLanguage = window.i18n.currentLanguage || 'en';
+                    console.log('Current i18n language:', this.currentLanguage);
+                    
+                    // Map i18n language codes to post data structure
+                    let postsLanguage = this.currentLanguage;
+                    // Keep the same language codes since JSON uses zh-Hant and zh-Hans
+                    this.language = postsLanguage;
+                    
+                    console.log('Mapped posts language:', this.language);
                     
                     // Load posts from JSON
                     await this.loadPosts();
@@ -376,13 +513,13 @@
                         const newLang = event.detail.language;
                         console.log('Language change event received:', newLang);
                         
-                        // Update both Alpine.js language properties
+                        // Update Alpine.js language properties
                         this.currentLanguage = newLang;
-                        this.language = newLang;
                         
-                        // Map language codes for posts (if needed)
-                        if (this.language === 'zh-Hant') this.language = 'zh-TW';
-                        if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                        // Map i18n language codes to post data structure
+                        let postsLanguage = newLang;
+                        // Keep the same language codes since JSON uses zh-Hant and zh-Hans
+                        this.language = postsLanguage;
                         
                         console.log('Updated Alpine language to:', this.currentLanguage, 'and posts language to:', this.language);
                         
@@ -397,7 +534,7 @@
                         }
                     });
                     
-                    console.log('Initialization complete');
+                    console.log('=== Initialization complete ===');
                 },
 
                 async loadPosts() {
@@ -432,13 +569,40 @@
                 },
 
                 get filteredPosts() {
-                    // Since we simplified the structure, just return all posts
+                    let filtered = this.posts;
+                    
+                    // Filter by category if not 'all'
+                    if (this.currentFilter !== 'all') {
+                        filtered = this.posts.filter(post => {
+                            // Handle both 'compsec' (JSON data) and 'company-secretary' (CMS data)
+                            if (this.currentFilter === 'compsec') {
+                                return post.category === 'compsec' || post.category === 'company-secretary';
+                            }
+                            return post.category === this.currentFilter;
+                        });
+                    }
+                    
                     // Sort by created date (newest first)
-                    return this.posts.sort((a, b) => {
+                    return filtered.sort((a, b) => {
                         const dateA = new Date(a.createdDate || a.date);
                         const dateB = new Date(b.createdDate || b.date);
                         return dateB - dateA;
                     });
+                },
+
+                setFilter(category) {
+                    console.log('Setting filter to:', category);
+                    this.currentFilter = category;
+                },
+
+                getPostCountByCategory(category) {
+                    if (category === 'compsec') {
+                        // Count both 'compsec' and 'company-secretary' categories
+                        return this.posts.filter(post => 
+                            post.category === 'compsec' || post.category === 'company-secretary'
+                        ).length;
+                    }
+                    return this.posts.filter(post => post.category === category).length;
                 },
 
                 shouldShowPost(category) {
@@ -447,26 +611,37 @@
 
                 getCategoryLabel(category) {
                     const labels = {
+                        'compsec': {
+                            en: 'Company Secretary',
+                            'zh-Hant': '公司秘書',
+                            'zh-Hans': '公司秘书'
+                        },
                         'company-secretary': {
                             en: 'Company Secretary',
-                            'zh-TW': '公司秘書',
-                            'zh-CN': '公司秘书'
+                            'zh-Hant': '公司秘書',
+                            'zh-Hans': '公司秘书'
                         },
                         'fund': {
                             en: 'Fund',
-                            'zh-TW': '基金',
-                            'zh-CN': '基金'
+                            'zh-Hant': '基金',
+                            'zh-Hans': '基金'
                         }
                     };
                     return labels[category]?.[this.language] || category;
                 },
 
                 getPostTitle(post) {
-                    return post.translations?.[this.language]?.title || post.translations?.en?.title || 'Untitled';
+                    console.log('Getting post title for language:', this.language);
+                    console.log('Post translations:', post.translations);
+                    const title = post.translations?.[this.language]?.title || post.translations?.en?.title || this.getTranslation('insights.untitled', 'Untitled');
+                    console.log('Selected title:', title);
+                    return title;
                 },
 
                 getPostExcerpt(post) {
+                    console.log('Getting post excerpt for language:', this.language);
                     const body = post.translations?.[this.language]?.body || post.translations?.en?.body || '';
+                    console.log('Selected body:', body.substring(0, 100) + '...');
                     // Strip HTML tags and create excerpt
                     const plainText = body.replace(/<[^>]*>/g, '');
                     const words = plainText.split(' ');
@@ -477,12 +652,7 @@
                 },
 
                 getReadMoreText() {
-                    const readMoreTexts = {
-                        en: 'Read More →',
-                        'zh-TW': '閱讀更多 →',
-                        'zh-CN': '阅读更多 →'
-                    };
-                    return readMoreTexts[this.language] || 'Read More →';
+                    return this.getTranslation('insights.read-more', 'Read More →');
                 },
 
                 formatDate(dateString) {
@@ -494,7 +664,7 @@
                     };
                     
                     // Format date based on language
-                    if (this.language === 'zh-TW' || this.language === 'zh-CN') {
+                    if (this.language === 'zh-Hant' || this.language === 'zh-Hans') {
                         return date.toLocaleDateString('zh', options);
                     }
                     return date.toLocaleDateString('en', options);
@@ -507,7 +677,7 @@
                     if (window.i18n && typeof window.i18n.translate === 'function') {
                         // Always use i18n's current language directly
                         const translation = window.i18n.translate(key);
-                        console.log(`Direct translation of "${key}": "${translation}" (i18n lang: ${window.i18n.currentLanguage}, refresh: ${refresh})`);
+                        console.log(`Translation of "${key}": "${translation}" (i18n lang: ${window.i18n.currentLanguage}, refresh: ${refresh})`);
                         
                         // If translation is different from the key, use it, otherwise use fallback
                         if (translation && translation !== key) {
@@ -529,11 +699,11 @@
                     
                     // Then sync Alpine.js properties
                     this.currentLanguage = lang;
-                    this.language = lang;
                     
-                    // Map for posts data structure
-                    if (this.language === 'zh-Hant') this.language = 'zh-TW';
-                    if (this.language === 'zh-Hans') this.language = 'zh-CN';
+                    // Map i18n language codes to post data structure
+                    let postsLanguage = lang;
+                    // Keep the same language codes since JSON uses zh-Hant and zh-Hans
+                    this.language = postsLanguage;
                     
                     // Trigger refresh
                     this.refreshKey = Date.now();

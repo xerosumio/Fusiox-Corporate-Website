@@ -164,17 +164,17 @@
             <div data-aos="fade-up" data-aos-delay="100" x-show="post">
                 <h1 class="text-4xl font-bold text-primary mt-4" x-text="getPostTitle()"></h1>
                 <p class="text-sm text-base-content/70 mt-2">
-                    <span>Published on </span>
+                    <span x-text="getTranslation('insight-detail.published-on', 'Published on')"></span>
                     <span x-text="formatDate(post?.createdDate || post?.date)"></span>
                     <span x-show="post?.lastEdited" class="ml-2">
-                        • Updated on <span x-text="formatDate(post.lastEdited)"></span>
+                        • <span x-text="getTranslation('insight-detail.updated-on', 'Updated on')"></span> <span x-text="formatDate(post.lastEdited)"></span>
                     </span>
                 </p>
             </div>
 
             <!-- Cover Image -->
             <div class="rounded-xl overflow-hidden shadow-lg cover-block" data-aos="zoom-in" data-aos-delay="200" x-show="post">
-                <div class="h-64">
+                <div class="h-192 relative">
                     <img x-show="post?.image" 
                          :src="post?.image" 
                          :alt="getPostTitle()"
@@ -205,20 +205,20 @@
                     <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2" data-i18n="insight-detail.not-found-title">
-                        <span x-show="!postId">No Insight Selected</span>
-                        <span x-show="postId">Post Not Found</span>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">
+                        <span x-show="!postId" x-text="getTranslation('insight-detail.no-insight-selected', 'No Insight Selected')"></span>
+                        <span x-show="postId" x-text="getTranslation('insight-detail.post-not-found', 'Post Not Found')"></span>
                     </h3>
-                    <p class="text-gray-500 mb-6" data-i18n="insight-detail.not-found-desc">
-                        <span x-show="!postId">Please select an insight from the insights page to view its content.</span>
-                        <span x-show="postId">The insight you're looking for doesn't exist or has been moved.</span>
+                    <p class="text-gray-500 mb-6">
+                        <span x-show="!postId" x-text="getTranslation('insight-detail.no-insight-desc', 'Please select an insight from the insights page to view its content.')"></span>
+                        <span x-show="postId" x-text="getTranslation('insight-detail.post-not-found-desc', \"The insight you're looking for doesn't exist or has been moved.\")"></span>
                     </p>
-                    <a href="insights.html" class="btn btn-primary" data-i18n="insight-detail.view-all-btn">View All Insights</a>
+                    <a href="insights.html" class="btn btn-primary" x-text="getTranslation('insight-detail.view-all-btn', 'View All Insights')"></a>
                 </div>
             </div>
 
             <!-- CTA or Related Links -->
-            <div class="pt-8 border-t border-base-300" data-aos="fade-up" data-aos-delay="400">
+            <div class="pt-8" data-aos="fade-up" data-aos-delay="400">
                 <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                     <a href="insights.html" class="btn btn-accent btn-back" data-i18n="insight-detail.back-btn">← Back to Insights</a>
                     <div class="flex gap-3">
@@ -227,8 +227,6 @@
                     </div>
                 </div>
             </div>
-            
-            
         </div>
     </section>
 
@@ -283,15 +281,55 @@
                 allPosts: [],
                 relatedPosts: [],
                 language: 'en',
+                currentLanguage: 'en',
                 postId: null,
+                refreshKey: 0,
 
                 async init() {
+                    console.log('=== Insight Detail Initialization ===');
+                    
+                    // Wait for i18n to be ready
+                    await new Promise(resolve => {
+                        if (window.i18n) {
+                            resolve();
+                        } else {
+                            const checkI18n = setInterval(() => {
+                                if (window.i18n) {
+                                    clearInterval(checkI18n);
+                                    resolve();
+                                }
+                            }, 100);
+                        }
+                    });
+                    
                     // Get post ID from URL parameters
                     const urlParams = new URLSearchParams(window.location.search);
                     this.postId = urlParams.get('id');
                     
-                    // Initialize language
-                    this.language = localStorage.getItem('language') || 'en';
+                    // Initialize language from i18n system
+                    this.currentLanguage = window.i18n.currentLanguage || 'en';
+                    this.language = this.currentLanguage; // Keep same language codes as JSON uses zh-Hant/zh-Hans
+                    
+                    console.log('Current language:', this.currentLanguage);
+                    console.log('Post ID:', this.postId);
+                    
+                    // Listen for language changes
+                    window.addEventListener('fusiox-language-changed', (event) => {
+                        const newLang = event.detail.language;
+                        console.log('Language change event received:', newLang);
+                        
+                        // Update language properties
+                        this.currentLanguage = newLang;
+                        this.language = newLang; // Keep same language codes
+                        
+                        // Update page title if we have a post
+                        if (this.post) {
+                            document.title = this.getPostTitle() + ' - Fusiox';
+                        }
+                        
+                        // Force refresh
+                        this.refreshKey = Date.now();
+                    });
                     
                     // If no post ID provided, don't load anything
                     if (!this.postId) {
@@ -306,10 +344,11 @@
                     
                     // Initialize internationalization
                     if (typeof window.i18n !== 'undefined') {
-                        window.i18n.updateContent();
+                        window.i18n.updatePageContent();
                     }
                     
                     this.isLoading = false;
+                    console.log('=== Initialization complete ===');
                 },
 
                 async loadPost() {
@@ -377,7 +416,7 @@
                     };
                     
                     // Format date based on language
-                    if (this.language === 'zh-TW' || this.language === 'zh-CN') {
+                    if (this.language === 'zh-Hant' || this.language === 'zh-Hans') {
                         return date.toLocaleDateString('zh', options);
                     }
                     return date.toLocaleDateString('en', options);
@@ -387,31 +426,32 @@
                     const labels = {
                         'company-secretary': {
                             en: 'Company Secretary',
-                            'zh-TW': '公司秘書',
-                            'zh-CN': '公司秘书'
+                            'zh-Hant': '公司秘書',
+                            'zh-Hans': '公司秘书'
                         },
                         'fund': {
                             en: 'Fund',
-                            'zh-TW': '基金',
-                            'zh-CN': '基金'
+                            'zh-Hant': '基金',
+                            'zh-Hans': '基金'
                         }
                     };
                     return labels[this.post?.category]?.[this.language] || this.post?.category || '';
                 },
 
-                formatDate(dateString) {
-                    if (!dateString) return '';
-                    const date = new Date(dateString);
-                    const options = { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                    };
+                getTranslation(key, fallback) {
+                    // Access refreshKey to make this method reactive to language changes
+                    const refresh = this.refreshKey;
                     
-                    if (this.language === 'zh-TW' || this.language === 'zh-CN') {
-                        return date.toLocaleDateString('zh', options);
+                    if (window.i18n && typeof window.i18n.translate === 'function') {
+                        const translation = window.i18n.translate(key);
+                        
+                        // If translation is different from the key, use it, otherwise use fallback
+                        if (translation && translation !== key) {
+                            return translation;
+                        }
                     }
-                    return date.toLocaleDateString('en', options);
+                    
+                    return fallback;
                 }
             }));
         });

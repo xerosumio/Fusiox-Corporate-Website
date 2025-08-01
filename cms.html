@@ -211,10 +211,10 @@
                         <!-- Navigation Tabs -->
                         <div class="tabs tabs-boxed bg-slate-700">
                             <a class="tab text-white" :class="{ 'tab-active bg-primary': currentSection === 'posts' }" @click="currentSection = 'posts'">
-                                📝 Posts
+                                Posts
                             </a>
                             <a class="tab text-white" :class="{ 'tab-active bg-primary': currentSection === 'faqs' }" @click="currentSection = 'faqs'">
-                                ❓ FAQs
+                                FAQs
                             </a>
                         </div>
                     </div>
@@ -596,6 +596,24 @@
                     </div>
                 </div>
 
+                <!-- Auto-translate Button Section for FAQ -->
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm text-gray-600">Translation Tools:</span>
+                        <button type="button" 
+                                @click="openTranslateFaqModal()"
+                                :disabled="!canTranslateFaq()"
+                                class="btn btn-sm btn-outline btn-primary">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.022 9.566L21.74 4.88a2.5 2.5 0 11-3.54 3.54L6.66 20.052a2.5 2.5 0 01-3.53 0l-.006-.007z"></path>
+                            </svg>
+                            Auto Translate
+                        </button>
+                    </div>
+                    <div class="text-xs text-gray-500" x-text="getFaqTranslationHint()">
+                    </div>
+                </div>
+
                 <!-- Language Tabs -->
                 <div class="tabs tabs-boxed mb-4">
                     <template x-for="lang in languages" :key="lang.code">
@@ -701,7 +719,7 @@
                     <!-- Source Content Preview -->
                     <div class="border border-gray-200 rounded-lg p-4">
                         <h4 class="font-semibold mb-2" x-text="getSourceLanguageName() + ' Content (Source):'"></h4>
-                        <div class="space-y-2">
+                        <div class="space-y-2" x-show="translationContext === 'post'">
                             <div>
                                 <strong>Title:</strong> 
                                 <span x-text="postForm.translations[currentLang].title"></span>
@@ -710,6 +728,17 @@
                                 <strong>Body:</strong>
                                 <div class="max-h-32 overflow-y-auto text-sm bg-gray-50 p-2 rounded" 
                                      x-html="postForm.translations[currentLang].body"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2" x-show="translationContext === 'faq'">
+                            <div>
+                                <strong>Question:</strong> 
+                                <span x-text="faqForm.translations[currentFaqLang].question"></span>
+                            </div>
+                            <div>
+                                <strong>Answer:</strong>
+                                <div class="max-h-32 overflow-y-auto text-sm bg-gray-50 p-2 rounded" 
+                                     x-html="faqForm.translations[currentFaqLang].answer"></div>
                             </div>
                         </div>
                     </div>
