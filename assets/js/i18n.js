@@ -171,7 +171,6 @@ class I18n {
                 'funds.lpf.benefits.regulated': 'Regulated',
                 
                 // Fund Structure
-                'funds.structure.roles.client': 'Client',
                 'funds.structure.roles.gp': 'General Partner (GP)',
                 'funds.structure.roles.ia': 'Investment Advisor (IA)',
                 'funds.structure.roles.licensed-entity': 'Type 4/9 Licensed Entity',
@@ -662,7 +661,6 @@ class I18n {
                 'funds.lpf.benefits.regulated': '受監管',
                 
                 // Fund Structure
-                'funds.structure.roles.client': '客戶',
                 'funds.structure.roles.gp': '普通合夥人（GP）',
                 'funds.structure.roles.ia': '投資顧問（IA）',
                 'funds.structure.roles.licensed-entity': '第4類/第9類持牌實體',
@@ -1151,7 +1149,6 @@ class I18n {
                 'funds.lpf.benefits.regulated': '受监管',
                 
                 // Fund Structure
-                'funds.structure.roles.client': '客户',
                 'funds.structure.roles.gp': '普通合伙人（GP）',
                 'funds.structure.roles.ia': '投资顾问（IA）',
                 'funds.structure.roles.licensed-entity': '第4类/第9类持牌实体',
