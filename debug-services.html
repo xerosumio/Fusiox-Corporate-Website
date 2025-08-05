@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Services i18n</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="assets/js/i18n.js"></script>
+</head>
+<body>
+    <h1 data-i18n="services.hero.title">Our Services</h1>
+    <p data-i18n="services.hero.subtitle">Comprehensive business incorporation and compliance services tailored to your needs.</p>
+    
+    <h2 data-i18n="services.company-secretary.title">Company Secretary Service</h2>
+    <p data-i18n="services.company-secretary.description-main">Professional company secretary services to ensure your business remains compliant with Hong Kong regulations.</p>
+    
+    <div data-i18n="services.company-secretary.price">USD 1,180</div>
+    <p data-i18n="services.annual-service">Annual service</p>
+    
+    <h3 data-i18n="services.includes">Includes:</h3>
+    <ul>
+        <li data-i18n="services.features.secretary">Dedicated company secretary</li>
+        <li data-i18n="services.features.filing">Annual return filing</li>
+        <li data-i18n="services.features.coordination">Board meeting coordination</li>
+    </ul>
+    
+    <div id="debug"></div>
+    
+    <script>
+        // Debug script
+        function updateDebug() {
+            const debug = document.getElementById('debug');
+            debug.innerHTML = '<h2>Debug Info:</h2>';
+            
+            if (window.i18n) {
+                debug.innerHTML += '<p>✅ i18n system found</p>';
+                debug.innerHTML += '<p>Current language: ' + window.i18n.currentLanguage + '</p>';
+                debug.innerHTML += '<p>Available languages: ' + Object.keys(window.i18n.translations).join(', ') + '</p>';
+                
+                // Test translations
+                const testKeys = [
+                    'services.hero.title',
+                    'services.hero.subtitle',
+                    'services.company-secretary.title',
+                    'services.company-secretary.description-main'
+                ];
+                
+                testKeys.forEach(key => {
+                    const translation = window.i18n.translate(key);
+                    debug.innerHTML += '<p>' + key + ': "' + translation + '"</p>';
+                });
+                
+                // Count elements with data-i18n
+                const elements = document.querySelectorAll('[data-i18n]');
+                debug.innerHTML += '<p>Found ' + elements.length + ' elements with data-i18n</p>';
+                
+                // Show what elements are found
+                elements.forEach((element, index) => {
+                    const key = element.getAttribute('data-i18n');
+                    const currentText = element.textContent;
+                    debug.innerHTML += '<p>Element ' + index + ': key="' + key + '", current text="' + currentText + '"</p>';
+                });
+                
+            } else {
+                debug.innerHTML += '<p>❌ i18n system not found</p>';
+            }
+        }
+        
+        // Test on load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking i18n...');
+            setTimeout(updateDebug, 100);
+        });
+        
+        // Also test after a delay
+        setTimeout(updateDebug, 2000);
+    </script>
+</body>
+</html> 

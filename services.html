@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="assets/js/i18n.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -164,10 +165,7 @@
             <!-- Main Service: Company Secretary Service -->
             <div class="mb-16" data-aos="fade-up" data-aos-delay="100">
                 <div class="relative bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white shadow-2xl overflow-hidden">
-                    <!-- Most Popular Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-accent text-accent-content px-3 py-1 rounded-full text-xs font-semibold" data-i18n="services.most-popular">Most Popular</span>
-                    </div>
+                    
                     
                     <div class="grid md:grid-cols-2 gap-8 items-center">
                         <!-- Service Details -->
@@ -176,7 +174,7 @@
                                 <h3 class="text-2xl font-bold" data-i18n="services.company-secretary.title">Company Secretary Service</h3>
                             </div>
                             <p class="text-lg mb-6 opacity-90" data-i18n="services.company-secretary.description-main">Professional company secretary services to ensure your business remains compliant with Hong Kong regulations.</p>
-                            <div class="text-3xl font-bold mb-2">USD 1,180</div>
+                            <div class="text-3xl font-bold mb-2" data-i18n="services.company-secretary.price">USD 1,180</div>
                             <p class="text-sm opacity-75" data-i18n="services.annual-service">Annual service</p>
                         </div>
                         
@@ -223,7 +221,7 @@
                         <div class="card-body">
                             <h4 class="card-title text-lg mb-3" data-i18n="services.registered-address.title">Registered Address and Mail Receiving</h4>
                             <p class="text-sm text-base-content/70 mb-4" data-i18n="services.registered-address.description-short">Professional registered address service with mail handling and forwarding capabilities.</p>
-                            <div class="text-xl font-bold text-primary">USD 500</div>
+                            <div class="text-xl font-bold text-primary" data-i18n="services.registered-address.price">USD 500</div>
                         </div>
                     </div>
 
@@ -250,7 +248,7 @@
                         <div class="card-body">
                             <h4 class="card-title text-lg mb-3" data-i18n="services.ctc.title">CTC Certification</h4>
                             <p class="text-sm text-base-content/70 mb-4" data-i18n="services.ctc.description-short">Certified True Copy for official document authentication.</p>
-                            <div class="text-xl font-bold text-primary">USD 50 per copy</div>
+                            <div class="text-xl font-bold text-primary" data-i18n="services.ctc.price">USD 50 per copy</div>
                         </div>
                     </div>
                 </div>
@@ -270,11 +268,11 @@
     <div class="py-16 relative" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&h=600&fit=crop&crop=center'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-primary bg-opacity-80"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-            <p class="text-xl text-white mb-8">Our Hong Kong corporate services experts are ready to assist with your incorporation and compliance needs.</p>
+            <h2 class="text-3xl font-bold text-white mb-4" data-i18n="cta.title">Ready to Get Started?</h2>
+            <p class="text-xl text-white mb-8" data-i18n="cta.description">Our Hong Kong corporate services experts are ready to assist with your incorporation and compliance needs.</p>
             <div class="space-x-4">
-                <a href="contact.html" class="btn btn-accent btn-lg">Get Free Consultation</a>
-                <a href="how-it-works.html" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-black">See How It Works</a>
+                <a href="contact.html" class="btn btn-accent btn-lg" data-i18n="cta.consultation-button">Get Free Consultation</a>
+                <a href="how-it-works.html" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-black" data-i18n="cta.how-it-works-button">See How It Works</a>
             </div>
         </div>
     </div>
@@ -317,40 +315,10 @@
         </div>
     </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/i18n-simple.js"></script>
     <script src="assets/js/sticky-header.js"></script>
     <script src="assets/js/modal-system.js"></script>
     <script src="assets/js/mobile-touch.js"></script>
-    <script>
-        // Ensure i18n is properly initialized before Alpine.js components
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOMContentLoaded in services.html');
-            // Force i18n initialization
-            if (window.i18n) {
-                console.log('i18n system found, updating content...');
-                window.i18n.updatePageContent();
-                window.i18n.updateHTMLLang();
-            } else {
-                console.error('i18n system not found!');
-            }
-        });
-        
-        // Also try immediate initialization
-        if (window.i18n) {
-            console.log('Immediate i18n initialization');
-            window.i18n.updatePageContent();
-            window.i18n.updateHTMLLang();
-        }
-        
-        // Fallback initialization
-        setTimeout(function() {
-            console.log('Fallback i18n initialization');
-            if (window.i18n) {
-                window.i18n.updatePageContent();
-                window.i18n.updateHTMLLang();
-            }
-        }, 100);
-    </script>
+
     <script>
         // Initialize AOS
         AOS.init({
@@ -360,56 +328,45 @@
             easing: 'ease-out-back'
         });
 
-        // Ensure i18n is properly initialized
+        // Simple i18n initialization
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, checking i18n...');
+            console.log('Services page loaded');
             console.log('window.i18n:', window.i18n);
+            console.log('document.readyState:', document.readyState);
             
             if (window.i18n) {
+                console.log('i18n system found, updating content...');
                 console.log('Current language:', window.i18n.currentLanguage);
                 console.log('Available translations:', Object.keys(window.i18n.translations));
-                console.log('Sample translation:', window.i18n.translate('services.hero.title'));
                 
-                // Test all our service keys
-                const keysToTest = [
-                    'services.most-popular',
-                    'services.company-secretary.title',
-                    'services.company-secretary.description-main',
-                    'services.annual-service',
-                    'services.includes',
-                    'services.features.secretary',
-                    'services.value-added-title',
-                    'services.registered-address.title',
-                    'services.fund-note.text'
-                ];
+                // Test a specific translation
+                const testKey = 'services.hero.title';
+                const translation = window.i18n.translate(testKey);
+                console.log(`Translation for "${testKey}": "${translation}"`);
                 
-                console.log('Testing specific keys:');
-                keysToTest.forEach(key => {
-                    const translation = window.i18n.translate(key);
-                    console.log(`${key}: "${translation}"`);
-                });
+                // Count elements with data-i18n
+                const elements = document.querySelectorAll('[data-i18n]');
+                console.log(`Found ${elements.length} elements with data-i18n`);
                 
+                // Force update content
                 window.i18n.updatePageContent();
+                window.i18n.updateHTMLLang();
                 
-                // Force another update after a delay
+                // Test again after a delay
                 setTimeout(function() {
-                    console.log('Force updating content again...');
+                    console.log('Testing again after delay...');
                     window.i18n.updatePageContent();
-                }, 100);
+                }, 500);
             } else {
-                console.error('i18n not found!');
+                console.error('i18n system not found!');
             }
-            
-            // Fallback initialization after a short delay
-            setTimeout(function() {
-                console.log('Fallback i18n check...');
-                if (window.i18n) {
-                    window.i18n.updatePageContent();
-                } else {
-                    console.error('i18n still not found after delay!');
-                }
-            }, 500);
         });
+        
+        // Also try immediate initialization
+        if (window.i18n) {
+            console.log('Immediate i18n check...');
+            window.i18n.updatePageContent();
+        }
 
         // Function to open Google Maps
         function openGoogleMaps() {

@@ -6,10 +6,9 @@ class I18n {
         console.log('Current language set to:', this.currentLanguage);
         this.translations = {};
         this.loadTranslations();
-        console.log('About to call updatePageContent...');
-        this.updatePageContent();
-        this.updateHTMLLang();
-        console.log('I18n constructor completed');
+        console.log('I18n constructor completed - translations loaded');
+        console.log('Sample translation test:', this.translate('services.hero.title'));
+        // Don't call updatePageContent here - let the fallback initialization handle it
     }
 
     getStoredLanguage() {
@@ -75,6 +74,9 @@ class I18n {
                 // CTA Section
                 'cta.title': 'Ready to Start Your Business?',
                 'cta.subtitle': 'Join thousands of successful entrepreneurs who chose Fusiox for their incorporation needs.',
+                'cta.description': 'Our Hong Kong corporate services experts are ready to assist with your incorporation and compliance needs.',
+                'cta.consultation-button': 'Get Free Consultation',
+                'cta.how-it-works-button': 'See How It Works',
                 'cta.get-started': 'Start Your Incorporation Today',
 
                 // Footer
@@ -250,6 +252,7 @@ class I18n {
                 'services.value-added-title': 'Value-added Services',
                 'services.company-secretary.title': 'Company Secretary Service',
                 'services.company-secretary.description-main': 'Professional company secretary services to ensure your business remains compliant with Hong Kong regulations.',
+                'services.company-secretary.price': 'USD 1,180',
                 'services.features.secretary': 'Dedicated company secretary',
                 'services.features.filing': 'Annual return filing',
                 'services.features.coordination': 'Board meeting coordination',
@@ -258,6 +261,7 @@ class I18n {
                 'services.features.support': 'Regulatory filing support',
                 'services.registered-address.title': 'Registered Address and Mail Receiving',
                 'services.registered-address.description-short': 'Professional registered address service with mail handling and forwarding capabilities.',
+                'services.registered-address.price': 'USD 500',
                 'services.audit-tax.title': 'Audit and Tax Filing',
                 'services.audit-tax.description-short': 'Comprehensive tax filing support tailored to your needs.',
                 'services.audit-tax.price': 'Case-by-case basis',
@@ -266,6 +270,7 @@ class I18n {
                 'services.bank-account.price': 'Starting from USD 800',
                 'services.ctc.title': 'CTC Certification',
                 'services.ctc.description-short': 'Certified True Copy for official document authentication.',
+                'services.ctc.price': 'USD 50 per copy',
                 'services.fund-note.text': 'Interested in fund-related incorporation services?',
                 'services.fund-note.link': 'Please contact us directly for details.',
 
@@ -581,6 +586,9 @@ class I18n {
                 // CTA Section
                 'cta.title': '準備開始您的業務？',
                 'cta.subtitle': '加入數千名選擇 Fusiox 滿足註冊需求的成功企業家。',
+                'cta.description': '我們的香港企業服務專家隨時準備協助您的註冊和合規需求。',
+                'cta.consultation-button': '獲取免費諮詢',
+                'cta.how-it-works-button': '了解服務流程',
                 'cta.get-started': '立即開始註冊',
 
                 // Footer
@@ -752,6 +760,7 @@ class I18n {
                 'services.value-added-title': '增值服務',
                 'services.company-secretary.title': '公司秘書服務',
                 'services.company-secretary.description-main': '專業的公司秘書服務，確保您的業務持續符合香港法規。',
+                'services.company-secretary.price': 'USD 1,180',
                 'services.features.secretary': '專屬公司秘書',
                 'services.features.filing': '年度申報表填報',
                 'services.features.coordination': '董事會會議協調',
@@ -760,6 +769,7 @@ class I18n {
                 'services.features.support': '監管申報支援',
                 'services.registered-address.title': '註冊地址及郵件接收',
                 'services.registered-address.description-short': '專業的註冊地址服務，提供郵件處理和轉寄功能。',
+                'services.registered-address.price': 'USD 500',
                 'services.audit-tax.title': '審計及稅務申報',
                 'services.audit-tax.description-short': '量身定制的全面稅務申報支持。',
                 'services.audit-tax.price': '按情況而定',
@@ -768,6 +778,7 @@ class I18n {
                 'services.bank-account.price': '起價 USD 800',
                 'services.ctc.title': 'CTC 認證',
                 'services.ctc.description-short': '認證副本證明服務，用於官方文件認證。',
+                'services.ctc.price': '每份 USD 50',
                 'services.fund-note.text': '對基金相關註冊服務感興趣？',
                 'services.fund-note.link': '請直接聯繫我們了解詳情。',
 
@@ -1085,6 +1096,9 @@ class I18n {
                 // CTA Section
                 'cta.title': '准备开始您的业务？',
                 'cta.subtitle': '加入数千名选择 Fusiox 满足注册需求的成功企业家。',
+                'cta.description': '我们的香港企业服务专家随时准备协助您的注册和合规需求。',
+                'cta.consultation-button': '获取免费咨询',
+                'cta.how-it-works-button': '了解服务流程',
                 'cta.get-started': '立即开始注册',
 
                 // Footer
@@ -1264,6 +1278,7 @@ class I18n {
                 'services.value-added-title': '增值服务',
                 'services.company-secretary.title': '公司秘书服务',
                 'services.company-secretary.description-main': '专业的公司秘书服务，确保您的业务持续符合香港法规。',
+                'services.company-secretary.price': 'USD 1,180',
                 'services.features.secretary': '专属公司秘书',
                 'services.features.filing': '年度申报表填报',
                 'services.features.coordination': '董事会会议协调',
@@ -1272,6 +1287,7 @@ class I18n {
                 'services.features.support': '监管申报支援',
                 'services.registered-address.title': '注册地址及邮件接收',
                 'services.registered-address.description-short': '专业的注册地址服务，提供邮件处理和转寄功能。',
+                'services.registered-address.price': 'USD 500',
                 'services.audit-tax.title': '审计及税务申报',
                 'services.audit-tax.description-short': '量身定制的全面税务申报支持。',
                 'services.audit-tax.price': '按情况而定',
@@ -1280,6 +1296,7 @@ class I18n {
                 'services.bank-account.price': '起价 USD 800',
                 'services.ctc.title': 'CTC 认证',
                 'services.ctc.description-short': '认证副本证明服务，用于官方文件认证。',
+                'services.ctc.price': '每份 USD 50',
                 'services.fund-note.text': '对基金相关注册服务感兴趣？',
                 'services.fund-note.link': '请直接联系我们了解详情。',
 
@@ -1571,21 +1588,32 @@ class I18n {
 
     updatePageContent() {
         console.log('updatePageContent called, current language:', this.currentLanguage);
+        console.log('document.readyState:', document.readyState);
         
         // Update all elements with data-i18n attribute
         const elements = document.querySelectorAll('[data-i18n]');
         console.log('Found', elements.length, 'elements with data-i18n attribute');
         
-        elements.forEach(element => {
+        if (elements.length === 0) {
+            console.warn('No elements with data-i18n found!');
+            return;
+        }
+        
+        elements.forEach((element, index) => {
             const key = element.getAttribute('data-i18n');
             const translation = this.translate(key);
+            const originalText = element.textContent;
+            console.log(`Element ${index}: key="${key}", original="${originalText}", translation="${translation}"`);
             
             if (element.tagName === 'INPUT' && element.type === 'submit') {
                 element.value = translation;
+                console.log(`Updated input value for "${key}"`);
             } else if (element.hasAttribute('placeholder')) {
                 element.placeholder = translation;
+                console.log(`Updated placeholder for "${key}"`);
             } else {
                 element.textContent = translation;
+                console.log(`Updated textContent for "${key}" from "${originalText}" to "${translation}"`);
             }
         });
 
@@ -1623,32 +1651,32 @@ class I18n {
 // Global i18n instance
 window.i18n = new I18n();
 
-// Fallback initialization for timing issues
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        console.log('DOMContentLoaded - fallback initialization');
-        if (window.i18n) {
-            window.i18n.updatePageContent();
-            window.i18n.updateHTMLLang();
-        }
-    });
-} else {
-    // DOM is already loaded
-    console.log('DOM already loaded - immediate initialization');
+// Single initialization function
+function initializeI18n() {
+    console.log('Initializing i18n system...');
     if (window.i18n) {
         window.i18n.updatePageContent();
         window.i18n.updateHTMLLang();
+        
+        // Dispatch event to notify Alpine.js components that i18n is ready
+        window.dispatchEvent(new CustomEvent('fusiox-i18n-ready', {
+            detail: { i18n: window.i18n }
+        }));
+    } else {
+        console.error('i18n system not available');
     }
 }
 
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeI18n);
+} else {
+    // DOM is already loaded
+    initializeI18n();
+}
+
 // Additional fallback - wait a bit longer to ensure all content is loaded
-setTimeout(() => {
-    console.log('Delayed initialization check');
-    if (window.i18n) {
-        window.i18n.updatePageContent();
-        window.i18n.updateHTMLLang();
-    }
-}, 1000);
+setTimeout(initializeI18n, 1000);
 
 // Alpine.js data for language switching
 document.addEventListener('alpine:init', () => {
@@ -1704,32 +1732,3 @@ document.addEventListener('alpine:init', () => {
     }));
 });
 
-// Initialize translations when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded event fired, initializing i18n...');
-    if (window.i18n) {
-        window.i18n.updatePageContent();
-        window.i18n.updateHTMLLang();
-        
-        // Dispatch event to notify Alpine.js components that i18n is ready
-        window.dispatchEvent(new CustomEvent('fusiox-i18n-ready', {
-            detail: { i18n: window.i18n }
-        }));
-    } else {
-        console.error('i18n not available during DOMContentLoaded');
-    }
-});
-
-// Also initialize when the script loads (in case DOM is already loaded)
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    console.log('Document already loaded, initializing i18n immediately...');
-    if (window.i18n) {
-        window.i18n.updatePageContent();
-        window.i18n.updateHTMLLang();
-        
-        // Dispatch event to notify Alpine.js components that i18n is ready
-        window.dispatchEvent(new CustomEvent('fusiox-i18n-ready', {
-            detail: { i18n: window.i18n }
-        }));
-    }
-}

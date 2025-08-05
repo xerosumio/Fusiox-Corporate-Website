@@ -3,30 +3,36 @@
 ## Overview
 
 The Fusiox Corporate Website now supports three languages:
+
 - **English** (en) - Default language
-- **Traditional Chinese** (zh-Hant) - 繁體中文  
+- **Traditional Chinese** (zh-Hant) - 繁體中文
 - **Simplified Chinese** (zh-Hans) - 简体中文
 
 ## Implementation Details
 
 ### Technology Stack
+
 - **Frontend Framework**: AlpineJS for reactive language switching
 - **Translation System**: JavaScript-based i18n system with JSON-like translation objects
 - **Storage**: LocalStorage for language preference persistence
 - **UI Framework**: DaisyUI/TailwindCSS for language selector styling
 
 ### File Structure
+
 ```
 assets/
   js/
-    i18n.js          # Main internationalization system
+    i18n.js          # Main internationalization system (full version)
+    i18n-simple.js   # Simplified internationalization system
 *.html               # All HTML files updated with data-i18n attributes
 ```
 
 ## How to Use
 
 ### Language Selector
+
 A language selector is available in the top navigation bar on all pages. Users can click the dropdown to switch between:
+
 - English
 - 繁體中文 (Traditional Chinese)
 - 简体中文 (Simplified Chinese)
@@ -36,6 +42,7 @@ The selected language preference is automatically saved and restored on subseque
 ### Adding Translations
 
 #### 1. Add Translation Keys
+
 Edit `assets/js/i18n.js` and add new translation keys to all three language objects:
 
 ```javascript
@@ -44,6 +51,7 @@ Edit `assets/js/i18n.js` and add new translation keys to all three language obje
 ```
 
 #### 2. Update HTML Elements
+
 Add the `data-i18n` attribute to any HTML element you want to be translatable:
 
 ```html
@@ -53,19 +61,24 @@ Add the `data-i18n` attribute to any HTML element you want to be translatable:
 ```
 
 #### 3. Special Attributes
+
 For form inputs and other special cases:
 
 ```html
 <!-- For placeholder text -->
-<input data-i18n-placeholder="form.placeholder.key" placeholder="Default placeholder">
+<input
+  data-i18n-placeholder="form.placeholder.key"
+  placeholder="Default placeholder"
+/>
 
 <!-- For title attributes -->
-<img data-i18n-title="image.title.key" title="Default title">
+<img data-i18n-title="image.title.key" title="Default title" />
 ```
 
 ### Translation Key Naming Convention
 
 Use a hierarchical naming system with dots:
+
 - `nav.about` - Navigation items
 - `hero.title` - Hero section content
 - `services.company-incorporation.title` - Service-specific content
@@ -75,6 +88,7 @@ Use a hierarchical naming system with dots:
 ### Current Translation Coverage
 
 All major website sections are covered:
+
 - Navigation menu
 - Hero sections
 - Service descriptions
@@ -88,32 +102,75 @@ All major website sections are covered:
 ## Technical Implementation
 
 ### Language Detection
+
 1. First checks localStorage for saved preference
 2. Falls back to English as default
 3. Updates HTML `lang` attribute for accessibility
 
 ### Dynamic Content Updates
+
 The system automatically updates:
+
 - Text content in elements with `data-i18n` attributes
 - Placeholder text in form elements
 - Title attributes for tooltips
 - HTML document language attribute
 
 ### Language Switching
+
 When a user selects a new language:
+
 1. Updates the global language setting
 2. Saves preference to localStorage
 3. Re-scans all translatable elements
 4. Updates content immediately without page refresh
 
+### Performance Optimizations
+
+- **Debounced Language Changes**: Prevents rapid updates when switching languages
+- **Translation Validation**: Automatic validation of translation completeness
+- **Error Handling**: Graceful handling of missing translations with fallbacks
+- **Debug Logging**: Comprehensive logging for troubleshooting
+
+### Validation Features
+
+The system includes automatic validation that:
+
+- Checks for missing translations across all languages
+- Reports translation completeness status
+- Logs warnings for missing keys
+- Provides fallback to English for missing translations
+
 ## Browser Support
+
 - Modern browsers with ES6+ support
 - AlpineJS compatible browsers
 - LocalStorage support required for preference persistence
 
+## Testing
+
+### Test Pages
+
+Several test pages are available for validating the i18n system:
+
+- `test-i18n-complete.html` - Comprehensive test with validation
+- `test-simple-i18n.html` - Basic functionality test
+- `test-translations.html` - Translation key testing
+
+### Debug Information
+
+The system provides detailed debug information including:
+
+- Current language status
+- Number of translatable elements
+- Sample translations
+- Missing translation warnings
+- Validation results
+
 ## Future Enhancements
 
 1. **Additional Languages**: Easy to add more languages by:
+
    - Adding translation objects to `i18n.js`
    - Adding language options to the `getSupportedLanguages()` method
 
@@ -123,18 +180,42 @@ When a user selects a new language:
 
 4. **Translation Management**: Could integrate with translation management tools
 
+5. **Advanced Validation**: Enhanced validation with:
+   - Translation quality checks
+   - Character length validation
+   - Consistency checks across languages
+
 ## Troubleshooting
 
 ### Language Selector Not Showing
+
 - Ensure AlpineJS is loading correctly
 - Check browser console for JavaScript errors
 - Verify `assets/js/i18n.js` is accessible
 
 ### Translations Not Working
+
 - Check that `data-i18n` attributes match keys in translation objects
 - Verify translation keys exist in all language objects
 - Check browser console for missing translation warnings
+- Use the validation feature to identify missing translations
 
 ### Language Not Persisting
+
 - Ensure localStorage is available and not blocked
 - Check if the domain allows localStorage access
+
+### Performance Issues
+
+- Check for rapid language switching (debouncing should help)
+- Verify translation objects are not too large
+- Monitor console for excessive logging
+
+### Debug Mode
+
+Enable debug mode by checking the browser console for:
+
+- Translation loading status
+- Missing translation warnings
+- Validation results
+- Performance metrics

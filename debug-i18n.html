@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug i18n</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="assets/js/i18n.js"></script>
+</head>
+<body>
+    <h1 data-i18n="services.hero.title">Our Services</h1>
+    <p data-i18n="services.hero.subtitle">Comprehensive business incorporation and compliance services tailored to your needs.</p>
+    
+    <div id="debug"></div>
+    
+    <script>
+        // Debug script
+        document.addEventListener('DOMContentLoaded', function() {
+            const debug = document.getElementById('debug');
+            debug.innerHTML = '<h2>Debug Info:</h2>';
+            
+            if (window.i18n) {
+                debug.innerHTML += '<p>✅ i18n system found</p>';
+                debug.innerHTML += '<p>Current language: ' + window.i18n.currentLanguage + '</p>';
+                debug.innerHTML += '<p>Available languages: ' + Object.keys(window.i18n.translations).join(', ') + '</p>';
+                
+                // Test translations
+                const testKeys = [
+                    'services.hero.title',
+                    'services.hero.subtitle',
+                    'services.company-secretary.title'
+                ];
+                
+                testKeys.forEach(key => {
+                    const translation = window.i18n.translate(key);
+                    debug.innerHTML += '<p>' + key + ': "' + translation + '"</p>';
+                });
+                
+                // Count elements with data-i18n
+                const elements = document.querySelectorAll('[data-i18n]');
+                debug.innerHTML += '<p>Found ' + elements.length + ' elements with data-i18n</p>';
+                
+                // Update content
+                window.i18n.updatePageContent();
+                
+            } else {
+                debug.innerHTML += '<p>❌ i18n system not found</p>';
+            }
+        });
+    </script>
+</body>
+</html> 

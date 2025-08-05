@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple i18n Test</title>
+    <script src="assets/js/i18n.js"></script>
+</head>
+<body>
+    <h1 data-i18n="services.hero.title">Our Services</h1>
+    <p data-i18n="services.hero.subtitle">Comprehensive business incorporation and compliance services tailored to your needs.</p>
+    
+    <button onclick="testTranslation()">Test Translation</button>
+    <button onclick="changeLanguage('zh-Hant')">Change to Chinese</button>
+    <button onclick="changeLanguage('en')">Change to English</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function testTranslation() {
+            const output = document.getElementById('output');
+            if (window.i18n) {
+                const translation = window.i18n.translate('services.hero.title');
+                output.innerHTML = `<p>Translation: "${translation}"</p>`;
+                output.innerHTML += `<p>Current language: ${window.i18n.currentLanguage}</p>`;
+                output.innerHTML += `<p>Elements found: ${document.querySelectorAll('[data-i18n]').length}</p>`;
+            } else {
+                output.innerHTML = '<p>i18n not found!</p>';
+            }
+        }
+        
+        function changeLanguage(lang) {
+            if (window.i18n) {
+                window.i18n.setLanguage(lang);
+                testTranslation();
+            }
+        }
+        
+        // Test on load
+        setTimeout(testTranslation, 1000);
+    </script>
+</body>
+</html> 

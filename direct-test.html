@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct i18n Test</title>
+</head>
+<body>
+    <h1 data-i18n="services.hero.title">Our Services</h1>
+    <p data-i18n="services.hero.subtitle">Comprehensive business incorporation and compliance services tailored to your needs.</p>
+    
+    <div id="debug"></div>
+    
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // Direct test
+        function testI18n() {
+            const debug = document.getElementById('debug');
+            debug.innerHTML = '<h2>Direct Test:</h2>';
+            
+            console.log('Testing i18n system...');
+            console.log('window.i18n:', window.i18n);
+            
+            if (window.i18n) {
+                debug.innerHTML += '<p>✅ i18n system found</p>';
+                debug.innerHTML += '<p>Current language: ' + window.i18n.currentLanguage + '</p>';
+                
+                // Test translation
+                const testKey = 'services.hero.title';
+                const translation = window.i18n.translate(testKey);
+                debug.innerHTML += '<p>Translation for "' + testKey + '": "' + translation + '"</p>';
+                
+                // Count elements
+                const elements = document.querySelectorAll('[data-i18n]');
+                debug.innerHTML += '<p>Elements with data-i18n: ' + elements.length + '</p>';
+                
+                // Show all elements
+                elements.forEach((element, index) => {
+                    const key = element.getAttribute('data-i18n');
+                    const originalText = element.textContent;
+                    debug.innerHTML += '<p>Element ' + index + ': key="' + key + '", text="' + originalText + '"</p>';
+                });
+                
+                // Force update
+                console.log('Calling updatePageContent...');
+                window.i18n.updatePageContent();
+                
+                // Check after update
+                setTimeout(function() {
+                    debug.innerHTML += '<h3>After Update:</h3>';
+                    elements.forEach((element, index) => {
+                        const key = element.getAttribute('data-i18n');
+                        const newText = element.textContent;
+                        debug.innerHTML += '<p>Element ' + index + ': key="' + key + '", text="' + newText + '"</p>';
+                    });
+                }, 100);
+                
+            } else {
+                debug.innerHTML += '<p>❌ i18n system not found</p>';
+            }
+        }
+        
+        // Test immediately
+        testI18n();
+        
+        // Test after a delay
+        setTimeout(testI18n, 2000);
+    </script>
+</body>
+</html> 
