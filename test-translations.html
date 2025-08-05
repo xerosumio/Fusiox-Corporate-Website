@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Test</title>
+    <script src="assets/js/i18n.js"></script>
+</head>
+<body>
+    <h1>Translation Test</h1>
+    
+    <div>
+        <h2>Services Page Translations:</h2>
+        <ul>
+            <li data-i18n="services.hero.title">Our Services</li>
+            <li data-i18n="services.hero.subtitle">Comprehensive business incorporation and compliance services tailored to your needs.</li>
+            <li data-i18n="services.most-popular">Most Popular</li>
+            <li data-i18n="services.company-secretary.title">Company Secretary Service</li>
+            <li data-i18n="services.company-secretary.description-main">Professional company secretary services to ensure your business remains compliant with Hong Kong regulations.</li>
+            <li data-i18n="services.annual-service">Annual service</li>
+            <li data-i18n="services.includes">Includes:</li>
+            <li data-i18n="services.features.secretary">Dedicated company secretary</li>
+            <li data-i18n="services.features.filing">Annual return filing</li>
+            <li data-i18n="services.features.coordination">Board meeting coordination</li>
+            <li data-i18n="services.features.monitoring">Statutory compliance monitoring</li>
+            <li data-i18n="services.features.maintenance">Corporate record maintenance</li>
+            <li data-i18n="services.features.support">Regulatory filing support</li>
+            <li data-i18n="services.value-added-title">Value-added Services</li>
+            <li data-i18n="services.registered-address.title">Registered Address and Mail Receiving</li>
+            <li data-i18n="services.registered-address.description-short">Professional registered address service with mail handling and forwarding capabilities.</li>
+            <li data-i18n="services.audit-tax.title">Audit and Tax Filing</li>
+            <li data-i18n="services.audit-tax.description-short">Comprehensive tax filing support tailored to your needs.</li>
+            <li data-i18n="services.audit-tax.price">Case-by-case basis</li>
+            <li data-i18n="services.bank-account.title">Bank Account Opening</li>
+            <li data-i18n="services.bank-account.description-short">Assistance with corporate bank account setup and relationships.</li>
+            <li data-i18n="services.bank-account.price">Starting from USD 800</li>
+            <li data-i18n="services.ctc.title">CTC Certification</li>
+            <li data-i18n="services.ctc.description-short">Certified True Copy for official document authentication.</li>
+            <li data-i18n="services.fund-note.text">Interested in fund-related incorporation services?</li>
+            <li data-i18n="services.fund-note.link">Please contact us directly for details.</li>
+        </ul>
+    </div>
+    
+    <div>
+        <h2>Language Controls:</h2>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('zh-Hant')">繁體中文</button>
+        <button onclick="changeLanguage('zh-Hans')">简体中文</button>
+    </div>
+    
+    <div>
+        <h2>Debug Info:</h2>
+        <p id="debug-info"></p>
+    </div>
+    
+    <script>
+        function changeLanguage(lang) {
+            if (window.i18n) {
+                window.i18n.setLanguage(lang);
+                updateDebugInfo();
+            }
+        }
+        
+        function updateDebugInfo() {
+            const debugElement = document.getElementById('debug-info');
+            if (window.i18n) {
+                debugElement.innerHTML = `
+                    i18n Available: Yes<br>
+                    Current Language: ${window.i18n.currentLanguage}<br>
+                    Sample Translation: ${window.i18n.translate('services.hero.title')}<br>
+                    Translation Keys Count: ${Object.keys(window.i18n.translations[window.i18n.currentLanguage] || {}).length}<br>
+                    Elements with data-i18n: ${document.querySelectorAll('[data-i18n]').length}
+                `;
+            } else {
+                debugElement.innerHTML = 'i18n not available';
+            }
+        }
+        
+        // Update debug info periodically
+        setInterval(updateDebugInfo, 2000);
+        
+        // Initial update
+        setTimeout(updateDebugInfo, 100);
+    </script>
+</body>
+</html> 

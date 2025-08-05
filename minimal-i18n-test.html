@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal i18n Test</title>
+</head>
+<body>
+    <h1>Minimal i18n Test</h1>
+    
+    <div>
+        <p data-i18n="services.hero.title">Our Services</p>
+        <p data-i18n="services.most-popular">Most Popular</p>
+        <p data-i18n="services.company-secretary.title">Company Secretary Service</p>
+    </div>
+    
+    <div>
+        <button onclick="manualTest()">Manual Test</button>
+        <button onclick="forceUpdate()">Force Update</button>
+    </div>
+    
+    <div id="output"></div>
+    
+    <script>
+        // Simple i18n test without external dependencies
+        const translations = {
+            en: {
+                'services.hero.title': 'Our Services',
+                'services.most-popular': 'Most Popular',
+                'services.company-secretary.title': 'Company Secretary Service'
+            }
+        };
+        
+        function manualTest() {
+            const output = document.getElementById('output');
+            const elements = document.querySelectorAll('[data-i18n]');
+            let html = `Found ${elements.length} elements with data-i18n<br>`;
+            
+            elements.forEach((element, index) => {
+                const key = element.getAttribute('data-i18n');
+                const translation = translations.en[key] || key;
+                html += `Element ${index}: key="${key}", translation="${translation}"<br>`;
+            });
+            
+            output.innerHTML = html;
+        }
+        
+        function forceUpdate() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const translation = translations.en[key] || key;
+                element.textContent = translation;
+            });
+        }
+        
+        // Test on load
+        setTimeout(manualTest, 100);
+    </script>
+</body>
+</html> 

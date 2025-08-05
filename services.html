@@ -317,10 +317,40 @@
         </div>
     </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/i18n-simple.js"></script>
     <script src="assets/js/sticky-header.js"></script>
     <script src="assets/js/modal-system.js"></script>
     <script src="assets/js/mobile-touch.js"></script>
+    <script>
+        // Ensure i18n is properly initialized before Alpine.js components
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded in services.html');
+            // Force i18n initialization
+            if (window.i18n) {
+                console.log('i18n system found, updating content...');
+                window.i18n.updatePageContent();
+                window.i18n.updateHTMLLang();
+            } else {
+                console.error('i18n system not found!');
+            }
+        });
+        
+        // Also try immediate initialization
+        if (window.i18n) {
+            console.log('Immediate i18n initialization');
+            window.i18n.updatePageContent();
+            window.i18n.updateHTMLLang();
+        }
+        
+        // Fallback initialization
+        setTimeout(function() {
+            console.log('Fallback i18n initialization');
+            if (window.i18n) {
+                window.i18n.updatePageContent();
+                window.i18n.updateHTMLLang();
+            }
+        }, 100);
+    </script>
     <script>
         // Initialize AOS
         AOS.init({

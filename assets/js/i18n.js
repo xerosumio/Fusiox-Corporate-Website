@@ -1,11 +1,15 @@
 // Internationalization (i18n) system for Fusiox Corporate Website
 class I18n {
     constructor() {
+        console.log('I18n constructor called');
         this.currentLanguage = this.getStoredLanguage() || 'en';
+        console.log('Current language set to:', this.currentLanguage);
         this.translations = {};
         this.loadTranslations();
+        console.log('About to call updatePageContent...');
         this.updatePageContent();
         this.updateHTMLLang();
+        console.log('I18n constructor completed');
     }
 
     getStoredLanguage() {
@@ -29,6 +33,7 @@ class I18n {
     }
 
     loadTranslations() {
+        console.log('Loading translations...');
         this.translations = {
             en: {
                 // Navigation
@@ -1546,16 +1551,31 @@ class I18n {
                 'diagram.target2.detail.5': '• 目標實現資本增值和收益分配',
             }
         };
+        console.log('Translations loaded. Available languages:', Object.keys(this.translations));
+        console.log('English translations count:', Object.keys(this.translations.en).length);
+        console.log('Sample English translation:', this.translations.en['services.hero.title']);
     }
 
     translate(key) {
         const translation = this.translations[this.currentLanguage]?.[key];
-        return translation || this.translations['en'][key] || key;
+        const fallback = this.translations['en'][key];
+        const result = translation || fallback || key;
+        
+        // Debug logging for missing translations
+        if (!translation && !fallback) {
+            console.warn(`Missing translation for key: ${key} in language: ${this.currentLanguage}`);
+        }
+        
+        return result;
     }
 
     updatePageContent() {
+        console.log('updatePageContent called, current language:', this.currentLanguage);
+        
         // Update all elements with data-i18n attribute
         const elements = document.querySelectorAll('[data-i18n]');
+        console.log('Found', elements.length, 'elements with data-i18n attribute');
+        
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = this.translate(key);
@@ -1603,21 +1623,62 @@ class I18n {
 // Global i18n instance
 window.i18n = new I18n();
 
+// Fallback initialization for timing issues
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded - fallback initialization');
+        if (window.i18n) {
+            window.i18n.updatePageContent();
+            window.i18n.updateHTMLLang();
+        }
+    });
+} else {
+    // DOM is already loaded
+    console.log('DOM already loaded - immediate initialization');
+    if (window.i18n) {
+        window.i18n.updatePageContent();
+        window.i18n.updateHTMLLang();
+    }
+}
+
+// Additional fallback - wait a bit longer to ensure all content is loaded
+setTimeout(() => {
+    console.log('Delayed initialization check');
+    if (window.i18n) {
+        window.i18n.updatePageContent();
+        window.i18n.updateHTMLLang();
+    }
+}, 1000);
+
 // Alpine.js data for language switching
 document.addEventListener('alpine:init', () => {
     Alpine.data('languageSelector', () => ({
-        currentLanguage: window.i18n?.currentLanguage || 'en',
+        currentLanguage: 'en',
         isOpen: false,
-        languages: window.i18n?.getSupportedLanguages() || [
+        languages: [
             { code: 'en', name: 'English', nativeName: 'English' },
             { code: 'zh-Hant', name: 'Traditional Chinese', nativeName: '繁體中文' },
             { code: 'zh-Hans', name: 'Simplified Chinese', nativeName: '简体中文' }
         ],
 
         init() {
+            // Initialize with i18n if available
+            if (window.i18n) {
+                this.currentLanguage = window.i18n.currentLanguage;
+                this.languages = window.i18n.getSupportedLanguages();
+            }
+            
             // Listen for language changes from other sources
             window.addEventListener('fusiox-language-changed', (event) => {
                 this.currentLanguage = event.detail.language;
+            });
+            
+            // Listen for i18n ready event
+            window.addEventListener('fusiox-i18n-ready', (event) => {
+                if (window.i18n) {
+                    this.currentLanguage = window.i18n.currentLanguage;
+                    this.languages = window.i18n.getSupportedLanguages();
+                }
             });
         },
 
@@ -1645,6 +1706,30 @@ document.addEventListener('alpine:init', () => {
 
 // Initialize translations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.i18n.updatePageContent();
-    window.i18n.updateHTMLLang();
+    console.log('DOMContentLoaded event fired, initializing i18n...');
+    if (window.i18n) {
+        window.i18n.updatePageContent();
+        window.i18n.updateHTMLLang();
+        
+        // Dispatch event to notify Alpine.js components that i18n is ready
+        window.dispatchEvent(new CustomEvent('fusiox-i18n-ready', {
+            detail: { i18n: window.i18n }
+        }));
+    } else {
+        console.error('i18n not available during DOMContentLoaded');
+    }
 });
+
+// Also initialize when the script loads (in case DOM is already loaded)
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    console.log('Document already loaded, initializing i18n immediately...');
+    if (window.i18n) {
+        window.i18n.updatePageContent();
+        window.i18n.updateHTMLLang();
+        
+        // Dispatch event to notify Alpine.js components that i18n is ready
+        window.dispatchEvent(new CustomEvent('fusiox-i18n-ready', {
+            detail: { i18n: window.i18n }
+        }));
+    }
+}
