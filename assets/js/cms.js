@@ -153,28 +153,21 @@ function cmsApp() {
         // Data loading
         async loadPosts() {
             try {
-                // First check if we have data in localStorage
-                const storedData = localStorage.getItem('cmsPostsBackup');
-                if (storedData) {
-                    const data = JSON.parse(storedData);
+                // Load posts from MongoDB API
+                const response = await fetch('http://localhost:3000/api/posts');
+                if (!response.ok) throw new Error('Failed to load posts from API');
+                const data = await response.json();
+                
+                if (data.success) {
                     this.posts = data.posts || [];
                     this.originalPosts = JSON.parse(JSON.stringify(this.posts)); // Deep copy
-                    console.log('Posts loaded from localStorage:', this.posts.length);
-                    return;
+                    console.log('Posts loaded from MongoDB:', this.posts.length);
+                    
+                    // Also save to localStorage for insights.html compatibility
+                    localStorage.setItem('insights_posts', JSON.stringify(this.posts));
+                } else {
+                    throw new Error(data.message || 'Failed to load posts');
                 }
-
-                // If no localStorage data, load from JSON file
-                const response = await fetch('./data/insights.json');
-                if (!response.ok) throw new Error('Failed to load posts');
-                const data = await response.json();
-                this.posts = data.posts || [];
-                this.originalPosts = JSON.parse(JSON.stringify(this.posts)); // Deep copy
-                
-                // Save to localStorage for future use and to connect with insights.html
-                localStorage.setItem('cmsPostsBackup', JSON.stringify({ posts: this.posts }));
-                localStorage.setItem('insights_posts', JSON.stringify(this.posts));
-                
-                console.log('Posts loaded from JSON and saved to localStorage:', this.posts.length);
             } catch (error) {
                 console.error('Error loading posts:', error);
                 this.posts = [];
@@ -417,6 +410,7 @@ function cmsApp() {
 
         async savePost() {
             this.isLoading = true;
+            console.log('savePost() called - starting save process');
 
             try {
                 // Save current editor content before processing
@@ -438,22 +432,64 @@ function cmsApp() {
                 // Add lastEdited timestamp
                 this.postForm.lastEdited = new Date().toISOString();
 
-                if (this.editingPost) {
-                    // Update existing post
-                    const index = this.posts.findIndex(p => p.id === this.editingPost.id);
-                    if (index !== -1) {
-                        this.posts[index] = JSON.parse(JSON.stringify(this.postForm));
+                // Prepare form data for API
+                const formData = new FormData();
+                formData.append('postData', JSON.stringify(this.postForm));
+                
+                // Add image file if exists and is a data URL
+                if (this.postForm.image && this.postForm.image.startsWith('data:')) {
+                    try {
+                        const response = await fetch(this.postForm.image);
+                        const blob = await response.blob();
+                        formData.append('image', blob, 'image.jpg');
+                    } catch (error) {
+                        console.warn('Could not convert image to blob:', error);
                     }
-                } else {
-                    // Add new post
-                    this.posts.push(JSON.parse(JSON.stringify(this.postForm)));
                 }
 
-                // Save to localStorage (simulating backend save)
-                await this.savePosts();
+                // Send to MongoDB API
+                const url = this.editingPost ? `http://localhost:3000/api/posts/${this.editingPost._id}` : 'http://localhost:3000/api/posts';
+                const method = this.editingPost ? 'PUT' : 'POST';
                 
-                this.closePostModal();
-                this.showSuccessMessage(this.editingPost ? 'Post updated successfully!' : 'Post created successfully!');
+                console.log('Sending request to:', url, 'with method:', method);
+                console.log('FormData contents:', formData);
+                
+                const response = await fetch(url, {
+                    method: method,
+                    body: formData
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Error response:', errorData);
+                    throw new Error(errorData.message || 'Failed to save post');
+                }
+                
+                const result = await response.json();
+                console.log('Success response:', result);
+                
+                if (result.success) {
+                    // Update local posts array
+                    if (this.editingPost) {
+                        const index = this.posts.findIndex(p => p._id === this.editingPost._id);
+                        if (index !== -1) {
+                            this.posts[index] = { ...this.postForm, _id: this.editingPost._id };
+                        }
+                    } else {
+                        this.posts.push({ ...this.postForm, _id: result.post._id });
+                    }
+                    
+                    // Update localStorage for insights.html compatibility
+                    localStorage.setItem('insights_posts', JSON.stringify(this.posts));
+                    
+                    this.closePostModal();
+                    this.showSuccessMessage(this.editingPost ? 'Post updated successfully!' : 'Post created successfully!');
+                } else {
+                    throw new Error(result.message || 'Failed to save post');
+                }
             } catch (error) {
                 console.error('Error saving post:', error);
                 this.showErrorMessage('Failed to save post: ' + error.message);
@@ -469,11 +505,35 @@ function cmsApp() {
 
         async deletePost() {
             if (this.postToDelete) {
-                this.posts = this.posts.filter(p => p.id !== this.postToDelete.id);
-                await this.savePosts();
-                this.showDeleteModal = false;
-                this.postToDelete = null;
-                this.showSuccessMessage('Post deleted successfully!');
+                try {
+                    const response = await fetch(`http://localhost:3000/api/posts/${this.postToDelete._id}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Failed to delete post');
+                    }
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        // Remove from local array
+                        this.posts = this.posts.filter(p => p._id !== this.postToDelete._id);
+                        
+                        // Update localStorage for insights.html compatibility
+                        localStorage.setItem('insights_posts', JSON.stringify(this.posts));
+                        
+                        this.showDeleteModal = false;
+                        this.postToDelete = null;
+                        this.showSuccessMessage('Post deleted successfully!');
+                    } else {
+                        throw new Error(result.message || 'Failed to delete post');
+                    }
+                } catch (error) {
+                    console.error('Error deleting post:', error);
+                    this.showErrorMessage('Failed to delete post: ' + error.message);
+                }
             }
         },
 
@@ -526,25 +586,21 @@ function cmsApp() {
 
         async loadFaqs() {
             try {
-                // First try to load from localStorage (CMS data)
-                const storedData = localStorage.getItem('cmsFaqsBackup');
-                if (storedData) {
-                    const data = JSON.parse(storedData);
+                // Load FAQs from MongoDB API
+                const response = await fetch('http://localhost:3000/api/faqs');
+                if (!response.ok) throw new Error('Failed to load FAQs from API');
+                const data = await response.json();
+                
+                if (data.success) {
                     this.faqs = data.faqs || [];
                     this.originalFaqs = JSON.parse(JSON.stringify(this.faqs)); // Deep copy
-                    console.log('FAQs loaded from localStorage:', this.faqs.length);
-                    return;
+                    console.log('FAQs loaded from MongoDB:', this.faqs.length);
+                    
+                    // Also save to localStorage for faq.html compatibility
+                    localStorage.setItem('faq_data', JSON.stringify(this.faqs));
+                } else {
+                    throw new Error(data.message || 'Failed to load FAQs');
                 }
-
-                // If no localStorage data, create empty FAQ array
-                this.faqs = [];
-                this.originalFaqs = [];
-                
-                // Save empty array to localStorage
-                localStorage.setItem('cmsFaqsBackup', JSON.stringify({ faqs: this.faqs }));
-                localStorage.setItem('faq_data', JSON.stringify(this.faqs));
-                
-                console.log('FAQs initialized as empty array');
             } catch (error) {
                 console.error('Error loading FAQs:', error);
                 this.faqs = [];
@@ -570,7 +626,7 @@ function cmsApp() {
         },
 
         editFaq(faq) {
-            this.editingFaqId = faq.id;
+            this.editingFaqId = faq._id || faq.id;
             this.faqForm = JSON.parse(JSON.stringify(faq)); // Deep copy
             this.currentFaqLang = 'en';
             this.showFaqModal = true;
@@ -615,33 +671,53 @@ function cmsApp() {
 
                 // Set timestamps
                 if (!this.editingFaqId) {
-                    this.faqForm.id = 'faq_' + Date.now();
                     this.faqForm.createdDate = new Date().toISOString();
                 }
 
                 // Ensure sequence is a number
                 this.faqForm.sequence = parseInt(this.faqForm.sequence) || 1;
 
-                if (this.editingFaqId) {
-                    // Update existing FAQ
-                    const index = this.faqs.findIndex(faq => faq.id === this.editingFaqId);
-                    if (index !== -1) {
-                        this.faqs[index] = { ...this.faqForm };
-                    }
-                } else {
-                    // Add new FAQ
-                    this.faqs.push({ ...this.faqForm });
+                // Send to MongoDB API
+                const url = this.editingFaqId ? `http://localhost:3000/api/faqs/${this.editingFaqId}` : 'http://localhost:3000/api/faqs';
+                const method = this.editingFaqId ? 'PUT' : 'POST';
+                
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.faqForm)
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to save FAQ');
                 }
-
-                // Save to localStorage
-                localStorage.setItem('cmsFaqsBackup', JSON.stringify({ faqs: this.faqs }));
-                localStorage.setItem('faq_data', JSON.stringify(this.faqs));
-
-                this.closeFaqModal();
-                this.showSuccessMessage(this.editingFaqId ? 'FAQ updated successfully!' : 'FAQ created successfully!');
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Update local FAQs array
+                    if (this.editingFaqId) {
+                        const index = this.faqs.findIndex(faq => faq._id === this.editingFaqId);
+                        if (index !== -1) {
+                            this.faqs[index] = { ...this.faqForm, _id: this.editingFaqId };
+                        }
+                    } else {
+                        this.faqs.push({ ...this.faqForm, _id: result.faq._id });
+                    }
+                    
+                    // Update localStorage for faq.html compatibility
+                    localStorage.setItem('faq_data', JSON.stringify(this.faqs));
+                    
+                    this.closeFaqModal();
+                    this.showSuccessMessage(this.editingFaqId ? 'FAQ updated successfully!' : 'FAQ created successfully!');
+                } else {
+                    throw new Error(result.message || 'Failed to save FAQ');
+                }
             } catch (error) {
                 console.error('Error saving FAQ:', error);
-                this.showErrorMessage('Failed to save FAQ. Please try again.');
+                this.showErrorMessage('Failed to save FAQ: ' + error.message);
             }
         },
 
@@ -651,16 +727,31 @@ function cmsApp() {
             }
 
             try {
-                this.faqs = this.faqs.filter(faq => faq.id !== faqId);
+                                    const response = await fetch(`http://localhost:3000/api/faqs/${faqId}`, {
+                    method: 'DELETE'
+                });
                 
-                // Save to localStorage
-                localStorage.setItem('cmsFaqsBackup', JSON.stringify({ faqs: this.faqs }));
-                localStorage.setItem('faq_data', JSON.stringify(this.faqs));
-
-                this.showSuccessMessage('FAQ deleted successfully!');
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to delete FAQ');
+                }
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Remove from local array
+                    this.faqs = this.faqs.filter(faq => faq._id !== faqId);
+                    
+                    // Update localStorage for faq.html compatibility
+                    localStorage.setItem('faq_data', JSON.stringify(this.faqs));
+                    
+                    this.showSuccessMessage('FAQ deleted successfully!');
+                } else {
+                    throw new Error(result.message || 'Failed to delete FAQ');
+                }
             } catch (error) {
                 console.error('Error deleting FAQ:', error);
-                this.showErrorMessage('Failed to delete FAQ. Please try again.');
+                this.showErrorMessage('Failed to delete FAQ: ' + error.message);
             }
         },
 
@@ -1114,7 +1205,7 @@ ${targetLanguage} translation:`;
                         options: {
                             temperature: 0.1, // Low temperature for consistent translations
                             top_p: 0.9,
-                            max_tokens: 1000
+                            max_tokens: 4000
                         }
                     })
                 });

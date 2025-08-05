@@ -282,7 +282,7 @@
         <div class="container mx-auto px-4" x-data="insightsPage()">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold mb-4" x-text="getTranslation('insights.section.title', 'Latest Insights')"></h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto" x-text="getTranslation('insights.section.subtitle', 'Stay informed with our latest insights and expert analysis on corporate governance and business operations.')">
+                <p class="text-lg text-base-content/80 max-w-2xl mx-auto" x-text="getTranslation('insights.section.subtitle', 'Stay informed with our latest insights and expert analysis on corporate governance and business operations.')">
                 </p>
             </div>
 
@@ -539,22 +539,21 @@
 
                 async loadPosts() {
                     try {
-                        console.log('Loading posts...');
+                        console.log('Loading posts from MongoDB API...');
                         
-                        // First check if we have CMS data in localStorage
-                        const cmsData = localStorage.getItem('insights_posts');
-                        if (cmsData) {
-                            console.log('Loading posts from CMS localStorage...');
-                            this.posts = JSON.parse(cmsData);
-                            console.log('CMS Posts loaded:', this.posts);
+                        // Load posts from MongoDB API
+                        const response = await fetch('http://localhost:3000/api/posts');
+                        if (!response.ok) throw new Error('Failed to load posts from API');
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            this.posts = data.posts || [];
+                            console.log('Posts loaded from MongoDB:', this.posts.length);
+                            
+                            // Also save to localStorage for compatibility
+                            localStorage.setItem('insights_posts', JSON.stringify(this.posts));
                         } else {
-                            console.log('Loading posts from JSON file...');
-                            const response = await fetch('./data/insights.json');
-                            if (!response.ok) throw new Error('Failed to load posts');
-                            const data = await response.json();
-                            console.log('Raw data:', data);
-                            this.posts = data.posts || data; // Handle both structures
-                            console.log('JSON Posts loaded:', this.posts);
+                            throw new Error(data.message || 'Failed to load posts');
                         }
                         
                         console.log('Number of posts:', this.posts.length);

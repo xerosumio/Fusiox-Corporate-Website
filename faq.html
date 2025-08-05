@@ -331,7 +331,7 @@
 
             <!-- FAQ Items -->
             <div class="space-y-4">
-                <template x-for="(item, index) in filteredFaqs" :key="item.id">
+                <template x-for="(item, index) in filteredFaqs" :key="item._id || item.id || index">
                     <div class="collapse collapse-arrow bg-base-200 shadow-md hover:shadow-lg transition-all duration-300"
                          x-data="{ isOpen: false }">
                         <input type="checkbox" x-model="isOpen" />
@@ -455,18 +455,21 @@
 
                 async loadFaqs() {
                     try {
-                        console.log('Loading FAQs...');
+                        console.log('Loading FAQs from MongoDB API...');
                         
-                        // First check if we have CMS data in localStorage
-                        const cmsData = localStorage.getItem('faq_data');
-                        if (cmsData) {
-                            console.log('Loading FAQs from CMS localStorage...');
-                            const parsedData = JSON.parse(cmsData);
-                            this.faqs = Array.isArray(parsedData) ? parsedData : parsedData.faqs || [];
-                            console.log('CMS FAQs loaded:', this.faqs);
+                        // Load FAQs from MongoDB API
+                        const response = await fetch('http://localhost:3000/api/faqs');
+                        if (!response.ok) throw new Error('Failed to load FAQs from API');
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            this.faqs = data.faqs || [];
+                            console.log('FAQs loaded from MongoDB:', this.faqs.length);
+                            
+                            // Also save to localStorage for compatibility
+                            localStorage.setItem('faq_data', JSON.stringify(this.faqs));
                         } else {
-                            console.log('No CMS data found, initializing empty FAQ array...');
-                            this.faqs = [];
+                            throw new Error(data.message || 'Failed to load FAQs');
                         }
                         
                         console.log('Number of FAQs:', this.faqs.length);
@@ -483,17 +486,25 @@
                 get filteredFaqs() {
                     let filtered = this.faqs;
                     
+                    console.log('All FAQs:', this.faqs);
+                    console.log('Active category:', this.activeCategory);
+                    
                     if (this.activeCategory !== 'all') {
                         filtered = filtered.filter(faq => faq.category === this.activeCategory);
                     }
                     
+                    console.log('Filtered FAQs:', filtered);
+                    
                     // Sort by sequence, then by creation date
-                    return filtered.sort((a, b) => {
+                    const sorted = filtered.sort((a, b) => {
                         if (a.sequence !== b.sequence) {
                             return (a.sequence || 0) - (b.sequence || 0);
                         }
                         return new Date(a.createdDate || 0) - new Date(b.createdDate || 0);
                     });
+                    
+                    console.log('Sorted FAQs:', sorted);
+                    return sorted;
                 },
 
                 getFaqQuestion(faq) {

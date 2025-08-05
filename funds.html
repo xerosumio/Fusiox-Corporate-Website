@@ -185,103 +185,32 @@
     </div>
 
     <!-- Typical LPF Fund Structure Section -->
-     <div class="py-16 bg-base-100">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-base-content mb-2" data-i18n="funds.structure.title">Typical LPF Fund Structure</h2>
-      <p class="text-base text-base-content/70 mb-8 max-w-3xl mx-auto" data-i18n="funds.structure.description">
-        A visual representation of how key roles and stakeholders interact within a Hong Kong Limited Partnership Fund.
-      </p>
-    </div>
-
-    <div class="bg-base-200 border border-base-300 rounded-xl p-6 shadow-md mx-auto max-w-6xl relative">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center justify-items-center min-h-[400px]">
-
-        <!-- Left Column -->
-        <div class="space-y-4 w-full max-w-xs">
-          <div class="bg-primary text-primary-content p-4 rounded-lg text-center shadow-sm min-h-[100px] flex items-center justify-center">
-            <h4 class="font-semibold text-m" data-i18n="funds.structure.roles.gp">General Partner (GP)</h4>
-          </div>
-          <div class="bg-primary-content/10 text-primary p-4 rounded-lg text-center shadow-sm border border-primary min-h-[100px] flex items-center justify-center">
-            <h4 class="font-semibold text-m" data-i18n="funds.structure.roles.ia">Investment Advisor (IA)</h4>
-          </div>
-          <div class="bg-accent text-accent-content p-4 rounded-lg text-center shadow-sm min-h-[100px]">
-            <h4 class="font-semibold text-m mb-3" data-i18n="funds.structure.roles.licensed-entity">Type 4/9 Licensed Entity</h4>
-            <p class="text-s" data-i18n="funds.structure.roles.im">Investment Manager (IM)</p>
-          </div>
-        </div>
-
-        <!-- Center Column -->
-        <div class="flex flex-col items-center justify-center z-10 relative">
-          <!-- LPF Box -->
-          <div class="bg-base-100 text-base-content p-6 rounded-xl text-center shadow-lg border-2 border-primary min-h-[100px] w-64">
-            <div class="flex justify-center mb-3">
-              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
+    <div class="py-16 bg-base-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-base-content mb-2" data-i18n="funds.structure.title">Typical LPF Fund Structure</h2>
+                <p class="text-base text-base-content/70 mb-8 max-w-3xl mx-auto" data-i18n="funds.structure.description">
+                    A visual representation of how key roles and stakeholders interact within a Hong Kong Limited Partnership Fund.
+                </p>
             </div>
-            <h3 class="font-bold text-xl mb-2" data-i18n="funds.structure.lpf.title">Limited Partnership Fund</h3>
-            <p class="text-sm font-medium" data-i18n="funds.structure.lpf.subtitle">(HKLPF)</p>
-          </div>
 
-          <!-- Down Arrow to Targets -->
-          <div class="hidden md:block mt-2 mb-2">
-            <svg class="w-6 h-6 text-base-content/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-
-          <!-- Investment Targets -->
-          <div class="flex flex-col md:flex-row gap-4">
-            <div class="bg-success text-success-content p-4 rounded-lg text-center shadow-sm w-40">
-              <h4 class="font-semibold text-sm mb-1" data-i18n="funds.structure.investment-target">Investment Target</h4>
+            <!-- LPF Structure Diagram -->
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-base-100 rounded-xl shadow-xl p-8 border border-base-300">
+                    <img 
+                        src="assets/images/LPFStructure.png" 
+                        alt="Hong Kong Limited Partnership Fund Structure Diagram"
+                        class="w-full h-auto rounded-lg"
+                        loading="lazy"
+                    />
+                </div>
             </div>
-            <div class="bg-success text-success-content p-4 rounded-lg text-center shadow-sm w-40">
-              <h4 class="font-semibold text-sm mb-1" data-i18n="funds.structure.investment-target">Investment Target</h4>
-            </div>
-          </div>
+
+            <!-- Caption -->
+            <p class="text-sm text-base-content/60 italic text-center mt-6" data-i18n="funds.structure.caption">
+                Simplified structure showing key participants and their relationships in a typical Hong Kong LPF.
+            </p>
         </div>
-
-        <!-- Right Column -->
-        <div class="space-y-4 w-full max-w-xs">
-          <div class="bg-warning text-warning-content p-4 rounded-lg text-center shadow-sm min-h-[100px]">
-            <h4 class="font-semibold text-m mb-3" data-i18n="funds.structure.roles.investors">Investors</h4>
-            <p class="text-s" data-i18n="funds.structure.roles.lp">Limited Partners (LP)</p>
-          </div>
-          <div class="bg-neutral bg-opacity-90 text-base-content p-4 rounded-lg text-center shadow-sm min-h-[100px]">
-            <h4 class="font-semibold text-m mb-3" data-i18n="funds.structure.roles.custodian">Custodian</h4>
-            <p class="text-s" data-i18n="funds.structure.roles.optional">(Optional)</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Side Arrows (desktop only) -->
-      <div class="hidden md:block absolute inset-0 pointer-events-none">
-        <!-- Left Arrows -->
-        <svg class="absolute left-[33%] top-[20%] w-16 h-6 text-base-content/40 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-        <svg class="absolute left-[33%] top-[40%] w-16 h-6 text-base-content/40 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-        <svg class="absolute left-[33%] top-[57%] w-16 h-6 text-base-content/40 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-
-        <!-- Right Arrows -->
-        <svg class="absolute right-[33%] top-[30%] w-16 h-6 text-base-content/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-        <svg class="absolute right-[33%] top-[50%] w-16 h-6 text-base-content/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </div>
-
-      <!-- Caption -->
-      <p class="text-sm text-base-content/60 italic text-center mt-6" data-i18n="funds.structure.caption">
-        Simplified structure showing key participants and their relationships in a typical Hong Kong LPF.
-      </p>
     </div>
   </div>
 </div>
@@ -325,11 +254,6 @@
                         <p class="text-base text-base-content/80 leading-relaxed" data-i18n="funds.global.compliance.description">
                             Our expert team offers regulatory consultation across jurisdictions to help you operate effectively within global legal frameworks.
                         </p>
-                        <div class="mt-4">
-                            <p class="text-sm text-base-content/70 italic">
-                                Ensuring your fund operations meet international compliance standards across multiple jurisdictions.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>

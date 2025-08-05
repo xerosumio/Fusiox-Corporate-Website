@@ -4,6 +4,10 @@ const nodemailer = require('nodemailer');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
+const { MongoClient, ObjectId } = require('mongodb');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -32,6 +36,56 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Serve static files
 app.use(express.static('.'));
+
+// MongoDB Connection
+let db;
+const connectToMongoDB = async () => {
+    try {
+        const client = new MongoClient('mongodb://localhost:27017');
+        await client.connect();
+        db = client.db('fusiox_cms');
+        console.log('Connected to MongoDB successfully');
+        return client;
+    } catch (error) {
+        console.error('MongoDB connection error:', error);
+        throw error;
+    }
+};
+
+// Initialize MongoDB connection
+let mongoClient;
+connectToMongoDB().then(client => {
+    mongoClient = client;
+}).catch(console.error);
+
+// File upload configuration
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const uploadDir = 'assets/images/uploads';
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        cb(null, uploadDir);
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ 
+    storage: storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024 // 5MB limit
+    },
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype.startsWith('image/')) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only image files are allowed'), false);
+        }
+    }
+});
 
 // Email transporter configuration
 const createTransporter = () => {
@@ -104,6 +158,185 @@ const contactValidation = [
         .isLength({ max: 150 })
         .withMessage('Company name must be less than 150 characters')
 ];
+
+// CMS API Endpoints
+
+// Get all posts
+app.get('/api/posts', async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+        
+        const posts = await db.collection('posts').find({}).toArray();
+        res.json({ success: true, posts });
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch posts' });
+    }
+});
+
+// Create new post
+app.post('/api/posts', upload.single('image'), async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+
+        const postData = JSON.parse(req.body.postData);
+        const imagePath = req.file ? `/assets/images/uploads/${req.file.filename}` : postData.image;
+
+        const newPost = {
+            ...postData,
+            image: imagePath,
+            createdDate: new Date().toISOString(),
+            lastEdited: new Date().toISOString()
+        };
+
+        const result = await db.collection('posts').insertOne(newPost);
+        newPost._id = result.insertedId;
+
+        res.json({ success: true, post: newPost });
+    } catch (error) {
+        console.error('Error creating post:', error);
+        res.status(500).json({ success: false, message: 'Failed to create post' });
+    }
+});
+
+// Update post
+app.put('/api/posts/:id', upload.single('image'), async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+
+        const postData = JSON.parse(req.body.postData);
+        const imagePath = req.file ? `/assets/images/uploads/${req.file.filename}` : postData.image;
+
+        // Remove _id from update data as it's immutable
+        const { _id, ...updateData } = postData;
+        updateData.image = imagePath;
+        updateData.lastEdited = new Date().toISOString();
+
+        const result = await db.collection('posts').updateOne(
+            { _id: new ObjectId(req.params.id) },
+            { $set: updateData }
+        );
+
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ success: false, message: 'Post not found' });
+        }
+
+        res.json({ success: true, message: 'Post updated successfully' });
+    } catch (error) {
+        console.error('Error updating post:', error);
+        res.status(500).json({ success: false, message: 'Failed to update post' });
+    }
+});
+
+// Delete post
+app.delete('/api/posts/:id', async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+
+        const result = await db.collection('posts').deleteOne({ _id: new ObjectId(req.params.id) });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ success: false, message: 'Post not found' });
+        }
+
+        res.json({ success: true, message: 'Post deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting post:', error);
+        res.status(500).json({ success: false, message: 'Failed to delete post' });
+    }
+});
+
+// Get all FAQs
+app.get('/api/faqs', async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+        
+        const faqs = await db.collection('faqs').find({}).toArray();
+        res.json({ success: true, faqs });
+    } catch (error) {
+        console.error('Error fetching FAQs:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch FAQs' });
+    }
+});
+
+// Create new FAQ
+app.post('/api/faqs', async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+
+        const faqData = {
+            ...req.body,
+            createdDate: new Date().toISOString()
+        };
+
+        const result = await db.collection('faqs').insertOne(faqData);
+        faqData._id = result.insertedId;
+
+        res.json({ success: true, faq: faqData });
+    } catch (error) {
+        console.error('Error creating FAQ:', error);
+        res.status(500).json({ success: false, message: 'Failed to create FAQ' });
+    }
+});
+
+// Update FAQ
+app.put('/api/faqs/:id', async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+
+        // Remove _id from update data as it's immutable
+        const { _id, ...updateData } = req.body;
+        updateData.lastEdited = new Date().toISOString();
+
+        const result = await db.collection('faqs').updateOne(
+            { _id: new ObjectId(req.params.id) },
+            { $set: updateData }
+        );
+
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ success: false, message: 'FAQ not found' });
+        }
+
+        res.json({ success: true, message: 'FAQ updated successfully' });
+    } catch (error) {
+        console.error('Error updating FAQ:', error);
+        res.status(500).json({ success: false, message: 'Failed to update FAQ' });
+    }
+});
+
+// Delete FAQ
+app.delete('/api/faqs/:id', async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(500).json({ success: false, message: 'Database not connected' });
+        }
+
+        const result = await db.collection('faqs').deleteOne({ _id: new ObjectId(req.params.id) });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ success: false, message: 'FAQ not found' });
+        }
+
+        res.json({ success: true, message: 'FAQ deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting FAQ:', error);
+        res.status(500).json({ success: false, message: 'Failed to delete FAQ' });
+    }
+});
 
 // Contact form endpoint
 app.post('/api/contact', contactValidation, async (req, res) => {

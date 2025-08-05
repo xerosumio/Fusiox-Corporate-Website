@@ -349,7 +349,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <template x-for="faq in sortedFaqs" :key="faq.id">
+                                        <template x-for="faq in sortedFaqs" :key="faq._id || faq.id">
                                             <tr>
                                                 <td>
                                                     <div class="font-medium" x-text="getFaqTitle(faq)"></div>
@@ -367,7 +367,7 @@
                                                         <button @click="editFaq(faq)" class="btn btn-sm btn-outline">
                                                             Edit
                                                         </button>
-                                                        <button @click="deleteFaq(faq.id)" class="btn btn-sm btn-error btn-outline">
+                                                        <button @click="deleteFaq(faq._id || faq.id)" class="btn btn-sm btn-error btn-outline">
                                                             Delete
                                                         </button>
                                                     </div>
