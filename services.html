@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+            <!-- Hero Section -->
     <div class="hero min-h-[100vh]" style="background-image: url('assets/images/services-hero.jpg'); background-size: cover; background-position: center;">
         <div class="hero-overlay bg-opacity-70"></div>
         <div class="hero-content text-center text-neutral-content">
@@ -156,102 +156,111 @@
         </div>
     </div>
 
-    <!-- Basic Services -->
+    <!-- Our Services -->
     <div class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.basic-services.title">Basic Services</h2>
-            <div class="grid md:grid-cols-2 gap-8 justify-center">
-                <!-- HKLPF Registration -->
-                <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="card-body">
-                        <h2 class="card-title" data-i18n="services.hklpf.title">HKLPF Registration</h2>
-                        <p data-i18n="services.hklpf.description">Professional Hong Kong Limited Partnership Fund registration services for investment vehicles and fund structures.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">USD 2,500</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
-                            </button>
-                        </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>Complete HKLPF registration process</li>
-                                <li>Legal documentation preparation</li>
-                                <li>Regulatory compliance guidance</li>
-                                <li>Partnership agreement drafting</li>
-                                <li>Filing with Hong Kong authorities</li>
-                                <li>Certificate of registration</li>
-                            </ul>
-                        </div>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.hero.title">Our Services</h2>
+            
+            <!-- Main Service: Company Secretary Service -->
+            <div class="mb-16" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white shadow-2xl overflow-hidden">
+                    <!-- Most Popular Badge -->
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-accent text-accent-content px-3 py-1 rounded-full text-xs font-semibold" data-i18n="services.most-popular">Most Popular</span>
                     </div>
-                </div>
-
-                <!-- Company Secretary Service -->
-                <div class="card bg-base-100 shadow-xl service-card" x-data="{ expanded: false }" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="card-body">
-                        <h2 class="card-title" data-i18n="services.company-secretary.title">Company Secretary Service</h2>
-                        <p data-i18n="services.company-secretary.description">Professional company secretary services to ensure compliance with Hong Kong corporate regulations and statutory requirements.</p>
-                        <div class="card-actions justify-between items-center">
-                            <span class="text-2xl font-bold text-primary">USD 1,180</span>
-                            <button @click="expanded = !expanded" class="btn btn-primary btn-sm">
-                                <span x-text="expanded ? window.i18n.translate('services.expand.less') : window.i18n.translate('services.expand.more')"></span>
-                            </button>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <!-- Service Details -->
+                        <div>
+                            <div class="mb-4">
+                                <h3 class="text-2xl font-bold" data-i18n="services.company-secretary.title">Company Secretary Service</h3>
+                            </div>
+                            <p class="text-lg mb-6 opacity-90" data-i18n="services.company-secretary.description-main">Professional company secretary services to ensure your business remains compliant with Hong Kong regulations.</p>
+                            <div class="text-3xl font-bold mb-2">USD 1,180</div>
+                            <p class="text-sm opacity-75" data-i18n="services.annual-service">Annual service</p>
                         </div>
-                        <div x-show="expanded" x-transition class="mt-4 p-4 bg-base-200 rounded-lg">
-                            <h4 class="font-semibold mb-2">Includes:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>Dedicated company secretary</li>
-                                <li>Annual return filing</li>
-                                <li>Board meeting coordination</li>
-                                <li>Statutory compliance monitoring</li>
-                                <li>Corporate record maintenance</li>
-                                <li>Regulatory filing support</li>
+                        
+                        <!-- Features List -->
+                        <div class="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+                            <h4 class="font-semibold mb-4 text-lg" data-i18n="services.includes">Includes:</h4>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-center">
+                                    <span class="text-accent mr-2">✓</span>
+                                    <span data-i18n="services.features.secretary">Dedicated company secretary</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-accent mr-2">✓</span>
+                                    <span data-i18n="services.features.filing">Annual return filing</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-accent mr-2">✓</span>
+                                    <span data-i18n="services.features.coordination">Board meeting coordination</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-accent mr-2">✓</span>
+                                    <span data-i18n="services.features.monitoring">Statutory compliance monitoring</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-accent mr-2">✓</span>
+                                    <span data-i18n="services.features.maintenance">Corporate record maintenance</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-accent mr-2">✓</span>
+                                    <span data-i18n="services.features.support">Regulatory filing support</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Value-added Services -->
-    <div class="py-16 bg-base-200">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.value-added-services.title">Value-added Services</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="card-body">
-                        <h3 class="card-title">Registered Address and Mail Receiving</h3>
-                        <p class="text-sm">Professional registered address service with mail handling and forwarding capabilities.</p>
-                        <div class="text-lg font-bold text-primary">USD 500</div>
+            <!-- Value-added Services Grid -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-center mb-8" data-aos="fade-up" data-aos-delay="200" data-i18n="services.value-added-title">Value-added Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Registered Address and Mail Receiving -->
+                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="card-body">
+                            <h4 class="card-title text-lg mb-3" data-i18n="services.registered-address.title">Registered Address and Mail Receiving</h4>
+                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.registered-address.description-short">Professional registered address service with mail handling and forwarding capabilities.</p>
+                            <div class="text-xl font-bold text-primary">USD 500</div>
+                        </div>
                     </div>
-                </div>
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="card-body">
-                        <h3 class="card-title">Audit and Tax Filing</h3>
-                        <p class="text-sm">Professional audit services and comprehensive tax filing support tailored to your needs.</p>
-                        <div class="text-lg font-bold text-primary">Case-by-case basis</div>
+
+                    <!-- Audit and Tax Filing -->
+                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="400">
+                        <div class="card-body">
+                            <h4 class="card-title text-lg mb-3" data-i18n="services.audit-tax.title">Audit and Tax Filing</h4>
+                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.audit-tax.description-short">Comprehensive tax filing support tailored to your needs.</p>
+                            <div class="text-xl font-bold text-primary" data-i18n="services.audit-tax.price">Case-by-case basis</div>
+                        </div>
                     </div>
-                </div>
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="300">
-                    <div class="card-body">
-                        <h3 class="card-title">Bank Account Opening</h3>
-                        <p class="text-sm">Assistance with corporate bank account opening and banking relationship establishment.</p>
-                        <div class="text-lg font-bold text-primary">Starting from USD 800</div>
+
+                    <!-- Bank Account Opening -->
+                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="500">
+                        <div class="card-body">
+                            <h4 class="card-title text-lg mb-3" data-i18n="services.bank-account.title">Bank Account Opening</h4>
+                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.bank-account.description-short">Assistance with corporate bank account setup and relationships.</p>
+                            <div class="text-xl font-bold text-primary" data-i18n="services.bank-account.price">Starting from USD 800</div>
+                        </div>
                     </div>
-                </div>
-                <div class="card bg-base-100 shadow-lg pricing-card" data-aos="zoom-in-up" data-aos-delay="400">
-                    <div class="card-body">
-                        <h3 class="card-title">CTC Certification</h3>
-                        <p class="text-sm">Certified True Copy certification services for official document authentication.</p>
-                        <div class="text-lg font-bold text-primary">USD 50 per copy</div>
+
+                    <!-- CTC Certification -->
+                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="600">
+                        <div class="card-body">
+                            <h4 class="card-title text-lg mb-3" data-i18n="services.ctc.title">CTC Certification</h4>
+                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.ctc.description-short">Certified True Copy for official document authentication.</p>
+                            <div class="text-xl font-bold text-primary">USD 50 per copy</div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <!-- Fund-related Services Note -->
-            <div class="text-center mt-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="700">
                 <p class="text-base-content/80 italic">
-                    Interested in fund-related incorporation services? <a href="contact.html" class="text-primary hover:text-primary-focus underline">Please contact us directly for details.</a>
+                    <span data-i18n="services.fund-note.text">Interested in fund-related incorporation services?</span>
+                    <a href="contact.html" class="text-primary hover:text-primary-focus underline ml-1" data-i18n="services.fund-note.link">Please contact us directly for details.</a>
                 </p>
             </div>
         </div>
@@ -313,11 +322,63 @@
     <script src="assets/js/modal-system.js"></script>
     <script src="assets/js/mobile-touch.js"></script>
     <script>
+        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: false,
             offset: 50,
             easing: 'ease-out-back'
+        });
+
+        // Ensure i18n is properly initialized
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking i18n...');
+            console.log('window.i18n:', window.i18n);
+            
+            if (window.i18n) {
+                console.log('Current language:', window.i18n.currentLanguage);
+                console.log('Available translations:', Object.keys(window.i18n.translations));
+                console.log('Sample translation:', window.i18n.translate('services.hero.title'));
+                
+                // Test all our service keys
+                const keysToTest = [
+                    'services.most-popular',
+                    'services.company-secretary.title',
+                    'services.company-secretary.description-main',
+                    'services.annual-service',
+                    'services.includes',
+                    'services.features.secretary',
+                    'services.value-added-title',
+                    'services.registered-address.title',
+                    'services.fund-note.text'
+                ];
+                
+                console.log('Testing specific keys:');
+                keysToTest.forEach(key => {
+                    const translation = window.i18n.translate(key);
+                    console.log(`${key}: "${translation}"`);
+                });
+                
+                window.i18n.updatePageContent();
+                
+                // Force another update after a delay
+                setTimeout(function() {
+                    console.log('Force updating content again...');
+                    window.i18n.updatePageContent();
+                }, 100);
+            } else {
+                console.error('i18n not found!');
+            }
+            
+            // Fallback initialization after a short delay
+            setTimeout(function() {
+                console.log('Fallback i18n check...');
+                if (window.i18n) {
+                    window.i18n.updatePageContent();
+                } else {
+                    console.error('i18n still not found after delay!');
+                }
+            }, 500);
         });
 
         // Function to open Google Maps
