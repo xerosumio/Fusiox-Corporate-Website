@@ -241,28 +241,6 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <!-- Language Selector -->
-            <div class="dropdown dropdown-end mr-4" x-data="languageSelector()">
-                <div tabindex="0" role="button" class="btn btn-ghost btn-sm" @click="toggleDropdown()">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-3a5 5 0 00-5-5 5 5 0 00-5 5v3m9-9v-3a5 5 0 00-5 5 5 5 0 00-5-5v3"></path>
-                    </svg>
-                    <span x-text="currentLanguageObj.nativeName"></span>
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-                <ul x-show="isOpen" @click.away="closeDropdown()" x-transition class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
-                    <template x-for="language in languages" :key="language.code">
-                        <li>
-                            <a @click="changeLanguage(language.code)" 
-                               :class="{ 'active': currentLanguage === language.code }"
-                               x-text="language.nativeName"></a>
-                        </li>
-                    </template>
-                </ul>
-            </div>
-            
             <a href="contact.html" class="btn btn-primary" data-i18n="nav.get-started">Get Started</a>
         </div>
     </div>
