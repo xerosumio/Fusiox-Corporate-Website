@@ -233,9 +233,12 @@
                             </div>
                             <p class="text-xs opacity-70 mb-4" data-i18n="pricing.disclaimer.gov">+ Government fees apply</p>
                             <ul class="space-y-2 text-sm mb-6">
-                                <li data-i18n="pricing.features.name-check">✓ 公司名稱查冊與文件準備</li>
-                                <li data-i18n="pricing.features.basic-filing">✓ 基本文件提交</li>
-                                <li data-i18n="pricing.features.digital-delivery">✓ 電子檔案交付</li>
+                                <li data-i18n="pricing.incorporation.gov-filing-fee">✓ 一次性政府投影及公司註冊服務費用</li>
+                                <li data-i18n="pricing.incorporation.certificate-ci">✓ 公司註冊證明書（CI）</li>
+                                <li data-i18n="pricing.incorporation.articles">✓ 公司章程</li>
+                                <li data-i18n="pricing.incorporation.brc-1year">✓ 為期1年的商業登記證（BRC）</li>
+                                <li data-i18n="pricing.incorporation.app-access">✓ 免費使用Sleek應用程式</li>
+                                <li data-i18n="pricing.incorporation.support-team">✓ 專屬支援團隊</li>
                             </ul>
                             <a href="https://wa.me/" class="btn btn-primary w-full" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                         </div>
@@ -279,12 +282,12 @@
                             <p class="text-xs opacity-90 mb-4" data-i18n="pricing.disclaimer.gov">+ Government fees apply</p>
                             <p class="text-sm font-semibold mb-2" data-i18n="pricing.includes.entryplus">包含入門方案所有內容，另外：</p>
                             <ul class="space-y-2 text-sm mb-6">
-                                <li data-i18n="pricing.features.registered-address">✓ 註冊辦事處地址與郵件轉發</li>
-                                <li data-i18n="pricing.features.seals">✓ 公司印章（如適用）</li>
-                                <li data-i18n="pricing.features.annual-return-tax-rep">✓ 年度申報（NAR1）/ 稅務代表</li>
-                                <li data-i18n="pricing.features.cloud-archive">✓ 文件掃描及雲端存檔</li>
-                                <li data-i18n="pricing.features.dedicated-advisor">✓ 專屬顧問一對一支援</li>
-                                <li x-show="section!=='incorporation'" data-i18n="pricing.features.priority-support">✓ 優先客戶支援</li>
+                                <li data-i18n="pricing.incorporation.gov-filing-fee">✓ 一次性政府投影及公司註冊服務費用</li>
+                                <li data-i18n="pricing.incorporation.certificate-ci">✓ 公司註冊證明書（CI）</li>
+                                <li data-i18n="pricing.incorporation.articles">✓ 公司章程</li>
+                                <li data-i18n="pricing.incorporation.brc-1year">✓ 為期1年的商業登記證（BRC）</li>
+                                <li data-i18n="pricing.incorporation.app-access">✓ 免費使用Sleek應用程式</li>
+                                <li data-i18n="pricing.incorporation.support-team">✓ 專屬支援團隊</li>
                             </ul>
                             <a href="https://wa.me/" class="btn btn-accent w-full text-black" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                         </div>
@@ -317,14 +320,12 @@
                                         <!-- Company Incorporation features -->
                                         <template x-if="section === 'incorporation'">
                                             <template x-for="row in [
-                                                {key: 'pricing.features.name-check', entry: true, basic: true},
-                                                {key: 'pricing.features.basic-filing', entry: true, basic: true},
-                                                {key: 'pricing.features.digital-delivery', entry: true, basic: true},
-                                                {key: 'pricing.features.registered-address', entry: false, basic: true},
-                                                {key: 'pricing.features.seals', entry: false, basic: true},
-                                                {key: 'pricing.features.annual-return-tax-rep', entry: false, basic: true},
-                                                {key: 'pricing.features.cloud-archive', entry: false, basic: true},
-                                                {key: 'pricing.features.dedicated-advisor', entry: false, basic: true}
+                                                {key: 'pricing.incorporation.gov-filing-fee', entry: true, basic: true},
+                                                {key: 'pricing.incorporation.certificate-ci', entry: true, basic: true},
+                                                {key: 'pricing.incorporation.articles', entry: true, basic: true},
+                                                {key: 'pricing.incorporation.brc-1year', entry: true, basic: true},
+                                                {key: 'pricing.incorporation.app-access', entry: true, basic: true},
+                                                {key: 'pricing.incorporation.support-team', entry: true, basic: true}
                                             ]" :key="row.key">
                                                 <tr>
                                                     <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>

@@ -310,6 +310,13 @@ class I18n {
                 'pricing.audit.entry.desc': 'Basic tax and statutory filing support.',
                 'pricing.audit.basic.desc': 'Audit coordination and tax support.',
                 'pricing.audit.compliance.desc': 'Comprehensive audit alignment and tax representation.',
+                // Company Incorporation specific features
+                'pricing.incorporation.gov-filing-fee': '✓ One-time government filing and company registration service fee',
+                'pricing.incorporation.certificate-ci': '✓ Certificate of Incorporation (CI)',
+                'pricing.incorporation.articles': '✓ Articles of Association',
+                'pricing.incorporation.brc-1year': '✓ 1-year Business Registration Certificate (BRC)',
+                'pricing.incorporation.app-access': '✓ Free access to Sleek application',
+                'pricing.incorporation.support-team': '✓ Dedicated support team',
                 // Features
                 'pricing.features.name-check': '✓ Company name check & document preparation',
                 'pricing.features.basic-filing': '✓ Basic filing submission',
@@ -922,6 +929,13 @@ class I18n {
                 'pricing.audit.entry.desc': '基礎稅務與法定申報支援。',
                 'pricing.audit.basic.desc': '審計協調與報稅支援。',
                 'pricing.audit.compliance.desc': '全面審計配合與稅務代表。',
+                // Company Incorporation specific features
+                'pricing.incorporation.gov-filing-fee': '✓ 一次性政府投影及公司註冊服務費用',
+                'pricing.incorporation.certificate-ci': '✓ 公司註冊證明書（CI）',
+                'pricing.incorporation.articles': '✓ 公司章程',
+                'pricing.incorporation.brc-1year': '✓ 為期1年的商業登記證（BRC）',
+                'pricing.incorporation.app-access': '✓ 免費使用Sleek應用程式',
+                'pricing.incorporation.support-team': '✓ 專屬支援團隊',
                 // Features
                 'pricing.features.name-check': '✓ 公司名稱查冊與文件準備',
                 'pricing.features.basic-filing': '✓ 基本文件提交',
@@ -1543,6 +1557,13 @@ class I18n {
                 'pricing.audit.entry.desc': '基础税务与法定申报支持。',
                 'pricing.audit.basic.desc': '审计协调与报税支持。',
                 'pricing.audit.compliance.desc': '全面审计配合与税务代表。',
+                // Company Incorporation specific features
+                'pricing.incorporation.gov-filing-fee': '✓ 一次性政府投影及公司注册服务费用',
+                'pricing.incorporation.certificate-ci': '✓ 公司注册证明书（CI）',
+                'pricing.incorporation.articles': '✓ 公司章程',
+                'pricing.incorporation.brc-1year': '✓ 为期1年的商业登记证（BRC）',
+                'pricing.incorporation.app-access': '✓ 免费使用Sleek应用程式',
+                'pricing.incorporation.support-team': '✓ 专属支持团队',
                 // Features
                 'pricing.features.name-check': '✓ 公司名称查册与文件准备',
                 'pricing.features.basic-filing': '✓ 基本文件提交',
