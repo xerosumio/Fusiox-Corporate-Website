@@ -287,7 +287,7 @@
                                 <table class="table table-zebra w-full">
                                     <thead>
                                         <tr>
-                                            <th class="text-left">Features</th>
+                                            <th class="text-left" data-i18n="pricing.compare.header">公司註冊</th>
                                             <th class="text-center" data-i18n="pricing.tier.entry">入門方案</th>
                                             <th class="text-center" data-i18n="pricing.tier.basic">基本方案</th>
                                         </tr>
@@ -301,12 +301,22 @@
                                                 {key: 'pricing.incorporation.articles', entry: true, basic: true},
                                                 {key: 'pricing.incorporation.brc-1year', entry: true, basic: true},
                                                 {key: 'pricing.incorporation.app-access', entry: true, basic: true},
-                                                {key: 'pricing.incorporation.support-team', entry: true, basic: true}
+                                                {key: 'pricing.incorporation.support-team', entry: true, basic: true},
+                                                {key: 'pricing.compare.secretary-section', entry: 'section', basic: 'section', isSection: true},
+                                                {key: 'pricing.compare.secretary.maintain', entry: true, basic: true},
+                                                {key: 'pricing.compare.secretary.legal-records', entry: true, basic: true},
+                                                {key: 'pricing.compare.secretary.nar1', entry: true, basic: true},
+                                                {key: 'pricing.compare.secretary.agm', entry: true, basic: true},
+                                                {key: 'pricing.compare.secretary.manage', entry: true, basic: true},
+                                                {key: 'pricing.compare.office-section', entry: 'section', basic: 'section', isSection: true},
+                                                {key: 'pricing.compare.office.address', entry: false, basic: true},
+                                                {key: 'pricing.compare.office.mail-receive', entry: false, basic: true},
+                                                {key: 'pricing.compare.office.mail-forward', entry: false, basic: true}
                                             ]" :key="row.key">
-                                                <tr>
+                                                <tr :class="row.isSection ? 'bg-base-300 font-bold' : ''">
                                                     <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>
-                                                    <td class="text-center" x-text="row.entry ? '✓' : '—'"></td>
-                                                    <td class="text-center" x-text="row.basic ? '✓' : '—'"></td>
+                                                    <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
+                                                    <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
                                             </template>
                                         </template>
