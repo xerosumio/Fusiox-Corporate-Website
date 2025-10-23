@@ -286,7 +286,7 @@
                                 <table class="table table-zebra w-full">
                                     <thead>
                                         <tr>
-                                            <th class="text-left font-bold text-amber-600" data-i18n="pricing.compare.header">公司註冊</th>
+                                            <th class="text-left font-bold text-amber-600" x-text="section === 'incorporation' ? (window.i18n ? window.i18n.translate('pricing.compare.header') : '公司註冊') : (window.i18n ? window.i18n.translate('pricing.compare.secretary-header') : '公司秘書')"></th>
                                             <th class="text-center" data-i18n="pricing.tier.entry">入門方案</th>
                                             <th class="text-center" data-i18n="pricing.tier.basic">基本方案</th>
                                         </tr>
@@ -323,19 +323,26 @@
                                         <!-- Company Secretary features -->
                                         <template x-if="section === 'secretary'">
                                             <template x-for="row in [
-                                                {key: 'pricing.features.secretary-appointment', entry: true, basic: true},
-                                                {key: 'pricing.features.annual-return-filing', entry: true, basic: true},
-                                                {key: 'pricing.features.statutory-registers', entry: true, basic: true},
-                                                {key: 'pricing.features.registered-address', entry: false, basic: true},
-                                                {key: 'pricing.features.priority-support', entry: false, basic: true},
-                                                {key: 'pricing.features.board-meeting-support', entry: false, basic: true},
-                                                {key: 'pricing.features.agm-coordination', entry: false, basic: true},
-                                                {key: 'pricing.features.cloud-archive', entry: false, basic: true}
+                                                {key: 'pricing.secretary.section1', entry: 'section', basic: 'section', isSection: true},
+                                                {key: 'pricing.secretary.company-secretary', entry: true, basic: true},
+                                                {key: 'pricing.secretary.designated-rep', entry: true, basic: true},
+                                                {key: 'pricing.secretary.section2', entry: 'section', basic: 'section', isSection: true},
+                                                {key: 'pricing.secretary.maintain-registers', entry: true, basic: true},
+                                                {key: 'pricing.secretary.legal-records', entry: true, basic: true},
+                                                {key: 'pricing.secretary.nar1-filing', entry: true, basic: true},
+                                                {key: 'pricing.secretary.agm-draft', entry: true, basic: true},
+                                                {key: 'pricing.secretary.section3', entry: 'section', basic: 'section', isSection: true},
+                                                {key: 'pricing.secretary.registered-address', entry: true, basic: true},
+                                                {key: 'pricing.secretary.mail-handling', entry: true, basic: true},
+                                                {key: 'pricing.secretary.filing-support', entry: true, basic: true},
+                                                {key: 'pricing.secretary.statutes-update', entry: true, basic: true},
+                                                {key: 'pricing.secretary.scr-filing', entry: true, basic: true},
+                                                {key: 'pricing.secretary.分行申報', entry: true, basic: true}
                                             ]" :key="row.key">
-                                                <tr>
-                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>
-                                                    <td class="text-center" x-text="row.entry ? '✓' : '—'"></td>
-                                                    <td class="text-center" x-text="row.basic ? '✓' : '—'"></td>
+                                                <tr :class="row.isSection ? 'font-bold' : ''">
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-3 text-amber-600' : ''"></td>
+                                                    <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
+                                                    <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
                                             </template>
                                         </template>
