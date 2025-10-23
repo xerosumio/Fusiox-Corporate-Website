@@ -212,7 +212,7 @@
                                     </div>
                                 </template>
                                 <template x-if="section === 'secretary'">
-                                    <div>
+                        <div>
                                         <span class="line-through opacity-60 mr-2" x-text="shareholders === '1' ? 'HK$1,979' : (shareholders === '2' ? 'HK$2,679' : (shareholders === '3-5' ? 'HK$2,979' : (shareholders === '6-9' ? 'HK$3,679' : (shareholders === '10-20' ? 'HK$4,679' : (shareholders === '21-30' ? 'HK$5,979' : 'HK$7,179')))))"></span>
                                         <span class="text-3xl font-bold" x-text="shareholders === '1' ? 'HK$1,679' : (shareholders === '2' ? 'HK$2,379' : (shareholders === '3-5' ? 'HK$2,679' : (shareholders === '6-9' ? 'HK$3,379' : (shareholders === '10-20' ? 'HK$4,379' : (shareholders === '21-30' ? 'HK$5,679' : 'HK$6,879')))))"></span>
                                     </div>
@@ -249,15 +249,15 @@
                                     <div>
                                         <span class="line-through opacity-80 mr-2">HK$3,879</span>
                                         <span class="text-3xl font-bold">HK$3,579</span>
-                                    </div>
+                    </div>
                                 </template>
                                 <template x-if="section === 'secretary'">
                                     <div>
                                         <span class="line-through opacity-80 mr-2" x-text="shareholders === '1' ? 'HK$4,100' : (shareholders === '2' ? 'HK$4,700' : (shareholders === '3-5' ? 'HK$5,100' : (shareholders === '6-9' ? 'HK$5,700' : (shareholders === '10-20' ? 'HK$6,800' : (shareholders === '21-30' ? 'HK$8,100' : 'HK$9,300')))))"></span>
                                         <span class="text-3xl font-bold" x-text="shareholders === '1' ? 'HK$3,800' : (shareholders === '2' ? 'HK$4,400' : (shareholders === '3-5' ? 'HK$4,800' : (shareholders === '6-9' ? 'HK$5,400' : (shareholders === '10-20' ? 'HK$6,500' : (shareholders === '21-30' ? 'HK$7,800' : 'HK$9,000')))))"></span>
-                                    </div>
+                </div>
                                 </template>
-                            </div>
+            </div>
                             <p class="text-xs opacity-90 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
                             <p class="text-sm font-semibold mb-3" data-i18n="pricing.basic.includes">包括初階計劃的所有內容，以及:</p>
                             <ul class="space-y-2 text-sm mb-6">
@@ -268,7 +268,7 @@
                             <a href="https://wa.me/" class="btn btn-accent w-full text-black" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                         </div>
                     </div>
-                    
+
                     <!-- Compare button under cards -->
                     <div class="flex justify-center mt-8 mb-4">
                         <button class="btn btn-outline btn-lg" @click="showCompare = !showCompare" data-i18n="pricing.compare">
@@ -313,8 +313,8 @@
                                                 {key: 'pricing.compare.office.mail-receive', entry: false, basic: true},
                                                 {key: 'pricing.compare.office.mail-forward', entry: false, basic: true}
                                             ]" :key="row.key">
-                                                <tr :class="row.isSection ? 'bg-base-300 font-bold' : ''">
-                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>
+                                                <tr :class="row.isSection ? 'bg-amber-900/20 font-bold text-amber-600' : ''">
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-3' : ''"></td>
                                                     <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
                                                     <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
