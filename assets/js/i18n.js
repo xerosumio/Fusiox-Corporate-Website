@@ -315,7 +315,7 @@ class I18n {
                 'pricing.incorporation.certificate-ci': '✓ Certificate of Incorporation (CI)',
                 'pricing.incorporation.articles': '✓ Articles of Association',
                 'pricing.incorporation.brc-1year': '✓ 1-year Business Registration Certificate (BRC)',
-                'pricing.incorporation.app-access': '✓ Free access to Sleek application',
+                'pricing.incorporation.app-access': '✓ Free access to Fusiox application',
                 'pricing.incorporation.support-team': '✓ Dedicated support team',
                 // New pricing structure
                 'pricing.from': 'From',
@@ -963,7 +963,7 @@ class I18n {
                 'pricing.incorporation.certificate-ci': '✓ 公司註冊證明書（CI）',
                 'pricing.incorporation.articles': '✓ 公司章程',
                 'pricing.incorporation.brc-1year': '✓ 為期1年的商業登記證（BRC）',
-                'pricing.incorporation.app-access': '✓ 免費使用Sleek應用程式',
+                'pricing.incorporation.app-access': '✓ 免費使用Fusiox應用程式',
                 'pricing.incorporation.support-team': '✓ 專屬支援團隊',
                 // New pricing structure
                 'pricing.from': '從',
@@ -1620,7 +1620,7 @@ class I18n {
                 'pricing.incorporation.certificate-ci': '✓ 公司注册证明书（CI）',
                 'pricing.incorporation.articles': '✓ 公司章程',
                 'pricing.incorporation.brc-1year': '✓ 为期1年的商业登记证（BRC）',
-                'pricing.incorporation.app-access': '✓ 免费使用Sleek应用程式',
+                'pricing.incorporation.app-access': '✓ 免费使用Fusiox应用程式',
                 'pricing.incorporation.support-team': '✓ 专属支持团队',
                 // New pricing structure
                 'pricing.from': '从',
