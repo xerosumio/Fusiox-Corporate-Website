@@ -157,110 +157,255 @@
         </div>
     </div>
 
-    <!-- Our Services -->
+    <!-- Our Services (Rebuilt: selector + 2-tier pricing per service) -->
     <div class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="services.hero.title">Our Services</h2>
-            
-            <!-- Main Service: Company Secretary Service -->
-            <div class="mb-16" data-aos="fade-up" data-aos-delay="100">
-                <div class="relative bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white shadow-2xl overflow-hidden">
-                    
-                    
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <!-- Service Details -->
-                        <div>
-                            <div class="mb-4">
-                                <h3 class="text-2xl font-bold" data-i18n="services.company-secretary.title">Company Secretary Service</h3>
+        <div class="container mx-auto px-4" x-data="{ tab: 'incorporation', showCompare: false, shareholders: '1' }">
+            <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up" data-i18n="services.hero.title">Our Services</h2>
+
+            <!-- Service selector -->
+            <div class="flex justify-center mb-10" data-aos="fade-up" data-aos-delay="100">
+                <select class="select select-bordered w-full max-w-md" x-model="tab">
+                    <option value="incorporation" data-i18n="pricing.selector.incorporation">公司註冊 Company Incorporation</option>
+                    <option value="secretary" data-i18n="pricing.selector.secretary">公司秘書 Company Secretary</option>
+                    <option value="accounting" data-i18n="pricing.selector.accounting">記賬、會計及薪資 Accounting & Payroll</option>
+                    <option value="audit" data-i18n="pricing.selector.audit">審計及報稅 Audit & Tax</option>
+                </select>
+            </div>
+
+            <!-- Shareholder selector (only for secretary) -->
+            <div x-show="tab === 'secretary'" class="flex justify-center mb-6" data-aos="fade-up" data-aos-delay="150">
+                <div class="form-control w-full max-w-md">
+                    <label class="label">
+                        <span class="label-text" data-i18n="pricing.shareholders.label">選擇股東數量 / Select number of shareholders</span>
+                    </label>
+                    <select class="select select-bordered" x-model="shareholders">
+                        <option value="1">1 <span data-i18n="pricing.shareholders.suffix">位股東</span></option>
+                        <option value="2">2 <span data-i18n="pricing.shareholders.suffix">位股東</span></option>
+                        <option value="3-5">3-5 <span data-i18n="pricing.shareholders.suffix">位股東</span></option>
+                        <option value="6-9">6-9 <span data-i18n="pricing.shareholders.suffix">位股東</span></option>
+                        <option value="10-20">10-20 <span data-i18n="pricing.shareholders.suffix">位股東</span></option>
+                        <option value="21-30">21-30 <span data-i18n="pricing.shareholders.suffix">位股東</span></option>
+                        <option value="30+">30+ <span data-i18n="pricing.shareholders.suffix">位股東</span></option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!-- Pricing grid template: 2 tiers -->
+            <template x-for="section in ['incorporation','secretary','accounting','audit']" :key="section">
+                <div x-show="tab === section" x-transition>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Tier 1 -->
+                        <div class="card pricing-card bg-base-100 shadow-lg p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-xl font-bold" data-i18n="pricing.tier.entry">入門方案</h3>
+                                <span class="badge badge-warning" data-i18n="pricing.badge.limited">限時優惠</span>
                             </div>
-                            <p class="text-lg mb-6 opacity-90" data-i18n="services.company-secretary.description-main">Professional company secretary services to ensure your business remains compliant with Hong Kong regulations.</p>
-                            <div class="text-3xl font-bold mb-2" data-i18n="services.company-secretary.price">USD 1,180</div>
-                            <p class="text-sm opacity-75" data-i18n="services.annual-service">Annual service</p>
-                        </div>
-                        
-                        <!-- Features List -->
-                        <div class="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
-                            <h4 class="font-semibold mb-4 text-lg" data-i18n="services.includes">Includes:</h4>
-                            <ul class="space-y-3 text-sm">
-                                <li class="flex items-center">
-                                    <span class="text-accent mr-2">✓</span>
-                                    <span data-i18n="services.features.secretary">Dedicated company secretary</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="text-accent mr-2">✓</span>
-                                    <span data-i18n="services.features.filing">Annual return filing</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="text-accent mr-2">✓</span>
-                                    <span data-i18n="services.features.coordination">Board meeting coordination</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="text-accent mr-2">✓</span>
-                                    <span data-i18n="services.features.monitoring">Statutory compliance monitoring</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="text-accent mr-2">✓</span>
-                                    <span data-i18n="services.features.maintenance">Corporate record maintenance</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="text-accent mr-2">✓</span>
-                                    <span data-i18n="services.features.support">Regulatory filing support</span>
-                                </li>
+                            <p class="text-sm text-base-content/70 mb-4"
+                               x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.incorporation.entry.desc') : '基本公司設立連合規支援') : (section==='secretary' ? (window.i18n? window.i18n.translate('pricing.secretary.entry.desc'):'核心公司秘書職能及法定申報') : (section==='accounting' ? (window.i18n? window.i18n.translate('pricing.accounting.entry.desc'):'年度合規與基礎報告') : (window.i18n? window.i18n.translate('pricing.audit.entry.desc'):'基礎稅務與申報')))"
+                            ></p>
+                            <div class="mb-2">
+                                <!-- Dynamic pricing based on service and shareholders -->
+                                <template x-if="section === 'incorporation'">
+                                    <div>
+                                        <span class="line-through opacity-60 mr-2">HK$2,179</span>
+                                        <span class="text-3xl font-bold">HK$1,879</span>
+                                    </div>
+                                </template>
+                                <template x-if="section === 'secretary'">
+                                    <div>
+                                        <span class="line-through opacity-60 mr-2" x-text="shareholders === '1' ? 'HK$1,979' : (shareholders === '2' ? 'HK$2,679' : (shareholders === '3-5' ? 'HK$2,979' : (shareholders === '6-9' ? 'HK$3,679' : (shareholders === '10-20' ? 'HK$4,679' : (shareholders === '21-30' ? 'HK$5,979' : 'HK$7,179')))))"></span>
+                                        <span class="text-3xl font-bold" x-text="shareholders === '1' ? 'HK$1,679' : (shareholders === '2' ? 'HK$2,379' : (shareholders === '3-5' ? 'HK$2,679' : (shareholders === '6-9' ? 'HK$3,379' : (shareholders === '10-20' ? 'HK$4,379' : (shareholders === '21-30' ? 'HK$5,679' : 'HK$6,879')))))"></span>
+                                    </div>
+                                </template>
+                                <template x-if="section === 'accounting'">
+                                    <div>
+                                        <span class="line-through opacity-60 mr-2">HK$1,379</span>
+                                        <span class="text-3xl font-bold">HK$999</span>
+                                    </div>
+                                </template>
+                                <template x-if="section === 'audit'">
+                                    <div>
+                                        <span class="line-through opacity-60 mr-2">HK$1,379</span>
+                                        <span class="text-3xl font-bold">HK$999</span>
+                                    </div>
+                                </template>
+                            </div>
+                            <p class="text-xs opacity-70 mb-4" data-i18n="pricing.disclaimer.gov">+ Government fees apply</p>
+                            <ul class="space-y-2 text-sm mb-6">
+                                <li data-i18n="pricing.features.name-check">✓ 公司名稱查冊與文件準備</li>
+                                <li data-i18n="pricing.features.basic-filing">✓ 基本文件提交</li>
+                                <li data-i18n="pricing.features.digital-delivery">✓ 電子檔案交付</li>
                             </ul>
+                            <a href="https://wa.me/" class="btn btn-primary w-full" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                         </div>
+
+                        <!-- Tier 2 (Highlighted) -->
+                        <div class="card pricing-card bg-primary text-primary-content shadow-xl p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-xl font-bold" data-i18n="pricing.tier.basic">基本方案</h3>
+                                <span class="badge badge-success" data-i18n="pricing.badge.popular">最受歡迎</span>
+                            </div>
+                            <p class="text-sm opacity-90 mb-4"
+                               x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.incorporation.basic.desc') : '完整公司設立連私隱及合規保障') : (section==='secretary' ? (window.i18n? window.i18n.translate('pricing.secretary.basic.desc'):'年度法定文件管理與董事支援') : (section==='accounting' ? (window.i18n? window.i18n.translate('pricing.accounting.basic.desc'):'每月記賬與年度報表') : (window.i18n? window.i18n.translate('pricing.audit.basic.desc'):'審計協調與報稅支援')))"
+                            ></p>
+                            <div class="mb-2">
+                                <!-- Dynamic pricing based on service and shareholders -->
+                                <template x-if="section === 'incorporation'">
+                                    <div>
+                                        <span class="line-through opacity-80 mr-2">HK$3,879</span>
+                                        <span class="text-3xl font-bold">HK$3,579</span>
+                                    </div>
+                                </template>
+                                <template x-if="section === 'secretary'">
+                                    <div>
+                                        <span class="line-through opacity-80 mr-2" x-text="shareholders === '1' ? 'HK$4,100' : (shareholders === '2' ? 'HK$4,700' : (shareholders === '3-5' ? 'HK$5,100' : (shareholders === '6-9' ? 'HK$5,700' : (shareholders === '10-20' ? 'HK$6,800' : (shareholders === '21-30' ? 'HK$8,100' : 'HK$9,300')))))"></span>
+                                        <span class="text-3xl font-bold" x-text="shareholders === '1' ? 'HK$3,800' : (shareholders === '2' ? 'HK$4,400' : (shareholders === '3-5' ? 'HK$4,800' : (shareholders === '6-9' ? 'HK$5,400' : (shareholders === '10-20' ? 'HK$6,500' : (shareholders === '21-30' ? 'HK$7,800' : 'HK$9,000')))))"></span>
+                                    </div>
+                                </template>
+                                <template x-if="section === 'accounting'">
+                                    <div>
+                                        <span class="line-through opacity-80 mr-2">HK$3,379</span>
+                                        <span class="text-3xl font-bold">HK$2,999</span>
+                                    </div>
+                                </template>
+                                <template x-if="section === 'audit'">
+                                    <div>
+                                        <span class="line-through opacity-80 mr-2">HK$3,379</span>
+                                        <span class="text-3xl font-bold">HK$2,999</span>
+                                    </div>
+                                </template>
+                            </div>
+                            <p class="text-xs opacity-90 mb-4" data-i18n="pricing.disclaimer.gov">+ Government fees apply</p>
+                            <p class="text-sm font-semibold mb-2" data-i18n="pricing.includes.entryplus">包含入門方案所有內容，另外：</p>
+                            <ul class="space-y-2 text-sm mb-6">
+                                <li data-i18n="pricing.features.registered-address">✓ 註冊辦事處地址與郵件轉發</li>
+                                <li data-i18n="pricing.features.seals">✓ 公司印章（如適用）</li>
+                                <li data-i18n="pricing.features.annual-return-tax-rep">✓ 年度申報（NAR1）/ 稅務代表</li>
+                                <li data-i18n="pricing.features.cloud-archive">✓ 文件掃描及雲端存檔</li>
+                                <li data-i18n="pricing.features.dedicated-advisor">✓ 專屬顧問一對一支援</li>
+                                <li x-show="section!=='incorporation'" data-i18n="pricing.features.priority-support">✓ 優先客戶支援</li>
+                            </ul>
+                            <a href="https://wa.me/" class="btn btn-accent w-full text-black" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Compare button under cards -->
+                    <div class="flex justify-center mt-8 mb-4">
+                        <button class="btn btn-outline btn-lg" @click="showCompare = !showCompare" data-i18n="pricing.compare">
+                            <span x-text="showCompare ? (window.i18n? window.i18n.translate('pricing.hide-compare') : 'Hide comparison') : (window.i18n? window.i18n.translate('pricing.compare') : 'Compare plans')"></span>
+                            <svg class="w-5 h-5 ml-2 transition-transform" :class="{'rotate-180': showCompare}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Comparison table (expandable) -->
+                    <div x-show="showCompare" x-collapse>
+                        <div class="bg-base-200 rounded-2xl p-6 mb-6 shadow-xl">
+                            <h3 class="font-bold text-xl mb-6 text-center" data-i18n="pricing.compare">Compare plans</h3>
+                            <div class="overflow-x-auto">
+                                <table class="table table-zebra w-full">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Features</th>
+                                            <th class="text-center" data-i18n="pricing.tier.entry">入門方案</th>
+                                            <th class="text-center" data-i18n="pricing.tier.basic">基本方案</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Company Incorporation features -->
+                                        <template x-if="section === 'incorporation'">
+                                            <template x-for="row in [
+                                                {key: 'pricing.features.name-check', entry: true, basic: true},
+                                                {key: 'pricing.features.basic-filing', entry: true, basic: true},
+                                                {key: 'pricing.features.digital-delivery', entry: true, basic: true},
+                                                {key: 'pricing.features.registered-address', entry: false, basic: true},
+                                                {key: 'pricing.features.seals', entry: false, basic: true},
+                                                {key: 'pricing.features.annual-return-tax-rep', entry: false, basic: true},
+                                                {key: 'pricing.features.cloud-archive', entry: false, basic: true},
+                                                {key: 'pricing.features.dedicated-advisor', entry: false, basic: true}
+                                            ]" :key="row.key">
+                                                <tr>
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>
+                                                    <td class="text-center" x-text="row.entry ? '✓' : '—'"></td>
+                                                    <td class="text-center" x-text="row.basic ? '✓' : '—'"></td>
+                                                </tr>
+                                            </template>
+                                        </template>
+
+                                        <!-- Company Secretary features -->
+                                        <template x-if="section === 'secretary'">
+                                            <template x-for="row in [
+                                                {key: 'pricing.features.secretary-appointment', entry: true, basic: true},
+                                                {key: 'pricing.features.annual-return-filing', entry: true, basic: true},
+                                                {key: 'pricing.features.statutory-registers', entry: true, basic: true},
+                                                {key: 'pricing.features.registered-address', entry: false, basic: true},
+                                                {key: 'pricing.features.priority-support', entry: false, basic: true},
+                                                {key: 'pricing.features.board-meeting-support', entry: false, basic: true},
+                                                {key: 'pricing.features.agm-coordination', entry: false, basic: true},
+                                                {key: 'pricing.features.cloud-archive', entry: false, basic: true}
+                                            ]" :key="row.key">
+                                                <tr>
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>
+                                                    <td class="text-center" x-text="row.entry ? '✓' : '—'"></td>
+                                                    <td class="text-center" x-text="row.basic ? '✓' : '—'"></td>
+                                                </tr>
+                                            </template>
+                                        </template>
+
+                                        <!-- Accounting & Payroll features -->
+                                        <template x-if="section === 'accounting'">
+                                            <template x-for="row in [
+                                                {key: 'pricing.features.annual-accounts', entry: true, basic: true},
+                                                {key: 'pricing.features.basic-bookkeeping', entry: true, basic: true},
+                                                {key: 'pricing.features.digital-delivery', entry: true, basic: true},
+                                                {key: 'pricing.features.monthly-bookkeeping', entry: false, basic: true},
+                                                {key: 'pricing.features.financial-statements', entry: false, basic: true},
+                                                {key: 'pricing.features.management-reports', entry: false, basic: true},
+                                                {key: 'pricing.features.tax-planning', entry: false, basic: true},
+                                                {key: 'pricing.features.dedicated-advisor', entry: false, basic: true}
+                                            ]" :key="row.key">
+                                                <tr>
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>
+                                                    <td class="text-center" x-text="row.entry ? '✓' : '—'"></td>
+                                                    <td class="text-center" x-text="row.basic ? '✓' : '—'"></td>
+                                                </tr>
+                                            </template>
+                                        </template>
+
+                                        <!-- Audit & Tax features -->
+                                        <template x-if="section === 'audit'">
+                                            <template x-for="row in [
+                                                {key: 'pricing.features.tax-return-filing', entry: true, basic: true},
+                                                {key: 'pricing.features.tax-computation', entry: true, basic: true},
+                                                {key: 'pricing.features.digital-delivery', entry: true, basic: true},
+                                                {key: 'pricing.features.audit-coordination', entry: false, basic: true},
+                                                {key: 'pricing.features.tax-advice', entry: false, basic: true},
+                                                {key: 'pricing.features.audit-fieldwork', entry: false, basic: true},
+                                                {key: 'pricing.features.tax-representative', entry: false, basic: true},
+                                                {key: 'pricing.features.ird-correspondence', entry: false, basic: true}
+                                            ]" :key="row.key">
+                                                <tr>
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key"></td>
+                                                    <td class="text-center" x-text="row.entry ? '✓' : '—'"></td>
+                                                    <td class="text-center" x-text="row.basic ? '✓' : '—'"></td>
+                                                </tr>
+                                            </template>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Note / reassurance -->
+                    <div class="mt-6 text-center text-sm opacity-70" data-aos="fade-up">
+                        <span data-i18n="pricing.note.contact">所有價格均不含政府費用。需要更個人化的服務？</span>
+                        <a href="contact.html" class="link link-primary ml-1" data-i18n="pricing.note.link">與我們聯絡</a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Value-added Services Grid -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-center mb-8" data-aos="fade-up" data-aos-delay="200" data-i18n="services.value-added-title">Value-added Services</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Registered Address and Mail Receiving -->
-                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="card-body">
-                            <h4 class="card-title text-lg mb-3" data-i18n="services.registered-address.title">Registered Address and Mail Receiving</h4>
-                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.registered-address.description-short">Professional registered address service with mail handling and forwarding capabilities.</p>
-                            <div class="text-xl font-bold text-primary" data-i18n="services.registered-address.price">USD 500</div>
-                        </div>
-                    </div>
-
-                    <!-- Audit and Tax Filing -->
-                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="400">
-                        <div class="card-body">
-                            <h4 class="card-title text-lg mb-3" data-i18n="services.audit-tax.title">Audit and Tax Filing</h4>
-                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.audit-tax.description-short">Comprehensive tax filing support tailored to your needs.</p>
-                            <div class="text-xl font-bold text-primary" data-i18n="services.audit-tax.price">Case-by-case basis</div>
-                        </div>
-                    </div>
-
-                    <!-- Bank Account Opening -->
-                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="500">
-                        <div class="card-body">
-                            <h4 class="card-title text-lg mb-3" data-i18n="services.bank-account.title">Bank Account Opening</h4>
-                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.bank-account.description-short">Assistance with corporate bank account setup and relationships.</p>
-                            <div class="text-xl font-bold text-primary" data-i18n="services.bank-account.price">Starting from USD 800</div>
-                        </div>
-                    </div>
-
-                    <!-- CTC Certification -->
-                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow" data-aos="zoom-in-up" data-aos-delay="600">
-                        <div class="card-body">
-                            <h4 class="card-title text-lg mb-3" data-i18n="services.ctc.title">CTC Certification</h4>
-                            <p class="text-sm text-base-content/70 mb-4" data-i18n="services.ctc.description-short">Certified True Copy for official document authentication.</p>
-                            <div class="text-xl font-bold text-primary" data-i18n="services.ctc.price">Case-by-case basis</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fund-related Services Note -->
-            <div class="text-center" data-aos="fade-up" data-aos-delay="700">
-                <p class="text-base-content/80 italic">
-                    <span data-i18n="services.fund-note.text">Interested in fund-related incorporation services?</span>
-                    <a href="contact.html" class="text-primary hover:text-primary-focus underline ml-1" data-i18n="services.fund-note.link">Please contact us directly for details.</a>
-                </p>
-            </div>
+            </template>
         </div>
     </div>
 
