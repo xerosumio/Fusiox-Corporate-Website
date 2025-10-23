@@ -313,8 +313,8 @@
                                                 {key: 'pricing.compare.office.mail-receive', entry: false, basic: true},
                                                 {key: 'pricing.compare.office.mail-forward', entry: false, basic: true}
                                             ]" :key="row.key">
-                                                <tr :class="row.isSection ? 'bg-amber-900/20 font-bold text-amber-600' : ''">
-                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-3' : ''"></td>
+                                                <tr :class="row.isSection ? 'font-bold' : ''">
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-3 text-amber-600' : ''"></td>
                                                     <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
                                                     <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
