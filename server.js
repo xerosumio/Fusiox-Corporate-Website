@@ -13,8 +13,44 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Security middleware
-app.use(helmet());
+// Security middleware with relaxed CSP for CDN scripts
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: [
+                "'self'", 
+                "'unsafe-inline'",
+                "'unsafe-eval'",  // Required for TailwindCSS JIT
+                "https://cdn.tailwindcss.com",
+                "https://cdn.jsdelivr.net",
+                "https://unpkg.com"
+            ],
+            styleSrc: [
+                "'self'", 
+                "'unsafe-inline'",
+                "https://cdn.jsdelivr.net",
+                "https://fonts.googleapis.com",
+                "https://unpkg.com"
+            ],
+            fontSrc: [
+                "'self'",
+                "https://fonts.gstatic.com",
+                "data:"
+            ],
+            imgSrc: [
+                "'self'",
+                "data:",
+                "https:",
+                "https://images.unsplash.com"
+            ],
+            connectSrc: ["'self'"],
+            frameSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: []
+        }
+    }
+}));
 app.use(cors({
     origin: ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:8000', 'https://fusiox.ai', 'https://www.fusiox.ai'],
     credentials: true

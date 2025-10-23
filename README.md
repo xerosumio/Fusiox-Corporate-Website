@@ -5,6 +5,7 @@ A modern, responsive corporate website for Fusiox Corporate Services Limited, sp
 ## 🌟 Features
 
 ### Core Functionality
+
 - **Multilingual Support**: English, Traditional Chinese (繁體中文), and Simplified Chinese (简体中文)
 - **Responsive Design**: Mobile-first approach with DaisyUI and TailwindCSS
 - **Interactive Components**: Enhanced with Alpine.js for dynamic user interactions
@@ -12,6 +13,7 @@ A modern, responsive corporate website for Fusiox Corporate Services Limited, sp
 - **SEO Ready**: Proper meta tags, semantic HTML, and structured content
 
 ### Key Sections
+
 - **Homepage**: Hero section, service overview, testimonials, and CTA
 - **About**: Company mission, vision, values, and team information
 - **Services**: Comprehensive service listings with interactive comparisons
@@ -23,17 +25,17 @@ A modern, responsive corporate website for Fusiox Corporate Services Limited, sp
 
 ## 🛠️ Technology Stack
 
-| Component | Technology |
-|-----------|------------|
-| **Frontend Framework** | HTML5, CSS3, JavaScript |
-| **CSS Framework** | TailwindCSS v3.x |
-| **UI Components** | DaisyUI v4.4.19 (Coffee theme) |
-| **JavaScript Framework** | Alpine.js v3.x |
-| **Animations** | AOS (Animate On Scroll) v2.3.1 |
-| **Fonts** | Inter (Google Fonts) |
-| **Icons** | Heroicons (inline SVG) |
-| **Deployment** | Vercel (configured) |
-| **Asset Management** | Local storage with optimized images |
+| Component                | Technology                          |
+| ------------------------ | ----------------------------------- |
+| **Frontend Framework**   | HTML5, CSS3, JavaScript             |
+| **CSS Framework**        | TailwindCSS v3.x                    |
+| **UI Components**        | DaisyUI v4.4.19 (Coffee theme)      |
+| **JavaScript Framework** | Alpine.js v3.x                      |
+| **Animations**           | AOS (Animate On Scroll) v2.3.1      |
+| **Fonts**                | Inter (Google Fonts)                |
+| **Icons**                | Heroicons (inline SVG)              |
+| **Deployment**           | Vercel (configured)                 |
+| **Asset Management**     | Local storage with optimized images |
 
 ## 📁 Project Structure
 
@@ -91,30 +93,35 @@ A modern, responsive corporate website for Fusiox Corporate Services Limited, sp
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - A modern web browser
 - Basic web server for local development (optional)
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/xerosumio/Fusiox-Corporate-Website.git
    cd Fusiox-Corporate-Website
    ```
 
 2. **Serve locally** (choose one method)
-   
+
    **Using Python:**
+
    ```bash
    python -m http.server 8000
    ```
-   
+
    **Using Node.js (http-server):**
+
    ```bash
    npx http-server
    ```
-   
+
    **Using Live Server (VS Code extension):**
+
    - Install Live Server extension
    - Right-click `index.html` → "Open with Live Server"
 
@@ -127,6 +134,7 @@ A modern, responsive corporate website for Fusiox Corporate Services Limited, sp
 The project is configured for **Vercel** deployment:
 
 1. **Deploy to Vercel:**
+
    ```bash
    vercel --prod
    ```
@@ -138,7 +146,9 @@ The project is configured for **Vercel** deployment:
 ## ⚙️ Configuration
 
 ### Language Settings
+
 The website supports three languages with automatic detection and storage:
+
 - English (en) - Default
 - Traditional Chinese (zh-Hant)
 - Simplified Chinese (zh-Hans)
@@ -146,17 +156,21 @@ The website supports three languages with automatic detection and storage:
 Language preferences are stored in localStorage and persist across sessions.
 
 ### Theme Customization
+
 The website uses DaisyUI's "coffee" theme. To change themes:
 
 1. Update the `data-theme` attribute in HTML files:
+
    ```html
-   <html lang="en" data-theme="your-theme-name">
+   <html lang="en" data-theme="your-theme-name"></html>
    ```
 
 2. Available DaisyUI themes: light, dark, cupcake, bumblebee, emerald, corporate, synthwave, retro, cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid, lemonade, night, coffee, winter
 
 ### Contact Form
+
 The contact form is enhanced with:
+
 - Real-time validation
 - Mobile-optimized input fields
 - Success/error feedback
@@ -167,6 +181,7 @@ The contact form is enhanced with:
 ### Adding New Languages
 
 1. **Update i18n.js:**
+
    ```javascript
    // Add new language to translations object
    'new-lang': {
@@ -176,6 +191,7 @@ The contact form is enhanced with:
    ```
 
 2. **Update language selector:**
+
    ```javascript
    // Add to languages array
    { code: 'new-lang', name: 'Language Name', nativeName: 'Native Name' }
@@ -187,6 +203,7 @@ The contact form is enhanced with:
    ```
 
 ### Translation Guidelines
+
 - Use nested keys for organization (e.g., `nav.home`, `about.mission.title`)
 - Keep translations consistent across all languages
 - Test language switching functionality
@@ -203,16 +220,19 @@ The contact form is enhanced with:
 ## 🎨 Design System
 
 ### Typography
+
 - **Primary Font**: Inter (Google Fonts)
 - **Weights**: 300, 400, 500, 600, 700
 - **Hierarchy**: Consistent heading scales and body text
 
 ### Colors
+
 - **Theme**: DaisyUI Coffee theme
 - **Accents**: Primary, secondary, accent colors from DaisyUI
 - **Semantic**: Success, warning, error states
 
 ### Components
+
 - **Cards**: Consistent styling with hover effects
 - **Buttons**: Multiple variants with animations
 - **Forms**: Unified input styling and validation states
@@ -225,9 +245,15 @@ The contact form is enhanced with:
 1. **Create HTML file** following the existing structure
 2. **Include required dependencies:**
    ```html
-   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" />
+   <link
+     href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
+     rel="stylesheet"
+   />
    <script src="https://cdn.tailwindcss.com"></script>
-   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+   <script
+     defer
+     src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+   ></script>
    <script src="assets/js/i18n.js"></script>
    ```
 3. **Add navigation links** to all existing pages
@@ -236,17 +262,23 @@ The contact form is enhanced with:
 ### Custom JavaScript Components
 
 #### Language Selector (Alpine.js)
+
 ```javascript
 function languageSelector() {
-    return {
-        isOpen: false,
-        toggleDropdown() { this.isOpen = !this.isOpen; },
-        closeDropdown() { this.isOpen = false; }
-    };
+  return {
+    isOpen: false,
+    toggleDropdown() {
+      this.isOpen = !this.isOpen;
+    },
+    closeDropdown() {
+      this.isOpen = false;
+    },
+  };
 }
 ```
 
 #### Contact Form Enhancement
+
 ```javascript
 // Enhanced form validation and submission
 // See assets/js/enhanced-contact-form.js
@@ -255,6 +287,7 @@ function languageSelector() {
 ### CSS Customization
 
 Custom styles are organized in separate CSS files:
+
 - `sticky-header.css`: Navigation enhancements
 - `enhanced-contact-form.css`: Form styling
 - `hklpf-diagram.css`: Interactive diagram styles
@@ -262,12 +295,14 @@ Custom styles are organized in separate CSS files:
 ## 📊 Performance
 
 ### Optimization Features
+
 - **Image Optimization**: All images stored locally with appropriate compression
 - **CSS/JS Minification**: CDN-delivered frameworks for caching
 - **Lazy Loading**: AOS library for scroll-based animations
 - **Caching**: Vercel edge caching and browser caching headers
 
 ### Loading Speed
+
 - **First Contentful Paint**: Optimized with critical CSS inlining
 - **Largest Contentful Paint**: Hero images optimized for web
 - **Cumulative Layout Shift**: Prevented with proper image dimensions
@@ -275,6 +310,7 @@ Custom styles are organized in separate CSS files:
 ## 🧪 Testing
 
 ### Browser Compatibility
+
 - Chrome 80+
 - Firefox 75+
 - Safari 13+
@@ -282,6 +318,7 @@ Custom styles are organized in separate CSS files:
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
 ### Testing Checklist
+
 - [ ] All pages load without errors
 - [ ] Language switching works correctly
 - [ ] Contact form validation functions
@@ -293,6 +330,7 @@ Custom styles are organized in separate CSS files:
 ## 📈 SEO Optimization
 
 ### Implemented Features
+
 - **Meta Tags**: Title, description, keywords for each page
 - **Open Graph**: Social media sharing optimization
 - **Semantic HTML**: Proper heading hierarchy and structure
@@ -300,6 +338,7 @@ Custom styles are organized in separate CSS files:
 - **Schema Markup**: Ready for structured data implementation
 
 ### Recommended Improvements
+
 - Add structured data (JSON-LD) for business information
 - Implement sitemap.xml
 - Add robots.txt
@@ -309,6 +348,7 @@ Custom styles are organized in separate CSS files:
 ## 🔒 Security
 
 ### Current Measures
+
 - **Content Security Policy**: Configured in Vercel headers
 - **HTTPS**: Enforced in production
 - **Form Validation**: Client-side and server-side (when integrated)
@@ -317,6 +357,7 @@ Custom styles are organized in separate CSS files:
 ## 🤝 Contributing
 
 ### Development Workflow
+
 1. Create feature branch from `main`
 2. Make changes following existing code patterns
 3. Test on multiple devices and browsers
@@ -324,6 +365,7 @@ Custom styles are organized in separate CSS files:
 5. Submit pull request for review
 
 ### Code Standards
+
 - **HTML**: Semantic, accessible markup
 - **CSS**: Utility-first with TailwindCSS
 - **JavaScript**: ES6+ with Alpine.js patterns
@@ -333,8 +375,9 @@ Custom styles are organized in separate CSS files:
 ## 📞 Support
 
 For technical support or business inquiries:
+
 - **Email**: info@fusiox.ai
-- **Address**: Room 3903, The Center, 99 Queen's Road Central, Hong Kong
+- **Address**: Suite 3, 39/F, The Center, 99 Queen's Road Central, Central, Hong Kong
 - **Website**: [Contact Page](contact.html)
 
 ## 📄 License
