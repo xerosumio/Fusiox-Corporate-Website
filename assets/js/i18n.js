@@ -344,6 +344,8 @@ class I18n {
                 'pricing.compare.office.address': 'Registered office address',
                 'pricing.compare.office.mail-receive': 'Receive all mail and packages',
                 'pricing.compare.office.mail-forward': 'Unlimited mail scanning and forwarding service',
+                'pricing.cta.entry': 'Select Entry Plan',
+                'pricing.cta.basic': 'Select Basic Plan',
                 // Features
                 'pricing.features.name-check': '✓ Company name check & document preparation',
                 'pricing.features.basic-filing': '✓ Basic filing submission',
@@ -990,6 +992,8 @@ class I18n {
                 'pricing.compare.office.address': '註冊辦事處地址',
                 'pricing.compare.office.mail-receive': '接收所有郵件及包裹',
                 'pricing.compare.office.mail-forward': '無限郵件掃描及轉發服務',
+                'pricing.cta.entry': '選擇入門方案',
+                'pricing.cta.basic': '選擇基本方案',
                 // Features
                 'pricing.features.name-check': '✓ 公司名稱查冊與文件準備',
                 'pricing.features.basic-filing': '✓ 基本文件提交',
@@ -1645,6 +1649,8 @@ class I18n {
                 'pricing.compare.office.address': '注册办事处地址',
                 'pricing.compare.office.mail-receive': '接收所有邮件及包裹',
                 'pricing.compare.office.mail-forward': '无限邮件扫描及转发服务',
+                'pricing.cta.entry': '选择入门方案',
+                'pricing.cta.basic': '选择基本方案',
                 // Features
                 'pricing.features.name-check': '✓ 公司名称查册与文件准备',
                 'pricing.features.basic-filing': '✓ 基本文件提交',
