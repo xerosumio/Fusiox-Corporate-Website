@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/images/White Logo Name Vertical.svg">
     <title data-i18n="page.title.services">Services - Fusiox</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -194,7 +195,7 @@
                 <div x-show="tab === section" x-transition>
                     <div class="grid md:grid-cols-2 gap-6">
                         <!-- Tier 1 -->
-                        <div class="card pricing-card bg-base-100 shadow-lg p-6">
+                        <div class="card pricing-card bg-base-100 shadow-lg p-6 flex flex-col">
                             <div class="flex items-center justify-between mb-3">
                                 <h3 class="text-xl font-bold" data-i18n="pricing.tier.entry">入門方案</h3>
                                 <span class="badge badge-warning" data-i18n="pricing.badge.limited">限時優惠</span>
@@ -219,8 +220,9 @@
                                 </template>
                             </div>
                             <p class="text-xs opacity-70 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
-                            <p class="text-sm font-semibold mb-3" data-i18n="pricing.entry.includes">包括屆滿公司所需的所有事項：</p>
-                            <ul class="space-y-2 text-sm mb-6">
+                            <p class="text-sm font-semibold mb-3" x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.entry.includes') : '包括屆滿公司所需的所有事項：') : (window.i18n? window.i18n.translate('pricing.secretary.entry.includes'):'包括屆滿公司所需的所有事項：')"></p>
+                            <!-- Incorporation features -->
+                            <ul x-show="section === 'incorporation'" class="space-y-2 text-sm mb-6 flex-grow">
                                 <li data-i18n="pricing.entry.feature1">✓ 公司註冊證書（CI）</li>
                                 <li data-i18n="pricing.entry.feature2">✓ 商業登記證（BRC）</li>
                                 <li data-i18n="pricing.entry.feature3">✓ 公司章程</li>
@@ -230,11 +232,16 @@
                                 <li data-i18n="pricing.entry.feature7">✓ 善德周年大會（AGM）</li>
                                 <li data-i18n="pricing.entry.feature8">✓ 指定代表（DR）服務</li>
                             </ul>
-                            <a href="https://wa.me/" class="btn btn-primary w-full" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
+                            <!-- Secretary features -->
+                            <ul x-show="section === 'secretary'" class="space-y-2 text-sm mb-6 flex-grow">
+                                <li data-i18n="pricing.secretary.card.feature1">✓ 公司秘書服務</li>
+                                <li data-i18n="pricing.secretary.card.feature2">✓ 基本合規項目</li>
+                            </ul>
+                            <a href="https://wa.me/85260997537" class="btn btn-primary w-full mt-auto" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                         </div>
 
                         <!-- Tier 2 (Highlighted) -->
-                        <div class="card pricing-card bg-primary text-primary-content shadow-xl p-6">
+                        <div class="card pricing-card bg-primary text-primary-content shadow-xl p-6 flex flex-col">
                             <div class="flex items-center justify-between mb-3">
                                 <h3 class="text-xl font-bold" data-i18n="pricing.tier.basic">基本方案</h3>
                                 <span class="badge badge-success" data-i18n="pricing.badge.popular">最受歡迎</span>
@@ -259,13 +266,21 @@
                                 </template>
             </div>
                             <p class="text-xs opacity-90 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
-                            <p class="text-sm font-semibold mb-3" data-i18n="pricing.basic.includes">包括初階計劃的所有內容，以及:</p>
-                            <ul class="space-y-2 text-sm mb-6">
+                            <p class="text-sm font-semibold mb-3" x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.basic.includes') : '包括初階計劃的所有內容，以及:') : (window.i18n? window.i18n.translate('pricing.secretary.basic.includes'):'包括初階計劃的所有內容，以及:')"></p>
+                            <!-- Incorporation features -->
+                            <ul x-show="section === 'incorporation'" class="space-y-2 text-sm mb-6 flex-grow">
                                 <li data-i18n="pricing.basic.feature1">✓ 註冊辦事處地址</li>
                                 <li data-i18n="pricing.basic.feature2">✓ 接收所有郵件及放題</li>
                                 <li data-i18n="pricing.basic.feature3">✓ 無限量件掃描及轉發服務</li>
                             </ul>
-                            <a href="https://wa.me/" class="btn btn-accent w-full text-black" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
+                            <!-- Secretary features -->
+                            <ul x-show="section === 'secretary'" class="space-y-2 text-sm mb-6 flex-grow">
+                                <li data-i18n="pricing.secretary.card.basic1">✓ 向公司註冊處申報更改公司名稱（不包括HK$295政府費用）</li>
+                                <li data-i18n="pricing.secretary.card.basic2">✓ 更換董事（委任及辭任）</li>
+                                <li data-i18n="pricing.secretary.card.basic3">✓ 股份配發</li>
+                                <li data-i18n="pricing.secretary.card.basic4">✓ 股份轉讓*</li>
+                            </ul>
+                            <a href="https://wa.me/85260997537" class="btn btn-accent w-full text-black mt-auto" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                         </div>
                     </div>
 
@@ -293,7 +308,7 @@
                                     </thead>
                                     <thead x-show="section === 'secretary'">
                                         <tr>
-                                            <th class="text-left font-bold text-amber-600" data-i18n="pricing.compare.secretary-header">公司秘書</th>
+                                            <th class="text-left font-bold text-amber-600"></th>
                                             <th class="text-center" data-i18n="pricing.tier.entry">入門方案</th>
                                             <th class="text-center" data-i18n="pricing.tier.basic">基本方案</th>
                                         </tr>
@@ -320,7 +335,7 @@
                                                 {key: 'pricing.compare.office.mail-forward', entry: false, basic: true}
                                             ]" :key="row.key">
                                                 <tr :class="row.isSection ? 'font-bold' : ''">
-                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-3 text-amber-600' : ''"></td>
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-1 text-amber-600' : ''"></td>
                                                     <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
                                                     <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
@@ -344,10 +359,15 @@
                                                 {key: 'pricing.secretary.filing-support', entry: true, basic: true},
                                                 {key: 'pricing.secretary.statutes-update', entry: true, basic: true},
                                                 {key: 'pricing.secretary.scr-filing', entry: true, basic: true},
-                                                {key: 'pricing.secretary.分行申報', entry: true, basic: true}
+                                                {key: 'pricing.secretary.分行申報', entry: true, basic: true},
+                                                {key: 'pricing.secretary.advanced-section', entry: 'section', basic: 'section', isSection: true},
+                                                {key: 'pricing.secretary.advanced.mail-address', entry: false, basic: true},
+                                                {key: 'pricing.secretary.advanced.mail-handling', entry: false, basic: true},
+                                                {key: 'pricing.secretary.advanced.mail-forward', entry: false, basic: true},
+                                                {key: 'pricing.secretary.advanced.statutes', entry: false, basic: true}
                                             ]" :key="row.key">
                                                 <tr :class="row.isSection ? 'font-bold' : ''">
-                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-3 text-amber-600' : ''"></td>
+                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-1 text-amber-600' : ''"></td>
                                                     <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
                                                     <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
@@ -359,63 +379,12 @@
                             
                             <!-- CTA Buttons -->
                             <div class="flex justify-center gap-4 mt-8">
-                                <a href="https://wa.me/" class="btn btn-primary btn-lg" data-i18n="pricing.cta.entry">
+                                <a href="https://wa.me/85260997537" class="btn btn-primary btn-lg" data-i18n="pricing.cta.entry">
                                     選擇入門方案
                                 </a>
-                                <a href="https://wa.me/" class="btn btn-accent btn-lg" data-i18n="pricing.cta.basic">
+                                <a href="https://wa.me/85260997537" class="btn btn-accent btn-lg" data-i18n="pricing.cta.basic">
                                     選擇基本方案
                                 </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Advanced Pricing Section (Secretary Only) -->
-                    <div x-show="section === 'secretary'" class="mt-8">
-                        <h3 class="font-bold text-xl mb-6 text-center text-amber-600" data-i18n="pricing.secretary.advanced-section">高級計劃項目</h3>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <!-- Entry+ Plan -->
-                            <div class="card bg-base-100 shadow-lg p-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h4 class="text-xl font-bold" data-i18n="pricing.secretary.standard">標準計劃</h4>
-                                    <span class="badge badge-warning" data-i18n="pricing.badge.limited">限時優惠</span>
-                                </div>
-                                <p class="text-sm text-base-content/70 mb-4" data-i18n="pricing.secretary.standard.desc">核心公司秘書職能及法定申報。</p>
-                                <p class="text-sm mb-2" data-i18n="pricing.from">從</p>
-                                <div class="mb-2">
-                                    <span class="line-through opacity-60 mr-2">HK$7,179</span>
-                                    <span class="text-3xl font-bold">HK$6,879</span>
-                                    <span class="text-sm opacity-70">/每年</span>
-                                </div>
-                                <p class="text-xs opacity-70 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
-                                <p class="text-sm font-semibold mb-3" data-i18n="pricing.secretary.standard.includes">包括屆滿公司所需的所有事項：</p>
-                                <ul class="space-y-2 text-sm mb-6">
-                                    <li data-i18n="pricing.secretary.standard.feature1">✓ 公司秘書服務</li>
-                                    <li data-i18n="pricing.secretary.standard.feature2">✓ 基本合規項目</li>
-                                </ul>
-                                <a href="https://wa.me/" class="btn btn-primary w-full" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
-                            </div>
-
-                            <!-- Advanced Plan -->
-                            <div class="card bg-primary text-primary-content shadow-xl p-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h4 class="text-xl font-bold" data-i18n="pricing.secretary.advanced">高級計劃</h4>
-                                    <span class="badge badge-success" data-i18n="pricing.badge.popular">最受歡迎</span>
-                                </div>
-                                <p class="text-sm opacity-90 mb-4" data-i18n="pricing.secretary.advanced.desc">年度法定文件管理與董事支援。</p>
-                                <p class="text-sm mb-2" data-i18n="pricing.from">從</p>
-                                <div class="mb-2">
-                                    <span class="line-through opacity-80 mr-2">HK$9,300</span>
-                                    <span class="text-3xl font-bold">HK$9,000</span>
-                                    <span class="text-sm opacity-90">/每年</span>
-                                </div>
-                                <p class="text-xs opacity-90 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
-                                <p class="text-sm font-semibold mb-3" data-i18n="pricing.secretary.advanced.includes">包括初階計劃的所有內容，以及:</p>
-                                <ul class="space-y-2 text-sm mb-6">
-                                    <li data-i18n="pricing.secretary.advanced.feature1">✓ 註冊辦事處地址</li>
-                                    <li data-i18n="pricing.secretary.advanced.feature2">✓ 接收所有郵件及包裹</li>
-                                    <li data-i18n="pricing.secretary.advanced.feature3">✓ 無限量件掃描及轉發服務</li>
-                                </ul>
-                                <a href="https://wa.me/" class="btn btn-accent w-full text-black" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                             </div>
                         </div>
                     </div>
@@ -427,6 +396,59 @@
                     </div>
                 </div>
             </template>
+        </div>
+    </div>
+
+    <!-- Value-Added Services Section -->
+    <div class="py-20 bg-base-200">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-i18n="valueadded.title">增值服务</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1: Registered Address and Mail Handling -->
+                <div class="card bg-base-100 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg mb-2" data-i18n="valueadded.service1.title">注册地址及邮件接收</h3>
+                        <p class="text-sm text-base-content/70 mb-4" data-i18n="valueadded.service1.desc">专业的注册地址服务，提供邮件处理与转寄功能。</p>
+                        <div class="mb-2">
+                            <span class="text-2xl font-bold text-primary" data-i18n="valueadded.service1.price">USD 250+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Audit and Tax Filing -->
+                <div class="card bg-base-100 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg mb-2" data-i18n="valueadded.service2.title">审计及税务申报</h3>
+                        <p class="text-sm text-base-content/70 mb-4" data-i18n="valueadded.service2.desc">量身定制的全面税务审核支持。</p>
+                        <div class="mb-2">
+                            <span class="text-2xl font-bold text-primary" data-i18n="valueadded.service2.price">按情况而定</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Bank Account Opening -->
+                <div class="card bg-base-100 shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg mb-2" data-i18n="valueadded.service3.title">银行开户</h3>
+                        <p class="text-sm text-base-content/70 mb-4" data-i18n="valueadded.service3.desc">协助企业银行开户和建立银行关系。</p>
+                        <div class="mb-2">
+                            <span class="text-2xl font-bold text-primary" data-i18n="valueadded.service3.price">USD 399+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: CTC Certification -->
+                <div class="card bg-base-100 shadow-xl" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg mb-2" data-i18n="valueadded.service4.title">CTC 认证</h3>
+                        <p class="text-sm text-base-content/70 mb-4" data-i18n="valueadded.service4.desc">认证副本证明服务，用于官方文件认证。</p>
+                        <div class="mb-2">
+                            <span class="text-2xl font-bold text-primary" data-i18n="valueadded.service4.price">USD 80</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

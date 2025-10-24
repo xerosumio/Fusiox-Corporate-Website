@@ -38,7 +38,7 @@ class I18n {
                 // Navigation
                 'nav.about': 'About',
                 'nav.services': 'Services',
-                'nav.how-it-works': 'How It Works',
+                'nav.how-it-works': 'Company Incorporation & Secretary',
                 'nav.for-funds': 'For Funds',
                 'nav.insights': 'Insights',
                 'nav.faq': 'FAQ',
@@ -95,7 +95,7 @@ class I18n {
                 'hk-requirements.age.title': '2. Shareholder Eligibility',
                 'hk-requirements.age.description': 'All shareholders must be at least 18 years old, with no restrictions on nationality, domicile, or residency.',
                 'hk-requirements.id.title': '3. Shareholder Identification',
-                'hk-requirements.id.description': 'Individual shareholders: Copy of valid ID card or passport. Corporate shareholders: Copy of the business license and the legal representative\'s ID card/passport.',
+                'hk-requirements.id.description': '• Individual shareholders: Copy of valid ID card or passport.\n• Corporate shareholders: Copy of the business license and the legal representative\'s ID card/passport.',
                 'hk-requirements.corporate.title': '4. Registered Capital',
                 'hk-requirements.corporate.description': 'The minimum registered capital is HKD 100, with no paid-up or verification requirement.',
                 'hk-requirements.capital.title': '5. Registered Address',
@@ -104,8 +104,6 @@ class I18n {
                 'hk-requirements.address.description': 'A company must appoint a statutory company secretary who is either a Hong Kong resident or a Hong Kong-registered company (a licensed TCSP can act as company secretary).',
                 'hk-requirements.secretary.title': '7. Compliance Requirement',
                 'hk-requirements.secretary.description': 'The company\'s incorporation and ongoing operations must comply with the laws and regulations of Hong Kong.',
-                'hk-requirements.compliance.title': '',
-                'hk-requirements.compliance.description': '',
 
                 // CTA Section
                 'cta.title': 'Ready to Start Your Business?',
@@ -158,8 +156,8 @@ class I18n {
                 'contact.hero.subtitle': 'Ready to start your business? Get in touch with our incorporation experts today.',
 
                 // How It Works Page
-                'how-it-works.hero.title': 'How It Works',
-                'how-it-works.hero.subtitle': 'Simple, straightforward process to get your business incorporated quickly and efficiently.',
+                'how-it-works.hero.title': 'Company Incorporation & Secretary',
+                'how-it-works.hero.subtitle': 'Comprehensive company incorporation and secretarial services to establish and maintain your Hong Kong business.',
 
                 // FAQ Page
                 'faq.hero.title': 'FAQ',
@@ -292,8 +290,8 @@ class I18n {
                 'pricing.selector.accounting': 'Accounting & Payroll',
                 'pricing.selector.audit': 'Audit & Tax',
                 // Pricing tiers & badges
-                'pricing.tier.entry': 'Entry Plan',
-                'pricing.tier.basic': 'Basic Plan',
+                'pricing.tier.entry': 'Standard Plan',
+                'pricing.tier.basic': 'Advanced Plan',
                 'pricing.tier.compliance': 'Compliance Plan',
                 'pricing.badge.limited': 'Limited Offer',
                 'pricing.badge.popular': 'Most Popular',
@@ -365,17 +363,19 @@ class I18n {
                 'pricing.secretary.分行申報': 'Branch filing (not subject to HK$595 government fee)',
                 // Secretary Advanced Pricing
                 'pricing.secretary.advanced-section': 'Advanced Plan Items',
-                'pricing.secretary.standard': 'Standard Plan',
-                'pricing.secretary.standard.desc': 'Core company secretary functions and statutory filings.',
-                'pricing.secretary.standard.includes': 'All essentials for your company:',
-                'pricing.secretary.standard.feature1': '✓ Company Secretary Services',
-                'pricing.secretary.standard.feature2': '✓ Basic Compliance Items',
-                'pricing.secretary.advanced': 'Advanced Plan',
-                'pricing.secretary.advanced.desc': 'Annual document management and director support.',
-                'pricing.secretary.advanced.includes': 'Includes all Standard plan features, plus:',
-                'pricing.secretary.advanced.feature1': '✓ Registered office address',
-                'pricing.secretary.advanced.feature2': '✓ Receive all mail and packages',
-                'pricing.secretary.advanced.feature3': '✓ Unlimited mail scanning and forwarding service',
+                'pricing.secretary.advanced.mail-address': 'Provide company registration package as required by law and capital registration (not subject to HK$295 government fee)',
+                'pricing.secretary.advanced.mail-handling': 'Replace draft',
+                'pricing.secretary.advanced.mail-forward': 'Stock certificate',
+                'pricing.secretary.advanced.statutes': 'Stock transfer*',
+                // Secretary Card Features
+                'pricing.secretary.entry.includes': 'Includes:',
+                'pricing.secretary.card.feature1': '✓ Company Secretary Services',
+                'pricing.secretary.card.feature2': '✓ Basic Compliance Items',
+                'pricing.secretary.basic.includes': 'All Standard Plan content, plus:',
+                'pricing.secretary.card.basic1': '✓ Report company name changes to Companies Registry (excluding HK$295 government fee)',
+                'pricing.secretary.card.basic2': '✓ Director changes (appointment and resignation)',
+                'pricing.secretary.card.basic3': '✓ Share allotment',
+                'pricing.secretary.card.basic4': '✓ Share transfer*',
                 // Features
                 'pricing.features.name-check': '✓ Company name check & document preparation',
                 'pricing.features.basic-filing': '✓ Basic filing submission',
@@ -502,6 +502,21 @@ class I18n {
                 'how-it-works.cta.description': 'Begin your incorporation journey today with our simple 4-step process.',
                 'how-it-works.cta.button': 'Start Your Incorporation',
 
+                // Value-Added Services
+                'valueadded.title': 'Value-Added Services',
+                'valueadded.service1.title': 'Registered Address and Mail Handling',
+                'valueadded.service1.desc': 'Professional registered address service with mail handling and forwarding.',
+                'valueadded.service1.price': 'USD 250+',
+                'valueadded.service2.title': 'Audit and Tax Filing',
+                'valueadded.service2.desc': 'Tailored comprehensive tax audit support.',
+                'valueadded.service2.price': 'Case by case',
+                'valueadded.service3.title': 'Bank Account Opening',
+                'valueadded.service3.desc': 'Assist with corporate bank account opening and establishing banking relationships.',
+                'valueadded.service3.price': 'USD 399+',
+                'valueadded.service4.title': 'CTC Certification',
+                'valueadded.service4.desc': 'Certified True Copy service for official document authentication.',
+                'valueadded.service4.price': 'USD 80',
+
                 // Contact Page
                 'contact.office.title': 'Office Address',
                 'contact.office.address.line1': 'Suite 3, 39/F, The Center',
@@ -512,6 +527,10 @@ class I18n {
                 'contact.methods.title': 'Get In Touch',
                 'contact.methods.hours.label': 'Business Hours',
                 'contact.methods.hours.time': 'Mon – Fri: 9:00 AM – 6:00 PM HKT',
+
+                'contact.qr.title': 'Scan to Connect',
+                'contact.qr.wechat': 'WeChat',
+                'contact.qr.whatsapp': 'WhatsApp',
 
                 'contact.form.title': 'Send Us a Message',
                 'contact.form.subtitle': 'Ready to start your business journey? Fill out the form below and our incorporation experts will get back to you within 24 hours.',
@@ -720,7 +739,7 @@ class I18n {
                 // Navigation
                 'nav.about': '關於我們',
                 'nav.services': '服務',
-                'nav.how-it-works': '服務流程',
+                'nav.how-it-works': '公司註冊及公司秘書',
                 'nav.for-funds': '基金服務',
                 'nav.insights': '洞察分析',
                 'nav.faq': '常見問題',
@@ -772,22 +791,20 @@ class I18n {
                 // HK Company Requirements Section
                 'hk-requirements.title': '註冊香港公司所需資料',
                 'hk-requirements.subtitle': '申請香港公司註冊的必備材料與條件：',
-                'hk-requirements.shareholders.title': '①需一位或一位以上股東',
+                'hk-requirements.shareholders.title': '1. 股東人數',
                 'hk-requirements.shareholders.description': '至少需一名股東，可為自然人或企業法人。',
-                'hk-requirements.age.title': '②所有股東必須超過 18 歲（無戶籍、國籍、地區限制）',
+                'hk-requirements.age.title': '2. 股東資格',
                 'hk-requirements.age.description': '所有股東須年滿18周歲，不受國籍、戶籍或地區限制。',
-                'hk-requirements.id.title': '③所有股東必須出示有效身份證或護照影印件',
-                'hk-requirements.id.description': '自然人股東：需提供有效身份證或護照複印件。',
-                'hk-requirements.corporate.title': '④以企業法人作為股東的，企業法人必須遞交營業執照和法人代表的身份證複印件',
-                'hk-requirements.corporate.description': '企業法人股東：需提供公司營業執照及法定代表人身份證複印件。',
-                'hk-requirements.capital.title': '⑤註冊資本最低為10000元港幣，無需驗資',
-                'hk-requirements.capital.description': '最低註冊資本為10000港幣，無需實繳及驗資。',
-                'hk-requirements.address.title': '⑥在香港能提供註冊地址（鑫隆源提供多個商業地址供選擇）',
-                'hk-requirements.address.description': '公司須在香港設立法定註冊地址（可由持牌TCSP機構提供商務地址）。',
-                'hk-requirements.secretary.title': '⑦委托香港人或香港公司擔任公司法定秘書（由鑫隆源提供）',
-                'hk-requirements.secretary.description': '必須委任一名香港居民或香港公司擔任法定公司秘書（可由持牌TCSP機構提供）。',
-                'hk-requirements.compliance.title': '⑧註冊香港公司的運營業務必須合法',
-                'hk-requirements.compliance.description': '公司註冊及運營必須遵守香港相關法律法規。',
+                'hk-requirements.id.title': '3. 股東身份證明',
+                'hk-requirements.id.description': '• 自然人股東：需提供有效身份證或護照複印件；\n• 企業法人股東：需提供公司營業執照及法定代表人身份證複印件。',
+                'hk-requirements.corporate.title': '4. 註冊資本',
+                'hk-requirements.corporate.description': '最低註冊資本為100港幣，無需實繳及驗資。',
+                'hk-requirements.capital.title': '5. 註冊地址',
+                'hk-requirements.capital.description': '公司須在香港設立法定註冊地址（可由持牌TCSP機構提供商務地址）。',
+                'hk-requirements.address.title': '6. 公司秘書',
+                'hk-requirements.address.description': '必須委任一名香港居民或香港公司擔任法定公司秘書（可由持牌TCSP機構提供）。',
+                'hk-requirements.secretary.title': '7. 合規要求',
+                'hk-requirements.secretary.description': '公司註冊及運營必須遵守香港相關法律法規。',
 
                 // CTA Section
                 'cta.title': '準備開始您的業務？',
@@ -840,8 +857,8 @@ class I18n {
                 'contact.hero.subtitle': '準備開始您的業務？立即與我們的註冊專家聯繫。',
 
                 // How It Works Page
-                'how-it-works.hero.title': '服務流程',
-                'how-it-works.hero.subtitle': '簡單直接的流程，讓您的業務快速高效地完成註冊。',
+                'how-it-works.hero.title': '公司註冊及公司秘書',
+                'how-it-works.hero.subtitle': '全面的公司註冊和秘書服務，助您成立及維護香港業務。',
 
                 // FAQ Page
                 'faq.hero.title': '常見問題',
@@ -970,8 +987,8 @@ class I18n {
                 'pricing.selector.accounting': '記賬、會計及薪資',
                 'pricing.selector.audit': '審計及報稅',
                 // Pricing tiers & badges
-                'pricing.tier.entry': '入門方案',
-                'pricing.tier.basic': '基本方案',
+                'pricing.tier.entry': '標準計劃',
+                'pricing.tier.basic': '高級計劃',
                 'pricing.tier.compliance': '合規方案',
                 'pricing.badge.limited': '限時優惠',
                 'pricing.badge.popular': '最受歡迎',
@@ -1043,17 +1060,19 @@ class I18n {
                 'pricing.secretary.分行申報': '分行申報（不受HK$595政府費用影響）',
                 // Secretary Advanced Pricing
                 'pricing.secretary.advanced-section': '高級計劃項目',
-                'pricing.secretary.standard': '標準計劃',
-                'pricing.secretary.standard.desc': '核心公司秘書職能及法定申報。',
-                'pricing.secretary.standard.includes': '包括屆滿公司所需的所有事項：',
-                'pricing.secretary.standard.feature1': '✓ 公司秘書服務',
-                'pricing.secretary.standard.feature2': '✓ 基本合規項目',
-                'pricing.secretary.advanced': '高級計劃',
-                'pricing.secretary.advanced.desc': '年度法定文件管理與董事支援。',
-                'pricing.secretary.advanced.includes': '包括初階計劃的所有內容，以及:',
-                'pricing.secretary.advanced.feature1': '✓ 註冊辦事處地址',
-                'pricing.secretary.advanced.feature2': '✓ 接收所有郵件及包裹',
-                'pricing.secretary.advanced.feature3': '✓ 無限量件掃描及轉發服務',
+                'pricing.secretary.advanced.mail-address': '向公司註冊處申報更改公司名稱（不包括 HK$295 政府費用）',
+                'pricing.secretary.advanced.mail-handling': '更換董事（委任及辭任）',
+                'pricing.secretary.advanced.mail-forward': '股份配發',
+                'pricing.secretary.advanced.statutes': '股份轉讓*',
+                // Secretary Card Features
+                'pricing.secretary.entry.includes': '包括以下內容：',
+                'pricing.secretary.card.feature1': '✓ 公司秘書服務',
+                'pricing.secretary.card.feature2': '✓ 基本合規項目',
+                'pricing.secretary.basic.includes': '所有標準計劃內容以及:',
+                'pricing.secretary.card.basic1': '✓ 向公司註冊處申報更改公司名稱（不包括HK$295政府費用）',
+                'pricing.secretary.card.basic2': '✓ 更換董事（委任及辭任）',
+                'pricing.secretary.card.basic3': '✓ 股份配發',
+                'pricing.secretary.card.basic4': '✓ 股份轉讓*',
                 // Features
                 'pricing.features.name-check': '✓ 公司名稱查冊與文件準備',
                 'pricing.features.basic-filing': '✓ 基本文件提交',
@@ -1179,6 +1198,21 @@ class I18n {
                 'how-it-works.cta.description': '立即開始您的註冊之旅，通過我們簡單的4步流程。',
                 'how-it-works.cta.button': '開始您的註冊',
 
+                // Value-Added Services
+                'valueadded.title': '增值服務',
+                'valueadded.service1.title': '註冊地址及郵件接收',
+                'valueadded.service1.desc': '專業的註冊地址服務，提供郵件處理與轉寄功能。',
+                'valueadded.service1.price': 'USD 250+',
+                'valueadded.service2.title': '審計及稅務申報',
+                'valueadded.service2.desc': '量身定製的全面稅務審核支持。',
+                'valueadded.service2.price': '按情況而定',
+                'valueadded.service3.title': '銀行開戶',
+                'valueadded.service3.desc': '協助企業銀行開戶和建立銀行關係。',
+                'valueadded.service3.price': 'USD 399+',
+                'valueadded.service4.title': 'CTC 認證',
+                'valueadded.service4.desc': '認證副本證明服務，用於官方文件認證。',
+                'valueadded.service4.price': 'USD 80',
+
                 // Contact Page
                 'contact.office.title': '辦公地址',
                 'contact.office.address.line1': '中環中心39樓3室',
@@ -1189,6 +1223,10 @@ class I18n {
                 'contact.methods.title': '聯繫方式',
                 'contact.methods.hours.label': '辦公時間',
                 'contact.methods.hours.time': '週一至週五：上午9:00 - 下午6:00 (香港時間)',
+
+                'contact.qr.title': '掃碼聯繫',
+                'contact.qr.wechat': '微信',
+                'contact.qr.whatsapp': 'WhatsApp',
 
                 'contact.form.title': '發送訊息',
                 'contact.form.subtitle': '準備開始您的創業之旅？填寫以下表格，我們的註冊專家將在24小時內回覆您。',
@@ -1399,7 +1437,7 @@ class I18n {
                 // Navigation
                 'nav.about': '关于我们',
                 'nav.services': '服务',
-                'nav.how-it-works': '服务流程',
+                'nav.how-it-works': '公司注册及公司秘书',
                 'nav.for-funds': '基金服务',
                 'nav.insights': '洞察分析',
                 'nav.faq': '常见问题',
@@ -1451,22 +1489,20 @@ class I18n {
                 // HK Company Requirements Section
                 'hk-requirements.title': '注册香港公司所需资料',
                 'hk-requirements.subtitle': '申请香港公司注册的必备材料与条件：',
-                'hk-requirements.shareholders.title': '①需一位或一位以上股东',
+                'hk-requirements.shareholders.title': '1. 股东人数',
                 'hk-requirements.shareholders.description': '至少需一名股东，可为自然人或企业法人。',
-                'hk-requirements.age.title': '②所有股东必须超过 18 岁（无户籍、国籍、地区限制）',
+                'hk-requirements.age.title': '2. 股东资格',
                 'hk-requirements.age.description': '所有股东须年满18周岁，不受国籍、户籍或地区限制。',
-                'hk-requirements.id.title': '③所有股东必须出示有效身份证或护照影印件',
-                'hk-requirements.id.description': '自然人股东：需提供有效身份证或护照复印件。',
-                'hk-requirements.corporate.title': '④以企业法人作为股东的，企业法人必须递交营业执照和法人代表的身份证复印件',
-                'hk-requirements.corporate.description': '企业法人股东：需提供公司营业执照及法定代表人身份证复印件。',
-                'hk-requirements.capital.title': '⑤注册资本最低为10000元港币，无需验资',
-                'hk-requirements.capital.description': '最低注册资本为10000港币，无需实缴及验资。',
-                'hk-requirements.address.title': '⑥在香港能提供注册地址（鑫隆源提供多个商业地址供选择）',
-                'hk-requirements.address.description': '公司须在香港设立法定注册地址（可由持牌TCSP机构提供商务地址）。',
-                'hk-requirements.secretary.title': '⑦委托香港人或香港公司担任公司法定秘书（由鑫隆源提供）',
-                'hk-requirements.secretary.description': '必须委任一名香港居民或香港公司担任法定公司秘书（可由持牌TCSP机构提供）。',
-                'hk-requirements.compliance.title': '⑧注册香港公司的运营业务必须合法',
-                'hk-requirements.compliance.description': '公司注册及运营必须遵守香港相关法律法规。',
+                'hk-requirements.id.title': '3. 股东身份证明',
+                'hk-requirements.id.description': '• Individual shareholders: Copy of valid ID card or passport.\n• Corporate shareholders: Copy of the business license and the legal representative\'s ID card/passport.',
+                'hk-requirements.corporate.title': '4. 注册资本',
+                'hk-requirements.corporate.description': '最低注册资本为100港币，无需实缴及验资。',
+                'hk-requirements.capital.title': '5. 注册地址',
+                'hk-requirements.capital.description': '公司须在香港设立法定注册地址（可由持牌TCSP机构提供商务地址）。',
+                'hk-requirements.address.title': '6. 公司秘书',
+                'hk-requirements.address.description': '必须委任一名香港居民或香港公司担任法定公司秘书（可由持牌TCSP机构提供）。',
+                'hk-requirements.secretary.title': '7. 合规要求',
+                'hk-requirements.secretary.description': '公司注册及运营必须遵守香港相关法律法规。',
 
                 // CTA Section
                 'cta.title': '准备开始您的业务？',
@@ -1519,8 +1555,8 @@ class I18n {
                 'contact.hero.subtitle': '准备开始您的业务？立即与我们的注册专家联系。',
 
                 // How It Works Page
-                'how-it-works.hero.title': '服务流程',
-                'how-it-works.hero.subtitle': '简单直接的流程，让您的业务快速高效地完成注册。',
+                'how-it-works.hero.title': '公司注册及公司秘书',
+                'how-it-works.hero.subtitle': '全面的公司注册和秘书服务，助您成立及维护香港业务。',
 
                 // FAQ Page
                 'faq.hero.title': '常见问题',
@@ -1657,8 +1693,8 @@ class I18n {
                 'pricing.selector.accounting': '记账、会计及薪资',
                 'pricing.selector.audit': '审计及报税',
                 // Pricing tiers & badges
-                'pricing.tier.entry': '入门方案',
-                'pricing.tier.basic': '基本方案',
+                'pricing.tier.entry': '标准计划',
+                'pricing.tier.basic': '高级计划',
                 'pricing.tier.compliance': '合规方案',
                 'pricing.badge.limited': '限时优惠',
                 'pricing.badge.popular': '最受欢迎',
@@ -1730,17 +1766,19 @@ class I18n {
                 'pricing.secretary.分行申報': '分行申报（不受HK$595政府费用影响）',
                 // Secretary Advanced Pricing
                 'pricing.secretary.advanced-section': '高级计划项目',
-                'pricing.secretary.standard': '标准计划',
-                'pricing.secretary.standard.desc': '核心公司秘书职能及法定申报。',
-                'pricing.secretary.standard.includes': '包括届满公司所需的所有事项：',
-                'pricing.secretary.standard.feature1': '✓ 公司秘书服务',
-                'pricing.secretary.standard.feature2': '✓ 基本合规项目',
-                'pricing.secretary.advanced': '高级计划',
-                'pricing.secretary.advanced.desc': '年度法定文件管理与董事支持。',
-                'pricing.secretary.advanced.includes': '包括初阶计划的所有内容，以及:',
-                'pricing.secretary.advanced.feature1': '✓ 注册办事处地址',
-                'pricing.secretary.advanced.feature2': '✓ 接收所有邮件及包裹',
-                'pricing.secretary.advanced.feature3': '✓ 无限量件扫描及转发服务',
+                'pricing.secretary.advanced.mail-address': '向公司注册处申报更改公司名称（不包括 HK$295 政府费用）',
+                'pricing.secretary.advanced.mail-handling': '更换董事（委任及辞任）',
+                'pricing.secretary.advanced.mail-forward': '股份配发',
+                'pricing.secretary.advanced.statutes': '股份转让*',
+                // Secretary Card Features
+                'pricing.secretary.entry.includes': '包括以下内容：',
+                'pricing.secretary.card.feature1': '✓ 公司秘书服务',
+                'pricing.secretary.card.feature2': '✓ 基本合规项目',
+                'pricing.secretary.basic.includes': '所有标准计划内容以及:',
+                'pricing.secretary.card.basic1': '✓ 向公司注册处申报更改公司名称（不包括HK$295政府费用）',
+                'pricing.secretary.card.basic2': '✓ 更换董事（委任及辞任）',
+                'pricing.secretary.card.basic3': '✓ 股份配发',
+                'pricing.secretary.card.basic4': '✓ 股份转让*',
                 // Features
                 'pricing.features.name-check': '✓ 公司名称查册与文件准备',
                 'pricing.features.basic-filing': '✓ 基本文件提交',
@@ -1866,6 +1904,21 @@ class I18n {
                 'how-it-works.cta.description': '立即开始您的注册之旅，通过我们简单的4步流程。',
                 'how-it-works.cta.button': '开始您的注册',
 
+                // Value-Added Services
+                'valueadded.title': '增值服务',
+                'valueadded.service1.title': '注册地址及邮件接收',
+                'valueadded.service1.desc': '专业的注册地址服务，提供邮件处理与转寄功能。',
+                'valueadded.service1.price': 'USD 250+',
+                'valueadded.service2.title': '审计及税务申报',
+                'valueadded.service2.desc': '量身定制的全面税务审核支持。',
+                'valueadded.service2.price': '按情况而定',
+                'valueadded.service3.title': '银行开户',
+                'valueadded.service3.desc': '协助企业银行开户和建立银行关系。',
+                'valueadded.service3.price': 'USD 399+',
+                'valueadded.service4.title': 'CTC 认证',
+                'valueadded.service4.desc': '认证副本证明服务，用于官方文件认证。',
+                'valueadded.service4.price': 'USD 80',
+
                 // Contact Page
                 'contact.office.title': '办公地址',
                 'contact.office.address.line1': '中环中心39楼3室',
@@ -1876,6 +1929,10 @@ class I18n {
                 'contact.methods.title': '联系方式',
                 'contact.methods.hours.label': '办公时间',
                 'contact.methods.hours.time': '周一至周五：上午9:00 - 下午6:00 (香港时间)',
+
+                'contact.qr.title': '扫码联系',
+                'contact.qr.wechat': '微信',
+                'contact.qr.whatsapp': 'WhatsApp',
 
                 'contact.form.title': '发送消息',
                 'contact.form.subtitle': '准备开始您的创业之旅？填写以下表格，我们的注册专家将在24小时内回复您。',
