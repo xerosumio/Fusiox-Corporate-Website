@@ -284,9 +284,16 @@
                         <div class="bg-base-200 rounded-2xl p-6 mb-6 shadow-xl">
                             <div class="overflow-x-auto">
                                 <table class="table table-zebra w-full">
-                                    <thead>
+                                    <thead x-show="section === 'incorporation'">
                                         <tr>
-                                            <th class="text-left font-bold text-amber-600" x-text="section === 'incorporation' ? (window.i18n ? window.i18n.translate('pricing.compare.header') : '公司註冊') : (window.i18n ? window.i18n.translate('pricing.compare.secretary-header') : '公司秘書')"></th>
+                                            <th class="text-left font-bold text-amber-600" data-i18n="pricing.compare.header">公司註冊</th>
+                                            <th class="text-center" data-i18n="pricing.tier.entry">入門方案</th>
+                                            <th class="text-center" data-i18n="pricing.tier.basic">基本方案</th>
+                                        </tr>
+                                    </thead>
+                                    <thead x-show="section === 'secretary'">
+                                        <tr>
+                                            <th class="text-left font-bold text-amber-600" data-i18n="pricing.compare.secretary-header">公司秘書</th>
                                             <th class="text-center" data-i18n="pricing.tier.entry">入門方案</th>
                                             <th class="text-center" data-i18n="pricing.tier.basic">基本方案</th>
                                         </tr>
@@ -358,6 +365,57 @@
                                 <a href="https://wa.me/" class="btn btn-accent btn-lg" data-i18n="pricing.cta.basic">
                                     選擇基本方案
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Pricing Section (Secretary Only) -->
+                    <div x-show="section === 'secretary'" class="mt-8">
+                        <h3 class="font-bold text-xl mb-6 text-center text-amber-600" data-i18n="pricing.secretary.advanced-section">高級計劃項目</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Entry+ Plan -->
+                            <div class="card bg-base-100 shadow-lg p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="text-xl font-bold" data-i18n="pricing.secretary.standard">標準計劃</h4>
+                                    <span class="badge badge-warning" data-i18n="pricing.badge.limited">限時優惠</span>
+                                </div>
+                                <p class="text-sm text-base-content/70 mb-4" data-i18n="pricing.secretary.standard.desc">核心公司秘書職能及法定申報。</p>
+                                <p class="text-sm mb-2" data-i18n="pricing.from">從</p>
+                                <div class="mb-2">
+                                    <span class="line-through opacity-60 mr-2">HK$7,179</span>
+                                    <span class="text-3xl font-bold">HK$6,879</span>
+                                    <span class="text-sm opacity-70">/每年</span>
+                                </div>
+                                <p class="text-xs opacity-70 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
+                                <p class="text-sm font-semibold mb-3" data-i18n="pricing.secretary.standard.includes">包括屆滿公司所需的所有事項：</p>
+                                <ul class="space-y-2 text-sm mb-6">
+                                    <li data-i18n="pricing.secretary.standard.feature1">✓ 公司秘書服務</li>
+                                    <li data-i18n="pricing.secretary.standard.feature2">✓ 基本合規項目</li>
+                                </ul>
+                                <a href="https://wa.me/" class="btn btn-primary w-full" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
+                            </div>
+
+                            <!-- Advanced Plan -->
+                            <div class="card bg-primary text-primary-content shadow-xl p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="text-xl font-bold" data-i18n="pricing.secretary.advanced">高級計劃</h4>
+                                    <span class="badge badge-success" data-i18n="pricing.badge.popular">最受歡迎</span>
+                                </div>
+                                <p class="text-sm opacity-90 mb-4" data-i18n="pricing.secretary.advanced.desc">年度法定文件管理與董事支援。</p>
+                                <p class="text-sm mb-2" data-i18n="pricing.from">從</p>
+                                <div class="mb-2">
+                                    <span class="line-through opacity-80 mr-2">HK$9,300</span>
+                                    <span class="text-3xl font-bold">HK$9,000</span>
+                                    <span class="text-sm opacity-90">/每年</span>
+                                </div>
+                                <p class="text-xs opacity-90 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
+                                <p class="text-sm font-semibold mb-3" data-i18n="pricing.secretary.advanced.includes">包括初階計劃的所有內容，以及:</p>
+                                <ul class="space-y-2 text-sm mb-6">
+                                    <li data-i18n="pricing.secretary.advanced.feature1">✓ 註冊辦事處地址</li>
+                                    <li data-i18n="pricing.secretary.advanced.feature2">✓ 接收所有郵件及包裹</li>
+                                    <li data-i18n="pricing.secretary.advanced.feature3">✓ 無限量件掃描及轉發服務</li>
+                                </ul>
+                                <a href="https://wa.me/" class="btn btn-accent w-full text-black" data-i18n="pricing.cta.whatsapp">透過 WhatsApp 聯絡我們</a>
                             </div>
                         </div>
                     </div>
