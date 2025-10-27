@@ -1494,7 +1494,7 @@ class I18n {
                 'hk-requirements.age.title': '2. 股东资格',
                 'hk-requirements.age.description': '所有股东须年满18周岁，不受国籍、户籍或地区限制。',
                 'hk-requirements.id.title': '3. 股东身份证明',
-                'hk-requirements.id.description': '• Individual shareholders: Copy of valid ID card or passport.\n• Corporate shareholders: Copy of the business license and the legal representative\'s ID card/passport.',
+                'hk-requirements.id.description': '• 自然人股东：需提供有效身份证或护照复印件；\n• 企业法人股东：需提供公司营业执照及法定代表人身份证复印件。',
                 'hk-requirements.corporate.title': '4. 注册资本',
                 'hk-requirements.corporate.description': '最低注册资本为100港币，无需实缴及验资。',
                 'hk-requirements.capital.title': '5. 注册地址',

@@ -160,7 +160,17 @@
 
     <!-- Our Services (Rebuilt: selector + 2-tier pricing per service) -->
     <div class="py-16">
-        <div class="container mx-auto px-4" x-data="{ tab: 'incorporation', showCompare: false, shareholders: '1' }">
+        <div class="container mx-auto px-4" x-data="{ 
+            tab: 'incorporation', 
+            showCompare: false, 
+            shareholders: '1',
+            currentLang: window.i18n ? window.i18n.currentLanguage : 'en',
+            init() {
+                window.addEventListener('fusiox-language-changed', (e) => {
+                    this.currentLang = e.detail.language;
+                });
+            }
+        }">
             <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up" data-i18n="services.hero.title">Our Services</h2>
 
             <!-- Service selector -->
@@ -201,7 +211,7 @@
                                 <span class="badge badge-warning" data-i18n="pricing.badge.limited">限時優惠</span>
                             </div>
                             <p class="text-sm text-base-content/70 mb-4"
-                               x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.incorporation.entry.desc') : '基本公司設立連合規支援') : (window.i18n? window.i18n.translate('pricing.secretary.entry.desc'):'核心公司秘書職能及法定申報')"
+                               x-text="currentLang && section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.incorporation.entry.desc') : '基本公司設立連合規支援') : currentLang && (window.i18n? window.i18n.translate('pricing.secretary.entry.desc'):'核心公司秘書職能及法定申報')"
                             ></p>
                             <p class="text-sm mb-2" data-i18n="pricing.from">從</p>
                             <div class="mb-2">
@@ -220,7 +230,7 @@
                                 </template>
                             </div>
                             <p class="text-xs opacity-70 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
-                            <p class="text-sm font-semibold mb-3" x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.entry.includes') : '包括屆滿公司所需的所有事項：') : (window.i18n? window.i18n.translate('pricing.secretary.entry.includes'):'包括屆滿公司所需的所有事項：')"></p>
+                            <p class="text-sm font-semibold mb-3" x-text="currentLang && section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.entry.includes') : '包括屆滿公司所需的所有事項：') : currentLang && (window.i18n? window.i18n.translate('pricing.secretary.entry.includes'):'包括屆滿公司所需的所有事項：')"></p>
                             <!-- Incorporation features -->
                             <ul x-show="section === 'incorporation'" class="space-y-2 text-sm mb-6 flex-grow">
                                 <li data-i18n="pricing.entry.feature1">✓ 公司註冊證書（CI）</li>
@@ -247,7 +257,7 @@
                                 <span class="badge badge-success" data-i18n="pricing.badge.popular">最受歡迎</span>
                             </div>
                             <p class="text-sm opacity-90 mb-4"
-                               x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.incorporation.basic.desc') : '完整公司設立連私隱及合規保障') : (window.i18n? window.i18n.translate('pricing.secretary.basic.desc'):'年度法定文件管理與董事支援')"
+                               x-text="currentLang && section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.incorporation.basic.desc') : '完整公司設立連私隱及合規保障') : currentLang && (window.i18n? window.i18n.translate('pricing.secretary.basic.desc'):'年度法定文件管理與董事支援')"
                             ></p>
                             <p class="text-sm mb-2" data-i18n="pricing.from">從</p>
                             <div class="mb-2">
@@ -266,7 +276,7 @@
                                 </template>
             </div>
                             <p class="text-xs opacity-90 mb-4" data-i18n="pricing.disclaimer.gov">+ 政府費用另計</p>
-                            <p class="text-sm font-semibold mb-3" x-text="section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.basic.includes') : '包括初階計劃的所有內容，以及:') : (window.i18n? window.i18n.translate('pricing.secretary.basic.includes'):'包括初階計劃的所有內容，以及:')"></p>
+                            <p class="text-sm font-semibold mb-3" x-text="currentLang && section==='incorporation' ? (window.i18n? window.i18n.translate('pricing.basic.includes') : '包括初階計劃的所有內容，以及:') : currentLang && (window.i18n? window.i18n.translate('pricing.secretary.basic.includes'):'包括初階計劃的所有內容，以及:')"></p>
                             <!-- Incorporation features -->
                             <ul x-show="section === 'incorporation'" class="space-y-2 text-sm mb-6 flex-grow">
                                 <li data-i18n="pricing.basic.feature1">✓ 註冊辦事處地址</li>
@@ -287,7 +297,7 @@
                     <!-- Compare button under cards -->
                     <div class="flex justify-center mt-8 mb-4">
                         <button class="btn btn-outline btn-lg" @click="showCompare = !showCompare" data-i18n="pricing.compare">
-                            <span x-text="showCompare ? (window.i18n? window.i18n.translate('pricing.hide-compare') : 'Hide comparison') : (window.i18n? window.i18n.translate('pricing.compare') : 'Compare plans')"></span>
+                            <span x-text="currentLang && showCompare ? (window.i18n? window.i18n.translate('pricing.hide-compare') : 'Hide comparison') : currentLang && (window.i18n? window.i18n.translate('pricing.compare') : 'Compare plans')"></span>
                             <svg class="w-5 h-5 ml-2 transition-transform" :class="{'rotate-180': showCompare}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
@@ -335,7 +345,7 @@
                                                 {key: 'pricing.compare.office.mail-forward', entry: false, basic: true}
                                             ]" :key="row.key">
                                                 <tr :class="row.isSection ? 'font-bold' : ''">
-                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-1 text-amber-600' : ''"></td>
+                                                    <td x-text="currentLang && window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-1 text-amber-600' : ''"></td>
                                                     <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
                                                     <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
@@ -367,7 +377,7 @@
                                                 {key: 'pricing.secretary.advanced.statutes', entry: false, basic: true}
                                             ]" :key="row.key">
                                                 <tr :class="row.isSection ? 'font-bold' : ''">
-                                                    <td x-text="window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-1 text-amber-600' : ''"></td>
+                                                    <td x-text="currentLang && window.i18n ? window.i18n.translate(row.key) : row.key" :class="row.isSection ? 'py-1 text-amber-600' : ''"></td>
                                                     <td class="text-center" x-text="row.entry === 'section' ? '' : (row.entry ? '✓' : '—')"></td>
                                                     <td class="text-center" x-text="row.basic === 'section' ? '' : (row.basic ? '✓' : '—')"></td>
                                                 </tr>
@@ -515,45 +525,55 @@
             easing: 'ease-out-back'
         });
 
-        // Simple i18n initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Services page loaded');
-            console.log('window.i18n:', window.i18n);
-            console.log('document.readyState:', document.readyState);
+        // Listen for language changes and update Alpine.js components
+        window.addEventListener('fusiox-language-changed', function(e) {
+            console.log('Language changed to:', e.detail.language);
             
-            if (window.i18n) {
-                console.log('i18n system found, updating content...');
-                console.log('Current language:', window.i18n.currentLanguage);
-                console.log('Available translations:', Object.keys(window.i18n.translations));
+            // Force Alpine.js to re-evaluate all x-text expressions
+            // by triggering a reactivity update
+            setTimeout(() => {
+                // Trigger Alpine reactivity by dispatching a custom event
+                window.dispatchEvent(new Event('resize'));
                 
-                // Test a specific translation
-                const testKey = 'services.hero.title';
-                const translation = window.i18n.translate(testKey);
-                console.log(`Translation for "${testKey}": "${translation}"`);
-                
-                // Count elements with data-i18n
-                const elements = document.querySelectorAll('[data-i18n]');
-                console.log(`Found ${elements.length} elements with data-i18n`);
-                
-                // Force update content
-                window.i18n.updatePageContent();
-                window.i18n.updateHTMLLang();
-                
-                // Test again after a delay
-                setTimeout(function() {
-                    console.log('Testing again after delay...');
-                    window.i18n.updatePageContent();
-                }, 500);
-            } else {
-                console.error('i18n system not found!');
-            }
+                // Also update select options text
+                updateSelectOptionsText();
+            }, 50);
         });
         
-        // Also try immediate initialization
-        if (window.i18n) {
-            console.log('Immediate i18n check...');
-            window.i18n.updatePageContent();
+        // Function to update select options with translations
+        function updateSelectOptionsText() {
+            // Update service selector options
+            const incorporationOption = document.querySelector('option[value="incorporation"]');
+            const secretaryOption = document.querySelector('option[value="secretary"]');
+            
+            if (incorporationOption && window.i18n) {
+                incorporationOption.textContent = window.i18n.translate('pricing.selector.incorporation');
+            }
+            if (secretaryOption && window.i18n) {
+                secretaryOption.textContent = window.i18n.translate('pricing.selector.secretary');
+            }
+            
+            // Update shareholder options
+            const shareholderOptions = document.querySelectorAll('select[x-model="shareholders"] option');
+            shareholderOptions.forEach(option => {
+                const value = option.getAttribute('value');
+                if (value && window.i18n) {
+                    const suffix = window.i18n.translate('pricing.shareholders.suffix');
+                    // Preserve the number part and add translated suffix
+                    const numberPart = option.textContent.split(' ')[0];
+                    option.textContent = `${numberPart} ${suffix}`;
+                }
+            });
         }
+        
+        // Initial update when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.i18n) {
+                window.i18n.updatePageContent();
+                window.i18n.updateHTMLLang();
+                updateSelectOptionsText();
+            }
+        });
 
         // Function to open Google Maps
         function openGoogleMaps() {
