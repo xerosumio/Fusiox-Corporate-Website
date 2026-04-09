@@ -518,7 +518,7 @@ class I18n {
                 'valueadded.service4.price': 'USD 80',
 
                 // Contact Page
-                'contact.office.title': 'Office Address',
+                'contact.office.title': 'Correspondence Address',
                 'contact.office.address.line1': 'Suite 3, 39/F, The Center',
                 'contact.office.address.line2': '99 Queen\'s Road Central, Central',
                 'contact.office.address.line3': 'Hong Kong',
@@ -1214,7 +1214,7 @@ class I18n {
                 'valueadded.service4.price': 'USD 80',
 
                 // Contact Page
-                'contact.office.title': '辦公地址',
+                'contact.office.title': '聯絡地址',
                 'contact.office.address.line1': '中環中心39樓3室',
                 'contact.office.address.line2': '皇后大道中99號 中環',
                 'contact.office.address.line3': '香港',
@@ -1920,7 +1920,7 @@ class I18n {
                 'valueadded.service4.price': 'USD 80',
 
                 // Contact Page
-                'contact.office.title': '办公地址',
+                'contact.office.title': '联系地址',
                 'contact.office.address.line1': '中环中心39楼3室',
                 'contact.office.address.line2': '皇后大道中99号 中环',
                 'contact.office.address.line3': '香港',
